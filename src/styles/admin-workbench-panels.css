@@ -1,0 +1,256 @@
+/* ============================================================================
+ * Gardens by the Bay — Admin Workbench, Dropdowns & Inspector Sub-Header Bar
+ * (src/styles/admin-workbench-panels.css)
+ * ============================================================================ */
+
+.top-dev-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 170px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 8px;
+  border-radius: 12px;
+  z-index: 60;
+  background: linear-gradient(180deg, rgba(6, 22, 30, 0.98) 0%, rgba(4, 15, 22, 0.96) 100%);
+  border: 1.5px solid rgba(56, 189, 248, 0.48);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.65);
+}
+
+.dev-dropdown-item,
+.dev-dropdown-item:visited {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.04);
+  color: #F1F5F9;
+  font-family: inherit;
+  font-size: 11.5px;
+  font-weight: 700;
+  padding: 7px 11px;
+  border-radius: 8px;
+  text-decoration: none;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  white-space: nowrap;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.dev-dropdown-item:hover {
+  background: rgba(56, 189, 248, 0.18);
+  border-color: rgba(56, 189, 248, 0.55);
+  color: #FFFFFF;
+}
+
+.btn-collection-top {
+  border: 1.5px solid rgba(56, 189, 248, 0.55);
+  background: linear-gradient(135deg, rgba(45, 127, 249, 0.25) 0%, rgba(16, 185, 129, 0.22) 100%);
+  color: #F8FAFC;
+  font-size: 11.5px;
+  font-weight: 800;
+  padding: 5px 11px;
+  border-radius: 10px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.btn-collection-top:hover {
+  transform: translateY(-1px);
+  border-color: #38BDF8;
+  box-shadow: 0 4px 14px rgba(56, 189, 248, 0.35);
+}
+
+.btn-collection-top.active {
+  background: linear-gradient(135deg, #2D7FF9 0%, #10B981 100%);
+  border-color: #A7F3D0;
+  color: #FFFFFF;
+  box-shadow: 0 0 16px rgba(45, 127, 249, 0.55);
+}
+
+.collection-top-badge {
+  background: rgba(4, 15, 22, 0.75);
+  border: 1px solid rgba(250, 204, 21, 0.5);
+  color: #FDE047;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 1px 6px;
+  border-radius: 999px;
+}
+
+.btn-gallery-link {
+  text-decoration: none;
+  background: linear-gradient(135deg, #F59E0B, #D97706);
+  color: #1E1B4B;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 7px 12px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+  transition: transform 0.15s ease;
+}
+
+.btn-gallery-link:hover {
+  transform: translateY(-1px);
+}
+
+/* Unified 3-Page Global Navigation & Admin View / Auth Gate */
+.primary-page-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(2, 11, 16, 0.92);
+  padding: 5px 6px;
+  border-radius: 999px;
+  border: 1.5px solid rgba(250, 204, 21, 0.55);
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.65), 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.page-nav-pill,
+.page-nav-pill:visited {
+  text-decoration: none;
+  color: #F1F5F9;
+  background: rgba(255, 255, 255, 0.08);
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  padding: 6px 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  transition: all 0.16s ease;
+  white-space: nowrap;
+}
+
+.page-nav-pill:hover {
+  color: #FFFFFF;
+  background: rgba(250, 204, 21, 0.2);
+  border-color: rgba(250, 204, 21, 0.7);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+}
+
+.page-nav-pill.active,
+.page-nav-pill.active:visited {
+  background: linear-gradient(135deg, #FACC15 0%, #F59E0B 100%);
+  color: #051B24;
+  font-weight: 800;
+  border-color: #FEF08A;
+  box-shadow: 0 0 18px rgba(250, 204, 21, 0.55), 0 4px 10px rgba(0, 0, 0, 0.45);
+}
+
+.admin-lock-badge {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: rgba(245, 158, 11, 0.22);
+  color: #FEF08A;
+  border: 1px solid rgba(250, 204, 21, 0.55);
+  white-space: nowrap;
+}
+
+.btn-admin-lock-sim,
+.btn-admin-reset {
+  background: rgba(255, 255, 255, 0.12);
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 5px 12px;
+  border-radius: 9px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.btn-admin-lock-sim:hover,
+.btn-admin-reset:hover {
+  background: rgba(250, 204, 21, 0.25);
+  border-color: #FACC15;
+  color: #FEF08A;
+}
+
+/* Admin Debug Sub-Header Bar */
+.admin-debug-bar {
+  position: fixed;
+  top: 76px;
+  left: 16px;
+  right: 16px;
+  height: 48px;
+  z-index: 29;
+  background: linear-gradient(180deg, rgba(7, 26, 36, 0.96) 0%, rgba(5, 18, 26, 0.94) 100%);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1.5px solid rgba(250, 204, 21, 0.5);
+  border-radius: 14px;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.5);
+}
+
+.admin-debug-bar .screen-nav-pills {
+  background: rgba(2, 10, 15, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  padding: 4px;
+}
+
+.admin-debug-bar .nav-pill {
+  color: #F1F5F9;
+  background: rgba(255, 255, 255, 0.06);
+  font-weight: 700;
+}
+
+.admin-debug-bar .nav-pill:hover {
+  background: rgba(255, 255, 255, 0.16);
+  color: #FFFFFF;
+}
+
+.admin-debug-bar .nav-pill.active {
+  background: linear-gradient(135deg, #10B981, #059669);
+  color: #042F2E;
+  font-weight: 800;
+  box-shadow: 0 0 12px rgba(16, 185, 129, 0.45);
+}
+
+.admin-bar-left,
+.admin-bar-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.admin-bar-label {
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #FACC15;
+  white-space: nowrap;
+}
+
+body[data-page-mode="admin"] {
+  --hud-top-offset: 132px;
+}
+
+body[data-page-mode="admin"] .gameplay-hud {
+  top: 132px;
+}
+
+body[data-page-mode="admin"] .lookdev-panel {
+  top: 132px;
+  max-height: calc(100vh - 144px);
+}

@@ -1,0 +1,215 @@
+/* ============================================================================
+ * Gardens by the Bay — Interactive On-Screen LookDev Control Panel
+ * (src/styles/lookdev.css)
+ * ============================================================================ */
+
+.lookdev-panel {
+  position: fixed;
+  top: 132px;
+  right: 16px;
+  width: 356px;
+  max-height: calc(100vh - 144px);
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  background: rgba(8, 20, 26, 0.92);
+  border: 1px solid rgba(52, 211, 153, 0.42);
+  border-radius: 18px;
+  backdrop-filter: blur(18px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+  color: #F8FAFC;
+  font-family: var(--font-main);
+  overflow: hidden;
+}
+
+.lookdev-panel.collapsed .lookdev-body {
+  display: none;
+}
+
+.lookdev-panel.collapsed .lookdev-header.drag-handle {
+  border-bottom: none;
+}
+
+body.modal-or-title-open .lookdev-panel.collapsed {
+  top: auto;
+  bottom: 16px;
+}
+
+.lookdev-header.drag-handle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  background: linear-gradient(90deg, rgba(16, 185, 129, 0.22), rgba(15, 23, 42, 0.6));
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+}
+
+.lookdev-header.drag-handle.dragging {
+  cursor: grabbing;
+}
+
+.lookdev-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.lookdev-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #34D399;
+  box-shadow: 0 0 8px #34D399;
+}
+
+.lookdev-eyebrow {
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: #34D399;
+}
+
+.lookdev-title {
+  font-size: 13px;
+  font-weight: 800;
+  color: #FFFFFF;
+}
+
+.lookdev-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.lookdev-clean-btn {
+  height: 26px;
+  padding: 0 9px;
+  border-radius: 7px;
+  border: 1px solid rgba(52, 211, 153, 0.45);
+  background: rgba(16, 185, 129, 0.16);
+  color: #A7F3D0;
+  font-size: 10px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  white-space: nowrap;
+}
+
+.lookdev-clean-btn:hover {
+  background: rgba(16, 185, 129, 0.28);
+  color: #FFFFFF;
+}
+
+.lookdev-clean-btn.active {
+  background: linear-gradient(135deg, #F59E0B, #D97706);
+  border-color: #FDE047;
+  color: #1E1B4B;
+  box-shadow: 0 0 12px rgba(250, 204, 21, 0.45);
+}
+
+.lookdev-icon-btn {
+  width: 26px;
+  height: 26px;
+  border-radius: 7px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.08);
+  color: #FFFFFF;
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.lookdev-body {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  flex: 1;
+}
+
+.lookdev-quick-bar {
+  padding: 8px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.lookdev-field-label {
+  font-size: 10px;
+  font-weight: 700;
+  color: #A7F3D0;
+}
+
+.lookdev-select {
+  width: 100%;
+  padding: 6px 8px;
+  border-radius: 8px;
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #F8FAFC;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.lookdev-tabs {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 4px;
+  padding: 6px 12px;
+  background: rgba(0, 0, 0, 0.25);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.lookdev-tab {
+  border: none;
+  background: transparent;
+  color: #94A3B8;
+  font-size: 9.5px;
+  font-weight: 700;
+  padding: 5px 2px;
+  border-radius: 6px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.lookdev-tab.active {
+  background: rgba(16, 185, 129, 0.25);
+  color: #34D399;
+  border: 1px solid rgba(52, 211, 153, 0.4);
+}
+
+.lookdev-tab-content {
+  padding: 10px 12px;
+  overflow-y: auto;
+  max-height: 295px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.lookdev-preset-pills {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  margin-bottom: 4px;
+}
+
+.lookdev-pill {
+  padding: 6px 8px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.05);
+  color: #E2E8F0;
+  font-size: 10px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.lookdev-pill.active {
+  background: linear-gradient(135deg, #F59E0B, #D97706);
+  color: #1E1B4B;
+  border-color: #FDE047;
+}

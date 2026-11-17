@@ -1,0 +1,218 @@
+/* Gardens by the Bay — HUD Bottom Radar, Camera Quickbar & Gadget Slot (src/styles/hud-bottom-dock.css) */
+/* Bottom-Left Mini-Radar */
+.mini-radar-card {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 224px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.radar-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  width: 100%;
+}
+
+.radar-title-tag {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: #A7F3D0;
+  white-space: nowrap;
+}
+
+.btn-radar-zoom {
+  border: 1px solid rgba(250, 204, 21, 0.4);
+  background: rgba(250, 204, 21, 0.14);
+  color: #FEF08A;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 6px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.radar-canvas-wrap {
+  position: relative;
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid rgba(52, 211, 153, 0.5);
+  background: radial-gradient(circle, #0A2730 0%, #051318 100%);
+  box-shadow: inset 0 0 20px rgba(16, 185, 129, 0.25);
+}
+
+#miniRadarCanvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.radar-north-badge {
+  position: absolute;
+  top: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #EF4444;
+  color: #FFF;
+  font-size: 9px;
+  font-weight: 800;
+  padding: 1px 5px;
+  border-radius: 4px;
+}
+
+.radar-footer {
+  display: flex;
+  gap: 6px;
+  width: 100%;
+}
+
+.btn-radar-action {
+  flex: 1;
+  border: 1px solid rgba(110, 231, 183, 0.35);
+  background: rgba(16, 185, 129, 0.15);
+  color: #ECFDF5;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 5px 6px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btn-radar-action:hover {
+  background: rgba(16, 185, 129, 0.3);
+}
+
+/* Bottom-Center Camera Angle Quickbar */
+.camera-quickbar {
+  position: absolute;
+  bottom: 0;
+  left: 224px;
+  right: 400px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  overflow-x: auto;
+}
+
+.quickbar-label {
+  font-size: 10px;
+  font-weight: 800;
+  color: #A7F3D0;
+  white-space: nowrap;
+}
+
+.quickbar-buttons {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-wrap: nowrap;
+}
+
+.angle-chip {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.06);
+  color: #E2E8F0;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 5px 9px;
+  border-radius: 8px;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.angle-chip:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.angle-chip.active {
+  background: linear-gradient(135deg, #10B981, #059669);
+  color: #042F2E;
+  border-color: #34D399;
+  font-weight: 800;
+}
+
+/* Bottom-Right Gadget Slot Hook Card */
+.gadget-slot-card {
+  position: absolute;
+  bottom: 54px;
+  left: 224px;
+  width: 340px;
+  padding: 8px 12px;
+}
+
+.gadget-slot-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.gadget-lock-tag {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #FDE047;
+}
+
+.btn-gadget-preview {
+  border: 1px solid rgba(250, 204, 21, 0.45);
+  background: rgba(250, 204, 21, 0.14);
+  color: #FEF08A;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.gadget-icons-row {
+  display: flex;
+  gap: 6px;
+}
+
+.gadget-pill {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 5px 6px;
+  border-radius: 8px;
+  border: 1px dashed rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.04);
+  color: #CBD5E1;
+  font-size: 10px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.gadget-pill.unlocked {
+  border-style: solid;
+  border-color: rgba(52, 211, 153, 0.55);
+  background: rgba(16, 185, 129, 0.16);
+  color: #FFFFFF;
+}
+
+.gadget-pill.unlocked:hover {
+  background: rgba(16, 185, 129, 0.3);
+  border-color: #34D399;
+}
+
+.gadget-pill.active-gadget {
+  border-style: solid;
+  border-color: #FACC15;
+  background: linear-gradient(135deg, rgba(250, 204, 21, 0.32), rgba(245, 158, 11, 0.28));
+  color: #FEF9C3;
+  box-shadow: 0 0 12px rgba(250, 204, 21, 0.45);
+}

@@ -1,0 +1,231 @@
+/* Gardens by the Bay — Screen 02 My Collection Gallery Modal (src/styles/screen-collection-modal.css) */
+/* ============================================================================
+ * Screen 2: "My Collection" Gallery Modal (Light Frosted-Pearl & Aqua Glass)
+ * Zero competitor rankings or leaderboards — 4-column single-view 3D grid
+ * ============================================================================ */
+.pearl-collection-modal,
+.pearl-inspector-modal {
+  width: min(1060px, 94vw);
+  max-height: calc(100vh - var(--hud-top-offset, 76px) - 20px);
+  max-height: calc(100dvh - var(--hud-top-offset, 76px) - 20px);
+  display: flex;
+  flex-direction: column;
+  padding: 20px 24px 18px;
+  border-radius: 26px;
+  color: #072A24;
+  background: linear-gradient(
+    158deg,
+    rgba(246, 254, 252, 0.94) 0%,
+    rgba(226, 249, 244, 0.91) 52%,
+    rgba(210, 243, 238, 0.89) 100%
+  );
+  border: 2.5px solid rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(22px) saturate(165%);
+  -webkit-backdrop-filter: blur(22px) saturate(165%);
+  box-shadow:
+    0 24px 56px rgba(4, 38, 44, 0.34),
+    0 0 0 1.5px rgba(13, 148, 136, 0.32),
+    inset 0 2px 5px rgba(255, 255, 255, 0.96);
+  overflow: hidden;
+  animation: pearlModalFadeIn 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes pearlModalFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(10px) scale(0.985);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.pearl-modal-header,
+.pearl-col-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding-bottom: 13px;
+  margin-bottom: 13px;
+  border-bottom: 1.5px solid rgba(13, 148, 136, 0.2);
+  flex-shrink: 0;
+}
+
+.pearl-col-header {
+  padding-bottom: 0;
+  margin-bottom: 0;
+  border-bottom: none;
+}
+
+.pearl-col-divider {
+  height: 1.5px;
+  background: rgba(13, 148, 136, 0.2);
+  margin: 12px 0;
+  flex-shrink: 0;
+}
+
+.pearl-header-left,
+.pearl-col-title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.pearl-col-heading-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.pearl-col-subtitle {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 600;
+  color: #0F5257;
+}
+
+.pearl-eyebrow,
+.pearl-col-eyebrow {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.11em;
+  color: #0D9488;
+  text-transform: uppercase;
+}
+
+.pearl-heading,
+.pearl-col-heading {
+  margin: 0;
+  font-size: clamp(19px, 2.1vw, 24px);
+  font-weight: 900;
+  color: #06393A;
+  letter-spacing: -0.01em;
+}
+
+.pearl-header-right,
+.pearl-col-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.pearl-progress-pill,
+.pearl-col-count-pill {
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #FEF08A 0%, #FACC15 100%);
+  border: 1.5px solid #FFFFFF;
+  color: #052E2B;
+  font-size: 11.5px;
+  font-weight: 900;
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.25);
+  white-space: nowrap;
+}
+
+.btn-pearl-return {
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: 2px solid #FEF08A;
+  background: linear-gradient(180deg, #34D399 0%, #10B981 55%, #059669 100%);
+  color: #FFFFFF;
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(16, 185, 129, 0.32);
+  transition: transform 0.15s ease, filter 0.15s ease;
+}
+
+.btn-pearl-return:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.05);
+}
+
+.btn-pearl-close {
+  padding: 7px 14px;
+  border-radius: 999px;
+  border: 1.5px solid rgba(13, 148, 136, 0.36);
+  background: rgba(255, 255, 255, 0.88);
+  color: #06393A;
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(6, 57, 58, 0.08);
+  transition: background-color 0.15s ease, transform 0.15s ease;
+}
+
+.btn-pearl-close:hover {
+  background: #FFFFFF;
+  transform: translateY(-1px);
+}
+
+.pearl-toolbar-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+  flex-shrink: 0;
+  flex-wrap: wrap;
+}
+
+.pearl-filter-bar,
+.pearl-col-filter-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.pearl-filter-chip,
+.pearl-filter-pill {
+  padding: 6px 13px;
+  border-radius: 999px;
+  border: 1.5px solid rgba(13, 148, 136, 0.25);
+  background: rgba(255, 255, 255, 0.78);
+  color: #0F4C45;
+  font-size: 11.5px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.16s ease;
+}
+
+.pearl-filter-chip:hover,
+.pearl-filter-pill:hover {
+  background: #FFFFFF;
+  border-color: #0D9488;
+}
+
+.pearl-filter-chip.active,
+.pearl-filter-pill.active {
+  background: linear-gradient(135deg, #0D9488 0%, #047857 100%);
+  color: #FFFFFF;
+  border-color: #FACC15;
+  font-weight: 800;
+  box-shadow: 0 4px 12px rgba(13, 148, 136, 0.28);
+}
+
+.pearl-helper-pill {
+  font-size: 11px;
+  font-weight: 700;
+  color: #0F5257;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(13, 148, 136, 0.24);
+  padding: 6px 12px;
+  border-radius: 999px;
+}
+
+.pearl-helper-pill strong {
+  color: #B45309;
+  font-weight: 800;
+}

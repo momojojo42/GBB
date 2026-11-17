@@ -1,0 +1,234 @@
+/* ============================================================================
+ * Gardens by the Bay — HUD Scoreboard, Clock Digits & 4-Player Standings Card
+ * (src/styles/hud-scoreboard.css)
+ * ============================================================================ */
+
+.clock-main-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  margin-bottom: 6px;
+}
+
+.clock-time-block {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.clock-digits {
+  font-size: 22px;
+  font-weight: 800;
+  color: #FDE047;
+  letter-spacing: 0.04em;
+}
+
+.clock-digits.clock-urgent {
+  color: #FB7185 !important;
+  text-shadow: 0 0 14px rgba(244, 63, 94, 0.75);
+  animation: urgentClockPulse 0.55s infinite alternate ease-in-out;
+}
+
+@keyframes urgentClockPulse {
+  0% { scale: 1; }
+  100% { scale: 1.1; }
+}
+
+.clock-divider {
+  width: 1px;
+  height: 26px;
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.relic-total-block {
+  text-align: left;
+}
+
+.clickable-score-block {
+  cursor: pointer;
+  padding: 3px 8px;
+  border-radius: 9px;
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  background: rgba(45, 127, 249, 0.1);
+  transition: background-color 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+}
+
+.clickable-score-block:hover {
+  background: rgba(45, 127, 249, 0.22);
+  border-color: rgba(56, 189, 248, 0.6);
+  transform: translateY(-1px);
+}
+
+.relic-total-label {
+  display: block;
+  font-size: 10px;
+  font-weight: 700;
+  color: #94A3B8;
+  letter-spacing: 0.08em;
+}
+
+.relic-total-val {
+  font-size: 16px;
+  font-weight: 800;
+  color: #FFFFFF;
+}
+
+.relic-total-val small {
+  font-size: 11px;
+  color: #94A3B8;
+}
+
+.hud-toast-banner {
+  font-size: 11px;
+  font-weight: 500;
+  color: #E2E8F0;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 4px 10px;
+  border-radius: 8px;
+}
+
+/* Top-Left 4-Player Standings Card */
+.standings-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 308px;
+}
+
+.standings-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.standings-eyebrow {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  color: #A7F3D0;
+  white-space: nowrap;
+}
+
+.standings-total-pill {
+  font-size: 10px;
+  font-weight: 700;
+  color: #FDE68A;
+  background: rgba(250, 204, 21, 0.15);
+  padding: 2px 7px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.standings-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.standing-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 8px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.standing-rank {
+  font-size: 11px;
+  font-weight: 800;
+  width: 18px;
+  color: #94A3B8;
+}
+
+.standing-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 12px;
+  font-weight: 800;
+  color: #FFF;
+  border: 2px solid rgba(255, 255, 255, 0.85);
+  overflow: hidden;
+  flex-shrink: 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.standing-avatar-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
+.standing-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.standing-name-line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  margin-bottom: 3px;
+}
+
+.standing-row.is-you-row {
+  background: rgba(45, 127, 249, 0.14);
+  border-color: rgba(56, 189, 248, 0.35);
+}
+
+.standing-comp-name {
+  color: #F8FAFC;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.standing-comp-score-cluster {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  flex-shrink: 0;
+}
+
+.standing-comp-pts {
+  font-size: 11px;
+  font-weight: 900;
+  color: #FDE047;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.standing-comp-relic-pill {
+  font-size: 9.5px;
+  font-weight: 800;
+  color: #A7F3D0;
+  background: rgba(16, 185, 129, 0.18);
+  border: 1px solid rgba(52, 211, 153, 0.38);
+  padding: 1px 6px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.standing-bar-bg {
+  height: 5px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.standing-bar-fill {
+  height: 100%;
+  border-radius: 999px;
+  transition: width 0.25s ease;
+}

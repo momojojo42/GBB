@@ -1,0 +1,15 @@
+.gcloudignore
+.git
+.gitignore
+node_modules/
+dist/
+.DS_Store
+**/.DS_Store
+Showcase Progress/
+docs/
+scripts/blender/
+scripts/cartography/
+scripts/tools/
+README.md
+*.log
+.env*

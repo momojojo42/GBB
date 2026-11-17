@@ -1,0 +1,2404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How It Was Built (Steps 1–10) — Gardens by the Bay 3D Treasure Hunt</title>
+  <meta name="description" content="Behind-the-scenes visual engineering showcase of the Gardens by the Bay 3D Treasure Hunt: from 2D concept blueprints and 33 Blender .GLB 3D models to geodesic map calibration, 42 Singapore relics, and live WebGL gameplay." />
+  <meta name="theme-color" content="#06393A" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Gardens by the Bay 3D Treasure Hunt" />
+  <meta property="og:title" content="🌿 How the Gardens by the Bay 3D Treasure Hunt Was Built (10 Steps)" />
+  <meta property="og:description" content="Explore the visual engineering gallery: 11 UI blueprints, 33 Blender 4.2 3D assets, 42 Singapore keepsake relics, and geodesic visitor map calibration." />
+  <meta property="og:image" content="./og-preview.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="🌿 How the Gardens by the Bay 3D Treasure Hunt Was Built (10 Steps)" />
+  <meta name="twitter:description" content="Explore the visual engineering gallery: 11 UI blueprints, 33 Blender 4.2 3D assets, 42 Singapore keepsake relics, and geodesic visitor map calibration." />
+  <meta name="twitter:image" content="./og-preview.png" />
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+  <link rel="icon" type="image/png" sizes="192x192" href="./assets/avatars/avatar_you.png" />
+  <link rel="apple-touch-icon" href="./assets/avatars/avatar_you.png" />
+  <link rel="manifest" href="./site.webmanifest" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./src/styles/progress-gallery.css" />
+</head>
+<body>
+  <!-- STRICT DESKTOP-ONLY GATE OVERLAY (Admin & Plan Views Disabled on Mobile & Tablet) -->
+  <div id="desktopOnlyGateOverlay" class="desktop-only-gate-overlay" role="dialog" aria-modal="true" aria-labelledby="desktopOnlyGateTitle">
+    <div class="desktop-only-gate-card">
+      <div class="desktop-only-gate-eyebrow">🌿 GARDENS BY THE BAY • DESKTOP STUDIO</div>
+      <div class="desktop-only-gate-icon" aria-hidden="true">🖥️</div>
+      <h2 class="desktop-only-gate-title" id="desktopOnlyGateTitle">Desktop Access Only</h2>
+      <p class="desktop-only-gate-sub">
+        Admin LookDev Studio and Engineering Plan Views are designed exclusively for Desktop screens (&gt; 1024px). They are disabled on mobile phones and tablets.
+      </p>
+      <a href="index.html" class="btn-desktop-gate-back">🎮 Return to 3D Treasure Hunt Game</a>
+    </div>
+  </div>
+  <script>
+    (function enforceDesktopOnlyGate() {
+      function checkViewport() {
+        var isCoarse = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
+        var isMobileOrTablet = window.innerWidth <= 1024 || window.innerHeight <= 680 || isCoarse;
+        document.body.classList.toggle('mobile-tablet-blocked', isMobileOrTablet);
+        var gate = document.getElementById('desktopOnlyGateOverlay');
+        if (gate) gate.setAttribute('aria-hidden', String(!isMobileOrTablet));
+      }
+      window.addEventListener('resize', checkViewport);
+      window.addEventListener('orientationchange', checkViewport);
+      checkViewport();
+    })();
+  </script>
+
+  <header class="top-header">
+    <div class="brand-block">
+      <span class="brand-eyebrow">Gardens by the Bay • Plan View (Part 1 of 2)</span>
+      <div class="brand-title">🌿 How the 3D Treasure Hunt Was Built (Step 1 → Step 10)</div>
+    </div>
+
+    <nav class="primary-page-nav" aria-label="Primary Application Views">
+      <a href="index.html" class="page-nav-pill">🎮 Game Page</a>
+      <a href="admin.html" class="page-nav-pill">🛠️ Admin View</a>
+      <a href="progress.html" class="page-nav-pill active" aria-current="page">📋 Plan View</a>
+    </nav>
+
+    <div class="header-actions">
+      <a href="presentation.html" class="btn-link btn-primary">🎤 Open 10-Slide Tech Sharing Deck</a>
+      <a href="roadmap.html" class="btn-link btn-secondary">🚀 Post-MVP Roadmap (#1–#5)</a>
+      <a href="admin.html" class="btn-link btn-secondary">🎛️ Open Admin &amp; LookDev Studio</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Plan View Sub-Navigation Bar (Progress Page + Roadmap Page) -->
+    <nav class="plan-subnav-bar" aria-label="Plan View Pages">
+      <span class="plan-subnav-label">📋 PLAN VIEW SECTIONS:</span>
+      <div class="plan-subnav-tabs">
+        <a href="progress.html" class="plan-tab-link active" aria-current="page">
+          📸 Progress Page (MVP Build Steps 1–10)
+        </a>
+        <a href="roadmap.html" class="plan-tab-link">
+          🚀 Roadmap Page (Post-MVP Milestones #1–#5)
+        </a>
+      </div>
+    </nav>
+
+    <!-- Step-by-Step Overview Banner -->
+    <section class="summary-banner">
+      <h1>From Concept Art to Playable 3D Game in 10 Steps</h1>
+      <p>
+        Follow the chronological build of the Gardens by the Bay 3D Treasure Hunt — starting from 2D UI &amp; architectural blueprints, modeling 33 3D assets in Blender, sculpting the terrain, placing landmarks, animating 4 explorers and 42 relics, wiring the UI, polishing gameplay, calibrating the official visitor boomerang map, and engineering the <strong>v3.0 Emotional &amp; Arcade UX Upgrade (Fun, WOW!, Amazed, Funny)</strong>. Click any step below to jump in, or click any image to zoom.
+      </p>
+      <div class="steps-roadmap">
+        <div class="step-pill" data-step-jump="blueprints">
+          <span class="step-num">Step 1</span>
+          <span class="step-name">Concept Blueprints</span>
+          <span class="step-sub">11 Screen &amp; Map Designs</span>
+        </div>
+        <div class="step-pill" data-step-jump="m1">
+          <span class="step-num">Step 2</span>
+          <span class="step-name">3D Asset Modeling</span>
+          <span class="step-sub">42 SG Relics + 27 Models</span>
+        </div>
+        <div class="step-pill" data-step-jump="m2">
+          <span class="step-num">Step 3</span>
+          <span class="step-name">Terrain &amp; Water</span>
+          <span class="step-sub">Peninsula, Lakes &amp; Paths</span>
+        </div>
+        <div class="step-pill" data-step-jump="m3">
+          <span class="step-num">Step 4</span>
+          <span class="step-name">Iconic Landmarks</span>
+          <span class="step-sub">Supertrees, Domes &amp; Art</span>
+        </div>
+        <div class="step-pill" data-step-jump="m4">
+          <span class="step-num">Step 5</span>
+          <span class="step-name">Explorers &amp; 42 Relics</span>
+          <span class="step-sub">4 Chibi Racers + Treasures</span>
+        </div>
+        <div class="step-pill" data-step-jump="m5">
+          <span class="step-num">Step 6</span>
+          <span class="step-name">Game UI &amp; LookDev</span>
+          <span class="step-sub">Live Menus &amp; Lighting Panel</span>
+        </div>
+        <div class="step-pill" data-step-jump="m6">
+          <span class="step-num">Step 7</span>
+          <span class="step-name">Gameplay &amp; Finale</span>
+          <span class="step-sub">Radar Map, AI &amp; Fireworks</span>
+        </div>
+        <div class="step-pill" data-step-jump="m7">
+          <span class="step-num">Step 8</span>
+          <span class="step-name">Real Boomerang Map</span>
+          <span class="step-sub">Official Layout &amp; Road Clearance</span>
+        </div>
+        <div class="step-pill" data-step-jump="m8">
+          <span class="step-num">Step 9</span>
+          <span class="step-name">Emotional &amp; Arcade UX</span>
+          <span class="step-sub">Living Sky, 3D Toybox &amp; Spicy Bots</span>
+        </div>
+        <div class="step-pill" data-step-jump="m9">
+          <span class="step-num">Step 10</span>
+          <span class="step-name">Admin 3D &amp; Team Log</span>
+          <span class="step-sub">Slow-Mo Studio &amp; Share Log</span>
+        </div>
+        <div class="step-pill" data-step-jump="m10">
+          <span class="step-num">Step 11</span>
+          <span class="step-name">Multi-Player Mode</span>
+          <span class="step-sub">v3.2 20Hz Party Sync</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Executive Progress Log & Team Share Card Mount -->
+    <div id="executiveProgressLogMount"></div>
+
+    <!-- Sequential Filter Bar -->
+    <div class="filter-bar" aria-label="Step Filter">
+      <button type="button" class="filter-btn active" data-filter="all">All 11 Steps</button>
+      <button type="button" class="filter-btn" data-filter="blueprints">Step 1 • Blueprints (11)</button>
+      <button type="button" class="filter-btn" data-filter="m1">Step 2 • 3D Models (69 + 5 Sheets)</button>
+      <button type="button" class="filter-btn" data-filter="m2">Step 3 • Terrain (6)</button>
+      <button type="button" class="filter-btn" data-filter="m3">Step 4 • Landmarks (12)</button>
+      <button type="button" class="filter-btn" data-filter="m4">Step 5 • Characters &amp; Relics (8)</button>
+      <button type="button" class="filter-btn" data-filter="m5">Step 6 • UI &amp; LookDev (10)</button>
+      <button type="button" class="filter-btn" data-filter="m6">Step 7 • Gameplay &amp; Finale (6)</button>
+      <button type="button" class="filter-btn" data-filter="m7">Step 8 • Real Boomerang Map (5)</button>
+      <button type="button" class="filter-btn" data-filter="m8">Step 9 • Emotional &amp; Arcade UX (6)</button>
+      <button type="button" class="filter-btn" data-filter="m9">Step 10 • Admin 3D &amp; Team Log (3)</button>
+      <button type="button" class="filter-btn" data-filter="m10">Step 11 • v3.2 Multi-Player (3)</button>
+      <button type="button" class="filter-btn" data-filter="v2only">✨ Latest Builds Only</button>
+      <button type="button" class="filter-btn" id="expandAllBtn" style="margin-left:auto;background:#FFF9EB;">➕ Expand All</button>
+      <button type="button" class="filter-btn" id="collapseAllBtn" style="background:#FFF9EB;">➖ Collapse All</button>
+    </div>
+
+    <!-- ================================================================== -->
+    <!-- STEP 1: CONCEPT BLUEPRINTS & ART DIRECTION (SCREENS 01–11)         -->
+    <!-- ================================================================== -->
+    <section class="milestone-section" data-section="blueprints" data-default-open="true">
+      <div class="milestone-header">
+        <h2>
+          Step 1 — Concept Blueprints &amp; Art Direction
+          <span class="m-badge">11 Design Screens</span>
+        </h2>
+        <p>Before writing any 3D code, we designed 11 concept boards defining the isometric diorama style, UI layout, park zones, and 42 botanical relics.</p>
+      </div>
+
+      <div class="cards-grid">
+        <article class="shot-card">
+          <div class="shot-img-wrap" data-lightbox="assets/screens/screen_01_title_peninsula_overview.png" data-caption="Step 1 • Screen 01: Title Screen & Peninsula Concept">
+            <img src="assets/screens/screen_01_title_peninsula_overview.png" alt="Screen 01 Title Concept" loading="lazy" />
+            <div class="shot-badges-overlay">
+              <span class="angle-tag">🎨 Screen 01 • Title Concept</span>
+              <span class="ver-tag">Step 1</span>
+            </div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">Screen 01: Bay South Peninsula Overview</h3>
+            <p class="shot-desc">Establishes the warm isometric diorama look, golden-hour lighting, and title banner over the full Bay South park layout.</p>
+            <div class="shot-meta"><span>Step 1: Blueprint</span><span>Screen 01</span></div>
+          </div>
+        </article>
+
+        <article class="shot-card">
+          <div class="shot-img-wrap" data-lightbox="assets/screens/screen_02_mode_and_map_select.png" data-caption="Step 1 • Screen 02: Mode & Explorer Roster Concept">
+            <img src="assets/screens/screen_02_mode_and_map_select.png" alt="Screen 02 Mode Setup Concept" loading="lazy" />
+            <div class="shot-badges-overlay">
+              <span class="angle-tag">🎨 Screen 02 • Mode &amp; Roster</span>
+              <span class="ver-tag">Step 1</span>
+            </div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">Screen 02: Game Modes &amp; 4 Chibi Explorers</h3>
+            <p class="shot-desc">Defines the two play modes (Timed Race vs. Relaxed Solo) and introduces the 4 Chibi explorers: YOU, Bot Kai, Bot Mei, and Bot Raj.</p>
+            <div class="shot-meta"><span>Step 1: Blueprint</span><span>Screen 02</span></div>
+          </div>
+        </article>
+
+        <article class="shot-card">
+          <div class="shot-img-wrap" data-lightbox="assets/screens/screen_03_zone1_supertree_grove.png" data-caption="Step 1 • Screen 03: Supertree Grove & OCBC Skyway">
+            <img src="assets/screens/screen_03_zone1_supertree_grove.png" alt="Screen 03 Supertree Grove Concept" loading="lazy" />
+            <div class="shot-badges-overlay">
+              <span class="angle-tag">🎨 Screen 03 • Supertree Grove</span>
+              <span class="ver-tag">Step 1</span>
+            </div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">Screen 03: Supertree Grove &amp; OCBC Skyway</h3>
+            <p class="shot-desc">Concept for the central 50m Supertree canopy, suspended OCBC Skyway bridge, and the in-game HUD layout.</p>
+            <div class="shot-meta"><span>Step 1: Blueprint</span><span>Screen 03</span></div>
+          </div>
+        </article>
+
+        <article class="shot-card">
+          <div class="shot-img-wrap" data-lightbox="assets/screens/screen_04_zone2_conservatories_waterfront.png" data-caption="Step 1 • Screen 04: Twin Glass Conservatories">
+            <img src="assets/screens/screen_04_zone2_conservatories_waterfront.png" alt="Screen 04 Conservatories Concept" loading="lazy" />
+            <div class="shot-badges-overlay">
+              <span class="angle-tag">🎨 Screen 04 • Glass Domes</span>
+              <span class="ver-tag">Step 1</span>
+            </div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">Screen 04: Flower Dome &amp; Cloud Forest</h3>
+            <p class="shot-desc">Architectural study for the gridshell glass conservatories along the Marina Reservoir waterfront promenade.</p>
+            <div class="shot-meta"><span>Step 1: Blueprint</span><span>Screen 04</span></div>
+          </div>
+        </article>
+
+        <article class="shot-card">
+          <div class="shot-img-wrap" data-lightbox="assets/screens/screen_05_zone3_dragonfly_lake_heritage.png" data-caption="Step 1 • Screen 05: Dragonfly Lake & Heritage Gardens">
+            <img src="assets/screens/screen_05_zone3_dragonfly_lake_heritage.png" alt="Screen 05 Dragonfly Lake and Heritage Concept" loading="lazy" />
+            <div class="shot-badges-overlay">
+              <span class="angle-tag">🎨 Screen 05 • Lake &amp; Heritage</span>
+              <span class="ver-tag">Step 1</span>
+            </div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">Screen 05: Dragonfly Lake &amp; Heritage Gardens</h3>
+            <p class="shot-desc">Design board for the Dragonfly Bridge crossing, lakeside kinetic sculpture, and Heritage pavilions.</p>
+            <div class="shot-meta"><span>Step 1: Blueprint</span><span>Screen 05</span></div>
+          </div>
+        </article>
+
+        <article class="shot-card">
+          <div class="shot-img-wrap" data-lightbox="assets/screens/screen_06_zone4_meadow_planet_sculpture.png" data-caption="Step 1 • Screen 06: The Meadow & 'Planet' Giant Baby Sculpture">
+            <img src="assets/screens/screen_06_zone4_meadow_planet_sculpture.png" alt="Screen 06 Meadow Planet Concept" loading="lazy" />
+            <div class="shot-badges-overlay">
+              <span class="angle-tag">🎨 Screen 06 • Meadow &amp; "Planet"</span>
+              <span class="ver-tag">Step 1</span>
+            </div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">Screen 06: The Meadow &amp; "Planet" Sculpture</h3>
+            <p class="shot-desc">Concept for Marc Quinn's floating Giant Baby sculpture, Canyon rock monoliths, and Floral Clock.</p>
+            <div class="shot-meta"><span>Step 1: Blueprint</span><span>Screen 06</span></div>
+          </div>
+        </article>
+
+        <article class="shot-card">
+          <div class="shot-img-wrap" data-lightbox="assets/screens/screen_07_zone5_childrens_garden_wetlands.png" data-caption="Step 1 • Screen 07: Kingfisher Wetlands & Children's Garden">
+            <img src="assets/screens/screen_07_zone5_childrens_garden_wetlands.png" alt="Screen 07 Wetlands Concept" loading="lazy" />
+            <div class="shot-badges-overlay">
+              <span class="angle-tag">🎨 Screen 07 • Wetlands &amp; Splash Pad</span>
+              <span class="ver-tag">Step 1</span>
+            </div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">Screen 07: Kingfisher Wetlands &amp; Splash Pad</h3>
+            <p class="shot-desc">Concept for the lotus ponds, timber boardwalks, Children's Garden splash pad, and Sun Pavilion.</p>
+            <div class="shot-meta"><span>Step 1: Blueprint</span><span>Screen 07</span></div>
+          </div>
+        </article>
+
+        <article class="shot-card">
+          <div class="shot-img-wrap" data-lightbox="assets/screens/screen_08_night_garden_rhapsody_event.png" data-caption="Step 1 • Screen 08: Night Garden Rhapsody Light Show">
+            <img src="assets/screens/screen_08_night_garden_rhapsody_event.png" alt="Screen 08 Night Rhapsody Concept" loading="lazy" />
+            <div class="shot-badges-overlay">
+              <span class="angle-tag">🎨 Screen 08 • Night Light Show</span>
+              <span class="ver-tag">Step 1</span>
+            </div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">Screen 08: Garden Rhapsody Night Event</h3>
+            <p class="shot-desc">Lighting blueprint for the nocturnal mode with glowing magenta/cyan Supertree crowns and illuminated pathways.</p>
+            <div class="shot-meta"><span>Step 1: Blueprint</span><span>Screen 08</span></div>
+          </div>
+        </article>
+
+        <article class="shot-card">
+          <div class="shot-img-wrap" data-lightbox="assets/screens/screen_09_4player_aibot_timed_race.png" data-caption="Step 1 • Screen 09: 4-Player Timed Race & Podium">
+            <img src="assets/screens/screen_09_4player_aibot_timed_race.png" alt="Screen 09 4P Timed Race Concept" loading="lazy" />
+            <div class="shot-badges-overlay">
+              <span class="angle-tag">🎨 Screen 09 • 4-Player Timed Race</span>
+              <span class="ver-tag">Step 1</span>
+            </div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">Screen 09: 4-Player AI Race &amp; Victory Podium</h3>
+            <p class="shot-desc">Illustrates the 4-explorer competitive race, relic discovery popups, and end-of-round podium rankings.</p>
+            <div class="shot-meta"><span>Step 1: Blueprint</span><span>Screen 09</span></div>
+          </div>
+        </article>
+
+        <article class="shot-card">
+          <div class="shot-img-wrap" data-lightbox="assets/screens/screen_10_42treasures_and_4p_leaderboard.png" data-caption="Step 1 • Screen 10: 42-Treasure Botanical Encyclopedia">
+            <img src="assets/screens/screen_10_42treasures_and_4p_leaderboard.png" alt="Screen 10 Encyclopedia Concept" loading="lazy" />
+            <div class="shot-badges-overlay">
+              <span class="angle-tag">🎨 Screen 10 • Relic Encyclopedia</span>
+              <span class="ver-tag">Step 1</span>
+            </div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">Screen 10: 42-Relic Botanical Encyclopedia</h3>
+            <p class="shot-desc">Collection grid showcasing all 42 botanical treasures, rarity tiers, and real-world Gardens by the Bay facts.</p>
+            <div class="shot-meta"><span>Step 1: Blueprint</span><span>Screen 10</span></div>
+          </div>
+        </article>
+
+        <article class="shot-card">
+          <div class="shot-img-wrap" data-lightbox="assets/screens/screen_11_full_map_treasure_and_player_tracker.png" data-caption="Step 1 • Screen 11: Full-Park Tactical Map Tracker">
+            <img src="assets/screens/screen_11_full_map_treasure_and_player_tracker.png" alt="Screen 11 Tactical Map Concept" loading="lazy" />
+            <div class="shot-badges-overlay">
+              <span class="angle-tag">🎨 Screen 11 • Full-Map Tracker</span>
+              <span class="ver-tag">Step 1</span>
+            </div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">Screen 11: Full-Park Treasure &amp; Player Map</h3>
+            <p class="shot-desc">Top-down radar map tracking all 42 treasure pins, live player/bot positions, and park zone boundaries.</p>
+            <div class="shot-meta"><span>Step 1: Blueprint</span><span>Screen 11</span></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ================================================================== -->
+    <!-- STEP 2: 3D ASSET MODELING IN BLENDER (42 SG RELICS + 27 MODELS)    -->
+    <!-- ================================================================== -->
+    <section class="milestone-section" data-section="m1">
+      <div class="milestone-header">
+        <h2>
+          Step 2 — 3D Asset Modeling: 42 Singapore Souvenir Relics + 27 World Models
+          <span class="m-badge">69 .GLB Models + 5 Sheets</span>
+        </h2>
+        <p>Using automated Python scripts in Blender 4.3, we generated 69 bespoke 3D models — including all <strong>42 Singapore Tourism, Souvenir Gifts &amp; National Identity Relics (`Relic_01`–`Relic_42`)</strong> alongside 27 architectural buildings, chibi explorers, sculptures, and tropical trees.</p>
+      </div>
+
+      <div class="m1-subfilter-bar" aria-label="Step 2 Model Category Filter">
+        <span class="m1-subfilter-label">Filter Models:</span>
+        <button type="button" class="m1-sub-btn active" data-m1cat="all">All (69 Models + 5 Sheets)</button>
+        <button type="button" class="m1-sub-btn" data-m1cat="relics42">💎 All 42 SG Souvenir Relics (#01–#42)</button>
+        <button type="button" class="m1-sub-btn" data-m1cat="relics_orchids">🦁 #01–#10: Icons &amp; Skyline (10)</button>
+        <button type="button" class="m1-sub-btn" data-m1cat="relics_supertrees">☕ #11–#18: Hawker &amp; Food (8)</button>
+        <button type="button" class="m1-sub-btn" data-m1cat="relics_domes">🏺 #19–#26: Peranakan &amp; Culture (8)</button>
+        <button type="button" class="m1-sub-btn" data-m1cat="relics_dragonfly">🐉 #27–#34: Heartland Nostalgia (8)</button>
+        <button type="button" class="m1-sub-btn" data-m1cat="relics_wetlands">🦦 #35–#42: Wildlife &amp; Island (8)</button>
+        <button type="button" class="m1-sub-btn" data-m1cat="buildings">🏛️ Buildings (6)</button>
+        <button type="button" class="m1-sub-btn" data-m1cat="characters">🧭 Explorers &amp; Gadgets (7)</button>
+        <button type="button" class="m1-sub-btn" data-m1cat="sculptures">🗿 Sculptures &amp; Plinth (8)</button>
+        <button type="button" class="m1-sub-btn" data-m1cat="trees">🌴 Trees (6)</button>
+        <button type="button" class="m1-sub-btn" data-m1cat="sheets">🖼️ Overview Sheets (5)</button>
+      </div>
+
+      <div class="cards-grid" id="m1CardsGrid">
+        <!-- Buildings (01-06) -->
+        <article class="shot-card" data-ver="v2" data-m1cat="buildings">
+          <div class="shot-img-wrap" data-lightbox="assets/renders/models/model_01_supertree_hero.png" data-caption="Model #01 • Hero 50m Supertree & Skyway Node">
+            <img src="assets/renders/models/model_01_supertree_hero.png" alt="Model 01 Hero Supertree" loading="lazy" />
+            <div class="shot-badges-overlay"><span class="angle-tag">#01 • Hero Supertree</span><span class="ver-tag v2">Buildings</span></div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">#01 • Hero 50m Supertree</h3>
+            <p class="shot-desc">Biophilic trunk with living fern panels, observation deck, and purple solar crown lattice.</p>
+            <div class="shot-meta"><span>buildings.glb</span><span>SupertreeHero</span></div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2" data-m1cat="buildings">
+          <div class="shot-img-wrap" data-lightbox="assets/renders/models/model_02_supertree_medium.png" data-caption="Model #02 • Standard Grove Supertree">
+            <img src="assets/renders/models/model_02_supertree_medium.png" alt="Model 02 Standard Supertree" loading="lazy" />
+            <div class="shot-badges-overlay"><span class="angle-tag">#02 • Standard Supertree</span><span class="ver-tag v2">Buildings</span></div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">#02 • Standard Grove Supertree</h3>
+            <p class="shot-desc">Instanced across the Golden, Silver, and Main groves with glowing magenta night crowns.</p>
+            <div class="shot-meta"><span>buildings.glb</span><span>SupertreeStandard</span></div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2" data-m1cat="buildings">
+          <div class="shot-img-wrap" data-lightbox="assets/renders/models/model_03_understorey_timber_dome.png" data-caption="Model #03 • Floral Fantasy Timber Pavilion">
+            <img src="assets/renders/models/model_03_understorey_timber_dome.png" alt="Model 03 Understorey Timber Dome" loading="lazy" />
+            <div class="shot-badges-overlay"><span class="angle-tag">#03 • Timber Pavilion</span><span class="ver-tag v2">Buildings</span></div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">#03 • Floral Fantasy Timber Pavilion</h3>
+            <p class="shot-desc">Curved timber-slat roof structure with cascading floral roof beds and glazed entry atrium.</p>
+            <div class="shot-meta"><span>buildings.glb</span><span>FloralFantasyPavilion</span></div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2" data-m1cat="buildings">
+          <div class="shot-img-wrap" data-lightbox="assets/renders/models/model_04_flower_dome_conservatory.png" data-caption="Model #04 • Flower Dome Conservatory">
+            <img src="assets/renders/models/model_04_flower_dome_conservatory.png" alt="Model 04 Flower Dome" loading="lazy" />
+            <div class="shot-badges-overlay"><span class="angle-tag">#04 • Flower Dome</span><span class="ver-tag v2">Buildings</span></div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">#04 • Flower Dome Conservatory</h3>
+            <p class="shot-desc">Broad gridshell glass conservatory with steel arch ribs and indoor Mediterranean garden terraces.</p>
+            <div class="shot-meta"><span>buildings.glb</span><span>FlowerDome</span></div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2" data-m1cat="buildings">
+          <div class="shot-img-wrap" data-lightbox="assets/renders/models/model_05_cloud_forest_conservatory.png" data-caption="Model #05 • Cloud Forest Conservatory">
+            <img src="assets/renders/models/model_05_cloud_forest_conservatory.png" alt="Model 05 Cloud Forest Dome" loading="lazy" />
+            <div class="shot-badges-overlay"><span class="angle-tag">#05 • Cloud Forest</span><span class="ver-tag v2">Buildings</span></div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">#05 • Cloud Forest &amp; Indoor Waterfall</h3>
+            <p class="shot-desc">Tall glass dome housing the 35m Cloud Mountain, aerial walkways, and cascading indoor waterfall.</p>
+            <div class="shot-meta"><span>buildings.glb</span><span>CloudForestDome</span></div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2" data-m1cat="buildings">
+          <div class="shot-img-wrap" data-lightbox="assets/renders/models/model_06_bay_east_skylight_pavilion.png" data-caption="Model #06 • Sun Pavilion Desert Glasshouse">
+            <img src="assets/renders/models/model_06_bay_east_skylight_pavilion.png" alt="Model 06 Sun Pavilion" loading="lazy" />
+            <div class="shot-badges-overlay"><span class="angle-tag">#06 • Sun Pavilion</span><span class="ver-tag v2">Buildings</span></div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">#06 • Sun Pavilion Glasshouse</h3>
+            <p class="shot-desc">Arid desert glasshouse featuring sand boulders, Saguaro cacti, and Golden Barrel succulents.</p>
+            <div class="shot-meta"><span>buildings.glb</span><span>SunPavilion</span></div>
+          </div>
+        </article>
+
+        <!-- Characters & Gadgets (07-13) -->
+        <article class="shot-card" data-ver="v2" data-m1cat="characters">
+          <div class="shot-img-wrap" data-lightbox="assets/renders/models/model_07_explorer_you.png" data-caption="Model #07 • Player Explorer (YOU)">
+            <img src="assets/renders/models/model_07_explorer_you.png" alt="Model 07 Player Explorer" loading="lazy" />
+            <div class="shot-badges-overlay"><span class="angle-tag">#07 • Player (YOU)</span><span class="ver-tag v2">Explorers</span></div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">#07 • Chibi Explorer — YOU (Teal)</h3>
+            <p class="shot-desc">Player character with pith helmet, magnifying glass, field backpack, and articulated limbs for running and jumping.</p>
+            <div class="shot-meta"><span>characters.glb</span><span>Explorer_player</span></div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2" data-m1cat="characters">
+          <div class="shot-img-wrap" data-lightbox="assets/renders/models/model_08_explorer_kai.png" data-caption="Model #08 • Bot Kai (Speed Sprinter)">
+            <img src="assets/renders/models/model_08_explorer_kai.png" alt="Model 08 Bot Kai" loading="lazy" />
+            <div class="shot-badges-overlay"><span class="angle-tag">#08 • Bot Kai</span><span class="ver-tag v2">Explorers</span></div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">#08 • Chibi Explorer — Bot Kai (Coral)</h3>
+            <p class="shot-desc">Speed Sprinter AI rival who dashes after high-value central relics.</p>
+            <div class="shot-meta"><span>characters.glb</span><span>Explorer_kai</span></div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2" data-m1cat="characters">
+          <div class="shot-img-wrap" data-lightbox="assets/renders/models/model_09_explorer_mei.png" data-caption="Model #09 • Bot Mei (Zone Sweeper)">
+            <img src="assets/renders/models/model_09_explorer_mei.png" alt="Model 09 Bot Mei" loading="lazy" />
+            <div class="shot-badges-overlay"><span class="angle-tag">#09 • Bot Mei</span><span class="ver-tag v2">Explorers</span></div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">#09 • Chibi Explorer — Bot Mei (Purple)</h3>
+            <p class="shot-desc">Methodical Zone Sweeper AI rival who clears nearest clusters of botanical relics.</p>
+            <div class="shot-meta"><span>characters.glb</span><span>Explorer_mei</span></div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2" data-m1cat="characters">
+          <div class="shot-img-wrap" data-lightbox="assets/renders/models/model_10_explorer_raj.png" data-caption="Model #10 • Bot Raj (Landmark Hunter)">
+            <img src="assets/renders/models/model_10_explorer_raj.png" alt="Model 10 Bot Raj" loading="lazy" />
+            <div class="shot-badges-overlay"><span class="angle-tag">#10 • Bot Raj</span><span class="ver-tag v2">Explorers</span></div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">#10 • Chibi Explorer — Bot Raj (Amber)</h3>
+            <p class="shot-desc">Landmark Hunter AI rival who targets rare artifacts around the domes and outer gardens.</p>
+            <div class="shot-meta"><span>characters.glb</span><span>Explorer_raj</span></div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2" data-m1cat="characters">
+          <div class="shot-img-wrap" data-lightbox="assets/renders/models/model_11_gadget_turboboots.png" data-caption="Model #11 • Explorer Turbo Boots Prop">
+            <img src="assets/renders/models/model_11_gadget_turboboots.png" alt="Model 11 Turbo Boots" loading="lazy" />
+            <div class="shot-badges-overlay"><span class="angle-tag">#11 • Sprint Boots</span><span class="ver-tag v2">Gadgets</span></div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">#11 • Explorer Sprint Boots</h3>
+            <p class="shot-desc">Winged field boots representing the Shift Sprint speed boost mechanic.</p>
+            <div class="shot-meta"><span>characters.glb</span><span>Gadget_TurboBoots</span></div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2" data-m1cat="characters">
+          <div class="shot-img-wrap" data-lightbox="assets/renders/models/model_12_gadget_relicmagnet.png" data-caption="Model #12 • Relic Compass Magnet Prop">
+            <img src="assets/renders/models/model_12_gadget_relicmagnet.png" alt="Model 12 Relic Magnet" loading="lazy" />
+            <div class="shot-badges-overlay"><span class="angle-tag">#12 • Relic Magnet</span><span class="ver-tag v2">Gadgets</span></div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">#12 • Botanical Relic Magnet</h3>
+            <p class="shot-desc">Field detector prop representing the nearby relic radar and pickup radius.</p>
+            <div class="shot-meta"><span>characters.glb</span><span>Gadget_RelicMagnet</span></div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2" data-m1cat="characters">
+          <div class="shot-img-wrap" data-lightbox="assets/renders/models/model_13_gadget_holodecoy.png" data-caption="Model #13 • Holo Beacon Projector Prop">
+            <img src="assets/renders/models/model_13_gadget_holodecoy.png" alt="Model 13 Holo Beacon" loading="lazy" />
+            <div class="shot-badges-overlay"><span class="angle-tag">#13 • Holo Beacon</span><span class="ver-tag v2">Gadgets</span></div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">#13 • Holographic Waypoint Beacon</h3>
+            <p class="shot-desc">Glowing emitter prop used for 3D waypoint markers and sky beams.</p>
+            <div class="shot-meta"><span>characters.glb</span><span>Gadget_HoloDecoy</span></div>
+          </div>
+        </article>
+
+        <!-- Sculptures & Bridges (14-20) -->
+        <article class="shot-card" data-ver="v2" data-m1cat="sculptures">
+          <div class="shot-img-wrap" data-lightbox="assets/renders/models/model_14_planet_floating_baby.png" data-caption="Model #14 • Giant Floating Baby ('Planet')">
+            <img src="assets/renders/models/model_14_planet_floating_baby.png" alt="Model 14 Planet Baby" loading="lazy" />
+            <div class="shot-badges-overlay"><span class="angle-tag">#14 • "Planet" Giant Baby</span><span class="ver-tag v2">Sculptures</span></div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">#14 • "Planet" Floating Baby Sculpture</h3>
+            <p class="shot-desc">White bronze sleeping infant sculpture balanced weightlessly on a stone plinth.</p>
+            <div class="shot-meta"><span>sculptures.glb</span><span>Sculpture_PlanetBaby</span></div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2" data-m1cat="sculptures">
+          <div class="shot-img-wrap" data-lightbox="assets/renders/models/model_15_dragonfly_bridge.png" data-caption="Model #15 • Dragonfly Lake Pedestrian Bridge">
+            <img src="assets/renders/models/model_15_dragonfly_bridge.png" alt="Model 15 Dragonfly Bridge" loading="lazy" />
+            <div class="shot-badges-overlay"><span class="angle-tag">#15 • Dragonfly Bridge</span><span class="ver-tag v2">Sculptures</span></div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">#15 • Dragonfly Lake Pedestrian Bridge</h3>
+            <p class="shot-desc">Arched timber-deck footbridge with crimson steel ribs and warm evening bollards.</p>
+            <div class="shot-meta"><span>sculptures.glb</span><span>Bridge_Dragonfly</span></div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2" data-m1cat="sculptures">
+          <div class="shot-img-wrap" data-lightbox="assets/renders/models/model_16_heritage_moon_gate.png" data-caption="Model #16 • Chinese Garden Moongate">
+            <img src="assets/renders/models/model_16_heritage_moon_gate.png" alt="Model 16 Moongate" loading="lazy" />
+            <div class="shot-badges-overlay"><span class="angle-tag">#16 • Moongate Arch</span><span class="ver-tag v2">Sculptures</span></div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">#16 • Chinese Garden Moongate Arch</h3>
+            <p class="shot-desc">Circular limestone archway flanked by traditional guardian lanterns.</p>
+            <div class="shot-meta"><span>sculptures.glb</span><span>Sculpture_Moongate</span></div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2" data-m1cat="sculptures">
+          <div class="shot-img-wrap" data-lightbox="assets/renders/models/model_17_floral_clock.png" data-caption="Model #17 • Giant Topiary Floral Clock">
+            <img src="assets/renders/models/model_17_floral_clock.png" alt="Model 17 Floral Clock" loading="lazy" />
+            <div class="shot-badges-overlay"><span class="angle-tag">#17 • Floral Clock</span><span class="ver-tag v2">Sculptures</span></div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">#17 • Giant Topiary Floral Clock</h3>
+            <p class="shot-desc">Planted clock dial with golden hour markers and rotating brass hands.</p>
+            <div class="shot-meta"><span>sculptures.glb</span><span>Sculpture_FloralClock</span></div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2" data-m1cat="sculptures">
+          <div class="shot-img-wrap" data-lightbox="assets/renders/models/model_18_sg50_celebration_lattice.png" data-caption="Model #18 • SG50 Celebration Lattice">
+            <img src="assets/renders/models/model_18_sg50_celebration_lattice.png" alt="Model 18 SG50 Lattice" loading="lazy" />
+            <div class="shot-badges-overlay"><span class="angle-tag">#18 • SG50 Lattice</span><span class="ver-tag v2">Sculptures</span></div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">#18 • SG50 Architectural Lattice</h3>
+            <p class="shot-desc">Ornamental golden jubilee archway framing the main garden promenade.</p>
+            <div class="shot-meta"><span>sculptures.glb</span><span>Sculpture_SG50Lattice</span></div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2" data-m1cat="sculptures">
+          <div class="shot-img-wrap" data-lightbox="assets/renders/models/model_19_feo_children_splash_pad.png" data-caption="Model #19 • Far East Organization Children's Garden">
+            <img src="assets/renders/models/model_19_feo_children_splash_pad.png" alt="Model 19 Children's Splash Pad" loading="lazy" />
+            <div class="shot-badges-overlay"><span class="angle-tag">#19 • Children's Garden</span><span class="ver-tag v2">Sculptures</span></div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">#19 • Children's Garden Splash Canopy</h3>
+            <p class="shot-desc">Playful fish fountain and treehouse canopy in the eastern family zone.</p>
+            <div class="shot-meta"><span>sculptures.glb</span><span>Sculpture_SplashPad</span></div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2" data-m1cat="sculptures">
+          <div class="shot-img-wrap" data-lightbox="assets/renders/models/model_20_serene_japanese_pavilion.png" data-caption="Model #20 • Serene Garden Japanese Pavilion">
+            <img src="assets/renders/models/model_20_serene_japanese_pavilion.png" alt="Model 20 Serene Pavilion" loading="lazy" />
+            <div class="shot-badges-overlay"><span class="angle-tag">#20 • Serene Pavilion</span><span class="ver-tag v2">Sculptures</span></div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">#20 • Serene Garden Tea Pavilion</h3>
+            <p class="shot-desc">Minimalist timber pavilion surrounded by zen stepping stones and bamboo.</p>
+            <div class="shot-meta"><span>sculptures.glb</span><span>HeritagePavilion</span></div>
+          </div>
+        </article>
+
+        <!-- ============================================================== -->
+        <!-- BUNDLE 4A: treasures_foliage.glb — Relic Pedestal (Model #21)  -->
+        <!-- ============================================================== -->
+        <article class="shot-card" data-ver="v2" data-m1cat="sculptures">
+          <div class="shot-img-wrap" data-lightbox="assets/renders/models/model_21_relic_pedestal.png" data-caption="Model #21 • Relic_Pedestal (treasures_foliage.glb)">
+            <img src="assets/renders/models/model_21_relic_pedestal.png" alt="Model #21 Relic_Pedestal" loading="lazy" />
+            <div class="shot-badges-overlay">
+              <span class="angle-tag">🏛️ Relic Plinth • Relic_Pedestal</span>
+              <span class="ver-tag v2">Model #21</span>
+            </div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">#21 • `Relic_Pedestal` (Singapore Keepsake Display Plinth)</h3>
+            <p class="shot-desc">Tiered cream limestone plinth (`Relic_Pedestal_Plinth`), burnished brass trim collars (`Relic_Pedestal_GoldTrim`), and glowing emerald rune ring supporting all 42 distinct Singapore keepsake relics.</p>
+            <div class="shot-meta">
+              <span>GLB: treasures_foliage.glb</span>
+              <span>Node: Relic_Pedestal</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- ============================================================== -->
+
+        <!-- BUNDLE 4B: ALL 42 SINGAPORE SOUVENIR & TOURISM RELICS (#01-#42) -->
+
+        <!-- ============================================================== -->
+
+        <article class="shot-card" data-ver="v2" data-m1cat="relics42" data-reliccat="relics_orchids">
+          <div class="shot-img-wrap" data-lightbox="assets/renders/relics42/relic_01.png" data-caption="Relic #01 • Relic_01 — RISIS Gold-Plated Vanda Miss Joaquim (Floral Fantasy • treasures_foliage.glb)">
+            <img src="assets/renders/relics42/relic_01.png" alt="Relic #01 RISIS Gold-Plated Vanda Miss Joaquim" loading="lazy" />
+            <div class="shot-badges-overlay">
+              <span class="angle-tag">🦁 Icons & Skyline (#01–#10) • Floral Fantasy</span>
+              <span class="ver-tag v2">Relic #01 (`Relic_01`)</span>
+            </div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">Relic #01 — RISIS Gold-Plated Vanda Miss Joaquim (`Relic_01`)</h3>
+            <p class="shot-desc"><strong>3D Mesh:</strong> 24K gold-plated 5-petal hybrid orchid brooch (`Relic_01_GoldPetals`) with coral-enamel ruffled labellum lip (`Relic_01_CoralLip`) and stamped gold RISIS gift tag (`Relic_01_RisisTag`).<br/><span style="color:#047857;font-weight:600;font-size:11.5px;">🇸🇬 Since 1976, Singapore artisans have electroplated real Vanda Miss Joaquim orchids in 24-karat gold as the nation’s signature RISIS keepsake.</span></p>
+            <div class="shot-meta">
+              <span>GLB: treasures_foliage.glb • Node: Relic_01</span>
+              <span>Zone: Floral Fantasy</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2" data-m1cat="relics42" data-reliccat="relics_orchids">
+          <div class="shot-img-wrap" data-lightbox="assets/renders/relics42/relic_02.png" data-caption="Relic #02 • Relic_02 — Merlion Park Spouting Snowglobe (Dragonfly Lake • treasures_foliage.glb)">
+            <img src="assets/renders/relics42/relic_02.png" alt="Relic #02 Merlion Park Spouting Snowglobe" loading="lazy" />
+            <div class="shot-badges-overlay">
+              <span class="angle-tag">🦁 Icons & Skyline (#01–#10) • Dragonfly Lake</span>
+              <span class="ver-tag v2">Relic #02 (`Relic_02`)</span>
+            </div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">Relic #02 — Merlion Park Spouting Snowglobe (`Relic_02`)</h3>
+            <p class="shot-desc"><strong>3D Mesh:</strong> Carved ivory Merlion statue (`Relic_02_Merlion`) spouting a crystalline cyan water arc (`Relic_02_WaterArc`) inside a clear glass dome snowglobe on a brass Singapore Souvenir plinth (`Relic_02_BrassBase`).<br/><span style="color:#047857;font-weight:600;font-size:11.5px;">🇸🇬 Designed in 1964 by Alec Fraser-Brunner and sculpted by Lim Nang Seng, the half-lion, half-fish Merlion recalls Singapura’s ancient sea-town roots.</span></p>
+            <div class="shot-meta">
+              <span>GLB: treasures_foliage.glb • Node: Relic_02</span>
+              <span>Zone: Dragonfly Lake</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2" data-m1cat="relics42" data-reliccat="relics_orchids">
+          <div class="shot-img-wrap" data-lightbox="assets/renders/relics42/relic_03.png" data-caption="Relic #03 • Relic_03 — Marina Bay Sands Skypark Ship Trophy (Bayfront Plaza • treasures_foliage.glb)">
+            <img src="assets/renders/relics42/relic_03.png" alt="Relic #03 Marina Bay Sands Skypark Ship Trophy" loading="lazy" />
+            <div class="shot-badges-overlay">
+              <span class="angle-tag">🦁 Icons & Skyline (#01–#10) • Bayfront Plaza</span>
+              <span class="ver-tag v2">Relic #03 (`Relic_03`)</span>
+            </div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">Relic #03 — Marina Bay Sands Skypark Ship Trophy (`Relic_03`)</h3>
+            <p class="shot-desc"><strong>3D Mesh:</strong> Three raked silver-glass hotel towers (`Relic_03_ThreeTowers`) supporting the cantilevered golden SkyPark hull (`Relic_03_SkyParkBoat`) with a glowing cyan infinity-pool strip (`Relic_03_InfinityPool`).<br/><span style="color:#047857;font-weight:600;font-size:11.5px;">🇸🇬 Crowning three 55-storey hotel towers, the 340-metre cantilevered SkyPark links Marina Bay to Gardens by the Bay via the Lions Bridge.</span></p>
+            <div class="shot-meta">
+              <span>GLB: treasures_foliage.glb • Node: Relic_03</span>
+              <span>Zone: Bayfront Plaza</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2" data-m1cat="relics42" data-reliccat="relics_orchids">
+          <div class="shot-img-wrap" data-lightbox="assets/renders/relics42/relic_04.png" data-caption="Relic #04 • Relic_04 — Changi Jewel Rain Vortex Crystal Dome (Cloud Forest • treasures_foliage.glb)">
+            <img src="assets/renders/relics42/relic_04.png" alt="Relic #04 Changi Jewel Rain Vortex Crystal Dome" loading="lazy" />
+            <div class="shot-badges-overlay">
+              <span class="angle-tag">🦁 Icons & Skyline (#01–#10) • Cloud Forest</span>
+              <span class="ver-tag v2">Relic #04 (`Relic_04`)</span>
+            </div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">Relic #04 — Changi Jewel Rain Vortex Crystal Dome (`Relic_04`)</h3>
+            <p class="shot-desc"><strong>3D Mesh:</strong> Toroidal faceted glass-and-steel gridshell dome (`Relic_04_ToroidDome`) framing a central glowing cyan water funnel (`Relic_04_RainVortex`) surrounded by terraced emerald forest tiers (`Relic_04_ForestTiers`).<br/><span style="color:#047857;font-weight:600;font-size:11.5px;">🇸🇬 At 40 metres high, the HSBC Rain Vortex inside Jewel Changi Airport is the world’s tallest indoor waterfall, greeting millions of travellers.</span></p>
+            <div class="shot-meta">
+              <span>GLB: treasures_foliage.glb • Node: Relic_04</span>
+              <span>Zone: Cloud Forest</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2" data-m1cat="relics42" data-reliccat="relics_orchids">
+          <div class="shot-img-wrap" data-lightbox="assets/renders/relics42/relic_05.png" data-caption="Relic #05 • Relic_05 — Singapore Flyer Capsule Wheel Keepsake (OCBC Skyway • treasures_foliage.glb)">
+            <img src="assets/renders/relics42/relic_05.png" alt="Relic #05 Singapore Flyer Capsule Wheel Keepsake" loading="lazy" />
+            <div class="shot-badges-overlay">
+              <span class="angle-tag">🦁 Icons & Skyline (#01–#10) • OCBC Skyway</span>
+              <span class="ver-tag v2">Relic #05 (`Relic_05`)</span>
+            </div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">Relic #05 — Singapore Flyer Capsule Wheel Keepsake (`Relic_05`)</h3>
+            <p class="shot-desc"><strong>3D Mesh:</strong> Vertical golden observation wheel rim with spoke lattice (`Relic_05_WheelRim`) and 12 glowing cyan passenger capsules (`Relic_05_Capsules`) mounted on twin A-frame struts (`Relic_05_SupportStruts`).<br/><span style="color:#047857;font-weight:600;font-size:11.5px;">🇸🇬 Standing 165 metres above Marina Bay, the Singapore Flyer’s 28 air-conditioned glass capsules offer panoramic views across three countries.</span></p>
+            <div class="shot-meta">
+              <span>GLB: treasures_foliage.glb • Node: Relic_05</span>
+              <span>Zone: OCBC Skyway</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2" data-m1cat="relics42" data-reliccat="relics_orchids">
+          <div class="shot-img-wrap" data-lightbox="assets/renders/relics42/relic_06.png" data-caption="Relic #06 • Relic_06 — Supertree Grove Solar Harmony Music Box (Supertree Grove • treasures_foliage.glb)">
+            <img src="assets/renders/relics42/relic_06.png" alt="Relic #06 Supertree Grove Solar Harmony Music Box" loading="lazy" />
+            <div class="shot-badges-overlay">
+              <span class="angle-tag">🦁 Icons & Skyline (#01–#10) • Supertree Grove</span>
+              <span class="ver-tag v2">Relic #06 (`Relic_06`)</span>
+            </div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">Relic #06 — Supertree Grove Solar Harmony Music Box (`Relic_06`)</h3>
+            <p class="shot-desc"><strong>3D Mesh:</strong> Polished rosewood wind-up music box (`Relic_06_MusicBoxBase`) with a golden winding key (`Relic_06_WindingKey`) and three miniature glowing purple-and-gold Supertrees (`Relic_06_MiniSupertrees`).<br/><span style="color:#047857;font-weight:600;font-size:11.5px;">🇸🇬 Each evening, the 18 Supertrees come alive during the Garden Rhapsody light-and-sound show, powered by solar photovoltaic cells.</span></p>
+            <div class="shot-meta">
+              <span>GLB: treasures_foliage.glb • Node: Relic_06</span>
+              <span>Zone: Supertree Grove</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2" data-m1cat="relics42" data-reliccat="relics_orchids">
+          <div class="shot-img-wrap" data-lightbox="assets/renders/relics42/relic_07.png" data-caption="Relic #07 • Relic_07 — Helix Bridge Double-Spiral Desk Sculpture (Waterfront Promenade • treasures_foliage.glb)">
+            <img src="assets/renders/relics42/relic_07.png" alt="Relic #07 Helix Bridge Double-Spiral Desk Sculpture" loading="lazy" />
+            <div class="shot-badges-overlay">
+              <span class="angle-tag">🦁 Icons & Skyline (#01–#10) • Waterfront Promenade</span>
+              <span class="ver-tag v2">Relic #07 (`Relic_07`)</span>
+            </div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">Relic #07 — Helix Bridge Double-Spiral Desk Sculpture (`Relic_07`)</h3>
+            <p class="shot-desc"><strong>3D Mesh:</strong> Intertwined counter-rotating stainless-steel & gold double-helix spiral tubes (`Relic_07_DoubleHelix`) spanning a curved azure promenade deck (`Relic_07_BridgeDeck`) with 4 viewing pods.<br/><span style="color:#047857;font-weight:600;font-size:11.5px;">🇸🇬 Inspired by the structure of human DNA, the 280-metre Helix pedestrian bridge symbolises life, continuity, and renewal along Marina Bay.</span></p>
+            <div class="shot-meta">
+              <span>GLB: treasures_foliage.glb • Node: Relic_07</span>
+              <span>Zone: Waterfront Promenade</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2" data-m1cat="relics42" data-reliccat="relics_orchids">
+          <div class="shot-img-wrap" data-lightbox="assets/renders/relics42/relic_08.png" data-caption="Relic #08 • Relic_08 — Raffles Hotel Doorman Turban Bell (Colonial Garden • treasures_foliage.glb)">
+            <img src="assets/renders/relics42/relic_08.png" alt="Relic #08 Raffles Hotel Doorman Turban Bell" loading="lazy" />
+            <div class="shot-badges-overlay">
+              <span class="angle-tag">🦁 Icons & Skyline (#01–#10) • Colonial Garden</span>
+              <span class="ver-tag v2">Relic #08 (`Relic_08`)</span>
+            </div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">Relic #08 — Raffles Hotel Doorman Turban Bell (`Relic_08`)</h3>
+            <p class="shot-desc"><strong>3D Mesh:</strong> Polished colonial brass service handbell (`Relic_08_BrassBell`) crowned with a pleated ivory Sikh turban finial and gold crest (`Relic_08_TurbanCrown`).<br/><span style="color:#047857;font-weight:600;font-size:11.5px;">🇸🇬 Opened in 1887 and named after Sir Stamford Raffles, the historic Beach Road grand hotel is famous for its hospitality and heritage architecture.</span></p>
+            <div class="shot-meta">
+              <span>GLB: treasures_foliage.glb • Node: Relic_08</span>
+              <span>Zone: Colonial Garden</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2" data-m1cat="relics42" data-reliccat="relics_orchids">
+          <div class="shot-img-wrap" data-lightbox="assets/renders/relics42/relic_09.png" data-caption="Relic #09 • Relic_09 — Singapore Airlines Sarong Kebaya Doll (Floral Fantasy • treasures_foliage.glb)">
+            <img src="assets/renders/relics42/relic_09.png" alt="Relic #09 Singapore Airlines Sarong Kebaya Doll" loading="lazy" />
+            <div class="shot-badges-overlay">
+              <span class="angle-tag">🦁 Icons & Skyline (#01–#10) • Floral Fantasy</span>
+              <span class="ver-tag v2">Relic #09 (`Relic_09`)</span>
+            </div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">Relic #09 — Singapore Airlines Sarong Kebaya Doll (`Relic_09`)</h3>
+            <p class="shot-desc"><strong>3D Mesh:</strong> Stylised porcelain figurine (`Relic_09_PorcelainFigure`) dressed in a royal-blue and gold floral batik Sarong Kebaya (`Relic_09_BatikKebaya`).<br/><span style="color:#047857;font-weight:600;font-size:11.5px;">🇸🇬 Designed by Pierre Balmain in 1968 using traditional Indonesian and Peranakan batik motifs, the Singapore Girl kebaya is an enduring aviation icon.</span></p>
+            <div class="shot-meta">
+              <span>GLB: treasures_foliage.glb • Node: Relic_09</span>
+              <span>Zone: Floral Fantasy</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2" data-m1cat="relics42" data-reliccat="relics_orchids">
+          <div class="shot-img-wrap" data-lightbox="assets/renders/relics42/relic_10.png" data-caption="Relic #10 • Relic_10 — Cavenagh Suspension Bridge Pewter Plaque (Heritage Gardens • treasures_foliage.glb)">
+            <img src="assets/renders/relics42/relic_10.png" alt="Relic #10 Cavenagh Suspension Bridge Pewter Plaque" loading="lazy" />
+            <div class="shot-badges-overlay">
+              <span class="angle-tag">🦁 Icons & Skyline (#01–#10) • Heritage Gardens</span>
+              <span class="ver-tag v2">Relic #10 (`Relic_10`)</span>
+            </div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">Relic #10 — Cavenagh Suspension Bridge Pewter Plaque (`Relic_10`)</h3>
+            <p class="shot-desc"><strong>3D Mesh:</strong> Brushed Royal Selangor-style pewter relief plaque (`Relic_10_PewterPlaque`) showcasing twin gothic suspension pylons and cables (`Relic_10_BridgePylons`) on a dark teak stand.<br/><span style="color:#047857;font-weight:600;font-size:11.5px;">🇸🇬 Forged in Glasgow and opened in 1869 across the Singapore River, Cavenagh Bridge is the city’s oldest surviving suspension bridge.</span></p>
+            <div class="shot-meta">
+              <span>GLB: treasures_foliage.glb • Node: Relic_10</span>
+              <span>Zone: Heritage Gardens</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2" data-m1cat="relics42" data-reliccat="relics_supertrees">
+          <div class="shot-img-wrap" data-lightbox="assets/renders/relics42/relic_11.png" data-caption="Relic #11 • Relic_11 — Kaya Toast, Soft-Boiled Eggs &amp; Kopi Set (Supertree Dining • treasures_foliage.glb)">
+            <img src="assets/renders/relics42/relic_11.png" alt="Relic #11 Kaya Toast, Soft-Boiled Eggs &amp; Kopi Set" loading="lazy" />
+            <div class="shot-badges-overlay">
+              <span class="angle-tag">☕ Hawker & Food (#11–#18) • Supertree Dining</span>
+              <span class="ver-tag v2">Relic #11 (`Relic_11`)</span>
+            </div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">Relic #11 — Kaya Toast, Soft-Boiled Eggs &amp; Kopi Set (`Relic_11`)</h3>
+            <p class="shot-desc"><strong>3D Mesh:</strong> Round kopitiam tray (`Relic_11_Tray`) holding two golden-brown toasted bread slices with pandan kaya & butter (`Relic_11_KayaToast`), two cracked soft-boiled eggs in a saucer (`Relic_11_SoftEggs`), and a floral porcelain kopi cup (`Relic_11_KopiCup`).<br/><span style="color:#047857;font-weight:600;font-size:11.5px;">🇸🇬 Singapore’s quintessential kopitiam breakfast pairs charcoal-grilled coconut-pandan jam toast with runny soft-boiled eggs and sock-brewed coffee.</span></p>
+            <div class="shot-meta">
+              <span>GLB: treasures_foliage.glb • Node: Relic_11</span>
+              <span>Zone: Supertree Dining</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2" data-m1cat="relics42" data-reliccat="relics_supertrees">
+          <div class="shot-img-wrap" data-lightbox="assets/renders/relics42/relic_12.png" data-caption="Relic #12 • Relic_12 — Nanyang Kopi Tarik Tin &amp; Sock Brewer (Golden Garden • treasures_foliage.glb)">
+            <img src="assets/renders/relics42/relic_12.png" alt="Relic #12 Nanyang Kopi Tarik Tin &amp; Sock Brewer" loading="lazy" />
+            <div class="shot-badges-overlay">
+              <span class="angle-tag">☕ Hawker & Food (#11–#18) • Golden Garden</span>
+              <span class="ver-tag v2">Relic #12 (`Relic_12`)</span>
+            </div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">Relic #12 — Nanyang Kopi Tarik Tin &amp; Sock Brewer (`Relic_12`)</h3>
+            <p class="shot-desc"><strong>3D Mesh:</strong> Vintage red-and-gold condensed milk tin (`Relic_12_MilkTin`) with a brass wire handle and tall cotton coffee sock filter (`Relic_12_CoffeeSock`) pouring a high arc of frothy kopi (`Relic_12_KopiStream`).<br/><span style="color:#047857;font-weight:600;font-size:11.5px;">🇸🇬 Traditional Nanyang coffee beans are roasted with butter and sugar, brewed through a cotton sock, and ‘pulled’ (tarik) between tins for frothy aroma.</span></p>
+            <div class="shot-meta">
+              <span>GLB: treasures_foliage.glb • Node: Relic_12</span>
+              <span>Zone: Golden Garden</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2" data-m1cat="relics42" data-reliccat="relics_supertrees">
+          <div class="shot-img-wrap" data-lightbox="assets/renders/relics42/relic_13.png" data-caption="Relic #13 • Relic_13 — Hainanese Chicken Rice Rooster Tiffin (Chinese Garden • treasures_foliage.glb)">
+            <img src="assets/renders/relics42/relic_13.png" alt="Relic #13 Hainanese Chicken Rice Rooster Tiffin" loading="lazy" />
+            <div class="shot-badges-overlay">
+              <span class="angle-tag">☕ Hawker & Food (#11–#18) • Chinese Garden</span>
+              <span class="ver-tag v2">Relic #13 (`Relic_13`)</span>
+            </div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">Relic #13 — Hainanese Chicken Rice Rooster Tiffin (`Relic_13`)</h3>
+            <p class="shot-desc"><strong>3D Mesh:</strong> 3-tier ivory enamel tiffin carrier (`Relic_13_EnamelTiffin`) hand-painted with a crimson rooster motif (`Relic_13_RoosterMotif`), brass locking clasp frame (`Relic_13_BrassFrame`), and trio of chilli, ginger & dark soy dip bowls (`Relic_13_SauceTriad`).<br/><span style="color:#047857;font-weight:600;font-size:11.5px;">🇸🇬 Poached silky chicken with fragrant pandan-ginger rice and fiery red chilli dip is celebrated worldwide as one of Singapore’s national dishes.</span></p>
+            <div class="shot-meta">
+              <span>GLB: treasures_foliage.glb • Node: Relic_13</span>
+              <span>Zone: Chinese Garden</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2" data-m1cat="relics42" data-reliccat="relics_supertrees">
+          <div class="shot-img-wrap" data-lightbox="assets/renders/relics42/relic_14.png" data-caption="Relic #14 • Relic_14 — Chilli Crab Golden Mantou Cauldron (Waterfront Promenade • treasures_foliage.glb)">
+            <img src="assets/renders/relics42/relic_14.png" alt="Relic #14 Chilli Crab Golden Mantou Cauldron" loading="lazy" />
+            <div class="shot-badges-overlay">
+              <span class="angle-tag">☕ Hawker & Food (#11–#18) • Waterfront Promenade</span>
+              <span class="ver-tag v2">Relic #14 (`Relic_14`)</span>
+            </div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">Relic #14 — Chilli Crab Golden Mantou Cauldron (`Relic_14`)</h3>
+            <p class="shot-desc"><strong>3D Mesh:</strong> Glossy scarlet mud crab with raised pincers (`Relic_14_ScarletCrab`) simmering in a matte-black cast-iron wok (`Relic_14_BlackWok`) alongside three golden fried mantou buns (`Relic_14_GoldenMantou`).<br/><span style="color:#047857;font-weight:600;font-size:11.5px;">🇸🇬 Created along Singapore’s east coast in the 1950s, sweet-savory-spicy Chilli Crab is always served with golden fried mantou buns to mop up the gravy.</span></p>
+            <div class="shot-meta">
+              <span>GLB: treasures_foliage.glb • Node: Relic_14</span>
+              <span>Zone: Waterfront Promenade</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2" data-m1cat="relics42" data-reliccat="relics_supertrees">
+          <div class="shot-img-wrap" data-lightbox="assets/renders/relics42/relic_15.png" data-caption="Relic #15 • Relic_15 — Katong Laksa Porcelain Spoon &amp; Bowl (Malay Garden • treasures_foliage.glb)">
+            <img src="assets/renders/relics42/relic_15.png" alt="Relic #15 Katong Laksa Porcelain Spoon &amp; Bowl" loading="lazy" />
+            <div class="shot-badges-overlay">
+              <span class="angle-tag">☕ Hawker & Food (#11–#18) • Malay Garden</span>
+              <span class="ver-tag v2">Relic #15 (`Relic_15`)</span>
+            </div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">Relic #15 — Katong Laksa Porcelain Spoon &amp; Bowl (`Relic_15`)</h3>
+            <p class="shot-desc"><strong>3D Mesh:</strong> Peranakan scalloped bowl (`Relic_15_LaksaBowl`) filled with rich coral-orange coconut gravy, white rice noodles, crimson prawns (`Relic_15_Prawns`), and a perched ceramic soup spoon (`Relic_15_SoupSpoon`).<br/><span style="color:#047857;font-weight:600;font-size:11.5px;">🇸🇬 In Katong, thick rice vermicelli is cut into short pieces so the entire spicy coconut-shrimp broth can be eaten solely with a Chinese porcelain spoon.</span></p>
+            <div class="shot-meta">
+              <span>GLB: treasures_foliage.glb • Node: Relic_15</span>
+              <span>Zone: Malay Garden</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2" data-m1cat="relics42" data-reliccat="relics_supertrees">
+          <div class="shot-img-wrap" data-lightbox="assets/renders/relics42/relic_16.png" data-caption="Relic #16 • Relic_16 — Pandan Chiffon Cake Slice Box (Flower Dome • treasures_foliage.glb)">
+            <img src="assets/renders/relics42/relic_16.png" alt="Relic #16 Pandan Chiffon Cake Slice Box" loading="lazy" />
+            <div class="shot-badges-overlay">
+              <span class="angle-tag">☕ Hawker & Food (#11–#18) • Flower Dome</span>
+              <span class="ver-tag v2">Relic #16 (`Relic_16`)</span>
+            </div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">Relic #16 — Pandan Chiffon Cake Slice Box (`Relic_16`)</h3>
+            <p class="shot-desc"><strong>3D Mesh:</strong> Fluffy pastel-emerald pandan chiffon ring cake (`Relic_16_PandanCake`) with a wedge slice lifted out (`Relic_16_CakeSlice`) beside a tied fragrant screwpine pandan leaf knot (`Relic_16_PandanKnot`).<br/><span style="color:#047857;font-weight:600;font-size:11.5px;">🇸🇬 Light, airy, and naturally tinted bright green with freshly squeezed screwpine (pandan) leaf juice and coconut milk—Singapore’s favourite bakery gift.</span></p>
+            <div class="shot-meta">
+              <span>GLB: treasures_foliage.glb • Node: Relic_16</span>
+              <span>Zone: Flower Dome</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2" data-m1cat="relics42" data-reliccat="relics_supertrees">
+          <div class="shot-img-wrap" data-lightbox="assets/renders/relics42/relic_17.png" data-caption="Relic #17 • Relic_17 — Ice Kacang Rainbow Mountain Bowl (Children’s Garden • treasures_foliage.glb)">
+            <img src="assets/renders/relics42/relic_17.png" alt="Relic #17 Ice Kacang Rainbow Mountain Bowl" loading="lazy" />
+            <div class="shot-badges-overlay">
+              <span class="angle-tag">☕ Hawker & Food (#11–#18) • Children’s Garden</span>
+              <span class="ver-tag v2">Relic #17 (`Relic_17`)</span>
+            </div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">Relic #17 — Ice Kacang Rainbow Mountain Bowl (`Relic_17`)</h3>
+            <p class="shot-desc"><strong>3D Mesh:</strong> Tall conical shaved-ice peak (`Relic_17_IcePeak`) drizzled in rose-pink bandung, pandan-green, and gula melaka syrups (`Relic_17_RainbowSyrup`), crowned with sweetcorn and red attap seeds (`Relic_17_Toppings`).<br/><span style="color:#047857;font-weight:600;font-size:11.5px;">🇸🇬 Once grated by hand from giant ice blocks, this towering shaved-ice dessert hides red beans, grass jelly, and attap chee beneath rainbow syrups.</span></p>
+            <div class="shot-meta">
+              <span>GLB: treasures_foliage.glb • Node: Relic_17</span>
+              <span>Zone: Children’s Garden</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2" data-m1cat="relics42" data-reliccat="relics_supertrees">
+          <div class="shot-img-wrap" data-lightbox="assets/renders/relics42/relic_18.png" data-caption="Relic #18 • Relic_18 — Singapore Sling Raffles Hurricane Glass (Silver Garden • treasures_foliage.glb)">
+            <img src="assets/renders/relics42/relic_18.png" alt="Relic #18 Singapore Sling Raffles Hurricane Glass" loading="lazy" />
+            <div class="shot-badges-overlay">
+              <span class="angle-tag">☕ Hawker & Food (#11–#18) • Silver Garden</span>
+              <span class="ver-tag v2">Relic #18 (`Relic_18`)</span>
+            </div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">Relic #18 — Singapore Sling Raffles Hurricane Glass (`Relic_18`)</h3>
+            <p class="shot-desc"><strong>3D Mesh:</strong> Tulip-curved crystal hurricane glass (`Relic_18_SlingGlass`) filled with ruby-rose cocktail (`Relic_18_RubySling`), foamy white head, and a golden pineapple wedge & red cherry garnish (`Relic_18_PineappleCherry`).<br/><span style="color:#047857;font-weight:600;font-size:11.5px;">🇸🇬 First mixed in 1915 by bartender Ngiam Tong Boon at the Raffles Hotel Long Bar using gin, cherry brandy, pineapple juice, and lime.</span></p>
+            <div class="shot-meta">
+              <span>GLB: treasures_foliage.glb • Node: Relic_18</span>
+              <span>Zone: Silver Garden</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2" data-m1cat="relics42" data-reliccat="relics_domes">
+          <div class="shot-img-wrap" data-lightbox="assets/renders/relics42/relic_19.png" data-caption="Relic #19 • Relic_19 — Nyonya Porcelain Tingkat Tiffin Carrier (Heritage Gardens • treasures_foliage.glb)">
+            <img src="assets/renders/relics42/relic_19.png" alt="Relic #19 Nyonya Porcelain Tingkat Tiffin Carrier" loading="lazy" />
+            <div class="shot-badges-overlay">
+              <span class="angle-tag">🏺 Peranakan & Culture (#19–#26) • Heritage Gardens</span>
+              <span class="ver-tag v2">Relic #19 (`Relic_19`)</span>
+            </div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">Relic #19 — Nyonya Porcelain Tingkat Tiffin Carrier (`Relic_19`)</h3>
+            <p class="shot-desc"><strong>3D Mesh:</strong> 4-tier stacked turquoise, rose-pink, and imperial-yellow enamel tingkat carrier (`Relic_19_TingkatTiers`) decorated with pink peonies (`Relic_19_PeonyMedallions`) and a brass top handle (`Relic_19_BrassHandle`).<br/><span style="color:#047857;font-weight:600;font-size:11.5px;">🇸🇬 Pastel-hued enamel tiffin carriers (tingkat) have carried home-cooked Peranakan stews and curries across generations in sustainable zero-waste style.</span></p>
+            <div class="shot-meta">
+              <span>GLB: treasures_foliage.glb • Node: Relic_19</span>
+              <span>Zone: Heritage Gardens</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2" data-m1cat="relics42" data-reliccat="relics_domes">
+          <div class="shot-img-wrap" data-lightbox="assets/renders/relics42/relic_20.png" data-caption="Relic #20 • Relic_20 — Peranakan Beaded Kasut Manek Slippers (Floral Fantasy • treasures_foliage.glb)">
+            <img src="assets/renders/relics42/relic_20.png" alt="Relic #20 Peranakan Beaded Kasut Manek Slippers" loading="lazy" />
+            <div class="shot-badges-overlay">
+              <span class="angle-tag">🏺 Peranakan & Culture (#19–#26) • Floral Fantasy</span>
+              <span class="ver-tag v2">Relic #20 (`Relic_20`)</span>
+            </div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">Relic #20 — Peranakan Beaded Kasut Manek Slippers (`Relic_20`)</h3>
+            <p class="shot-desc"><strong>3D Mesh:</strong> Pair of upturned velvet Nyonya slippers (`Relic_20_SlipperSoles`) intricately mosaicked with hundreds of tiny gold, ruby, and turquoise glass cut-beads (`Relic_20_Beadwork`).<br/><span style="color:#047857;font-weight:600;font-size:11.5px;">🇸🇬 Hand-stitched using thousands of faceted glass seed beads (manek potong) smaller than a millimetre, each pair of Nyonya slippers took months to craft.</span></p>
+            <div class="shot-meta">
+              <span>GLB: treasures_foliage.glb • Node: Relic_20</span>
+              <span>Zone: Floral Fantasy</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2" data-m1cat="relics42" data-reliccat="relics_domes">
+          <div class="shot-img-wrap" data-lightbox="assets/renders/relics42/relic_21.png" data-caption="Relic #21 • Relic_21 — Joo Chiat Pastel Shophouse Façade Tile (Colonial Garden • treasures_foliage.glb)">
+            <img src="assets/renders/relics42/relic_21.png" alt="Relic #21 Joo Chiat Pastel Shophouse Façade Tile" loading="lazy" />
+            <div class="shot-badges-overlay">
+              <span class="angle-tag">🏺 Peranakan & Culture (#19–#26) • Colonial Garden</span>
+              <span class="ver-tag v2">Relic #21 (`Relic_21`)</span>
+            </div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">Relic #21 — Joo Chiat Pastel Shophouse Façade Tile (`Relic_21`)</h3>
+            <p class="shot-desc"><strong>3D Mesh:</strong> Framed relief ceramic tile (`Relic_21_TileFrame`) depicting two pastel turquoise-and-pink two-storey shophouses (`Relic_21_ShophouseFront`), louvered timber shutters (`Relic_21_Shutters`), and terracotta roofs.<br/><span style="color:#047857;font-weight:600;font-size:11.5px;">🇸🇬 Conserved Peranakan shophouses along Koon Seng Road in Joo Chiat dazzle visitors with plaster relief pilasters, floral majolica tiles, and timber shutters.</span></p>
+            <div class="shot-meta">
+              <span>GLB: treasures_foliage.glb • Node: Relic_21</span>
+              <span>Zone: Colonial Garden</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2" data-m1cat="relics42" data-reliccat="relics_domes">
+          <div class="shot-img-wrap" data-lightbox="assets/renders/relics42/relic_22.png" data-caption="Relic #22 • Relic_22 — Nyonya Kueh Lapis &amp; Ang Ku Kueh Platter (Chinese Garden • treasures_foliage.glb)">
+            <img src="assets/renders/relics42/relic_22.png" alt="Relic #22 Nyonya Kueh Lapis &amp; Ang Ku Kueh Platter" loading="lazy" />
+            <div class="shot-badges-overlay">
+              <span class="angle-tag">🏺 Peranakan & Culture (#19–#26) • Chinese Garden</span>
+              <span class="ver-tag v2">Relic #22 (`Relic_22`)</span>
+            </div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">Relic #22 — Nyonya Kueh Lapis &amp; Ang Ku Kueh Platter (`Relic_22`)</h3>
+            <p class="shot-desc"><strong>3D Mesh:</strong> Woven bamboo kueh tray (`Relic_22_BambooTray`) lined with banana leaf, holding 9-layer rainbow Kueh Lapis Sagu (`Relic_22_KuehLapis`) and two glossy red tortoise-shell Ang Ku Kueh (`Relic_22_AngKuKueh`).<br/><span style="color:#047857;font-weight:600;font-size:11.5px;">🇸🇬 Bite-sized Nyonya kueh are steamed in rainbow layers (peeled one by one!) or moulded like red tortoises to wish longevity and good fortune.</span></p>
+            <div class="shot-meta">
+              <span>GLB: treasures_foliage.glb • Node: Relic_22</span>
+              <span>Zone: Chinese Garden</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2" data-m1cat="relics42" data-reliccat="relics_domes">
+          <div class="shot-img-wrap" data-lightbox="assets/renders/relics42/relic_23.png" data-caption="Relic #23 • Relic_23 — Chinatown Red Silk Shophouse Lantern (Chinese Garden • treasures_foliage.glb)">
+            <img src="assets/renders/relics42/relic_23.png" alt="Relic #23 Chinatown Red Silk Shophouse Lantern" loading="lazy" />
+            <div class="shot-badges-overlay">
+              <span class="angle-tag">🏺 Peranakan & Culture (#19–#26) • Chinese Garden</span>
+              <span class="ver-tag v2">Relic #23 (`Relic_23`)</span>
+            </div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">Relic #23 — Chinatown Red Silk Shophouse Lantern (`Relic_23`)</h3>
+            <p class="shot-desc"><strong>3D Mesh:</strong> Ribbed crimson silk festive lantern (`Relic_23_CrimsonBalloon`) with brushed gold top/bottom collars (`Relic_23_GoldCollars`), auspicious gold emblems, and a hanging red-and-gold silk tassel (`Relic_23_SilkTassel`).<br/><span style="color:#047857;font-weight:600;font-size:11.5px;">🇸🇬 Suspended along Pagoda Street and Kreta Ayer, glowing crimson silk lanterns with golden calligraphy herald reunion and prosperity.</span></p>
+            <div class="shot-meta">
+              <span>GLB: treasures_foliage.glb • Node: Relic_23</span>
+              <span>Zone: Chinese Garden</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2" data-m1cat="relics42" data-reliccat="relics_domes">
+          <div class="shot-img-wrap" data-lightbox="assets/renders/relics42/relic_24.png" data-caption="Relic #24 • Relic_24 — Little India Jasmine Garland &amp; Brass Deepam (Indian Garden • treasures_foliage.glb)">
+            <img src="assets/renders/relics42/relic_24.png" alt="Relic #24 Little India Jasmine Garland &amp; Brass Deepam" loading="lazy" />
+            <div class="shot-badges-overlay">
+              <span class="angle-tag">🏺 Peranakan & Culture (#19–#26) • Indian Garden</span>
+              <span class="ver-tag v2">Relic #24 (`Relic_24`)</span>
+            </div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">Relic #24 — Little India Jasmine Garland &amp; Brass Deepam (`Relic_24`)</h3>
+            <p class="shot-desc"><strong>3D Mesh:</strong> Tiered polished-brass Kuthu Vilakku oil lamp (`Relic_24_BrassLamp`) with a glowing golden flame (`Relic_24_SacredFlame`), draped in a fragrant ivory jasmine & orange marigold garland (`Relic_24_FlowerGarland`).<br/><span style="color:#047857;font-weight:600;font-size:11.5px;">🇸🇬 Along Serangoon Road, flower-garland stalls string fragrant jasmine buds and bright marigolds by the metre beside gleaming brass oil lamps.</span></p>
+            <div class="shot-meta">
+              <span>GLB: treasures_foliage.glb • Node: Relic_24</span>
+              <span>Zone: Indian Garden</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2" data-m1cat="relics42" data-reliccat="relics_domes">
+          <div class="shot-img-wrap" data-lightbox="assets/renders/relics42/relic_25.png" data-caption="Relic #25 • Relic_25 — Kampong Glam Golden Sultan Dome Keepsake (Malay Garden • treasures_foliage.glb)">
+            <img src="assets/renders/relics42/relic_25.png" alt="Relic #25 Kampong Glam Golden Sultan Dome Keepsake" loading="lazy" />
+            <div class="shot-badges-overlay">
+              <span class="angle-tag">🏺 Peranakan & Culture (#19–#26) • Malay Garden</span>
+              <span class="ver-tag v2">Relic #25 (`Relic_25`)</span>
+            </div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">Relic #25 — Kampong Glam Golden Sultan Dome Keepsake (`Relic_25`)</h3>
+            <p class="shot-desc"><strong>3D Mesh:</strong> Burnished 24K-gold onion dome (`Relic_25_GoldenDome`) with a crescent-and-star spire (`Relic_25_CrescentFinial`), resting on a dark ring of miniature glass bottle ends (`Relic_25_BottleRing`) and white arches.<br/><span style="color:#047857;font-weight:600;font-size:11.5px;">🇸🇬 Beneath the Sultan Mosque’s gleaming golden domes runs a dark base ring made of thousands of glass soy-sauce bottle ends donated by the community in 1932.</span></p>
+            <div class="shot-meta">
+              <span>GLB: treasures_foliage.glb • Node: Relic_25</span>
+              <span>Zone: Malay Garden</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2" data-m1cat="relics42" data-reliccat="relics_domes">
+          <div class="shot-img-wrap" data-lightbox="assets/renders/relics42/relic_26.png" data-caption="Relic #26 • Relic_26 — Classic Peranakan Floral Majolica Tile (Heritage Gardens • treasures_foliage.glb)">
+            <img src="assets/renders/relics42/relic_26.png" alt="Relic #26 Classic Peranakan Floral Majolica Tile" loading="lazy" />
+            <div class="shot-badges-overlay">
+              <span class="angle-tag">🏺 Peranakan & Culture (#19–#26) • Heritage Gardens</span>
+              <span class="ver-tag v2">Relic #26 (`Relic_26`)</span>
+            </div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">Relic #26 — Classic Peranakan Floral Majolica Tile (`Relic_26`)</h3>
+            <p class="shot-desc"><strong>3D Mesh:</strong> Square glazed ceramic Peranakan tile (`Relic_26_CeramicSquare`) with high-relief sculpted pink rose blossoms (`Relic_26_RoseRelief`), emerald leaves (`Relic_26_EmeraldLeaves`), and golden corner scrolls.<br/><span style="color:#047857;font-weight:600;font-size:11.5px;">🇸🇬 Imported during the late 19th and early 20th centuries, glazed floral relief tiles adorn the lower walls (dado) of traditional Straits Chinese homes.</span></p>
+            <div class="shot-meta">
+              <span>GLB: treasures_foliage.glb • Node: Relic_26</span>
+              <span>Zone: Heritage Gardens</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2" data-m1cat="relics42" data-reliccat="relics_dragonfly">
+          <div class="shot-img-wrap" data-lightbox="assets/renders/relics42/relic_27.png" data-caption="Relic #27 • Relic_27 — Toa Payoh Orange Mosaic Dragon Playground (Children’s Garden • treasures_foliage.glb)">
+            <img src="assets/renders/relics42/relic_27.png" alt="Relic #27 Toa Payoh Orange Mosaic Dragon Playground" loading="lazy" />
+            <div class="shot-badges-overlay">
+              <span class="angle-tag">🐉 Heartland Nostalgia (#27–#34) • Children’s Garden</span>
+              <span class="ver-tag v2">Relic #27 (`Relic_27`)</span>
+            </div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">Relic #27 — Toa Payoh Orange Mosaic Dragon Playground (`Relic_27`)</h3>
+            <p class="shot-desc"><strong>3D Mesh:</strong> Iconic geometric orange terrazzo mosaic dragon head (`Relic_27_DragonHead`) with white-and-black tile eyes, followed by colorful red, blue, and yellow steel climbing rib rings (`Relic_27_SpineRings`) on a sandpit base.<br/><span style="color:#047857;font-weight:600;font-size:11.5px;">🇸🇬 Designed in 1979 by HDB interior designer Khor Ean Ghee, the Toa Payoh Lorong 6 mosaic Dragon Playground is Singapore’s most beloved childhood landmark.</span></p>
+            <div class="shot-meta">
+              <span>GLB: treasures_foliage.glb • Node: Relic_27</span>
+              <span>Zone: Children’s Garden</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2" data-m1cat="relics42" data-reliccat="relics_dragonfly">
+          <div class="shot-img-wrap" data-lightbox="assets/renders/relics42/relic_28.png" data-caption="Relic #28 • Relic_28 — Iced Gem Biscuits Nostalgic Tin (The Meadow • treasures_foliage.glb)">
+            <img src="assets/renders/relics42/relic_28.png" alt="Relic #28 Iced Gem Biscuits Nostalgic Tin" loading="lazy" />
+            <div class="shot-badges-overlay">
+              <span class="angle-tag">🐉 Heartland Nostalgia (#27–#34) • The Meadow</span>
+              <span class="ver-tag v2">Relic #28 (`Relic_28`)</span>
+            </div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">Relic #28 — Iced Gem Biscuits Nostalgic Tin (`Relic_28`)</h3>
+            <p class="shot-desc"><strong>3D Mesh:</strong> Square brass mama-shop biscuit tin (`Relic_28_BiscuitTin`) with a round glass viewing window, topped with 5 buttery biscuit rounds crowned by swirled pink, yellow, green, and white sugar meringues (`Relic_28_IcedGems`).<br/><span style="color:#047857;font-weight:600;font-size:11.5px;">🇸🇬 Sold by weight from tall brass mama-shop tins, these bite-sized biscuits topped with hard pastel sugar swirls have delighted children for decades.</span></p>
+            <div class="shot-meta">
+              <span>GLB: treasures_foliage.glb • Node: Relic_28</span>
+              <span>Zone: The Meadow</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2" data-m1cat="relics42" data-reliccat="relics_dragonfly">
+          <div class="shot-img-wrap" data-lightbox="assets/renders/relics42/relic_29.png" data-caption="Relic #29 • Relic_29 — Good Morning 96 Red-Letter Cotton Towel (Supertree Understorey • treasures_foliage.glb)">
+            <img src="assets/renders/relics42/relic_29.png" alt="Relic #29 Good Morning 96 Red-Letter Cotton Towel" loading="lazy" />
+            <div class="shot-badges-overlay">
+              <span class="angle-tag">🐉 Heartland Nostalgia (#27–#34) • Supertree Understorey</span>
+              <span class="ver-tag v2">Relic #29 (`Relic_29`)</span>
+            </div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">Relic #29 — Good Morning 96 Red-Letter Cotton Towel (`Relic_29`)</h3>
+            <p class="shot-desc"><strong>3D Mesh:</strong> Folded ivory-white cotton face towel (`Relic_29_WhiteTowel`) with woven pink striped borders and crimson embossed ‘GOOD MORNING’ & ‘祝君早安’ lettering (`Relic_29_CrimsonText`).<br/><span style="color:#047857;font-weight:600;font-size:11.5px;">🇸🇬 Printed with ‘Good Morning 祝君早安’, this humble white cotton towel is a badge of industriousness worn by hawkers, bakers, and trishaw riders.</span></p>
+            <div class="shot-meta">
+              <span>GLB: treasures_foliage.glb • Node: Relic_29</span>
+              <span>Zone: Supertree Understorey</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2" data-m1cat="relics42" data-reliccat="relics_dragonfly">
+          <div class="shot-img-wrap" data-lightbox="assets/renders/relics42/relic_30.png" data-caption="Relic #30 • Relic_30 — Classic Green-and-White ERP Gantry Toy (Bayfront Plaza • treasures_foliage.glb)">
+            <img src="assets/renders/relics42/relic_30.png" alt="Relic #30 Classic Green-and-White ERP Gantry Toy" loading="lazy" />
+            <div class="shot-badges-overlay">
+              <span class="angle-tag">🐉 Heartland Nostalgia (#27–#34) • Bayfront Plaza</span>
+              <span class="ver-tag v2">Relic #30 (`Relic_30`)</span>
+            </div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">Relic #30 — Classic Green-and-White ERP Gantry Toy (`Relic_30`)</h3>
+            <p class="shot-desc"><strong>3D Mesh:</strong> Twin curved silver highway gantry columns (`Relic_30_GantryPoles`) supporting an overhead crossbeam with dual blue-and-amber LED signs (`Relic_30_BlueSign`) and two miniature toy cars (`Relic_30_MiniCars`) below.<br/><span style="color:#047857;font-weight:600;font-size:11.5px;">🇸🇬 Introduced in 1998 as the world’s first Electronic Road Pricing system, the overhead gantry and In-Vehicle Unit beep are unmistakable Singapore road icons.</span></p>
+            <div class="shot-meta">
+              <span>GLB: treasures_foliage.glb • Node: Relic_30</span>
+              <span>Zone: Bayfront Plaza</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2" data-m1cat="relics42" data-reliccat="relics_dragonfly">
+          <div class="shot-img-wrap" data-lightbox="assets/renders/relics42/relic_31.png" data-caption="Relic #31 • Relic_31 — HDB Void Deck Blue Chess Stone Table (Serene Garden • treasures_foliage.glb)">
+            <img src="assets/renders/relics42/relic_31.png" alt="Relic #31 HDB Void Deck Blue Chess Stone Table" loading="lazy" />
+            <div class="shot-badges-overlay">
+              <span class="angle-tag">🐉 Heartland Nostalgia (#27–#34) • Serene Garden</span>
+              <span class="ver-tag v2">Relic #31 (`Relic_31`)</span>
+            </div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">Relic #31 — HDB Void Deck Blue Chess Stone Table (`Relic_31`)</h3>
+            <p class="shot-desc"><strong>3D Mesh:</strong> Round ocean-blue terrazzo table (`Relic_31_ChessTable`) inlaid with an ivory Chinese Xiangqi chessboard grid (`Relic_31_XiangqiGrid`), chess pieces, and 4 matching blue cylindrical stone stools (`Relic_31_RoundStools`).<br/><span style="color:#047857;font-weight:600;font-size:11.5px;">🇸🇬 Found in HDB heartland void decks across the island, round terrazzo tables inlaid with Chinese chess or international chess grids foster community camaraderie.</span></p>
+            <div class="shot-meta">
+              <span>GLB: treasures_foliage.glb • Node: Relic_31</span>
+              <span>Zone: Serene Garden</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2" data-m1cat="relics42" data-reliccat="relics_dragonfly">
+          <div class="shot-img-wrap" data-lightbox="assets/renders/relics42/relic_32.png" data-caption="Relic #32 • Relic_32 — Orchard Road Rainbow Ice-Cream Pushcart (Waterfront Promenade • treasures_foliage.glb)">
+            <img src="assets/renders/relics42/relic_32.png" alt="Relic #32 Orchard Road Rainbow Ice-Cream Pushcart" loading="lazy" />
+            <div class="shot-badges-overlay">
+              <span class="angle-tag">🐉 Heartland Nostalgia (#27–#34) • Waterfront Promenade</span>
+              <span class="ver-tag v2">Relic #32 (`Relic_32`)</span>
+            </div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">Relic #32 — Orchard Road Rainbow Ice-Cream Pushcart (`Relic_32`)</h3>
+            <p class="shot-desc"><strong>3D Mesh:</strong> Blue stainless-steel street freezer cart (`Relic_32_FreezerCart`) on spoked wheels beneath a red-and-yellow striped umbrella (`Relic_32_Umbrella`), topped with a rainbow bread ice-cream sandwich (`Relic_32_RainbowBread`).<br/><span style="color:#047857;font-weight:600;font-size:11.5px;">🇸🇬 Under a bright umbrella along Orchard Road, generations of uncles have served blocks of durian, raspberry ripple, or mint chocolate chip wrapped in rainbow bread.</span></p>
+            <div class="shot-meta">
+              <span>GLB: treasures_foliage.glb • Node: Relic_32</span>
+              <span>Zone: Waterfront Promenade</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2" data-m1cat="relics42" data-reliccat="relics_dragonfly">
+          <div class="shot-img-wrap" data-lightbox="assets/renders/relics42/relic_33.png" data-caption="Relic #33 • Relic_33 — Vintage Trishaw With Red Canopy (Dragonfly Bridge • treasures_foliage.glb)">
+            <img src="assets/renders/relics42/relic_33.png" alt="Relic #33 Vintage Trishaw With Red Canopy" loading="lazy" />
+            <div class="shot-badges-overlay">
+              <span class="angle-tag">🐉 Heartland Nostalgia (#27–#34) • Dragonfly Bridge</span>
+              <span class="ver-tag v2">Relic #33 (`Relic_33`)</span>
+            </div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">Relic #33 — Vintage Trishaw With Red Canopy (`Relic_33`)</h3>
+            <p class="shot-desc"><strong>3D Mesh:</strong> Three-wheeled heritage passenger cycle (`Relic_33_CycleFrame`) with a crimson pleated convertible hood (`Relic_33_CrimsonHood`), cushioned bench seat, and a brass bulb horn (`Relic_33_BrassHorn`).<br/><span style="color:#047857;font-weight:600;font-size:11.5px;">🇸🇬 Once the primary mode of street transport in post-war Singapore, vibrant three-wheeled trishaws still take visitors through historic civic and cultural quarters.</span></p>
+            <div class="shot-meta">
+              <span>GLB: treasures_foliage.glb • Node: Relic_33</span>
+              <span>Zone: Dragonfly Bridge</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2" data-m1cat="relics42" data-reliccat="relics_dragonfly">
+          <div class="shot-img-wrap" data-lightbox="assets/renders/relics42/relic_34.png" data-caption="Relic #34 • Relic_34 — Red Lion City Passport &amp; Changi Stamp (Flower Dome • treasures_foliage.glb)">
+            <img src="assets/renders/relics42/relic_34.png" alt="Relic #34 Red Lion City Passport &amp; Changi Stamp" loading="lazy" />
+            <div class="shot-badges-overlay">
+              <span class="angle-tag">🐉 Heartland Nostalgia (#27–#34) • Flower Dome</span>
+              <span class="ver-tag v2">Relic #34 (`Relic_34`)</span>
+            </div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">Relic #34 — Red Lion City Passport &amp; Changi Stamp (`Relic_34`)</h3>
+            <p class="shot-desc"><strong>3D Mesh:</strong> Standing biometric scarlet-red Singapore Passport booklet (`Relic_34_RedPassport`) embossed with the golden national Coat of Arms (`Relic_34_GoldCrest`) and a boarding pass with Changi control tower (`Relic_34_BoardingPass`).<br/><span style="color:#047857;font-weight:600;font-size:11.5px;">🇸🇬 Consistently ranked among the world’s most powerful travel documents, the crimson biometric Singapore passport bears the golden national Coat of Arms.</span></p>
+            <div class="shot-meta">
+              <span>GLB: treasures_foliage.glb • Node: Relic_34</span>
+              <span>Zone: Flower Dome</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2" data-m1cat="relics42" data-reliccat="relics_wetlands">
+          <div class="shot-img-wrap" data-lightbox="assets/renders/relics42/relic_35.png" data-caption="Relic #35 • Relic_35 — Marina Bay Smooth-Coated Otter Family (Kingfisher Wetlands • treasures_foliage.glb)">
+            <img src="assets/renders/relics42/relic_35.png" alt="Relic #35 Marina Bay Smooth-Coated Otter Family" loading="lazy" />
+            <div class="shot-badges-overlay">
+              <span class="angle-tag">🦦 Wildlife & Island (#35–#42) • Kingfisher Wetlands</span>
+              <span class="ver-tag v2">Relic #35 (`Relic_35`)</span>
+            </div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">Relic #35 — Marina Bay Smooth-Coated Otter Family (`Relic_35`)</h3>
+            <p class="shot-desc"><strong>3D Mesh:</strong> Three sleek cocoa-brown river otters (`Relic_35_OtterTrio`)—a standing parent holding a silver fish (`Relic_35_SilverFish`) and two playful pups—on an azure water-splash wave base (`Relic_35_WaveSplash`).<br/><span style="color:#047857;font-weight:600;font-size:11.5px;">🇸🇬 Thanks to decades of waterway clean-ups, families of wild smooth-coated otters—like the famous Bishan and Marina clans—now romp right through Gardens by the Bay.</span></p>
+            <div class="shot-meta">
+              <span>GLB: treasures_foliage.glb • Node: Relic_35</span>
+              <span>Zone: Kingfisher Wetlands</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2" data-m1cat="relics42" data-reliccat="relics_wetlands">
+          <div class="shot-img-wrap" data-lightbox="assets/renders/relics42/relic_36.png" data-caption="Relic #36 • Relic_36 — Mao Shan Wang Golden Durian Gift Box (World of Plants • treasures_foliage.glb)">
+            <img src="assets/renders/relics42/relic_36.png" alt="Relic #36 Mao Shan Wang Golden Durian Gift Box" loading="lazy" />
+            <div class="shot-badges-overlay">
+              <span class="angle-tag">🦦 Wildlife & Island (#35–#42) • World of Plants</span>
+              <span class="ver-tag v2">Relic #36 (`Relic_36`)</span>
+            </div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">Relic #36 — Mao Shan Wang Golden Durian Gift Box (`Relic_36`)</h3>
+            <p class="shot-desc"><strong>3D Mesh:</strong> Split thorny olive-green durian shell (`Relic_36_ThornyHusk`) nestled in a crimson-and-gold presentation box (`Relic_36_GiftBox`), revealing 4 plump golden custard Mao Shan Wang pods (`Relic_36_GoldenPods`).<br/><span style="color:#047857;font-weight:600;font-size:11.5px;">🇸🇬 Revered as the ‘King of Fruits’, rich and bittersweet Mao Shan Wang durian is so beloved in Singapore that the Esplanade concert halls were modelled after its spiky shell!</span></p>
+            <div class="shot-meta">
+              <span>GLB: treasures_foliage.glb • Node: Relic_36</span>
+              <span>Zone: World of Plants</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2" data-m1cat="relics42" data-reliccat="relics_wetlands">
+          <div class="shot-img-wrap" data-lightbox="assets/renders/relics42/relic_37.png" data-caption="Relic #37 • Relic_37 — Purple Mangosteen Queen of Fruits (World of Plants • treasures_foliage.glb)">
+            <img src="assets/renders/relics42/relic_37.png" alt="Relic #37 Purple Mangosteen Queen of Fruits" loading="lazy" />
+            <div class="shot-badges-overlay">
+              <span class="angle-tag">🦦 Wildlife & Island (#35–#42) • World of Plants</span>
+              <span class="ver-tag v2">Relic #37 (`Relic_37`)</span>
+            </div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">Relic #37 — Purple Mangosteen Queen of Fruits (`Relic_37`)</h3>
+            <p class="shot-desc"><strong>3D Mesh:</strong> Deep aubergine-purple mangosteen rind (`Relic_37_PurpleRind`) crowned by a 4-leaf green calyx (`Relic_37_GreenCalyx`), opened in half to showcase 6 snow-white citrusy fruit segments (`Relic_37_WhiteCloves`).<br/><span style="color:#047857;font-weight:600;font-size:11.5px;">🇸🇬 Paired with fiery durian as its cooling ‘Queen of Fruits’, the deep-purple mangosteen hides snow-white, sweet-tangy segments counted by the petals on its base.</span></p>
+            <div class="shot-meta">
+              <span>GLB: treasures_foliage.glb • Node: Relic_37</span>
+              <span>Zone: World of Plants</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2" data-m1cat="relics42" data-reliccat="relics_wetlands">
+          <div class="shot-img-wrap" data-lightbox="assets/renders/relics42/relic_38.png" data-caption="Relic #38 • Relic_38 — Tembusu Five-Dollar Note Heritage Tree (Heritage Gardens • treasures_foliage.glb)">
+            <img src="assets/renders/relics42/relic_38.png" alt="Relic #38 Tembusu Five-Dollar Note Heritage Tree" loading="lazy" />
+            <div class="shot-badges-overlay">
+              <span class="angle-tag">🦦 Wildlife & Island (#35–#42) • Heritage Gardens</span>
+              <span class="ver-tag v2">Relic #38 (`Relic_38`)</span>
+            </div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">Relic #38 — Tembusu Five-Dollar Note Heritage Tree (`Relic_38`)</h3>
+            <p class="shot-desc"><strong>3D Mesh:</strong> Deeply fissured bronze Tembusu trunk (`Relic_38_TembusuTrunk`) with its famous low horizontal branch (`Relic_38_HorizontalBough`), lush emerald canopy pads, and a miniature green $5 portrait note plaque (`Relic_38_FiveDollarNote`).<br/><span style="color:#047857;font-weight:600;font-size:11.5px;">🇸🇬 Immortalised on the back of Singapore’s green $5 portrait banknote, the 150-year-old Tembusu tree is beloved for its dramatic horizontal lower branch.</span></p>
+            <div class="shot-meta">
+              <span>GLB: treasures_foliage.glb • Node: Relic_38</span>
+              <span>Zone: Heritage Gardens</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2" data-m1cat="relics42" data-reliccat="relics_wetlands">
+          <div class="shot-img-wrap" data-lightbox="assets/renders/relics42/relic_39.png" data-caption="Relic #39 • Relic_39 — Sentosa Cable Car Sky Cabin (OCBC Skyway • treasures_foliage.glb)">
+            <img src="assets/renders/relics42/relic_39.png" alt="Relic #39 Sentosa Cable Car Sky Cabin" loading="lazy" />
+            <div class="shot-badges-overlay">
+              <span class="angle-tag">🦦 Wildlife & Island (#35–#42) • OCBC Skyway</span>
+              <span class="ver-tag v2">Relic #39 (`Relic_39`)</span>
+            </div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">Relic #39 — Sentosa Cable Car Sky Cabin (`Relic_39`)</h3>
+            <p class="shot-desc"><strong>3D Mesh:</strong> Ruby-red panoramic aerial cableway cabin (`Relic_39_RedCabin`) with wrap-around cyan windows (`Relic_39_GlassWindows`), suspended from a silver overhead grip arm and golden cable (`Relic_39_CableWire`).<br/><span style="color:#047857;font-weight:600;font-size:11.5px;">🇸🇬 Since 1974, the Singapore Cable Car has glided high above Keppel Harbour from Mount Faber to Sentosa Island.</span></p>
+            <div class="shot-meta">
+              <span>GLB: treasures_foliage.glb • Node: Relic_39</span>
+              <span>Zone: OCBC Skyway</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2" data-m1cat="relics42" data-reliccat="relics_wetlands">
+          <div class="shot-img-wrap" data-lightbox="assets/renders/relics42/relic_40.png" data-caption="Relic #40 • Relic_40 — Sungei Buloh Collared Kingfisher Totem (Kingfisher Wetlands • treasures_foliage.glb)">
+            <img src="assets/renders/relics42/relic_40.png" alt="Relic #40 Sungei Buloh Collared Kingfisher Totem" loading="lazy" />
+            <div class="shot-badges-overlay">
+              <span class="angle-tag">🦦 Wildlife & Island (#35–#42) • Kingfisher Wetlands</span>
+              <span class="ver-tag v2">Relic #40 (`Relic_40`)</span>
+            </div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">Relic #40 — Sungei Buloh Collared Kingfisher Totem (`Relic_40`)</h3>
+            <p class="shot-desc"><strong>3D Mesh:</strong> Iridescent cobalt-blue and turquoise kingfisher (`Relic_40_BlueKingfisher`) with a crisp white collar (`Relic_40_WhiteCollar`) and dagger bill, perched atop braided mangrove prop roots (`Relic_40_MangroveRoots`).<br/><span style="color:#047857;font-weight:600;font-size:11.5px;">🇸🇬 With electric cobalt-blue plumage and a sharp white collar, the Collared Kingfisher is a star resident of Kingfisher Wetlands and Sungei Buloh.</span></p>
+            <div class="shot-meta">
+              <span>GLB: treasures_foliage.glb • Node: Relic_40</span>
+              <span>Zone: Kingfisher Wetlands</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2" data-m1cat="relics42" data-reliccat="relics_wetlands">
+          <div class="shot-img-wrap" data-lightbox="assets/renders/relics42/relic_41.png" data-caption="Relic #41 • Relic_41 — Singapore River Bumboat (Tongkang) (Dragonfly Lake • treasures_foliage.glb)">
+            <img src="assets/renders/relics42/relic_41.png" alt="Relic #41 Singapore River Bumboat (Tongkang)" loading="lazy" />
+            <div class="shot-badges-overlay">
+              <span class="angle-tag">🦦 Wildlife & Island (#35–#42) • Dragonfly Lake</span>
+              <span class="ver-tag v2">Relic #41 (`Relic_41`)</span>
+            </div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">Relic #41 — Singapore River Bumboat (Tongkang) (`Relic_41`)</h3>
+            <p class="shot-desc"><strong>3D Mesh:</strong> Teak-hull river bumboat (`Relic_41_TeakHull`) with a green bow painted with lucky red eyes (`Relic_41_PaintedEyes`), corrugated canopy roof (`Relic_41_CanopyRoof`), and glowing golden lantern.<br/><span style="color:#047857;font-weight:600;font-size:11.5px;">🇸🇬 Painted with pairs of eyes on the bow so the boat can ‘see’ danger ahead, traditional wooden bumboats once ferried cargo along the Singapore River and now cruise Marina Bay.</span></p>
+            <div class="shot-meta">
+              <span>GLB: treasures_foliage.glb • Node: Relic_41</span>
+              <span>Zone: Dragonfly Lake</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2" data-m1cat="relics42" data-reliccat="relics_wetlands">
+          <div class="shot-img-wrap" data-lightbox="assets/renders/relics42/relic_42.png" data-caption="Relic #42 • Relic_42 — Crimson Vanda Lion City Key of Singapura (Supertree Grove • treasures_foliage.glb)">
+            <img src="assets/renders/relics42/relic_42.png" alt="Relic #42 Crimson Vanda Lion City Key of Singapura" loading="lazy" />
+            <div class="shot-badges-overlay">
+              <span class="angle-tag">🦦 Wildlife & Island (#35–#42) • Supertree Grove</span>
+              <span class="ver-tag v2">Relic #42 (`Relic_42`)</span>
+            </div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">Relic #42 — Crimson Vanda Lion City Key of Singapura (`Relic_42`)</h3>
+            <p class="shot-desc"><strong>3D Mesh:</strong> Ceremonial 24K-gold skeleton key (`Relic_42_GoldenKey`) featuring a sculpted Merlion-and-Orchid bow (`Relic_42_LionOrchidBow`), 5-star crescent ring, and a glowing ruby-red Singapura heart gem (`Relic_42_RubyGem`).<br/><span style="color:#047857;font-weight:600;font-size:11.5px;">🇸🇬 The ultimate master keepsake uniting the Lion Crest, Vanda Miss Joaquim, and the five stars of Singapura—awarded to explorers who discover every treasure in the Gardens.</span></p>
+            <div class="shot-meta">
+              <span>GLB: treasures_foliage.glb • Node: Relic_42</span>
+              <span>Zone: Supertree Grove</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Tropical Trees (28-33) -->
+        <article class="shot-card" data-ver="v2" data-m1cat="trees">
+          <div class="shot-img-wrap" data-lightbox="assets/renders/models/model_28_tree_raintree.png" data-caption="Model #28 • Umbrella Rain Tree">
+            <img src="assets/renders/models/model_28_tree_raintree.png" alt="Model 28 Rain Tree" loading="lazy" />
+            <div class="shot-badges-overlay"><span class="angle-tag">#28 • Rain Tree</span><span class="ver-tag v2">Trees</span></div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">#28 • Umbrella Rain Tree</h3>
+            <p class="shot-desc">Spreading hardwood tree with buttress roots and multi-layered foliage domes.</p>
+            <div class="shot-meta"><span>treasures_foliage.glb</span><span>Tree_Rain</span></div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2" data-m1cat="trees">
+          <div class="shot-img-wrap" data-lightbox="assets/renders/models/model_29_tree_royalpalm.png" data-caption="Model #29 • Royal Feather Palm">
+            <img src="assets/renders/models/model_29_tree_royalpalm.png" alt="Model 29 Royal Palm" loading="lazy" />
+            <div class="shot-badges-overlay"><span class="angle-tag">#29 • Royal Palm</span><span class="ver-tag v2">Trees</span></div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">#29 • Royal Feather Palm</h3>
+            <p class="shot-desc">Ringed tropical trunk with arching fronds and golden coconuts.</p>
+            <div class="shot-meta"><span>treasures_foliage.glb</span><span>Tree_Palm</span></div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2" data-m1cat="trees">
+          <div class="shot-img-wrap" data-lightbox="assets/renders/models/model_30_tree_travellerspalm.png" data-caption="Model #30 • Traveller's Fan Palm">
+            <img src="assets/renders/models/model_30_tree_travellerspalm.png" alt="Model 30 Travellers Palm" loading="lazy" />
+            <div class="shot-badges-overlay"><span class="angle-tag">#30 • Traveller's Palm</span><span class="ver-tag v2">Trees</span></div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">#30 • Fan-Shaped Traveller's Palm</h3>
+            <p class="shot-desc">Symmetrical fan of broad banana-like fronds framing the waterfront promenades.</p>
+            <div class="shot-meta"><span>treasures_foliage.glb</span><span>Tree_TravellersPalm</span></div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2" data-m1cat="trees">
+          <div class="shot-img-wrap" data-lightbox="assets/renders/models/model_31_tree_frangipani.png" data-caption="Model #31 • White & Gold Frangipani">
+            <img src="assets/renders/models/model_31_tree_frangipani.png" alt="Model 31 Frangipani Tree" loading="lazy" />
+            <div class="shot-badges-overlay"><span class="angle-tag">#31 • Frangipani</span><span class="ver-tag v2">Trees</span></div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">#31 • Blooming Frangipani Tree</h3>
+            <p class="shot-desc">Sculptural branching tree dotted with fragrant white and yellow blossoms.</p>
+            <div class="shot-meta"><span>treasures_foliage.glb</span><span>Tree_Baobab</span></div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2" data-m1cat="trees">
+          <div class="shot-img-wrap" data-lightbox="assets/renders/models/model_32_tree_giantfern.png" data-caption="Model #32 • Prehistoric Silver Tree Fern">
+            <img src="assets/renders/models/model_32_tree_giantfern.png" alt="Model 32 Giant Fern" loading="lazy" />
+            <div class="shot-badges-overlay"><span class="angle-tag">#32 • Giant Tree Fern</span><span class="ver-tag v2">Trees</span></div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">#32 • Prehistoric Giant Tree Fern</h3>
+            <p class="shot-desc">Fibrous trunk crowned with radiating lacy fern fronds around the Supertree Grove.</p>
+            <div class="shot-meta"><span>treasures_foliage.glb</span><span>Tree_Cypress</span></div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2" data-m1cat="trees">
+          <div class="shot-img-wrap" data-lightbox="assets/renders/models/model_33_tree_bougainvillea.png" data-caption="Model #33 • Blooming Bougainvillea">
+            <img src="assets/renders/models/model_33_tree_bougainvillea.png" alt="Model 33 Bougainvillea Tree" loading="lazy" />
+            <div class="shot-badges-overlay"><span class="angle-tag">#33 • Bougainvillea</span><span class="ver-tag v2">Trees</span></div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">#33 • Flowering Bougainvillea</h3>
+            <p class="shot-desc">Ornamental tropical tree bursting with magenta paper-flower bracts.</p>
+            <div class="shot-meta"><span>treasures_foliage.glb</span><span>Tree_Bougainvillea</span></div>
+          </div>
+        </article>
+
+        <!-- Composite Sheets (34-38) -->
+        <article class="shot-card" data-ver="v2" data-m1cat="sheets">
+          <div class="shot-img-wrap" data-lightbox="assets/renders/blender_chibi_explorers_v2.png" data-caption="Composite Sheet • 4 Chibi Safari Explorers">
+            <img src="assets/renders/blender_chibi_explorers_v2.png" alt="4 Chibi Explorers Sheet" loading="lazy" />
+            <div class="shot-badges-overlay"><span class="angle-tag">🖼️ 4 Chibi Explorers Sheet</span><span class="ver-tag v2">Sheet</span></div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">Composite Sheet: 4 Chibi Safari Explorers</h3>
+            <p class="shot-desc">Lineup of YOU, Bot Kai, Bot Mei, and Bot Raj rendered in Blender Cycles.</p>
+            <div class="shot-meta"><span>characters.glb</span><span>4 Explorers</span></div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v1" data-m1cat="sheets">
+          <div class="shot-img-wrap" data-lightbox="assets/renders/key_assets_buildings_v1.png" data-caption="Composite Sheet • 7 Architectural Landmarks">
+            <img src="assets/renders/key_assets_buildings_v1.png" alt="Buildings Sheet" loading="lazy" />
+            <div class="shot-badges-overlay"><span class="angle-tag">🖼️ 7 Buildings Sheet</span><span class="ver-tag">Sheet</span></div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">Composite Sheet: 7 Architectural Landmarks</h3>
+            <p class="shot-desc">Overview of the Hero Supertree, Standard Supertree, Flower Dome, Cloud Forest, and pavilions.</p>
+            <div class="shot-meta"><span>buildings.glb</span><span>7 Models</span></div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v1" data-m1cat="sheets">
+          <div class="shot-img-wrap" data-lightbox="assets/renders/key_assets_characters_v1.png" data-caption="Composite Sheet • Early Chibi Explorers Study">
+            <img src="assets/renders/key_assets_characters_v1.png" alt="Characters Sheet v1" loading="lazy" />
+            <div class="shot-badges-overlay"><span class="angle-tag">🖼️ Explorers Turntable v1</span><span class="ver-tag">Sheet</span></div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">Composite Sheet: Early Explorer Proportions</h3>
+            <p class="shot-desc">First-pass character proportions before adding safari helmets and field gear.</p>
+            <div class="shot-meta"><span>characters.glb</span><span>v1 Study</span></div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v1" data-m1cat="sheets">
+          <div class="shot-img-wrap" data-lightbox="assets/renders/key_assets_sculptures_bridges_v1.png" data-caption="Composite Sheet • 9 Sculptures & Bridges">
+            <img src="assets/renders/key_assets_sculptures_bridges_v1.png" alt="Sculptures Sheet" loading="lazy" />
+            <div class="shot-badges-overlay"><span class="angle-tag">🖼️ 9 Sculptures Sheet</span><span class="ver-tag">Sheet</span></div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">Composite Sheet: 9 Sculptures &amp; Bridges</h3>
+            <p class="shot-desc">Family render of Planet Baby, Floral Clock, Dragonfly Bridge, Moongate, and park totems.</p>
+            <div class="shot-meta"><span>sculptures.glb</span><span>9 Models</span></div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v1" data-m1cat="sheets">
+          <div class="shot-img-wrap" data-lightbox="assets/renders/key_assets_treasures_foliage_v1.png" data-caption="Composite Sheet • 13 Relics & Trees">
+            <img src="assets/renders/key_assets_treasures_foliage_v1.png" alt="Treasures and Foliage Sheet" loading="lazy" />
+            <div class="shot-badges-overlay"><span class="angle-tag">🖼️ 13 Relics &amp; Trees Sheet</span><span class="ver-tag">Sheet</span></div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">Composite Sheet: 13 Relics &amp; Tropical Trees</h3>
+            <p class="shot-desc">Overview of the stone pedestal, 7 botanical relic types, and 5 tropical tree species.</p>
+            <div class="shot-meta"><span>treasures_foliage.glb</span><span>13 Models</span></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ================================================================== -->
+    <!-- STEP 3: TERRAIN, WATERWAYS & TROPICAL FOLIAGE                      -->
+    <!-- ================================================================== -->
+    <section class="milestone-section" data-section="m2">
+      <div class="milestone-header">
+        <h2>
+          Step 3 — Terrain, Waterways &amp; Tropical Foliage
+          <span class="m-badge">6 Live 3D Captures</span>
+        </h2>
+        <p>Next, we built the Bay South peninsula base in Three.js — carving Marina Reservoir, Dragonfly Lake, Kingfisher Wetlands, travertine paths, and instancing 5 tropical tree species.</p>
+      </div>
+
+      <div class="cards-grid">
+        <article class="shot-card" data-ver="v2">
+          <div class="shot-img-wrap" data-lightbox="assets/progress/m2_terrain_angle01_overview_v2.png" data-caption="Step 3 (v2.0) • Peninsula Overview & Travertine Pathways">
+            <img src="assets/progress/m2_terrain_angle01_overview_v2.png" alt="Step 3 Peninsula Overview v2" loading="lazy" />
+            <div class="shot-badges-overlay"><span class="angle-tag">🎥 Cam 01 • Peninsula Overview</span><span class="ver-tag v2">Step 3 • v2.0</span></div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">Peninsula Base, Lakes &amp; Blender Trees (v2.0)</h3>
+            <p class="shot-desc">Full Bay South landform with Marina Reservoir waters, travertine walkways, and instanced Blender trees.</p>
+            <div class="shot-meta"><span>Step 3: Terrain</span><span>v2.0 Build</span></div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2">
+          <div class="shot-img-wrap" data-lightbox="assets/progress/m2_terrain_angle04_dragonfly_lake_v2.png" data-caption="Step 3 (v2.0) • Dragonfly Lake & Waterfront">
+            <img src="assets/progress/m2_terrain_angle04_dragonfly_lake_v2.png" alt="Step 3 Dragonfly Lake v2" loading="lazy" />
+            <div class="shot-badges-overlay"><span class="angle-tag">🎥 Cam 04 • Dragonfly Lake</span><span class="ver-tag v2">Step 3 • v2.0</span></div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">Dragonfly Lake &amp; Waterfront Promenade (v2.0)</h3>
+            <p class="shot-desc">Western shoreline showing the Dragonfly Bridge crossing, water lily pads, and Royal Palm rows.</p>
+            <div class="shot-meta"><span>Step 3: Terrain</span><span>v2.0 Build</span></div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2">
+          <div class="shot-img-wrap" data-lightbox="assets/progress/m2_terrain_angle06_wetlands_v2.png" data-caption="Step 3 (v2.0) • Kingfisher Wetlands & Lotus Ponds">
+            <img src="assets/progress/m2_terrain_angle06_wetlands_v2.png" alt="Step 3 Kingfisher Wetlands v2" loading="lazy" />
+            <div class="shot-badges-overlay"><span class="angle-tag">🎥 Cam 06 • Kingfisher Wetlands</span><span class="ver-tag v2">Step 3 • v2.0</span></div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">Kingfisher Wetlands &amp; Lotus Ponds (v2.0)</h3>
+            <p class="shot-desc">Southern wetland ponds populated with Bougainvillea, Rain Trees, and Bottle Baobabs.</p>
+            <div class="shot-meta"><span>Step 3: Terrain</span><span>v2.0 Build</span></div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v1">
+          <div class="shot-img-wrap" data-lightbox="assets/progress/m2_terrain_angle01_overview_v1.png" data-caption="Step 3 (v1.0) • Early Procedural Terrain Pass">
+            <img src="assets/progress/m2_terrain_angle01_overview_v1.png" alt="Step 3 Peninsula Overview v1" loading="lazy" />
+            <div class="shot-badges-overlay"><span class="angle-tag">🎥 Cam 01 • Peninsula Overview</span><span class="ver-tag">Step 3 • v1.0</span></div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">Early Peninsula Terrain Pass (v1.0)</h3>
+            <p class="shot-desc">Initial terrain geometry and procedural placeholder trees prior to Blender `.GLB` foliage upgrades.</p>
+            <div class="shot-meta"><span>Step 3: Terrain</span><span>v1.0 Prototype</span></div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v1">
+          <div class="shot-img-wrap" data-lightbox="assets/progress/m2_terrain_angle04_dragonfly_lake_v1.png" data-caption="Step 3 (v1.0) • Early Dragonfly Lake Basin">
+            <img src="assets/progress/m2_terrain_angle04_dragonfly_lake_v1.png" alt="Step 3 Dragonfly Lake v1" loading="lazy" />
+            <div class="shot-badges-overlay"><span class="angle-tag">🎥 Cam 04 • Dragonfly Lake</span><span class="ver-tag">Step 3 • v1.0</span></div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">Early Dragonfly Lake Basin (v1.0)</h3>
+            <p class="shot-desc">First shoreline carve and bridge placement test along the western waterfront.</p>
+            <div class="shot-meta"><span>Step 3: Terrain</span><span>v1.0 Prototype</span></div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v1">
+          <div class="shot-img-wrap" data-lightbox="assets/progress/m2_terrain_angle06_wetlands_v1.png" data-caption="Step 3 (v1.0) • Early Wetlands Channels">
+            <img src="assets/progress/m2_terrain_angle06_wetlands_v1.png" alt="Step 3 Wetlands v1" loading="lazy" />
+            <div class="shot-badges-overlay"><span class="angle-tag">🎥 Cam 06 • Kingfisher Wetlands</span><span class="ver-tag">Step 3 • v1.0</span></div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">Early Wetlands Channels (v1.0)</h3>
+            <p class="shot-desc">First water shader and boardwalk layout test in the southern garden zone.</p>
+            <div class="shot-meta"><span>Step 3: Terrain</span><span>v1.0 Prototype</span></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ================================================================== -->
+    <!-- STEP 4: ICONIC LANDMARKS, SUPERTREES & SCULPTURES                  -->
+    <!-- ================================================================== -->
+    <section class="milestone-section" data-section="m3">
+      <div class="milestone-header">
+        <h2>
+          Step 4 — Iconic Landmarks, 18 Supertrees &amp; Sculptures
+          <span class="m-badge">12 Live 3D Captures</span>
+        </h2>
+        <p>With the terrain ready, we placed all 18 Supertrees, the suspended OCBC Skyway, Flower Dome, Cloud Forest, pavilions, and 9 park sculptures.</p>
+      </div>
+
+      <div class="cards-grid">
+        <article class="shot-card" data-ver="v2">
+          <div class="shot-img-wrap" data-lightbox="assets/progress/m3_landmarks_angle01_overview_v2.png" data-caption="Step 4 (v2.0) • Full Park Architectural Assembly">
+            <img src="assets/progress/m3_landmarks_angle01_overview_v2.png" alt="Step 4 Landmarks Overview v2" loading="lazy" />
+            <div class="shot-badges-overlay"><span class="angle-tag">🎥 Cam 01 • Full Park Overview</span><span class="ver-tag v2">Step 4 • v2.0</span></div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">Full Park Landmarks Assembly (v2.0)</h3>
+            <p class="shot-desc">Complete placement of all 18 Supertrees, twin glass conservatories, pavilions, and zone labels.</p>
+            <div class="shot-meta"><span>Step 4: Landmarks</span><span>v2.0 Build</span></div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2">
+          <div class="shot-img-wrap" data-lightbox="assets/progress/m3_landmarks_angle02_supertree_grove_v2.png" data-caption="Step 4 (v2.0) • Supertree Grove & OCBC Skyway">
+            <img src="assets/progress/m3_landmarks_angle02_supertree_grove_v2.png" alt="Step 4 Supertree Grove v2" loading="lazy" />
+            <div class="shot-badges-overlay"><span class="angle-tag">🎥 Cam 02 • Supertree Grove</span><span class="ver-tag v2">Step 4 • v2.0</span></div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">Supertree Grove &amp; OCBC Skyway (v2.0)</h3>
+            <p class="shot-desc">Close-up of the 12 central Supertrees linked by the 22m-high suspended OCBC Skyway walkway.</p>
+            <div class="shot-meta"><span>Step 4: Landmarks</span><span>v2.0 Build</span></div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2">
+          <div class="shot-img-wrap" data-lightbox="assets/progress/m3_landmarks_angle03_conservatories_v2.png" data-caption="Step 4 (v2.0) • Flower Dome & Cloud Forest">
+            <img src="assets/progress/m3_landmarks_angle03_conservatories_v2.png" alt="Step 4 Conservatory Domes v2" loading="lazy" />
+            <div class="shot-badges-overlay"><span class="angle-tag">🎥 Cam 03 • Twin Glass Domes</span><span class="ver-tag v2">Step 4 • v2.0</span></div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">Flower Dome &amp; Cloud Forest Plaza (v2.0)</h3>
+            <p class="shot-desc">Waterfront view of the gridshell glass domes with indoor Cloud Mountain and waterfall mist.</p>
+            <div class="shot-meta"><span>Step 4: Landmarks</span><span>v2.0 Build</span></div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2">
+          <div class="shot-img-wrap" data-lightbox="assets/progress/m3_landmarks_angle04_dragonfly_bridge_v2.png" data-caption="Step 4 (v2.0) • Dragonfly Bridge & Kinetic Sculpture">
+            <img src="assets/progress/m3_landmarks_angle04_dragonfly_bridge_v2.png" alt="Step 4 Dragonfly Bridge v2" loading="lazy" />
+            <div class="shot-badges-overlay"><span class="angle-tag">🎥 Cam 04 • Dragonfly Lake</span><span class="ver-tag v2">Step 4 • v2.0</span></div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">Dragonfly Lake Bridge &amp; Sculpture (v2.0)</h3>
+            <p class="shot-desc">Main pedestrian bridge entrance flanked by the giant Dragonfly sculpture and Floral Clock.</p>
+            <div class="shot-meta"><span>Step 4: Landmarks</span><span>v2.0 Build</span></div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2">
+          <div class="shot-img-wrap" data-lightbox="assets/progress/m3_landmarks_angle05_meadow_planet_baby_v2.png" data-caption="Step 4 (v2.0) • 'Planet' Baby & The Canyon">
+            <img src="assets/progress/m3_landmarks_angle05_meadow_planet_baby_v2.png" alt="Step 4 Planet Baby v2" loading="lazy" />
+            <div class="shot-badges-overlay"><span class="angle-tag">🎥 Cam 05 • "Planet" &amp; Canyon</span><span class="ver-tag v2">Step 4 • v2.0</span></div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">"Planet" Giant Baby &amp; The Canyon (v2.0)</h3>
+            <p class="shot-desc">Meadow view showcasing the floating white-bronze baby sculpture, Canyon rocks, and Sun Pavilion.</p>
+            <div class="shot-meta"><span>Step 4: Landmarks</span><span>v2.0 Build</span></div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2">
+          <div class="shot-img-wrap" data-lightbox="assets/progress/m3_landmarks_angle06_wetlands_serene_v2.png" data-caption="Step 4 (v2.0) • Kingfisher Wetlands & Floral Fantasy">
+            <img src="assets/progress/m3_landmarks_angle06_wetlands_serene_v2.png" alt="Step 4 Wetlands Landmarks v2" loading="lazy" />
+            <div class="shot-badges-overlay"><span class="angle-tag">🎥 Cam 06 • Wetlands &amp; Pavilions</span><span class="ver-tag v2">Step 4 • v2.0</span></div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">Kingfisher Wetlands &amp; Floral Fantasy (v2.0)</h3>
+            <p class="shot-desc">Southern garden view featuring the Kingfisher bird totem, Moongate arch, and Floral Fantasy pavilion.</p>
+            <div class="shot-meta"><span>Step 4: Landmarks</span><span>v2.0 Build</span></div>
+          </div>
+        </article>
+
+        <!-- v1.0 Comparisons -->
+        <article class="shot-card" data-ver="v1">
+          <div class="shot-img-wrap" data-lightbox="assets/progress/m3_landmarks_angle01_overview_v1.png" data-caption="Step 4 (v1.0) • Early Landmarks Blockout">
+            <img src="assets/progress/m3_landmarks_angle01_overview_v1.png" alt="Step 4 Overview v1" loading="lazy" />
+            <div class="shot-badges-overlay"><span class="angle-tag">🎥 Cam 01 • Park Overview</span><span class="ver-tag">Step 4 • v1.0</span></div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">Early Landmarks Blockout (v1.0)</h3>
+            <p class="shot-desc">First landmark placement test before adding IBL lighting and Post-FX bloom.</p>
+            <div class="shot-meta"><span>Step 4: Landmarks</span><span>v1.0 Prototype</span></div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v1">
+          <div class="shot-img-wrap" data-lightbox="assets/progress/m3_landmarks_angle02_supertree_grove_v1.png" data-caption="Step 4 (v1.0) • Early Supertree Grove">
+            <img src="assets/progress/m3_landmarks_angle02_supertree_grove_v1.png" alt="Step 4 Supertree Grove v1" loading="lazy" />
+            <div class="shot-badges-overlay"><span class="angle-tag">🎥 Cam 02 • Supertree Grove</span><span class="ver-tag">Step 4 • v1.0</span></div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">Early Supertree Grove Pass (v1.0)</h3>
+            <p class="shot-desc">Initial Supertree ring and Skyway catwalk alignment check.</p>
+            <div class="shot-meta"><span>Step 4: Landmarks</span><span>v1.0 Prototype</span></div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v1">
+          <div class="shot-img-wrap" data-lightbox="assets/progress/m3_landmarks_angle03_conservatories_v1.png" data-caption="Step 4 (v1.0) • Early Glass Domes">
+            <img src="assets/progress/m3_landmarks_angle03_conservatories_v1.png" alt="Step 4 Glass Domes v1" loading="lazy" />
+            <div class="shot-badges-overlay"><span class="angle-tag">🎥 Cam 03 • Twin Glass Domes</span><span class="ver-tag">Step 4 • v1.0</span></div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">Early Glass Domes Shader Test (v1.0)</h3>
+            <p class="shot-desc">First transparency and gridshell arch test on Flower Dome and Cloud Forest.</p>
+            <div class="shot-meta"><span>Step 4: Landmarks</span><span>v1.0 Prototype</span></div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v1">
+          <div class="shot-img-wrap" data-lightbox="assets/progress/m3_landmarks_angle04_dragonfly_bridge_v1.png" data-caption="Step 4 (v1.0) • Early Dragonfly Bridge">
+            <img src="assets/progress/m3_landmarks_angle04_dragonfly_bridge_v1.png" alt="Step 4 Dragonfly Bridge v1" loading="lazy" />
+            <div class="shot-badges-overlay"><span class="angle-tag">🎥 Cam 04 • Dragonfly Bridge</span><span class="ver-tag">Step 4 • v1.0</span></div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">Early Dragonfly Bridge Pass (v1.0)</h3>
+            <p class="shot-desc">First placement of the western entry bridge and lakeside sculptures.</p>
+            <div class="shot-meta"><span>Step 4: Landmarks</span><span>v1.0 Prototype</span></div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v1">
+          <div class="shot-img-wrap" data-lightbox="assets/progress/m3_landmarks_angle05_meadow_planet_baby_v1.png" data-caption="Step 4 (v1.0) • Early Planet Baby Meadow">
+            <img src="assets/progress/m3_landmarks_angle05_meadow_planet_baby_v1.png" alt="Step 4 Planet Baby v1" loading="lazy" />
+            <div class="shot-badges-overlay"><span class="angle-tag">🎥 Cam 05 • "Planet" Meadow</span><span class="ver-tag">Step 4 • v1.0</span></div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">Early "Planet" Sculpture Meadow (v1.0)</h3>
+            <p class="shot-desc">Initial scale and sightline check for the Giant Baby sculpture and Canyon monoliths.</p>
+            <div class="shot-meta"><span>Step 4: Landmarks</span><span>v1.0 Prototype</span></div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v1">
+          <div class="shot-img-wrap" data-lightbox="assets/progress/m3_landmarks_angle06_wetlands_serene_v1.png" data-caption="Step 4 (v1.0) • Early Wetlands Landmarks">
+            <img src="assets/progress/m3_landmarks_angle06_wetlands_serene_v1.png" alt="Step 4 Wetlands v1" loading="lazy" />
+            <div class="shot-badges-overlay"><span class="angle-tag">🎥 Cam 06 • Wetlands Landmarks</span><span class="ver-tag">Step 4 • v1.0</span></div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">Early Wetlands Landmarks Pass (v1.0)</h3>
+            <p class="shot-desc">Initial layout of the southern wetlands totems and pavilions.</p>
+            <div class="shot-meta"><span>Step 4: Landmarks</span><span>v1.0 Prototype</span></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ================================================================== -->
+    <!-- STEP 5: CHIBI EXPLORERS, AI BOTS & 42 BOTANICAL RELICS             -->
+    <!-- ================================================================== -->
+    <section class="milestone-section" data-section="m4">
+      <div class="milestone-header">
+        <h2>
+          Step 5 — Chibi Explorers, AI Rivals &amp; 42 Botanical Relics
+          <span class="m-badge">8 Live 3D Captures</span>
+        </h2>
+        <p>We then populated the park with 42 glowing botanical relics on stone pedestals and brought the 4 Chibi explorers to life with walk/run cycles and AI pathfinding.</p>
+      </div>
+
+      <div class="cards-grid">
+        <article class="shot-card" data-ver="v2">
+          <div class="shot-img-wrap" data-lightbox="assets/progress/m4_characters_angle02_supertree_chase_v2.png" data-caption="Step 5 (v2.0) • 4 Explorers & Pedestal Relics in Supertree Grove">
+            <img src="assets/progress/m4_characters_angle02_supertree_chase_v2.png" alt="Step 5 Supertree Chase v2" loading="lazy" />
+            <div class="shot-badges-overlay"><span class="angle-tag">🎥 Cam 02 • Supertree Grove Hunt</span><span class="ver-tag v2">Step 5 • v2.0</span></div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">Supertree Grove Relic Hunt (v2.0)</h3>
+            <p class="shot-desc">Explorers hunting glowing botanical relics mounted on stone pedestals beneath the Supertrees.</p>
+            <div class="shot-meta"><span>Step 5: Explorers &amp; Relics</span><span>v2.0 Build</span></div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2">
+          <div class="shot-img-wrap" data-lightbox="assets/progress/m4_characters_angle05_planet_baby_chase_v2.png" data-caption="Step 5 (v2.0) • Relic Discovery Around 'Planet' Baby">
+            <img src="assets/progress/m4_characters_angle05_planet_baby_chase_v2.png" alt="Step 5 Planet Baby Hunt v2" loading="lazy" />
+            <div class="shot-badges-overlay"><span class="angle-tag">🎥 Cam 05 • Meadow Relic Hunt</span><span class="ver-tag v2">Step 5 • v2.0</span></div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">Meadow Relic Hunt Near "Planet" (v2.0)</h3>
+            <p class="shot-desc">Floating nameplates, rarity halos, and spinning 3D botanical relics across the central lawn.</p>
+            <div class="shot-meta"><span>Step 5: Explorers &amp; Relics</span><span>v2.0 Build</span></div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2">
+          <div class="shot-img-wrap" data-lightbox="assets/progress/m4_characters_angle08_4p_race_action_v2.png" data-caption="Step 5 (v2.0) • 4-Player Action Close-Up">
+            <img src="assets/progress/m4_characters_angle08_4p_race_action_v2.png" alt="Step 5 4P Race Action v2" loading="lazy" />
+            <div class="shot-badges-overlay"><span class="angle-tag">🎥 Cam 08 • 4-Player Race Action</span><span class="ver-tag v2">Step 5 • v2.0</span></div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">4-Player Chibi Explorer Race (v2.0)</h3>
+            <p class="shot-desc">Mid-ground view of YOU, Bot Kai, Bot Mei, and Bot Raj racing between relic beacons.</p>
+            <div class="shot-meta"><span>Step 5: Explorers &amp; Relics</span><span>v2.0 Build</span></div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2">
+          <div class="shot-img-wrap" data-lightbox="assets/progress/m4_characters_angle07_night_rhapsody_v2.png" data-caption="Step 5 (v2.0) • Night Garden Rhapsody Light Show">
+            <img src="assets/progress/m4_characters_angle07_night_rhapsody_v2.png" alt="Step 5 Night Rhapsody v2" loading="lazy" />
+            <div class="shot-badges-overlay"><span class="angle-tag">🎥 Cam 07 • Night Rhapsody Show</span><span class="ver-tag v2">Step 5 • v2.0</span></div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">Garden Rhapsody Night Mode (v2.0)</h3>
+            <p class="shot-desc">Nocturnal lighting preset with Post-FX bloom illuminating the Supertree crowns and relic beacons.</p>
+            <div class="shot-meta"><span>Step 5: Explorers &amp; Relics</span><span>v2.0 Build</span></div>
+          </div>
+        </article>
+
+        <!-- v1.0 Comparisons -->
+        <article class="shot-card" data-ver="v1">
+          <div class="shot-img-wrap" data-lightbox="assets/progress/m4_characters_angle02_supertree_chase_v1.png" data-caption="Step 5 (v1.0) • Early Supertree Relic Spawn Test">
+            <img src="assets/progress/m4_characters_angle02_supertree_chase_v1.png" alt="Step 5 Supertree Chase v1" loading="lazy" />
+            <div class="shot-badges-overlay"><span class="angle-tag">🎥 Cam 02 • Supertree Hunt</span><span class="ver-tag">Step 5 • v1.0</span></div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">Early Supertree Relic Spawns (v1.0)</h3>
+            <p class="shot-desc">First test of 42 relic coordinates and character labels in the central grove.</p>
+            <div class="shot-meta"><span>Step 5: Explorers &amp; Relics</span><span>v1.0 Prototype</span></div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v1">
+          <div class="shot-img-wrap" data-lightbox="assets/progress/m4_characters_angle05_planet_baby_chase_v1.png" data-caption="Step 5 (v1.0) • Early Meadow Relic Test">
+            <img src="assets/progress/m4_characters_angle05_planet_baby_chase_v1.png" alt="Step 5 Planet Baby Hunt v1" loading="lazy" />
+            <div class="shot-badges-overlay"><span class="angle-tag">🎥 Cam 05 • Meadow Relic Hunt</span><span class="ver-tag">Step 5 • v1.0</span></div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">Early Meadow Relic Spawns (v1.0)</h3>
+            <p class="shot-desc">Initial pedestal placement and bot navigation test around the central lawn.</p>
+            <div class="shot-meta"><span>Step 5: Explorers &amp; Relics</span><span>v1.0 Prototype</span></div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v1">
+          <div class="shot-img-wrap" data-lightbox="assets/progress/m4_characters_angle08_4p_race_action_v1.png" data-caption="Step 5 (v1.0) • Early 4-Player AI Movement">
+            <img src="assets/progress/m4_characters_angle08_4p_race_action_v1.png" alt="Step 5 4P Race v1" loading="lazy" />
+            <div class="shot-badges-overlay"><span class="angle-tag">🎥 Cam 08 • 4P Race Action</span><span class="ver-tag">Step 5 • v1.0</span></div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">Early 4-Player AI Movement (v1.0)</h3>
+            <p class="shot-desc">First 4-character race test prior to v2.0 Chibi Safari model upgrades.</p>
+            <div class="shot-meta"><span>Step 5: Explorers &amp; Relics</span><span>v1.0 Prototype</span></div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v1">
+          <div class="shot-img-wrap" data-lightbox="assets/progress/m4_characters_angle07_night_rhapsody_v1.png" data-caption="Step 5 (v1.0) • Early Night Lighting Pass">
+            <img src="assets/progress/m4_characters_angle07_night_rhapsody_v1.png" alt="Step 5 Night Rhapsody v1" loading="lazy" />
+            <div class="shot-badges-overlay"><span class="angle-tag">🎥 Cam 07 • Night Rhapsody</span><span class="ver-tag">Step 5 • v1.0</span></div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">Early Night Lighting Pass (v1.0)</h3>
+            <p class="shot-desc">First nocturnal emissive pass before adding UnrealBloom post-processing.</p>
+            <div class="shot-meta"><span>Step 5: Explorers &amp; Relics</span><span>v1.0 Prototype</span></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ================================================================== -->
+    <!-- STEP 6: GAME UI OVERLAYS & REAL-TIME LOOKDEV STUDIO                -->
+    <!-- ================================================================== -->
+    <section class="milestone-section" data-section="m5">
+      <div class="milestone-header">
+        <h2>
+          Step 6 — Interactive Game UI &amp; Real-Time LookDev Studio
+          <span class="m-badge">10 Live Captures</span>
+        </h2>
+        <p>Next, we built all interactive HTML/CSS screens (Title, Mode Setup, 42-Relic Encyclopedia, Full-Park Map) and an on-screen LookDev Studio for live lighting and camera tuning.</p>
+      </div>
+
+      <div class="cards-grid">
+        <article class="shot-card" data-ver="v2">
+          <div class="shot-img-wrap" data-lightbox="assets/progress/m5_full_lookdev_studio_overview_v2.png" data-caption="Step 6 (v2.0) • On-Screen LookDev Control Panel">
+            <img src="assets/progress/m5_full_lookdev_studio_overview_v2.png" alt="Step 6 LookDev Studio v2" loading="lazy" />
+            <div class="shot-badges-overlay"><span class="angle-tag">🎛️ LookDev Studio Panel</span><span class="ver-tag v2">Step 6 • v2.0</span></div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">On-Screen LookDev Control Panel (v2.0)</h3>
+            <p class="shot-desc">Live sliders for Sun angle, Exposure, IBL Environment, Post-FX Bloom, Water Shimmer, and JSON preset export.</p>
+            <div class="shot-meta"><span>Step 6: UI &amp; LookDev</span><span>LookDev Panel</span></div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2">
+          <div class="shot-img-wrap" data-lightbox="assets/progress/m5_full_screen01_title_v2.png" data-caption="Step 6 (v2.0) • Live 3D Title Screen">
+            <img src="assets/progress/m5_full_screen01_title_v2.png" alt="Step 6 Title Screen v2" loading="lazy" />
+            <div class="shot-badges-overlay"><span class="angle-tag">🖥️ Screen 01 • Title Screen</span><span class="ver-tag v2">Step 6 • v2.0</span></div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">Live 3D Title Screen Overlay (v2.0)</h3>
+            <p class="shot-desc">Title banner rendered over the live 3D park with instant launch into Timed Race or Relaxed Solo mode.</p>
+            <div class="shot-meta"><span>Step 6: UI &amp; LookDev</span><span>Screen 01</span></div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2">
+          <div class="shot-img-wrap" data-lightbox="assets/progress/m5_full_screen02_setup_v2.png" data-caption="Step 6 (v2.0) • Mode & Explorer Setup">
+            <img src="assets/progress/m5_full_screen02_setup_v2.png" alt="Step 6 Setup Screen v2" loading="lazy" />
+            <div class="shot-badges-overlay"><span class="angle-tag">🖥️ Screen 02 • Mode &amp; Roster</span><span class="ver-tag v2">Step 6 • v2.0</span></div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">Mode Selection &amp; 4-Explorer Roster (v2.0)</h3>
+            <p class="shot-desc">Interactive setup screen comparing Timed Race vs. Solo Mode and introducing the 3 AI bot rivals.</p>
+            <div class="shot-meta"><span>Step 6: UI &amp; LookDev</span><span>Screen 02</span></div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2">
+          <div class="shot-img-wrap" data-lightbox="assets/progress/m5_full_screen10_encyclopedia_v2.png" data-caption="Step 6 (v2.0) • 42-Relic Botanical Encyclopedia">
+            <img src="assets/progress/m5_full_screen10_encyclopedia_v2.png" alt="Step 6 Encyclopedia Screen v2" loading="lazy" />
+            <div class="shot-badges-overlay"><span class="angle-tag">🖥️ Screen 10 • 42-Relic Catalog</span><span class="ver-tag v2">Step 6 • v2.0</span></div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">42-Relic Botanical Encyclopedia (v2.0)</h3>
+            <p class="shot-desc">Interactive collection catalog with real botanical facts, rarity badges, and click-to-teleport navigation.</p>
+            <div class="shot-meta"><span>Step 6: UI &amp; LookDev</span><span>Screen 10</span></div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2">
+          <div class="shot-img-wrap" data-lightbox="assets/progress/m5_full_screen11_tactical_map_v2.png" data-caption="Step 6 (v2.0) • Full-Park Tactical Map">
+            <img src="assets/progress/m5_full_screen11_tactical_map_v2.png" alt="Step 6 Tactical Map v2" loading="lazy" />
+            <div class="shot-badges-overlay"><span class="angle-tag">🖥️ Screen 11 • Full-Map Tracker</span><span class="ver-tag v2">Step 6 • v2.0</span></div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">Full-Park Treasure &amp; Player Map (v2.0)</h3>
+            <p class="shot-desc">2D tactical radar plotting all 42 relics, live player/bot positions, and click-to-teleport waypoints.</p>
+            <div class="shot-meta"><span>Step 6: UI &amp; LookDev</span><span>Screen 11</span></div>
+          </div>
+        </article>
+
+        <!-- v1.0 Comparisons -->
+        <article class="shot-card" data-ver="v1">
+          <div class="shot-img-wrap" data-lightbox="assets/progress/m5_full_lookdev_studio_overview_v1.png" data-caption="Step 6 (v1.0) • Early LookDev Panel">
+            <img src="assets/progress/m5_full_lookdev_studio_overview_v1.png" alt="Step 6 LookDev v1" loading="lazy" />
+            <div class="shot-badges-overlay"><span class="angle-tag">🎛️ LookDev Panel</span><span class="ver-tag">Step 6 • v1.0</span></div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">Early LookDev Control Panel (v1.0)</h3>
+            <p class="shot-desc">First lighting and camera tuning panel prior to adding Bloom and IBL sliders.</p>
+            <div class="shot-meta"><span>Step 6: UI &amp; LookDev</span><span>v1.0 Prototype</span></div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v1">
+          <div class="shot-img-wrap" data-lightbox="assets/progress/m5_full_screen01_title_v1.png" data-caption="Step 6 (v1.0) • Early Title Screen">
+            <img src="assets/progress/m5_full_screen01_title_v1.png" alt="Step 6 Title v1" loading="lazy" />
+            <div class="shot-badges-overlay"><span class="angle-tag">🖥️ Screen 01 • Title</span><span class="ver-tag">Step 6 • v1.0</span></div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">Early Title Screen Overlay (v1.0)</h3>
+            <p class="shot-desc">Initial title modal over the v1.0 3D scene.</p>
+            <div class="shot-meta"><span>Step 6: UI &amp; LookDev</span><span>v1.0 Prototype</span></div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v1">
+          <div class="shot-img-wrap" data-lightbox="assets/progress/m5_full_screen02_setup_v1.png" data-caption="Step 6 (v1.0) • Early Mode Setup">
+            <img src="assets/progress/m5_full_screen02_setup_v1.png" alt="Step 6 Setup v1" loading="lazy" />
+            <div class="shot-badges-overlay"><span class="angle-tag">🖥️ Screen 02 • Setup</span><span class="ver-tag">Step 6 • v1.0</span></div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">Early Mode Setup Screen (v1.0)</h3>
+            <p class="shot-desc">Initial mode cards and competitor roster layout.</p>
+            <div class="shot-meta"><span>Step 6: UI &amp; LookDev</span><span>v1.0 Prototype</span></div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v1">
+          <div class="shot-img-wrap" data-lightbox="assets/progress/m5_full_screen10_encyclopedia_v1.png" data-caption="Step 6 (v1.0) • Early Encyclopedia">
+            <img src="assets/progress/m5_full_screen10_encyclopedia_v1.png" alt="Step 6 Encyclopedia v1" loading="lazy" />
+            <div class="shot-badges-overlay"><span class="angle-tag">🖥️ Screen 10 • Catalog</span><span class="ver-tag">Step 6 • v1.0</span></div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">Early 42-Relic Encyclopedia (v1.0)</h3>
+            <p class="shot-desc">First pass of the botanical relic grid and leaderboard table.</p>
+            <div class="shot-meta"><span>Step 6: UI &amp; LookDev</span><span>v1.0 Prototype</span></div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v1">
+          <div class="shot-img-wrap" data-lightbox="assets/progress/m5_full_screen11_tactical_map_v1.png" data-caption="Step 6 (v1.0) • Early Tactical Map">
+            <img src="assets/progress/m5_full_screen11_tactical_map_v1.png" alt="Step 6 Tactical Map v1" loading="lazy" />
+            <div class="shot-badges-overlay"><span class="angle-tag">🖥️ Screen 11 • Map</span><span class="ver-tag">Step 6 • v1.0</span></div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">Early Tactical Map Modal (v1.0)</h3>
+            <p class="shot-desc">First 2D canvas map plotting relic pins and explorer coordinates.</p>
+            <div class="shot-meta"><span>Step 6: UI &amp; LookDev</span><span>v1.0 Prototype</span></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ================================================================== -->
+    <!-- STEP 7: GAMEPLAY POLISH, RADAR MAP, FAIR AI & END-GAME FINALE      -->
+    <!-- ================================================================== -->
+    <section class="milestone-section" data-section="m6" data-default-open="true">
+      <div class="milestone-header">
+        <h2>
+          Step 7 — Gameplay Polish, Map Radar, Balanced AI &amp; End-Game Finale
+          <span class="m-badge">v2.1 • Final Polish</span>
+        </h2>
+        <p>Finally, we tuned the game for fun and fairness — making treasures clearly visible on the map and in 3D, slowing down the AI bots, adding sprint/combo mechanics, and building a 360° jump + fireworks finale.</p>
+      </div>
+
+      <div class="cards-grid">
+        <article class="shot-card" data-ver="v2">
+          <div class="shot-img-wrap" data-lightbox="assets/progress/m5_full_screen11_tactical_map_v2.png" data-caption="Step 7 (v2.1) • High-Visibility Map Radar & 3D Sky Beams">
+            <img src="assets/progress/m5_full_screen11_tactical_map_v2.png" alt="Step 7 Map Radar and Sky Beams" loading="lazy" />
+            <div class="shot-badges-overlay"><span class="angle-tag">🗺️ Map Radar &amp; 3D Sky Beams</span><span class="ver-tag v21">Step 7 • v2.1</span></div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">1. Clear Treasure Radar &amp; 28m Sky Beams</h3>
+            <p class="shot-desc">Added pulsing golden diamond pins, a dashed guidance line to your nearest relic on the map, and 28m-tall light pillars in 3D so treasures are easy to spot behind trees.</p>
+            <div class="shot-meta"><span>Map &amp; 3D Visibility</span><span>Key: M / Mini-Radar</span></div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2">
+          <div class="shot-img-wrap" data-lightbox="assets/progress/m4_characters_angle08_4p_race_action_v2.png" data-caption="Step 7 (v2.1) • Balanced AI Bot Pacing & Fair Rules">
+            <img src="assets/progress/m4_characters_angle08_4p_race_action_v2.png" alt="Step 7 Balanced AI Bots" loading="lazy" />
+            <div class="shot-badges-overlay"><span class="angle-tag">🤖 Fair AI Pacing (~50% Slower)</span><span class="ver-tag v21">Step 7 • v2.1</span></div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">2. Balanced AI Bots &amp; Player Protection</h3>
+            <p class="shot-desc">Reduced AI bot speeds by ~50%, added 3.5s–5.2s sightseeing pauses between pickups, and prevented bots from stealing any relic within 28m of you.</p>
+            <div class="shot-meta"><span>CharacterAndBotBuilder.js</span><span>Fair AI Rules</span></div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2">
+          <div class="shot-img-wrap" data-lightbox="assets/progress/m4_characters_angle02_supertree_chase_v2.png" data-caption="Step 7 (v2.1) • 3D Compass Arrow, Shift Sprint & Combo Multiplier">
+            <img src="assets/progress/m4_characters_angle02_supertree_chase_v2.png" alt="Step 7 Compass Sprint and Combos" loading="lazy" />
+            <div class="shot-badges-overlay"><span class="angle-tag">⚡ Compass, Sprint &amp; Combos</span><span class="ver-tag v21">Step 7 • v2.1</span></div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">3. 3D Compass Ring, Sprint &amp; Streak Combos</h3>
+            <p class="shot-desc">Added a golden 3D pointer arrow at your feet, `Shift` / `⚡ Sprint` dash (1.65× speed), and 1.5×–3.0× score multipliers for fast consecutive finds.</p>
+            <div class="shot-meta"><span>main3d.js</span><span>Shift Sprint + Combos</span></div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2">
+          <div class="shot-img-wrap" data-lightbox="assets/progress/m4_characters_angle05_planet_baby_chase_v2.png" data-caption="Step 7 (v2.1) • End-Game 360° Celebration Jump & Fireworks">
+            <img src="assets/progress/m4_characters_angle05_planet_baby_chase_v2.png" alt="Step 7 End Game Jump and Fireworks" loading="lazy" />
+            <div class="shot-badges-overlay"><span class="angle-tag">🎆 360° Victory Jump &amp; Fireworks</span><span class="ver-tag v21">Step 7 • v2.1</span></div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">4. End-Game 360° Jump &amp; 3D Fireworks Finale</h3>
+            <p class="shot-desc">When Time's Up (`00:00`) or all 42 relics are found, all 4 explorers gather to perform synchronized 360° cheering flips under multi-burst 3D fireworks.</p>
+            <div class="shot-meta"><span>triggerEndGameFinale()</span><span>4.2s 3D Cutscene</span></div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2">
+          <div class="shot-img-wrap" data-lightbox="assets/screens/screen_09_4player_aibot_timed_race.png" data-caption="Step 7 (v2.1) • Cinematic Orbit Camera, Banner & Podium">
+            <img src="assets/screens/screen_09_4player_aibot_timed_race.png" alt="Step 7 Victory Podium" loading="lazy" />
+            <div class="shot-badges-overlay"><span class="angle-tag">🏆 Finale Banner &amp; Podium</span><span class="ver-tag v21">Step 7 • v2.1</span></div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">5. Orbit Camera, Fanfare &amp; Podium Reveal</h3>
+            <p class="shot-desc">During the finale, the camera smoothly orbits the celebrating explorers with a celebratory banner and synthesized arpeggio fanfare before opening the Victory Podium.</p>
+            <div class="shot-meta"><span>index.html + styles.css</span><span>End-Game Flow</span></div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2">
+          <div class="shot-img-wrap" data-lightbox="assets/progress/m5_full_lookdev_studio_overview_v2.png" data-caption="Step 7 (v2.1) • Instant '🎉 End Finale' Test Button">
+            <img src="assets/progress/m5_full_lookdev_studio_overview_v2.png" alt="Step 7 End Finale Button" loading="lazy" />
+            <div class="shot-badges-overlay"><span class="angle-tag">🎉 1-Click Finale Trigger</span><span class="ver-tag v21">Step 7 • v2.1</span></div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">6. One-Click "🎉 End Finale" Preview Button</h3>
+            <p class="shot-desc">Added a `🎉 End Finale` button in the top HUD bar so anyone testing or showcasing the game can trigger the 360° jump and fireworks cutscene at any time.</p>
+            <div class="shot-meta"><span>Top HUD Bar</span><span>#triggerFinaleTestBtn</span></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ================================================================== -->
+    <!-- STEP 8: REAL OFFICIAL VISITOR MAP BOOMERANG GEOMETRY & ROAD CLEAR  -->
+    <!-- ================================================================== -->
+    <section class="milestone-section" data-section="m7" data-default-open="true">
+      <div class="milestone-header">
+        <h2>
+          Step 8 — Real Official Visitor Map Boomerang Alignment &amp; Road Clearance
+          <span class="m-badge">v2.2 • Map &amp; Spatial Alignment</span>
+        </h2>
+        <p>Upgraded the park peninsula from an oval to the true asymmetrical boomerang curve based on the official Gardens by the Bay visitor map (`GB-Map-15-02-2026.jpg`). Calibrated Marina Gardens Drive, the Twin Conservatories, Dragonfly Lake, and cleared structures and trees from the boulevard.</p>
+      </div>
+
+      <div class="cards-grid">
+        <article class="shot-card" data-ver="v2">
+          <div class="shot-img-wrap" data-lightbox="assets/progress/updated_boomerang_map_2d_verification.png" data-caption="Step 8 (v2.2) • Boomerang Map 2D Top-Down Verification with Road Clearance">
+            <img src="assets/progress/updated_boomerang_map_2d_verification.png" alt="Step 8 Boomerang Map 2D Top-Down Verification" loading="lazy" />
+            <div class="shot-badges-overlay"><span class="angle-tag">🗺️ Official Boomerang Map Verification</span><span class="ver-tag v21">Step 8 • v2.2</span></div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">1. Real Boomerang Shape &amp; 2D Vector Calibration</h3>
+            <p class="shot-desc">Rebuilt the park boundary (`BOOMERANG_ISLAND_POLYGON`) and lake shorelines matching the official visitor map at 1:1 scale (Supertree Grove at `(0,0)`), replacing the circular layout with the authentic south-curved peninsula.</p>
+            <div class="shot-meta"><span>WorldMapSpec.js</span><span>BOOMERANG_ISLAND_POLYGON</span></div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2">
+          <div class="shot-img-wrap" data-lightbox="assets/progress/same_scale_side_by_side_2d_diff.png" data-caption="Step 8 (v2.2) • Same-Scale Side-by-Side 2D Diff (Circular Game Map vs Official Visitor Map)">
+            <img src="assets/progress/same_scale_side_by_side_2d_diff.png" alt="Step 8 Same-Scale Side-by-Side 2D Diff" loading="lazy" />
+            <div class="shot-badges-overlay"><span class="angle-tag">⚖️ Same-Scale Side-by-Side Diff</span><span class="ver-tag v21">Step 8 • v2.2</span></div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">2. Side-by-Side Visual Diff &amp; Scale Alignment</h3>
+            <p class="shot-desc">Generated an exact 1:1 side-by-side comparison between the original oval game map and the official visitor map to verify conservatory positions, water bodies, and boulevard curves before geometry adjustments.</p>
+            <div class="shot-meta"><span>Cartographic Verification</span><span>1:1 Scale Match</span></div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2">
+          <div class="shot-img-wrap" data-lightbox="public/maps/verification_overlay_visitormap.png" data-caption="Step 8 (v2.2) • Vector Floorplan Overlaid on Official Visitor Map">
+            <img src="public/maps/verification_overlay_visitormap.png" alt="Step 8 Official Visitor Map Overlay" loading="lazy" />
+            <div class="shot-badges-overlay"><span class="angle-tag">📐 Visitor Map Vector Overlay</span><span class="ver-tag v21">Step 8 • v2.2</span></div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">3. Official Visitor Map Ground-Truth Overlay</h3>
+            <p class="shot-desc">Calibrated the vector floorplan directly over `GB-Map-15-02-2026.jpg` with North-up orientation, aligning the 18 Supertrees, Flower Dome, Cloud Forest, and Dragonfly Lake bridges.</p>
+            <div class="shot-meta"><span>verification_overlay_visitormap.png</span><span>Grid Calibration</span></div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2">
+          <div class="shot-img-wrap" data-lightbox="assets/progress/updated_boomerang_map_2d_verification.png" data-caption="Step 8 (v2.2) • Marina Gardens Drive Clearance & World of Plants Relocation">
+            <img src="assets/progress/updated_boomerang_map_2d_verification.png" alt="Step 8 Marina Gardens Drive Road Clearance" loading="lazy" />
+            <div class="shot-badges-overlay"><span class="angle-tag">🛣️ Road Clearance &amp; Lawn Placement</span><span class="ver-tag v21">Step 8 • v2.2</span></div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">4. Marina Gardens Drive Boulevard Clearance</h3>
+            <p class="shot-desc">Resolved structure-on-road collision: relocated `#12 Understorey Timber Lattice Dome` and portal to `(16.5, 14.5)` with &gt;5.8m lawn clearance from Marina Gardens Drive, and realigned `#9 Discovery` and `#10 Web of Life`.</p>
+            <div class="shot-meta"><span>LandmarksBuilder.js</span><span>Understorey Dome &amp; Road</span></div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2">
+          <div class="shot-img-wrap" data-lightbox="assets/progress/m5_full_screen11_tactical_map_v2.png" data-caption="Step 8 (v2.2) • Relics Realignment, Tree Road-Exclusion & In-Game Radar Sync">
+            <img src="assets/progress/m5_full_screen11_tactical_map_v2.png" alt="Step 8 Relics and Tree Road Exclusion" loading="lazy" />
+            <div class="shot-badges-overlay"><span class="angle-tag">🌳 Tree Exclusion &amp; Radar Sync</span><span class="ver-tag v21">Step 8 • v2.2</span></div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">5. 42 Relics Coords, Tree Road-Exclusion &amp; Tactical Radar</h3>
+            <p class="shot-desc">Added `isOnRoadAtTreePlacement()` to ensure zero trees spawn on asphalt roads or bus bays, repositioned Relics `#16`, `#34`, `#37`, `#41` onto walkways, and synchronized the 3D physics collisions and in-game Tactical Radar (`[M]`).</p>
+            <div class="shot-meta"><span>TreeGenerator.js + TreasuresCatalog.js</span><span>Zero Road Obstacles</span></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ================================================================== -->
+    <!-- STEP 9: EMOTIONAL & ARCADE UX UPGRADE (FUN, WOW!, AMAZED, FUNNY)   -->
+    <!-- ================================================================== -->
+    <section class="milestone-section" data-section="m8" data-default-open="true">
+      <div class="milestone-header">
+        <h2>
+          Step 9 — Emotional &amp; Arcade UX Upgrade: Fun, WOW!, Amazed &amp; Funny
+          <span class="m-badge">v3.0 • Before vs. After Showcase</span>
+        </h2>
+        <p>Engineered by our 8-agent team (including a dedicated <strong>Emotional Engineer</strong>) to transform the 3-minute race into an unforgettable emotional journey: a <strong>Living 3D Tropical Sky Dome &amp; Sun-to-Night Garden Rhapsody Show</strong>, <strong>3-Tier Rarity Beams (+100/+200/+300 PTS)</strong>, <strong>12-Word "💡 AHA!" Micro-Copy &amp; Interactive 3D Toybox</strong>, a <strong>Calm Top-Right Toast Pill</strong>, <strong>Spicy Normal/Pro Bots with Back-Bump Pickpocketing</strong>, and <strong>Singapore Slapstick Hazards (Shuttle Hit, Spiky Durian Traps &amp; Water Splash)</strong>.</p>
+      </div>
+
+      <div class="cards-grid">
+        <article class="shot-card" data-ver="v2">
+          <div class="shot-img-wrap" data-lightbox="assets/progress/m8_emotional_01_sky_rhapsody_before_after.png" data-caption="Step 9 (v3.0) • Before vs. After: Living 3D Tropical Sky Dome & 3-Min Sun-to-Night Garden Rhapsody Show">
+            <img src="assets/progress/m8_emotional_01_sky_rhapsody_before_after.png" alt="Step 9 Before and After Living 3D Sky Dome and Rhapsody" loading="lazy" />
+            <div class="shot-badges-overlay"><span class="angle-tag">🌅 Before vs. After • Living 3D Sky</span><span class="ver-tag v21">Step 9 • v3.0</span></div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">1. Living 3D Tropical Sky Dome &amp; Sun-to-Night Rhapsody</h3>
+            <p class="shot-desc"><strong>Before:</strong> Flat solid background color with zero clouds or sun/moon arc.<br/><strong>After:</strong> Custom 3-stop GLSL Sky Dome (`R=560m`), 14 drifting Ghibli cumulus clouds, glowing Sun/Moon orb, 120 twinkling stars, swaying aurora ribbons, and a <strong>1.5× Night Fever</strong> Garden Rhapsody finale (`00:45–00:00`).</p>
+            <div class="shot-meta"><span>AtmosphereController.js + LandmarksBuilder.js</span><span>WOW! &amp; Awe</span></div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2">
+          <div class="shot-img-wrap" data-lightbox="assets/progress/m8_emotional_02_relic_toybox_before_after.png" data-caption="Step 9 (v3.0) • Before vs. After: 3-Tier Rarity Beams, 12-Word Micro-Copy & Interactive 3D Toybox">
+            <img src="assets/progress/m8_emotional_02_relic_toybox_before_after.png" alt="Step 9 Before and After 3-Tier Rarity and 3D Toybox" loading="lazy" />
+            <div class="shot-badges-overlay"><span class="angle-tag">👑 Before vs. After • 3D Toybox &amp; Rarity</span><span class="ver-tag v21">Step 9 • v3.0</span></div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">2. 3-Tier Rarity (+100/+200/+300), 12-Word "AHA!" &amp; 3D Toybox</h3>
+            <p class="shot-desc"><strong>Before:</strong> Flat `+100 PTS` for every item and 65-word textbook essays.<br/><strong>After:</strong> `🌿 Common (+100)`, `💎 Rare (+200)`, and `👑 Legendary (+300)` sky beams, 75% shorter `≤12-word` micro-copy, and an interactive 3D Toybox (`[✨ Trigger Magic]` 720° joy-flip + `[🔊 Play Sound]` bespoke audio).</p>
+            <div class="shot-meta"><span>TreasuresCatalog.js + RelicInspector3D.js</span><span>Amazed &amp; Aha!</span></div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2">
+          <div class="shot-img-wrap" data-lightbox="assets/progress/m8_emotional_03_calm_toast_before_after.png" data-caption="Step 9 (v3.0) • Before vs. After: Replacing the 'Shouting' Center Banner with a Calm Top-Right Toast Pill">
+            <img src="assets/progress/m8_emotional_03_calm_toast_before_after.png" alt="Step 9 Before and After Calm Top-Right Toast Pill" loading="lazy" />
+            <div class="shot-badges-overlay"><span class="angle-tag">😌 Before vs. After • Calm Top-Right Toast</span><span class="ver-tag v21">Step 9 • v3.0</span></div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">3. Removing the "Shouting" Banner → Calm Top-Right Toast Pill</h3>
+            <p class="shot-desc"><strong>Before:</strong> Full-width center banners and giant 80px score popups blocked the 3D view.<br/><strong>After:</strong> Permanently removed the center phase banner, docked a calm glassmorphic toast (`#relicPopCard`) at top-right (`max-width: 310px`), and toned down 3D score pills to `14px–16px`.</p>
+            <div class="shot-meta"><span>styles.css + index.html + main3d.js</span><span>Cozy UX Polish</span></div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2">
+          <div class="shot-img-wrap" data-lightbox="assets/progress/m8_emotional_04_spicy_bots_pickpocket_before_after.png" data-caption="Step 9 (v3.0) • Before vs. After: Spicy Normal/Pro Bots, '🤚 CHOPE!' Callouts & Back-Bump Pickpocketing">
+            <img src="assets/progress/m8_emotional_04_spicy_bots_pickpocket_before_after.png" alt="Step 9 Before and After Spicy Bots and Back-Bump Pickpocketing" loading="lazy" />
+            <div class="shot-badges-overlay"><span class="angle-tag">🎒 Before vs. After • Spicy Bots &amp; Pickpocket</span><span class="ver-tag v21">Step 9 • v3.0</span></div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">4. Spicy Normal/Pro Bots, "🤚 CHOPE!" &amp; Back-Bump Pickpocket</h3>
+            <p class="shot-desc"><strong>Before:</strong> Sleepy `4.5 m/s` bots with 5.2s pauses and a 28m avoidance zone.<br/><strong>After:</strong> Spicy Normal (`7.8–9.2 m/s`, `1.25×` burst dash, `"🤚 CHOPE!"`) &amp; Hard/Pro (`10.2–11.8 m/s`, 2× value targeting), plus <strong>Back-Bump Pickpocketing (`+150 PTS` + 1 stolen relic)</strong> with a golden coin arc!</p>
+            <div class="shot-meta"><span>CharacterAndBotBuilder.js + main3d.js</span><span>Fun &amp; Rivalry</span></div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2">
+          <div class="shot-img-wrap" data-lightbox="assets/progress/m8_emotional_05_arcade_hazards_durian_shuttle.png" data-caption="Step 9 (v3.0) • Before vs. After: Point-Deduction Hazards (Shuttle Hit, Spiky Durian Traps, Water Splash & Bridge Turbo)">
+            <img src="assets/progress/m8_emotional_05_arcade_hazards_durian_shuttle.png" alt="Step 9 Before and After Arcade Hazards and Durian Traps" loading="lazy" />
+            <div class="shot-badges-overlay"><span class="angle-tag">🍈 Before vs. After • Durian Traps &amp; Shuttle Hit</span><span class="ver-tag v21">Step 9 • v3.0</span></div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">5. Slapstick Point-Deduction Hazards &amp; Bridge Wind-Dash</h3>
+            <p class="shot-desc"><strong>Before:</strong> Zero risk on roads, bridges, or water edges.<br/><strong>After:</strong> Auto-Loop Shuttle Bump (`-100 PTS` + knockback &amp; dizzy stars), 10 bot-dropped <strong>Spiky Durian Peel Traps (`-50 PTS` + 720° banana-peel spin)</strong>, Water Moat Splash (`-50 PTS`), and Bridge Wind-Dash (`+25 PTS` &amp; `1.4×` speed)!</p>
+            <div class="shot-meta"><span>CharacterAndBotBuilder.js + SoundSynthesizer.js</span><span>Funny Slapstick</span></div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2">
+          <div class="shot-img-wrap" data-lightbox="assets/progress/m8_emotional_06_four_emotional_pillars_summary.png" data-caption="Step 9 (v3.0) • Emotional Engineer Blueprint: Fun, WOW!, Amazed & Funny (3-Minute Arc & Multi-Agent Cost Savings)">
+            <img src="assets/progress/m8_emotional_06_four_emotional_pillars_summary.png" alt="Step 9 Four Emotional Pillars Summary" loading="lazy" />
+            <div class="shot-badges-overlay"><span class="angle-tag">🎭 Emotional Engineer • 4 Pillars &amp; Timeline</span><span class="ver-tag v21">Step 9 • v3.0</span></div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">6. The 4 Emotional Pillars &amp; 3-Minute Sun-to-Night Timeline</h3>
+            <p class="shot-desc">Complete architecture uniting <strong>WOW!</strong> (Living Sky &amp; Night Rhapsody), <strong>Amazed</strong> (12-word Aha &amp; 3D Toybox), <strong>Fun</strong> (Spicy Bots &amp; Pickpocketing), and <strong>Funny</strong> (Durian Traps, Shuttle Bump, Photobombing Otter &amp; Superlative Awards) with `$0` Blender re-render cost.</p>
+            <div class="shot-meta"><span>8-Agent Team + Emotional Engineer</span><span>v3.0 Milestone Complete</span></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ================================================================== -->
+    <!-- STEP 10: ADMIN 3D & ANIMATION STUDIO + TEAM PROGRESS LOG (v3.1)    -->
+    <!-- ================================================================== -->
+    <section class="milestone-section" data-section="m9" data-default-open="true">
+      <div class="milestone-header">
+        <h2>
+          Step 10 — Admin 3D &amp; Animation Studio + Team Progress Log
+          <span class="m-badge">v3.1 • 3 Studio Upgrades</span>
+        </h2>
+        <p>Empowers artists, developers, and stakeholders to inspect every 3D asset and animation in slow motion (`0.25×–2.0×`), toggle HUD-free Clean View (`[H]`), and export a 1-click Markdown progress update directly for Slack, Notion, or team docs.</p>
+      </div>
+
+      <div class="cards-grid">
+        <article class="shot-card" data-ver="v2">
+          <div class="shot-img-wrap" data-lightbox="assets/renders/v2/m5_full_lookdev_studio_overview_v2.png" data-caption="Step 10 (v3.1) • Admin 3D & Animation Inspector (🎬 3D & Anim Tab & Slow-Mo Scrubber)">
+            <img src="assets/renders/v2/m5_full_lookdev_studio_overview_v2.png" onerror="this.onerror=null;this.src='assets/progress/m5_full_lookdev_studio_overview_v2.png';if(this.parentElement)this.parentElement.dataset.lightbox=this.src;" alt="Step 10 Admin 3D and Animation Inspector" loading="lazy" />
+            <div class="shot-badges-overlay"><span class="angle-tag">🎬 Admin 3D &amp; Anim Tab</span><span class="ver-tag v21">Step 10 • v3.1</span></div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">1. Admin 3D &amp; Animation Inspector (`🎬 3D &amp; Anim` Tab &amp; Slow-Mo Scrubber)</h3>
+            <p class="shot-desc">Dedicated LookDev tab featuring a `0.25×–2.0×` animation speed scrubber, time-of-day sky cycle lock, and 1-click camera focus across landmarks, explorers, and interactive animations.</p>
+            <div class="shot-meta"><span>admin.html + LookDev Panel</span><span>Slow-Mo 0.25x–2x</span></div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2">
+          <div class="shot-img-wrap" data-lightbox="assets/screens_v3/screen3_360_3d_turntable_inspector.png" data-caption="Step 10 (v3.1) • Interactive 360° 3D Model Turntable & Clean View ([H])">
+            <img src="assets/screens_v3/screen3_360_3d_turntable_inspector.png" onerror="this.onerror=null;this.src='assets/progress/m8_emotional_02_relic_toybox_before_after.png';if(this.parentElement)this.parentElement.dataset.lightbox=this.src;" alt="Step 10 Interactive 360 3D Model Turntable and Clean View" loading="lazy" />
+            <div class="shot-badges-overlay"><span class="angle-tag">🔄 360° Turntable &amp; Clean View `[H]`</span><span class="ver-tag v21">Step 10 • v3.1</span></div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">2. Interactive 360° 3D Model Turntable &amp; Clean View (`[H]`)</h3>
+            <p class="shot-desc">Inspect all 42 Singapore keepsake relics in an interactive 360° WebGL turntable with procedural Toybox magic (`[✨ Trigger Magic]`), or press `[H]` in Admin Studio for an unobstructed viewport.</p>
+            <div class="shot-meta"><span>RelicInspector3D.js + Clean View</span><span>42 Interactive 3D Toys</span></div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2">
+          <div class="shot-img-wrap" data-lightbox="assets/renders/v2/m8_emotional_06_four_pillars_summary_board.png" data-caption="Step 10 (v3.1) • Shareable Team Progress Ledger & 1-Click Markdown Export">
+            <img src="assets/renders/v2/m8_emotional_06_four_pillars_summary_board.png" onerror="this.onerror=null;this.src='assets/progress/m8_emotional_06_four_emotional_pillars_summary.png';if(this.parentElement)this.parentElement.dataset.lightbox=this.src;" alt="Step 10 Shareable Team Progress Ledger and Markdown Export" loading="lazy" />
+            <div class="shot-badges-overlay"><span class="angle-tag">📋 Team Progress Ledger &amp; Export</span><span class="ver-tag v21">Step 10 • v3.1</span></div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">3. Shareable Team Progress Ledger &amp; 1-Click Markdown Export</h3>
+            <p class="shot-desc">Executive 10-step milestone table at the top of `progress.html` with KPI metric pills, instant section jump links, and a 1-click Markdown generator for Slack and engineering docs.</p>
+            <div class="shot-meta"><span>progressExecutiveLog.js</span><span>Team Share Ready</span></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ================================================================== -->
+    <!-- STEP 11: POST-MVP #1 — SAME-ROOM MULTI-PLAYER MODE (v3.2)          -->
+    <!-- ================================================================== -->
+    <section class="milestone-section" data-section="m10" data-default-open="true">
+      <div class="milestone-header">
+        <h2>
+          Step 11 (Post-MVP #1) — Same-Room Real-Time Multi-Player Mode
+          <span class="m-badge">v3.2 • 20 Hz Sync &amp; 3-Stage Flow</span>
+        </h2>
+        <p>Turns the Supertree Grove Plaza into a live 2–4 player social arena with 6-character room codes (`GBB-XXX`), 3D glowing lobby rings, hybrid AI bot backfill, synchronized `3 • 2 • 1 • GO!` starting-line release, 20 Hz WebSocket + BroadcastChannel state sync, and atomic 42-relic pickup locks.</p>
+      </div>
+
+      <div class="cards-grid">
+        <article class="shot-card" data-ver="v2">
+          <div class="shot-img-wrap" data-lightbox="assets/progress/mp_v32_01_room_creation.png" data-caption="Step 11 (v3.2) • Stage 1: Party Room Creation, 6-Character Invite Code (GBB-XXX) & Instant Join">
+            <img src="assets/progress/mp_v32_01_room_creation.png" alt="Step 11 Stage 1 Party Room Creation and Invite Code" loading="lazy" />
+            <div class="shot-badges-overlay"><span class="angle-tag">🌐 Stage 1 • Room Code (`GBB-XXX`)</span><span class="ver-tag v21">Step 11 • v3.2</span></div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">1. Party Room Creation &amp; 6-Char Invite Code (`GBB-XXX`)</h3>
+            <p class="shot-desc">Select <strong>🌐 Party Room (2–4P + AI)</strong> on the Title Screen to generate a 6-character room code, copy a 1-click `?room=GBB-XXX` deep link, or join a friend's room code immediately.</p>
+            <div class="shot-meta"><span>MultiplayerLobbyModal.js</span><span>Instant Deep-Link Join</span></div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2">
+          <div class="shot-img-wrap" data-lightbox="assets/progress/mp_v32_02_party_lobby.png" data-caption="Step 11 (v3.2) • Stage 2: 3D Supertree Grove Party Waiting Lobby, AI Bot Backfill & Quick Emotes">
+            <img src="assets/progress/mp_v32_02_party_lobby.png" alt="Step 11 Stage 2 3D Supertree Grove Party Waiting Lobby" loading="lazy" />
+            <div class="shot-badges-overlay"><span class="angle-tag">🎉 Stage 2 • 3D Plaza Waiting Lobby</span><span class="ver-tag v21">Step 11 • v3.2</span></div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">2. 3D Supertree Grove Waiting Lobby &amp; Hybrid AI Backfill</h3>
+            <p class="shot-desc">All 4 explorers gather on glowing color-coded 3D platform rings (`MultiplayerPlazaLobby3D.js`) while toggling <strong>🤖 Hybrid AI Bot Backfill</strong> and firing live lobby emotes (`👋 Wave`, `🤚 Chope!`, `🎉 Hype!`).</p>
+            <div class="shot-meta"><span>MultiplayerPlazaLobby3D.js</span><span>4-Slot Roster + AI Backfill</span></div>
+          </div>
+        </article>
+
+        <article class="shot-card" data-ver="v2">
+          <div class="shot-img-wrap" data-lightbox="assets/progress/mp_v32_03_start_321_countdown.png" data-caption="Step 11 (v3.2) • Stage 3: Synchronized 3 • 2 • 1 • GO! Starting-Line Countdown & 20 Hz Live Race">
+            <img src="assets/progress/mp_v32_03_start_321_countdown.png" alt="Step 11 Stage 3 Synchronized 3 2 1 GO Starting Line Countdown" loading="lazy" />
+            <div class="shot-badges-overlay"><span class="angle-tag">🚀 Stage 3 • `3 • 2 • 1 • GO!` Sync</span><span class="ver-tag v21">Step 11 • v3.2</span></div>
+          </div>
+          <div class="shot-body">
+            <h3 class="shot-title">3. Synchronized `3 • 2 • 1 • GO!` Countdown &amp; Atomic Relic Locks</h3>
+            <p class="shot-desc">Server-authoritative 3-second countdown locks all racers on golden starting-line boost rings before releasing everyone simultaneously at `03:00` with 20 Hz Hermite interpolation and atomic `"🤚 CHOPED!"` relic locks.</p>
+            <div class="shot-meta"><span>MultiplayerClient.js + viteMultiplayerPlugin.js</span><span>20 Hz Authoritative Sync</span></div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <!-- Full-Resolution Lightbox Modal -->
+  <div class="lightbox-overlay" id="lightboxModal" role="dialog" aria-modal="true" aria-label="Full Resolution Image Preview">
+    <div class="lightbox-bar">
+      <div class="lightbox-title" id="lightboxCaption">Image Preview</div>
+      <button type="button" class="lightbox-close" id="lightboxCloseBtn">✕ Close (ESC)</button>
+    </div>
+    <img src="" alt="Full resolution preview" class="lightbox-img" id="lightboxImage" />
+  </div>
+
+  <script type="module" src="./src/plan/progressGallery.js"></script>
+</body>
+</html>

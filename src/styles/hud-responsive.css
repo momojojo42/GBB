@@ -1,0 +1,310 @@
+/* Gardens by the Bay — Mobile & Tablet Landscape HUD Responsive Rules (src/styles/hud-responsive.css) */
+/* ============================================================================
+ * Mobile/Tablet Landscape Ultra-Compact HUD Cards
+ * (Covers <= 1024px Width OR <= 680px Height in Landscape)
+ * ============================================================================ */
+@media (max-width: 1024px) and (orientation: landscape), (max-height: 680px) and (orientation: landscape) {
+  .gameplay-hud {
+    inset: 34px 8px 6px 8px;
+  }
+
+  /* 1. Top-Left Micro Ranking (#standingsCard — 138px width, reduced wording) */
+  .standings-card {
+    top: 0;
+    left: 0;
+    width: 138px;
+    padding: 4px 7px;
+    border-radius: 10px;
+  }
+
+  .standings-card.is-relaxed-mode,
+  #standingsCard.is-relaxed-mode {
+    display: none !important;
+  }
+
+  .standings-header {
+    margin-bottom: 3px;
+    gap: 4px;
+  }
+
+  .standings-eyebrow {
+    font-size: 0 !important;
+    letter-spacing: 0;
+  }
+
+  .standings-eyebrow::before {
+    content: "🏆 RANK";
+    font-size: 9.5px;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    color: #FDE68A;
+  }
+
+  .standings-total-pill {
+    display: none !important;
+  }
+
+  .standings-list {
+    gap: 2px;
+  }
+
+  .standing-row {
+    padding: 2px 5px;
+    gap: 5px;
+    min-height: 20px;
+    border-radius: 6px;
+  }
+
+  .standing-rank {
+    font-size: 9.5px;
+    width: 13px;
+  }
+
+  .standing-avatar {
+    width: 16px;
+    height: 16px;
+    border-width: 1.5px;
+  }
+
+  .standing-name-line {
+    font-size: 10px;
+    margin: 0;
+  }
+
+  .standing-name-line small,
+  .standing-score-denom,
+  .standing-role,
+  .standing-sub,
+  .standing-comp-relic-pill,
+  .standing-row .pts-unit {
+    display: none !important;
+  }
+
+  .standing-bar-bg {
+    display: none !important;
+  }
+
+  /* 2. Top-Center Race Clock (#centerClockCard — Single-Row Compact Pill) */
+  .center-clock-card {
+    top: 0;
+    left: 50%;
+    transform: none;
+    translate: -50% 0;
+    padding: 3px 10px;
+    border-radius: 999px;
+    min-width: 0;
+    width: auto;
+    max-width: 240px;
+  }
+
+  .clock-top-bar {
+    display: none !important;
+  }
+
+  .hud-toast-banner,
+  #hudToastBanner {
+    display: none !important;
+  }
+
+  .relic-total-label,
+  .center-clock-card .score-unit,
+  .center-clock-card .rem-denom {
+    display: none !important;
+  }
+
+  #hudPlayerScore::before {
+    content: "🏆 ";
+    font-size: 11px;
+  }
+
+  #hudRemainingRelics::before {
+    content: "💎 ";
+    font-size: 11px;
+  }
+
+  .clock-main-row {
+    gap: 8px;
+    margin: 0;
+  }
+
+  .clock-digits {
+    font-size: 15px;
+  }
+
+  .clock-divider {
+    height: 14px;
+  }
+
+  .clickable-score-block {
+    padding: 1px 6px;
+    border-radius: 999px;
+  }
+
+  .relic-total-val {
+    font-size: 12px;
+  }
+
+  .relic-total-val small {
+    font-size: 9.5px;
+  }
+
+  /* 3. Top-Right Compact Mini-Radar (#miniRadarCard — Freed Bottom-Left for Joystick) */
+  .mini-radar-card {
+    top: 0;
+    right: 0;
+    bottom: auto;
+    left: auto;
+    width: 88px;
+    padding: 4px 6px;
+    border-radius: 12px;
+    gap: 3px;
+  }
+
+  .radar-header-row {
+    display: none !important;
+  }
+
+  .radar-canvas-wrap {
+    width: 62px;
+    height: 62px;
+    margin: 0 auto;
+  }
+
+  .radar-footer .btn-radar-action {
+    padding: 2px 4px;
+    font-size: 9px;
+    border-radius: 6px;
+  }
+
+  .radar-footer .radar-key-hint {
+    display: none !important;
+  }
+
+  /* 4. Top-Right Sub-Radar Collection Badge (#hudCollectionCard — Frees Bottom-Right Thumb Zone) */
+  .collection-hud-body,
+  #hudCollectionBody,
+  .hud-collection-grid,
+  .btn-collection-hud-toggle,
+  #btnToggleCollectionTray,
+  #btnOpenCollectionHud,
+  .btn-collection-hud-open {
+    display: none !important;
+  }
+
+  .collection-hud-card {
+    position: absolute;
+    top: 90px !important;
+    right: 0 !important;
+    bottom: auto !important;
+    width: auto !important;
+    min-width: 0 !important;
+    max-width: 110px !important;
+    height: 28px !important;
+    padding: 2px 8px !important;
+    border-radius: 999px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 4px !important;
+    cursor: pointer;
+  }
+
+  .collection-hud-header {
+    width: auto;
+    gap: 4px;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .collection-hud-title {
+    display: none !important;
+  }
+
+  .collection-hud-count-pill::before {
+    content: "🎒 ";
+  }
+
+  .collection-hud-count-pill {
+    font-size: 10.5px !important;
+    padding: 2px 6px !important;
+  }
+
+  /* 5. On-Screen Mobile Touch Controls */
+  .mobile-touch-controls {
+    display: block;
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 18;
+  }
+
+  /* 6. 3D World Labels & Compact Top-Center Aha! Toast Pill */
+  body.title-or-endgame-open #worldLabelsLayer,
+  body:has(#screenTitleOverlay:not(.hidden)) #worldLabelsLayer,
+  body:has(#multiplayerPartyLobbyCard:not(.hidden)) #worldLabelsLayer {
+    display: none !important;
+  }
+
+  .world-landmark-label,
+  .world-nameplate .np-score,
+  .world-nameplate .np-status {
+    display: none !important;
+  }
+
+  .world-nameplate {
+    padding: 2px 7px !important;
+    font-size: 9.5px !important;
+    gap: 4px !important;
+  }
+
+  .world-collect-popup {
+    font-size: 10.5px !important;
+    padding: 3px 9px !important;
+  }
+
+  .world-snatch-bubble {
+    font-size: 10.5px !important;
+    padding: 4px 9px !important;
+  }
+
+  #hudAhaPopCard,
+  .hud-aha-pop-card {
+    top: 66px !important;
+    bottom: auto !important;
+    right: auto !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: auto !important;
+    max-width: min(320px, 62dvw) !important;
+    padding: 4px 10px !important;
+    border-radius: 999px !important;
+    gap: 7px !important;
+  }
+
+  .aha-pop-thumb-wrap {
+    width: 28px !important;
+    height: 28px !important;
+  }
+
+  .aha-pop-thumb {
+    width: 24px !important;
+    height: 24px !important;
+  }
+
+  .aha-pop-icon-badge,
+  .aha-pop-hook,
+  .aha-pop-inspect-cue {
+    display: none !important;
+  }
+
+  .aha-pop-body {
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 6px !important;
+  }
+
+  .aha-pop-title {
+    font-size: 11px !important;
+    white-space: nowrap !important;
+  }
+}

@@ -1,0 +1,198 @@
+/* ============================================================================
+ * Gardens by the Bay — 3D-to-2D Projected World Labels, Pins & Popups
+ * (src/styles/world-labels.css)
+ * ============================================================================ */
+
+.world-labels-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 5;
+}
+
+.world-nameplate {
+  position: absolute;
+  transform: translate(-50%, -100%);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(8, 20, 26, 0.88);
+  border: 2px solid var(--badge-color, #2D7FF9);
+  color: #FFFFFF;
+  font-family: var(--font-main);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.45);
+  transition: opacity 0.15s ease;
+  will-change: transform, left, top;
+}
+
+.world-nameplate .np-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--badge-color, #2D7FF9);
+  box-shadow: 0 0 6px var(--badge-color, #2D7FF9);
+}
+
+.world-nameplate .np-score {
+  background: rgba(255, 255, 255, 0.14);
+  padding: 1px 6px;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 800;
+  color: #FDE68A;
+}
+
+.world-landmark-label {
+  position: absolute;
+  translate: -50% -100%;
+  scale: 1;
+  padding: 3px 9px;
+  border-radius: 8px;
+  background: rgba(10, 28, 34, 0.78);
+  border: 1px solid rgba(110, 231, 183, 0.38);
+  color: #E2E8F0;
+  font-family: var(--font-main);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+}
+
+.world-nameplate .np-status {
+  font-size: 9px;
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: 999px;
+  background: rgba(16, 185, 129, 0.22);
+  color: #6EE7B7;
+}
+
+.world-nameplate .np-status.decoyed {
+  background: rgba(236, 72, 153, 0.28);
+  color: #F9A8D4;
+}
+
+.np-status.champion {
+  background: linear-gradient(135deg, #FACC15, #F59E0B);
+  color: #081C24;
+  border-color: #FEF9C3;
+  box-shadow: 0 0 12px rgba(250, 204, 21, 0.75);
+}
+
+.np-status.celebrating {
+  background: rgba(52, 211, 153, 0.25);
+  color: #A7F3D0;
+  border-color: #34D399;
+}
+
+/* Floating 3D-to-2D Projected Treasure Relic Pin */
+.world-relic-pin {
+  position: absolute;
+  translate: -50% -100%;
+  scale: 1;
+  pointer-events: auto;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: rgba(8, 22, 28, 0.88);
+  border: 1.5px solid var(--relic-color, #FACC15);
+  color: #FEF9C3;
+  font-family: var(--font-main);
+  font-size: 10px;
+  font-weight: 700;
+  white-space: nowrap;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.55), 0 0 10px rgba(250, 204, 21, 0.28);
+  transition: scale 0.16s ease, background-color 0.16s ease, box-shadow 0.16s ease;
+  will-change: left, top, scale;
+}
+
+.world-relic-pin:hover {
+  scale: 1.1;
+  background: rgba(16, 48, 56, 0.96);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.7), 0 0 16px var(--relic-color, #FACC15);
+  z-index: 12;
+}
+
+.world-relic-pin.nearest-pin {
+  border-width: 2px;
+  background: rgba(20, 42, 26, 0.94);
+  box-shadow: 0 0 16px rgba(250, 204, 21, 0.65);
+}
+
+.world-relic-pin .rp-icon {
+  font-size: 12px;
+}
+
+.world-relic-pin .rp-dist {
+  font-size: 9px;
+  font-weight: 800;
+  padding: 1px 5px;
+  border-radius: 999px;
+  background: rgba(250, 204, 21, 0.2);
+  color: #FDE047;
+}
+
+.world-relic-pin::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  translate: -50% 0;
+  border-width: 5px 4px 0 4px;
+  border-style: solid;
+  border-color: var(--relic-color, #FACC15) transparent transparent transparent;
+}
+
+/* Floating +1 Collect Celebration Popup */
+.world-collect-popup {
+  position: absolute;
+  translate: -50% -100%;
+  scale: 1;
+  pointer-events: none;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.95), rgba(5, 150, 105, 0.95));
+  border: 2px solid #FDE047;
+  color: #FFFFFF;
+  font-size: 12px;
+  font-weight: 800;
+  white-space: nowrap;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), 0 0 18px rgba(250, 204, 21, 0.65);
+  animation: collectPopupFloat 1.55s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  z-index: 20;
+}
+
+@keyframes collectPopupFloat {
+  0% {
+    opacity: 0;
+    translate: -50% -60%;
+    scale: 0.75;
+  }
+  18% {
+    opacity: 1;
+    translate: -50% -130%;
+    scale: 1.08;
+  }
+  80% {
+    opacity: 1;
+    translate: -50% -210%;
+    scale: 1;
+  }
+  100% {
+    opacity: 0;
+    translate: -50% -250%;
+    scale: 0.92;
+  }
+}

@@ -1,0 +1,1926 @@
+{
+  "anchor_consistency": {
+    "vertices_v1_v7": [
+      {
+        "id": "V1",
+        "name": "NW Waterfront Tip (Active Garden)",
+        "calib_xz_m": [
+          -130.0,
+          -330.0
+        ],
+        "spec_xz_m": [
+          -130.0,
+          -330.0
+        ],
+        "discrepancy_m": 0.0
+      },
+      {
+        "id": "V2",
+        "name": "SW Corner (Sheares x Marina Blvd)",
+        "calib_xz_m": [
+          -395.0,
+          395.0
+        ],
+        "spec_xz_m": [
+          -395.0,
+          395.0
+        ],
+        "discrepancy_m": 0.0
+      },
+      {
+        "id": "V3",
+        "name": "Southernmost Tip (Blvd x Gardens Dr)",
+        "calib_xz_m": [
+          -185.0,
+          535.0
+        ],
+        "spec_xz_m": [
+          -185.0,
+          535.0
+        ],
+        "discrepancy_m": 0.0
+      },
+      {
+        "id": "V4",
+        "name": "Concave S-Curve W (Meadow SE)",
+        "calib_xz_m": [
+          -25.0,
+          270.0
+        ],
+        "spec_xz_m": [
+          -25.0,
+          270.0
+        ],
+        "discrepancy_m": 0.0
+      },
+      {
+        "id": "V5",
+        "name": "Main Entrance Concave Apex",
+        "calib_xz_m": [
+          215.0,
+          125.0
+        ],
+        "spec_xz_m": [
+          215.0,
+          125.0
+        ],
+        "discrepancy_m": 0.0
+      },
+      {
+        "id": "V6",
+        "name": "SE Southern Edge (GBTB MRT)",
+        "calib_xz_m": [
+          560.0,
+          320.0
+        ],
+        "spec_xz_m": [
+          560.0,
+          320.0
+        ],
+        "discrepancy_m": 0.0
+      },
+      {
+        "id": "V7",
+        "name": "SE Barrage Tip (Marina Barrage)",
+        "calib_xz_m": [
+          645.0,
+          235.0
+        ],
+        "spec_xz_m": [
+          645.0,
+          235.0
+        ],
+        "discrepancy_m": 0.0
+      }
+    ],
+    "landmarks_l01_l20": [
+      {
+        "id": "L01",
+        "name": "Supertree Grove (12 Trees & OCBC Skyway)",
+        "calib_xz_m": [
+          0.0,
+          0.0
+        ],
+        "spec_xz_m": [
+          0.0,
+          0.0
+        ],
+        "calib_wl_m": [
+          175.0,
+          155.0
+        ],
+        "spec_wl_m": [
+          175.0,
+          155.0
+        ],
+        "discrepancy_m": 0.0
+      },
+      {
+        "id": "L02",
+        "name": "Flower Dome Conservatory",
+        "calib_xz_m": [
+          35.0,
+          -210.0
+        ],
+        "spec_xz_m": [
+          35.0,
+          -210.0
+        ],
+        "calib_wl_m": [
+          150.0,
+          80.0
+        ],
+        "spec_wl_m": [
+          150.0,
+          80.0
+        ],
+        "discrepancy_m": 0.0
+      },
+      {
+        "id": "L03",
+        "name": "Cloud Forest Conservatory",
+        "calib_xz_m": [
+          160.0,
+          -135.0
+        ],
+        "spec_xz_m": [
+          160.0,
+          -135.0
+        ],
+        "calib_wl_m": [
+          115.0,
+          70.0
+        ],
+        "spec_wl_m": [
+          115.0,
+          70.0
+        ],
+        "discrepancy_m": 0.0
+      },
+      {
+        "id": "L04",
+        "name": "Conservatory Arrival Plaza, Canopy & Floral Clock",
+        "calib_xz_m": [
+          95.0,
+          -125.0
+        ],
+        "spec_xz_m": [
+          95.0,
+          -125.0
+        ],
+        "calib_wl_m": [
+          95.0,
+          75.0
+        ],
+        "spec_wl_m": [
+          95.0,
+          75.0
+        ],
+        "discrepancy_m": 0.0
+      },
+      {
+        "id": "L05",
+        "name": "Silver Garden (3 Supertrees)",
+        "calib_xz_m": [
+          -75.0,
+          -245.0
+        ],
+        "spec_xz_m": [
+          -75.0,
+          -245.0
+        ],
+        "calib_wl_m": [
+          70.0,
+          65.0
+        ],
+        "spec_wl_m": [
+          70.0,
+          65.0
+        ],
+        "discrepancy_m": 0.0
+      },
+      {
+        "id": "L06",
+        "name": "Golden Garden (3 Supertrees)",
+        "calib_xz_m": [
+          145.0,
+          -25.0
+        ],
+        "spec_xz_m": [
+          145.0,
+          -25.0
+        ],
+        "calib_wl_m": [
+          75.0,
+          60.0
+        ],
+        "spec_wl_m": [
+          75.0,
+          60.0
+        ],
+        "discrepancy_m": 0.0
+      },
+      {
+        "id": "L07",
+        "name": "Heritage Gardens (Indian, Chinese, Malay, Colonial)",
+        "calib_xz_m": [
+          -55.0,
+          -70.0
+        ],
+        "spec_xz_m": [
+          -55.0,
+          -70.0
+        ],
+        "calib_wl_m": [
+          190.0,
+          65.0
+        ],
+        "spec_wl_m": [
+          190.0,
+          65.0
+        ],
+        "discrepancy_m": 0.0
+      },
+      {
+        "id": "L08",
+        "name": "World of Plants & The Understorey Dome",
+        "calib_xz_m": [
+          -65.0,
+          105.0
+        ],
+        "spec_xz_m": [
+          -65.0,
+          105.0
+        ],
+        "calib_wl_m": [
+          90.0,
+          70.0
+        ],
+        "spec_wl_m": [
+          90.0,
+          70.0
+        ],
+        "discrepancy_m": 0.0
+      },
+      {
+        "id": "L09",
+        "name": "The Meadow Amphitheatre & Stage Canopy",
+        "calib_xz_m": [
+          -175.0,
+          235.0
+        ],
+        "spec_xz_m": [
+          -175.0,
+          235.0
+        ],
+        "calib_wl_m": [
+          210.0,
+          165.0
+        ],
+        "spec_wl_m": [
+          210.0,
+          165.0
+        ],
+        "discrepancy_m": 0.0
+      },
+      {
+        "id": "L10",
+        "name": "Planet (Marc Quinn Floating Baby Sculpture)",
+        "calib_xz_m": [
+          -145.0,
+          115.0
+        ],
+        "spec_xz_m": [
+          -145.0,
+          115.0
+        ],
+        "calib_wl_m": [
+          24.0,
+          10.0
+        ],
+        "spec_wl_m": [
+          24.0,
+          10.0
+        ],
+        "discrepancy_m": 0.0
+      },
+      {
+        "id": "L11",
+        "name": "Serene Garden & Japanese Tea Pavilion",
+        "calib_xz_m": [
+          -235.0,
+          75.0
+        ],
+        "spec_xz_m": [
+          -235.0,
+          75.0
+        ],
+        "calib_wl_m": [
+          95.0,
+          65.0
+        ],
+        "spec_wl_m": [
+          95.0,
+          65.0
+        ],
+        "discrepancy_m": 0.0
+      },
+      {
+        "id": "L12",
+        "name": "Floral Fantasy, Bayfront Plaza & SG50 Lattice",
+        "calib_xz_m": [
+          -200.0,
+          25.0
+        ],
+        "spec_xz_m": [
+          -200.0,
+          25.0
+        ],
+        "calib_wl_m": [
+          115.0,
+          45.0
+        ],
+        "spec_wl_m": [
+          115.0,
+          45.0
+        ],
+        "discrepancy_m": 0.0
+      },
+      {
+        "id": "L13",
+        "name": "IMBA Theatre & West Lawn Gallery",
+        "calib_xz_m": [
+          -145.0,
+          -145.0
+        ],
+        "spec_xz_m": [
+          -145.0,
+          -145.0
+        ],
+        "calib_wl_m": [
+          95.0,
+          55.0
+        ],
+        "spec_wl_m": [
+          95.0,
+          55.0
+        ],
+        "discrepancy_m": 0.0
+      },
+      {
+        "id": "L14",
+        "name": "Active Garden & Waterfront Fitness Plaza",
+        "calib_xz_m": [
+          -125.0,
+          -265.0
+        ],
+        "spec_xz_m": [
+          -125.0,
+          -265.0
+        ],
+        "calib_wl_m": [
+          130.0,
+          50.0
+        ],
+        "spec_wl_m": [
+          130.0,
+          50.0
+        ],
+        "discrepancy_m": 0.0
+      },
+      {
+        "id": "L15",
+        "name": "Sun Pavilion & The Canyon Dragon Rocks",
+        "calib_xz_m": [
+          215.0,
+          -65.0
+        ],
+        "spec_xz_m": [
+          215.0,
+          -65.0
+        ],
+        "calib_wl_m": [
+          85.0,
+          40.0
+        ],
+        "spec_wl_m": [
+          85.0,
+          40.0
+        ],
+        "discrepancy_m": 0.0
+      },
+      {
+        "id": "L16",
+        "name": "Far East Organization Children's Garden",
+        "calib_xz_m": [
+          295.0,
+          -35.0
+        ],
+        "spec_xz_m": [
+          295.0,
+          -35.0
+        ],
+        "calib_wl_m": [
+          130.0,
+          75.0
+        ],
+        "spec_wl_m": [
+          130.0,
+          75.0
+        ],
+        "discrepancy_m": 0.0
+      },
+      {
+        "id": "L17",
+        "name": "Kingfisher Wetlands & Mangrove Sanctuary",
+        "calib_xz_m": [
+          355.0,
+          55.0
+        ],
+        "spec_xz_m": [
+          355.0,
+          55.0
+        ],
+        "calib_wl_m": [
+          160.0,
+          90.0
+        ],
+        "spec_wl_m": [
+          160.0,
+          90.0
+        ],
+        "discrepancy_m": 0.0
+      },
+      {
+        "id": "L18",
+        "name": "Main Entrance Arrival Square & Coach Bay",
+        "calib_xz_m": [
+          165.0,
+          95.0
+        ],
+        "spec_xz_m": [
+          165.0,
+          95.0
+        ],
+        "calib_wl_m": [
+          165.0,
+          105.0
+        ],
+        "spec_wl_m": [
+          165.0,
+          105.0
+        ],
+        "discrepancy_m": 0.0
+      },
+      {
+        "id": "L19",
+        "name": "Satay by the Bay Dining Pavilions",
+        "calib_xz_m": [
+          445.0,
+          135.0
+        ],
+        "spec_xz_m": [
+          445.0,
+          135.0
+        ],
+        "calib_wl_m": [
+          150.0,
+          95.0
+        ],
+        "spec_wl_m": [
+          150.0,
+          95.0
+        ],
+        "discrepancy_m": 0.0
+      },
+      {
+        "id": "L20",
+        "name": "Marina Barrage & Green Roof Visitor Centre",
+        "calib_xz_m": [
+          565.0,
+          165.0
+        ],
+        "spec_xz_m": [
+          565.0,
+          165.0
+        ],
+        "calib_wl_m": [
+          180.0,
+          110.0
+        ],
+        "spec_wl_m": [
+          180.0,
+          110.0
+        ],
+        "discrepancy_m": 0.0
+      }
+    ],
+    "max_spec_vs_calib_discrepancy_m": 0.0
+  },
+  "affine_projection_residuals": {
+    "ref1_masterplan": {
+      "rms_residual_px": 14.14,
+      "mean_residual_m": 6.88,
+      "max_residual_m": 14.42,
+      "control_points": [
+        {
+          "name": "L01 Supertree Grove",
+          "x_m": 0.0,
+          "z_m": 0.0,
+          "actual_pct": [
+            43.0,
+            44.5
+          ],
+          "actual_px": [
+            967.5,
+            878.43
+          ],
+          "predicted_px": [
+            964.57,
+            886.79
+          ],
+          "residual_px": 8.86,
+          "residual_m": 4.68
+        },
+        {
+          "name": "L02 Flower Dome",
+          "x_m": 35.0,
+          "z_m": -210.0,
+          "actual_pct": [
+            46.0,
+            24.5
+          ],
+          "actual_px": [
+            1035.0,
+            483.63
+          ],
+          "predicted_px": [
+            1034.87,
+            492.88
+          ],
+          "residual_px": 9.25,
+          "residual_m": 4.96
+        },
+        {
+          "name": "L03 Cloud Forest",
+          "x_m": 160.0,
+          "z_m": -135.0,
+          "actual_pct": [
+            56.8,
+            31.2
+          ],
+          "actual_px": [
+            1278.0,
+            615.89
+          ],
+          "predicted_px": [
+            1272.38,
+            624.53
+          ],
+          "residual_px": 10.31,
+          "residual_m": 5.38
+        },
+        {
+          "name": "L09 The Meadow",
+          "x_m": -175.0,
+          "z_m": 235.0,
+          "actual_pct": [
+            27.5,
+            67.5
+          ],
+          "actual_px": [
+            618.75,
+            1332.45
+          ],
+          "predicted_px": [
+            626.47,
+            1336.53
+          ],
+          "residual_px": 8.73,
+          "residual_m": 4.68
+        },
+        {
+          "name": "V1 NW Waterfront Tip",
+          "x_m": -130.0,
+          "z_m": -330.0,
+          "actual_pct": [
+            31.8,
+            15.0
+          ],
+          "actual_px": [
+            715.5,
+            296.1
+          ],
+          "predicted_px": [
+            721.68,
+            279.94
+          ],
+          "residual_px": 17.3,
+          "residual_m": 9.12
+        },
+        {
+          "name": "V2 SW Corner",
+          "x_m": -395.0,
+          "z_m": 395.0,
+          "actual_pct": [
+            8.8,
+            83.2
+          ],
+          "actual_px": [
+            198.0,
+            1642.37
+          ],
+          "predicted_px": [
+            203.65,
+            1649.35
+          ],
+          "residual_px": 8.98,
+          "residual_m": 4.87
+        },
+        {
+          "name": "V3 Southernmost Tip",
+          "x_m": -185.0,
+          "z_m": 535.0,
+          "actual_pct": [
+            27.0,
+            96.5
+          ],
+          "actual_px": [
+            607.5,
+            1904.91
+          ],
+          "predicted_px": [
+            602.45,
+            1896.63
+          ],
+          "residual_px": 9.7,
+          "residual_m": 5.27
+        },
+        {
+          "name": "V5 Main Entrance Apex",
+          "x_m": 215.0,
+          "z_m": 125.0,
+          "actual_pct": [
+            62.0,
+            56.8
+          ],
+          "actual_px": [
+            1395.0,
+            1121.23
+          ],
+          "predicted_px": [
+            1373.17,
+            1105.77
+          ],
+          "residual_px": 26.75,
+          "residual_m": 14.42
+        },
+        {
+          "name": "L20 Marina Barrage / SE Tip",
+          "x_m": 565.0,
+          "z_m": 165.0,
+          "actual_pct": [
+            90.0,
+            58.5
+          ],
+          "actual_px": [
+            2025.0,
+            1154.79
+          ],
+          "predicted_px": [
+            2041.01,
+            1157.37
+          ],
+          "residual_px": 16.22,
+          "residual_m": 8.56
+        }
+      ],
+      "all_20_landmarks": [
+        {
+          "id": "L01",
+          "name": "Supertree Grove (12 Trees & OCBC Skyway)",
+          "canonical_xz_m": [
+            0.0,
+            0.0
+          ],
+          "ref1_projected_xz_m": [
+            1.5,
+            -4.43
+          ],
+          "residual_m": 4.68
+        },
+        {
+          "id": "L02",
+          "name": "Flower Dome Conservatory",
+          "canonical_xz_m": [
+            35.0,
+            -210.0
+          ],
+          "ref1_projected_xz_m": [
+            35.03,
+            -214.96
+          ],
+          "residual_m": 4.96
+        },
+        {
+          "id": "L03",
+          "name": "Cloud Forest Conservatory",
+          "canonical_xz_m": [
+            160.0,
+            -135.0
+          ],
+          "ref1_projected_xz_m": [
+            162.9,
+            -139.53
+          ],
+          "residual_m": 5.38
+        },
+        {
+          "id": "L04",
+          "name": "Conservatory Arrival Plaza, Canopy & Floral Clock",
+          "canonical_xz_m": [
+            95.0,
+            -125.0
+          ],
+          "ref1_projected_xz_m": [
+            97.03,
+            -128.09
+          ],
+          "residual_m": 3.7
+        },
+        {
+          "id": "L05",
+          "name": "Silver Garden (3 Supertrees)",
+          "canonical_xz_m": [
+            -75.0,
+            -245.0
+          ],
+          "ref1_projected_xz_m": [
+            -73.68,
+            -253.72
+          ],
+          "residual_m": 8.82
+        },
+        {
+          "id": "L06",
+          "name": "Golden Garden (3 Supertrees)",
+          "canonical_xz_m": [
+            145.0,
+            -25.0
+          ],
+          "ref1_projected_xz_m": [
+            148.66,
+            -15.13
+          ],
+          "residual_m": 10.53
+        },
+        {
+          "id": "L07",
+          "name": "Heritage Gardens (Indian, Chinese, Malay, Colonial)",
+          "canonical_xz_m": [
+            -55.0,
+            -70.0
+          ],
+          "ref1_projected_xz_m": [
+            -52.12,
+            -75.13
+          ],
+          "residual_m": 5.88
+        },
+        {
+          "id": "L08",
+          "name": "World of Plants & The Understorey Dome",
+          "canonical_xz_m": [
+            -65.0,
+            105.0
+          ],
+          "ref1_projected_xz_m": [
+            -68.3,
+            98.96
+          ],
+          "residual_m": 6.88
+        },
+        {
+          "id": "L09",
+          "name": "The Meadow Amphitheatre & Stage Canopy",
+          "canonical_xz_m": [
+            -175.0,
+            235.0
+          ],
+          "ref1_projected_xz_m": [
+            -179.06,
+            232.67
+          ],
+          "residual_m": 4.68
+        },
+        {
+          "id": "L10",
+          "name": "Planet (Marc Quinn Floating Baby Sculpture)",
+          "canonical_xz_m": [
+            -145.0,
+            115.0
+          ],
+          "ref1_projected_xz_m": [
+            -150.65,
+            111.94
+          ],
+          "residual_m": 6.42
+        },
+        {
+          "id": "L11",
+          "name": "Serene Garden & Japanese Tea Pavilion",
+          "canonical_xz_m": [
+            -235.0,
+            75.0
+          ],
+          "ref1_projected_xz_m": [
+            -239.39,
+            66.47
+          ],
+          "residual_m": 9.59
+        },
+        {
+          "id": "L12",
+          "name": "Floral Fantasy, Bayfront Plaza & SG50 Lattice",
+          "canonical_xz_m": [
+            -200.0,
+            25.0
+          ],
+          "ref1_projected_xz_m": [
+            -204.4,
+            25.36
+          ],
+          "residual_m": 4.42
+        },
+        {
+          "id": "L13",
+          "name": "IMBA Theatre & West Lawn Gallery",
+          "canonical_xz_m": [
+            -145.0,
+            -145.0
+          ],
+          "ref1_projected_xz_m": [
+            -147.03,
+            -152.57
+          ],
+          "residual_m": 7.84
+        },
+        {
+          "id": "L14",
+          "name": "Active Garden & Waterfront Fitness Plaza",
+          "canonical_xz_m": [
+            -125.0,
+            -265.0
+          ],
+          "ref1_projected_xz_m": [
+            -128.04,
+            -273.63
+          ],
+          "residual_m": 9.15
+        },
+        {
+          "id": "L15",
+          "name": "Sun Pavilion & The Canyon Dragon Rocks",
+          "canonical_xz_m": [
+            215.0,
+            -65.0
+          ],
+          "ref1_projected_xz_m": [
+            224.79,
+            -65.37
+          ],
+          "residual_m": 9.8
+        },
+        {
+          "id": "L16",
+          "name": "Far East Organization Children's Garden",
+          "canonical_xz_m": [
+            295.0,
+            -35.0
+          ],
+          "ref1_projected_xz_m": [
+            301.66,
+            -30.91
+          ],
+          "residual_m": 7.82
+        },
+        {
+          "id": "L17",
+          "name": "Kingfisher Wetlands & Mangrove Sanctuary",
+          "canonical_xz_m": [
+            355.0,
+            55.0
+          ],
+          "ref1_projected_xz_m": [
+            367.29,
+            66.68
+          ],
+          "residual_m": 16.95
+        },
+        {
+          "id": "L18",
+          "name": "Main Entrance Arrival Square & Coach Bay",
+          "canonical_xz_m": [
+            165.0,
+            95.0
+          ],
+          "ref1_projected_xz_m": [
+            173.22,
+            102.18
+          ],
+          "residual_m": 10.92
+        },
+        {
+          "id": "L19",
+          "name": "Satay by the Bay Dining Pavilions",
+          "canonical_xz_m": [
+            445.0,
+            135.0
+          ],
+          "ref1_projected_xz_m": [
+            462.29,
+            154.71
+          ],
+          "residual_m": 26.21
+        },
+        {
+          "id": "L20",
+          "name": "Marina Barrage & Green Roof Visitor Centre",
+          "canonical_xz_m": [
+            565.0,
+            165.0
+          ],
+          "ref1_projected_xz_m": [
+            556.6,
+            163.32
+          ],
+          "residual_m": 8.56
+        }
+      ]
+    },
+    "ref2_visitormap": {
+      "rms_residual_px": 76.83,
+      "mean_residual_m": 34.73,
+      "max_residual_m": 56.53,
+      "control_points": [
+        {
+          "name": "L01 Supertree Grove",
+          "x_m": 0.0,
+          "z_m": 0.0,
+          "actual_pct": [
+            45.8,
+            38.2
+          ],
+          "actual_px": [
+            1190.34,
+            676.9
+          ],
+          "predicted_px": [
+            1190.99,
+            674.2
+          ],
+          "residual_px": 2.78,
+          "residual_m": 1.63
+        },
+        {
+          "name": "L02 Flower Dome",
+          "x_m": 35.0,
+          "z_m": -210.0,
+          "actual_pct": [
+            54.8,
+            20.2
+          ],
+          "actual_px": [
+            1424.25,
+            357.94
+          ],
+          "predicted_px": [
+            1346.01,
+            329.86
+          ],
+          "residual_px": 83.13,
+          "residual_m": 34.5
+        },
+        {
+          "name": "L03 Cloud Forest",
+          "x_m": 160.0,
+          "z_m": -135.0,
+          "actual_pct": [
+            66.2,
+            26.8
+          ],
+          "actual_px": [
+            1720.54,
+            474.9
+          ],
+          "predicted_px": [
+            1650.1,
+            473.82
+          ],
+          "residual_px": 70.45,
+          "residual_m": 26.8
+        },
+        {
+          "name": "L09 The Meadow",
+          "x_m": -175.0,
+          "z_m": 235.0,
+          "actual_pct": [
+            27.0,
+            59.5
+          ],
+          "actual_px": [
+            701.73,
+            1054.34
+          ],
+          "predicted_px": [
+            662.43,
+            1038.81
+          ],
+          "residual_px": 42.25,
+          "residual_m": 17.78
+        },
+        {
+          "name": "V1 NW Waterfront Tip",
+          "x_m": -130.0,
+          "z_m": -330.0,
+          "actual_pct": [
+            32.8,
+            4.5
+          ],
+          "actual_px": [
+            852.47,
+            79.74
+          ],
+          "predicted_px": [
+            950.98,
+            104.87
+          ],
+          "residual_px": 101.66,
+          "residual_m": 40.68
+        },
+        {
+          "name": "V2 SW Corner",
+          "x_m": -395.0,
+          "z_m": 395.0,
+          "actual_pct": [
+            1.5,
+            66.8
+          ],
+          "actual_px": [
+            38.98,
+            1183.7
+          ],
+          "predicted_px": [
+            38.92,
+            1271.67
+          ],
+          "residual_px": 87.97,
+          "residual_m": 52.63
+        },
+        {
+          "name": "V3 Southernmost Tip",
+          "x_m": -185.0,
+          "z_m": 535.0,
+          "actual_pct": [
+            20.6,
+            90.0
+          ],
+          "actual_px": [
+            535.39,
+            1594.8
+          ],
+          "predicted_px": [
+            545.54,
+            1536.83
+          ],
+          "residual_px": 58.85,
+          "residual_m": 34.8
+        },
+        {
+          "name": "V5 Main Entrance Apex",
+          "x_m": 215.0,
+          "z_m": 125.0,
+          "actual_pct": [
+            63.5,
+            56.5
+          ],
+          "actual_px": [
+            1650.37,
+            1001.18
+          ],
+          "predicted_px": [
+            1715.23,
+            915.15
+          ],
+          "residual_px": 107.74,
+          "residual_m": 56.53
+        },
+        {
+          "name": "L20 Marina Barrage / SE Tip",
+          "x_m": 565.0,
+          "z_m": 165.0,
+          "actual_pct": [
+            100.2,
+            54.0
+          ],
+          "actual_px": [
+            2604.2,
+            956.88
+          ],
+          "predicted_px": [
+            2618.08,
+            1035.16
+          ],
+          "residual_px": 79.5,
+          "residual_m": 47.25
+        }
+      ],
+      "all_20_landmarks": [
+        {
+          "id": "L01",
+          "name": "Supertree Grove (12 Trees & OCBC Skyway)",
+          "canonical_xz_m": [
+            0.0,
+            0.0
+          ],
+          "ref2_projected_xz_m": [
+            -0.06,
+            1.63
+          ],
+          "residual_m": 1.63
+        },
+        {
+          "id": "L02",
+          "name": "Flower Dome Conservatory",
+          "canonical_xz_m": [
+            35.0,
+            -210.0
+          ],
+          "ref2_projected_xz_m": [
+            66.55,
+            -196.03
+          ],
+          "residual_m": 34.5
+        },
+        {
+          "id": "L03",
+          "name": "Cloud Forest Conservatory",
+          "canonical_xz_m": [
+            160.0,
+            -135.0
+          ],
+          "ref2_projected_xz_m": [
+            186.74,
+            -136.8
+          ],
+          "residual_m": 26.8
+        },
+        {
+          "id": "L04",
+          "name": "Conservatory Arrival Plaza, Canopy & Floral Clock",
+          "canonical_xz_m": [
+            95.0,
+            -125.0
+          ],
+          "ref2_projected_xz_m": [
+            108.75,
+            -106.25
+          ],
+          "residual_m": 23.25
+        },
+        {
+          "id": "L05",
+          "name": "Silver Garden (3 Supertrees)",
+          "canonical_xz_m": [
+            -75.0,
+            -245.0
+          ],
+          "ref2_projected_xz_m": [
+            -31.19,
+            -215.8
+          ],
+          "residual_m": 52.65
+        },
+        {
+          "id": "L06",
+          "name": "Golden Garden (3 Supertrees)",
+          "canonical_xz_m": [
+            145.0,
+            -25.0
+          ],
+          "ref2_projected_xz_m": [
+            162.16,
+            -31.33
+          ],
+          "residual_m": 18.29
+        },
+        {
+          "id": "L07",
+          "name": "Heritage Gardens (Indian, Chinese, Malay, Colonial)",
+          "canonical_xz_m": [
+            -55.0,
+            -70.0
+          ],
+          "ref2_projected_xz_m": [
+            -60.97,
+            -69.41
+          ],
+          "residual_m": 6.0
+        },
+        {
+          "id": "L08",
+          "name": "World of Plants & The Understorey Dome",
+          "canonical_xz_m": [
+            -65.0,
+            105.0
+          ],
+          "ref2_projected_xz_m": [
+            -16.93,
+            139.39
+          ],
+          "residual_m": 59.1
+        },
+        {
+          "id": "L09",
+          "name": "The Meadow Amphitheatre & Stage Canopy",
+          "canonical_xz_m": [
+            -175.0,
+            235.0
+          ],
+          "ref2_projected_xz_m": [
+            -159.06,
+            242.86
+          ],
+          "residual_m": 17.78
+        },
+        {
+          "id": "L10",
+          "name": "Planet (Marc Quinn Floating Baby Sculpture)",
+          "canonical_xz_m": [
+            -145.0,
+            115.0
+          ],
+          "ref2_projected_xz_m": [
+            -167.91,
+            123.42
+          ],
+          "residual_m": 24.41
+        },
+        {
+          "id": "L11",
+          "name": "Serene Garden & Japanese Tea Pavilion",
+          "canonical_xz_m": [
+            -235.0,
+            75.0
+          ],
+          "ref2_projected_xz_m": [
+            -283.4,
+            268.09
+          ],
+          "residual_m": 199.06
+        },
+        {
+          "id": "L12",
+          "name": "Floral Fantasy, Bayfront Plaza & SG50 Lattice",
+          "canonical_xz_m": [
+            -200.0,
+            25.0
+          ],
+          "ref2_projected_xz_m": [
+            -252.76,
+            17.33
+          ],
+          "residual_m": 53.31
+        },
+        {
+          "id": "L13",
+          "name": "IMBA Theatre & West Lawn Gallery",
+          "canonical_xz_m": [
+            -145.0,
+            -145.0
+          ],
+          "ref2_projected_xz_m": [
+            -160.02,
+            -126.31
+          ],
+          "residual_m": 23.97
+        },
+        {
+          "id": "L14",
+          "name": "Active Garden & Waterfront Fitness Plaza",
+          "canonical_xz_m": [
+            -125.0,
+            -265.0
+          ],
+          "ref2_projected_xz_m": [
+            -142.54,
+            -258.81
+          ],
+          "residual_m": 18.6
+        },
+        {
+          "id": "L15",
+          "name": "Sun Pavilion & The Canyon Dragon Rocks",
+          "canonical_xz_m": [
+            215.0,
+            -65.0
+          ],
+          "ref2_projected_xz_m": [
+            228.58,
+            -58.7
+          ],
+          "residual_m": 14.98
+        },
+        {
+          "id": "L16",
+          "name": "Far East Organization Children's Garden",
+          "canonical_xz_m": [
+            295.0,
+            -35.0
+          ],
+          "ref2_projected_xz_m": [
+            302.32,
+            -22.89
+          ],
+          "residual_m": 14.15
+        },
+        {
+          "id": "L17",
+          "name": "Kingfisher Wetlands & Mangrove Sanctuary",
+          "canonical_xz_m": [
+            355.0,
+            55.0
+          ],
+          "ref2_projected_xz_m": [
+            354.74,
+            60.64
+          ],
+          "residual_m": 5.64
+        },
+        {
+          "id": "L18",
+          "name": "Main Entrance Arrival Square & Coach Bay",
+          "canonical_xz_m": [
+            165.0,
+            95.0
+          ],
+          "ref2_projected_xz_m": [
+            208.73,
+            113.39
+          ],
+          "residual_m": 47.44
+        },
+        {
+          "id": "L19",
+          "name": "Satay by the Bay Dining Pavilions",
+          "canonical_xz_m": [
+            445.0,
+            135.0
+          ],
+          "ref2_projected_xz_m": [
+            428.86,
+            82.58
+          ],
+          "residual_m": 54.85
+        },
+        {
+          "id": "L20",
+          "name": "Marina Barrage & Green Roof Visitor Centre",
+          "canonical_xz_m": [
+            565.0,
+            165.0
+          ],
+          "ref2_projected_xz_m": [
+            529.06,
+            89.36
+          ],
+          "residual_m": 83.74
+        }
+      ]
+    }
+  },
+  "treasure_topology_audit": {
+    "total_treasures": 42,
+    "on_main_island_count": 34,
+    "on_outer_west_bank_count": 4,
+    "on_bridge_count": 4,
+    "unbridged_water_violations": [],
+    "supertree_trunk_collisions": [],
+    "out_of_landmass_violations": [],
+    "min_supertree_trunk_clearance_m": 11.44,
+    "details": [
+      {
+        "id": "T01",
+        "name": "Golden Vanda Miss Joaquim",
+        "zone": "Supertree Grove",
+        "x_m": 0.0,
+        "z_m": 6.0,
+        "placement": "main_bay_south_island",
+        "water_overlap": [],
+        "unbridged_water_violation": false,
+        "nearest_supertree": "ST03",
+        "supertree_trunk_clearance_m": 17.89
+      },
+      {
+        "id": "T02",
+        "name": "OCBC Skyway Star Orchid",
+        "zone": "Supertree Grove",
+        "x_m": -12.0,
+        "z_m": -28.0,
+        "placement": "main_bay_south_island",
+        "water_overlap": [],
+        "unbridged_water_violation": false,
+        "nearest_supertree": "ST01",
+        "supertree_trunk_clearance_m": 13.19
+      },
+      {
+        "id": "T03",
+        "name": "Millennium Olive Chalice",
+        "zone": "Conservatories",
+        "x_m": 20.0,
+        "z_m": -218.0,
+        "placement": "main_bay_south_island",
+        "water_overlap": [],
+        "unbridged_water_violation": false,
+        "nearest_supertree": "ST15",
+        "supertree_trunk_clearance_m": 85.97
+      },
+      {
+        "id": "T04",
+        "name": "Cloud Forest Waterfall Drop",
+        "zone": "Conservatories",
+        "x_m": 150.0,
+        "z_m": -142.0,
+        "placement": "main_bay_south_island",
+        "water_overlap": [],
+        "unbridged_water_violation": false,
+        "nearest_supertree": "ST17",
+        "supertree_trunk_clearance_m": 104.08
+      },
+      {
+        "id": "T05",
+        "name": "Audemars Piguet Floral Gear",
+        "zone": "Conservatories",
+        "x_m": 95.0,
+        "z_m": -112.0,
+        "placement": "main_bay_south_island",
+        "water_overlap": [],
+        "unbridged_water_violation": false,
+        "nearest_supertree": "ST16",
+        "supertree_trunk_clearance_m": 84.52
+      },
+      {
+        "id": "T06",
+        "name": "Dragonfly Bridge Crest",
+        "zone": "Heritage & Dragonfly",
+        "x_m": -115.0,
+        "z_m": -64.0,
+        "placement": "bridge (dragonfly_main_bridge)",
+        "water_overlap": [
+          "dragonfly_lake_main"
+        ],
+        "unbridged_water_violation": false,
+        "nearest_supertree": "ST10",
+        "supertree_trunk_clearance_m": 70.94
+      },
+      {
+        "id": "T07",
+        "name": "Colonial Spice Pavilion Prism",
+        "zone": "Heritage & Dragonfly",
+        "x_m": -32.0,
+        "z_m": -95.0,
+        "placement": "main_bay_south_island",
+        "water_overlap": [],
+        "unbridged_water_violation": false,
+        "nearest_supertree": "ST09",
+        "supertree_trunk_clearance_m": 52.22
+      },
+      {
+        "id": "T08",
+        "name": "Marc Quinn Planet Gravity Orb",
+        "zone": "The Meadow",
+        "x_m": -145.0,
+        "z_m": 128.0,
+        "placement": "main_bay_south_island",
+        "water_overlap": [],
+        "unbridged_water_violation": false,
+        "nearest_supertree": "ST05",
+        "supertree_trunk_clearance_m": 133.03
+      },
+      {
+        "id": "T09",
+        "name": "SG50 Lattice Jubilee Rose",
+        "zone": "Waterfront & Fantasy",
+        "x_m": -215.0,
+        "z_m": 10.0,
+        "placement": "outer_west_bank",
+        "water_overlap": [],
+        "unbridged_water_violation": false,
+        "nearest_supertree": "ST04",
+        "supertree_trunk_clearance_m": 160.01
+      },
+      {
+        "id": "T10",
+        "name": "Children's Garden Splash Crown",
+        "zone": "Wetlands & Serene",
+        "x_m": 295.0,
+        "z_m": -35.0,
+        "placement": "main_bay_south_island",
+        "water_overlap": [],
+        "unbridged_water_violation": false,
+        "nearest_supertree": "ST17",
+        "supertree_trunk_clearance_m": 130.4
+      },
+      {
+        "id": "T11",
+        "name": "Supertree Solar Crown",
+        "zone": "Supertree Grove",
+        "x_m": 14.0,
+        "z_m": -22.0,
+        "placement": "main_bay_south_island",
+        "water_overlap": [],
+        "unbridged_water_violation": false,
+        "nearest_supertree": "ST02",
+        "supertree_trunk_clearance_m": 13.94
+      },
+      {
+        "id": "T12",
+        "name": "Scarlet Bromeliad Flame",
+        "zone": "Supertree Grove",
+        "x_m": -32.0,
+        "z_m": 18.0,
+        "placement": "main_bay_south_island",
+        "water_overlap": [],
+        "unbridged_water_violation": false,
+        "nearest_supertree": "ST04",
+        "supertree_trunk_clearance_m": 17.88
+      },
+      {
+        "id": "T13",
+        "name": "Silver Garden Waterfront Lantern",
+        "zone": "Heritage & Dragonfly",
+        "x_m": -75.0,
+        "z_m": -245.0,
+        "placement": "main_bay_south_island",
+        "water_overlap": [],
+        "unbridged_water_violation": false,
+        "nearest_supertree": "ST13",
+        "supertree_trunk_clearance_m": 15.58
+      },
+      {
+        "id": "T14",
+        "name": "Golden Garden Gourd",
+        "zone": "Wetlands & Serene",
+        "x_m": 145.0,
+        "z_m": -22.0,
+        "placement": "main_bay_south_island",
+        "water_overlap": [],
+        "unbridged_water_violation": false,
+        "nearest_supertree": "ST18",
+        "supertree_trunk_clearance_m": 11.44
+      },
+      {
+        "id": "T15",
+        "name": "Rhapsody Wind Chime",
+        "zone": "Supertree Grove",
+        "x_m": 22.0,
+        "z_m": 24.0,
+        "placement": "main_bay_south_island",
+        "water_overlap": [],
+        "unbridged_water_violation": false,
+        "nearest_supertree": "ST03",
+        "supertree_trunk_clearance_m": 16.2
+      },
+      {
+        "id": "T16",
+        "name": "Understorey Wood-Wide Node",
+        "zone": "Supertree Grove",
+        "x_m": -65.0,
+        "z_m": 105.0,
+        "placement": "main_bay_south_island",
+        "water_overlap": [],
+        "unbridged_water_violation": false,
+        "nearest_supertree": "ST05",
+        "supertree_trunk_clearance_m": 63.71
+      },
+      {
+        "id": "T17",
+        "name": "Giant Staghorn Spore",
+        "zone": "Supertree Grove",
+        "x_m": -26.0,
+        "z_m": 76.0,
+        "placement": "main_bay_south_island",
+        "water_overlap": [],
+        "unbridged_water_violation": false,
+        "nearest_supertree": "ST11",
+        "supertree_trunk_clearance_m": 18.3
+      },
+      {
+        "id": "T18",
+        "name": "Buttress Root Heart",
+        "zone": "Supertree Grove",
+        "x_m": -92.0,
+        "z_m": 128.0,
+        "placement": "main_bay_south_island",
+        "water_overlap": [],
+        "unbridged_water_violation": false,
+        "nearest_supertree": "ST05",
+        "supertree_trunk_clearance_m": 96.86
+      },
+      {
+        "id": "T19",
+        "name": "Agave Desert Rosette",
+        "zone": "Conservatories",
+        "x_m": 72.0,
+        "z_m": -155.0,
+        "placement": "main_bay_south_island",
+        "water_overlap": [],
+        "unbridged_water_violation": false,
+        "nearest_supertree": "ST12",
+        "supertree_trunk_clearance_m": 107.26
+      },
+      {
+        "id": "T20",
+        "name": "Nepenthes Highland Chalice",
+        "zone": "Conservatories",
+        "x_m": 175.0,
+        "z_m": -125.0,
+        "placement": "main_bay_south_island",
+        "water_overlap": [],
+        "unbridged_water_violation": false,
+        "nearest_supertree": "ST17",
+        "supertree_trunk_clearance_m": 87.34
+      },
+      {
+        "id": "T21",
+        "name": "Crystal Mountain Stalagmite",
+        "zone": "Conservatories",
+        "x_m": 145.0,
+        "z_m": -115.0,
+        "placement": "main_bay_south_island",
+        "water_overlap": [],
+        "unbridged_water_violation": false,
+        "nearest_supertree": "ST17",
+        "supertree_trunk_clearance_m": 78.21
+      },
+      {
+        "id": "T22",
+        "name": "African Baobab Bottle Relic",
+        "zone": "Conservatories",
+        "x_m": 52.0,
+        "z_m": -198.0,
+        "placement": "main_bay_south_island",
+        "water_overlap": [],
+        "unbridged_water_violation": false,
+        "nearest_supertree": "ST15",
+        "supertree_trunk_clearance_m": 121.09
+      },
+      {
+        "id": "T23",
+        "name": "Lost World Mist Orchid Bell",
+        "zone": "Conservatories",
+        "x_m": 182.0,
+        "z_m": -148.0,
+        "placement": "main_bay_south_island",
+        "water_overlap": [],
+        "unbridged_water_violation": false,
+        "nearest_supertree": "ST17",
+        "supertree_trunk_clearance_m": 111.17
+      },
+      {
+        "id": "T24",
+        "name": "Main Entrance Arrival Crest",
+        "zone": "Supertree Grove",
+        "x_m": 165.0,
+        "z_m": 95.0,
+        "placement": "main_bay_south_island",
+        "water_overlap": [],
+        "unbridged_water_violation": false,
+        "nearest_supertree": "ST18",
+        "supertree_trunk_clearance_m": 102.14
+      },
+      {
+        "id": "T25",
+        "name": "Secret Life of Trees Totem",
+        "zone": "Supertree Grove",
+        "x_m": -42.0,
+        "z_m": 135.0,
+        "placement": "main_bay_south_island",
+        "water_overlap": [],
+        "unbridged_water_violation": false,
+        "nearest_supertree": "ST11",
+        "supertree_trunk_clearance_m": 78.8
+      },
+      {
+        "id": "T26",
+        "name": "Prehistoric Cycad Amber",
+        "zone": "Conservatories",
+        "x_m": 118.0,
+        "z_m": -92.0,
+        "placement": "main_bay_south_island",
+        "water_overlap": [],
+        "unbridged_water_violation": false,
+        "nearest_supertree": "ST16",
+        "supertree_trunk_clearance_m": 58.39
+      },
+      {
+        "id": "T27",
+        "name": "Chinese Moon Gate Jade",
+        "zone": "Heritage & Dragonfly",
+        "x_m": -55.0,
+        "z_m": -70.0,
+        "placement": "main_bay_south_island",
+        "water_overlap": [],
+        "unbridged_water_violation": false,
+        "nearest_supertree": "ST10",
+        "supertree_trunk_clearance_m": 30.44
+      },
+      {
+        "id": "T28",
+        "name": "Indian Garden Banyan Bell",
+        "zone": "Heritage & Dragonfly",
+        "x_m": -78.0,
+        "z_m": -45.0,
+        "placement": "main_bay_south_island",
+        "water_overlap": [],
+        "unbridged_water_violation": false,
+        "nearest_supertree": "ST10",
+        "supertree_trunk_clearance_m": 29.96
+      },
+      {
+        "id": "T29",
+        "name": "Malay Kampung Golden Gasing",
+        "zone": "Heritage & Dragonfly",
+        "x_m": -42.0,
+        "z_m": -122.0,
+        "placement": "main_bay_south_island",
+        "water_overlap": [],
+        "unbridged_water_violation": false,
+        "nearest_supertree": "ST09",
+        "supertree_trunk_clearance_m": 80.35
+      },
+      {
+        "id": "T30",
+        "name": "Silver Promenade Brass Compass",
+        "zone": "Heritage & Dragonfly",
+        "x_m": -52.0,
+        "z_m": -195.0,
+        "placement": "main_bay_south_island",
+        "water_overlap": [],
+        "unbridged_water_violation": false,
+        "nearest_supertree": "ST15",
+        "supertree_trunk_clearance_m": 34.07
+      },
+      {
+        "id": "T31",
+        "name": "Koi Pond Footbridge Pearl",
+        "zone": "Heritage & Dragonfly",
+        "x_m": -108.0,
+        "z_m": 70.0,
+        "placement": "bridge (koi_pond_central_bridge)",
+        "water_overlap": [
+          "central_koi_pond"
+        ],
+        "unbridged_water_violation": false,
+        "nearest_supertree": "ST05",
+        "supertree_trunk_clearance_m": 71.67
+      },
+      {
+        "id": "T32",
+        "name": "Meadow Dragonfly Bridge Totem",
+        "zone": "The Meadow",
+        "x_m": -208.0,
+        "z_m": 123.0,
+        "placement": "bridge (meadow_dragonfly_bridge)",
+        "water_overlap": [
+          "dragonfly_lake_main"
+        ],
+        "unbridged_water_violation": false,
+        "nearest_supertree": "ST05",
+        "supertree_trunk_clearance_m": 184.46
+      },
+      {
+        "id": "T33",
+        "name": "Meadow Amphitheatre Sun Disc",
+        "zone": "The Meadow",
+        "x_m": -175.0,
+        "z_m": 235.0,
+        "placement": "main_bay_south_island",
+        "water_overlap": [],
+        "unbridged_water_violation": false,
+        "nearest_supertree": "ST05",
+        "supertree_trunk_clearance_m": 232.05
+      },
+      {
+        "id": "T34",
+        "name": "Floral Fantasy Hanging Key",
+        "zone": "Waterfront & Fantasy",
+        "x_m": -190.0,
+        "z_m": 35.0,
+        "placement": "outer_west_bank",
+        "water_overlap": [],
+        "unbridged_water_violation": false,
+        "nearest_supertree": "ST04",
+        "supertree_trunk_clearance_m": 136.9
+      },
+      {
+        "id": "T35",
+        "name": "Meadow Stage Canopy Crest",
+        "zone": "The Meadow",
+        "x_m": -135.0,
+        "z_m": 185.0,
+        "placement": "main_bay_south_island",
+        "water_overlap": [],
+        "unbridged_water_violation": false,
+        "nearest_supertree": "ST05",
+        "supertree_trunk_clearance_m": 168.14
+      },
+      {
+        "id": "T36",
+        "name": "Southern Meadow Orchid Crown",
+        "zone": "The Meadow",
+        "x_m": -145.0,
+        "z_m": 315.0,
+        "placement": "main_bay_south_island",
+        "water_overlap": [],
+        "unbridged_water_violation": false,
+        "nearest_supertree": "ST11",
+        "supertree_trunk_clearance_m": 285.21
+      },
+      {
+        "id": "T37",
+        "name": "Kingfisher Boardwalk Lotus Crown",
+        "zone": "Wetlands & Serene",
+        "x_m": 353.5,
+        "z_m": 60.0,
+        "placement": "bridge (kingfisher_wetlands_boardwalk)",
+        "water_overlap": [
+          "kingfisher_lake_lotus_pond"
+        ],
+        "unbridged_water_violation": false,
+        "nearest_supertree": "ST17",
+        "supertree_trunk_clearance_m": 211.62
+      },
+      {
+        "id": "T38",
+        "name": "Serene Garden Yukimi Lantern",
+        "zone": "Waterfront & Fantasy",
+        "x_m": -235.0,
+        "z_m": 75.0,
+        "placement": "outer_west_bank",
+        "water_overlap": [],
+        "unbridged_water_violation": false,
+        "nearest_supertree": "ST04",
+        "supertree_trunk_clearance_m": 190.54
+      },
+      {
+        "id": "T39",
+        "name": "Satay by the Bay Heritage Spice Gem",
+        "zone": "Wetlands & Serene",
+        "x_m": 445.0,
+        "z_m": 135.0,
+        "placement": "main_bay_south_island",
+        "water_overlap": [],
+        "unbridged_water_violation": false,
+        "nearest_supertree": "ST17",
+        "supertree_trunk_clearance_m": 328.05
+      },
+      {
+        "id": "T40",
+        "name": "Marina Barrage Green Spiral Pearl",
+        "zone": "Wetlands & Serene",
+        "x_m": 565.0,
+        "z_m": 165.0,
+        "placement": "main_bay_south_island",
+        "water_overlap": [],
+        "unbridged_water_violation": false,
+        "nearest_supertree": "ST17",
+        "supertree_trunk_clearance_m": 447.74
+      },
+      {
+        "id": "T41",
+        "name": "Sun Pavilion Desert Cactus Crown",
+        "zone": "Conservatories",
+        "x_m": 215.0,
+        "z_m": -65.0,
+        "placement": "main_bay_south_island",
+        "water_overlap": [],
+        "unbridged_water_violation": false,
+        "nearest_supertree": "ST17",
+        "supertree_trunk_clearance_m": 57.82
+      },
+      {
+        "id": "T42",
+        "name": "IMBA & Active Garden Waterfront Key",
+        "zone": "Waterfront & Fantasy",
+        "x_m": -135.0,
+        "z_m": -205.0,
+        "placement": "outer_west_bank",
+        "water_overlap": [],
+        "unbridged_water_violation": false,
+        "nearest_supertree": "ST13",
+        "supertree_trunk_clearance_m": 51.4
+      }
+    ]
+  }
+}

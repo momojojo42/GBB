@@ -1,0 +1,1595 @@
+{
+  "coordinate_system": {
+    "name": "GBB_Bay_South_Canonical_Meters_XZ",
+    "origin_name": "Supertree Grove Central Plaza",
+    "origin_gps": "1\u00b016'54.8\"N, 103\u00b051'50.2\"E",
+    "origin_meters": [
+      0.0,
+      0.0
+    ],
+    "axes": {
+      "+X_m": "East (towards Cloud Forest +160m, Kingfisher Wetlands +355m, Marina Barrage +565m)",
+      "-X_m": "West (towards Dragonfly Bridge -110m, The Meadow -175m, Floral Fantasy -200m, SW Corner -395m)",
+      "-Z_m": "True North (towards Flower Dome -210m, Silver Garden -245m, NW Waterfront Tip -330m)",
+      "+Z_m": "True South (towards Main Entrance +125m, The Meadow +235m, Southernmost Tip +535m)"
+    },
+    "bounds_meters": {
+      "x_min": -450.0,
+      "x_max": 650.0,
+      "width_m": 1100.0,
+      "z_min": -380.0,
+      "z_max": 570.0,
+      "height_m": 950.0
+    },
+    "stage2_3d_scale": {
+      "SCALE_XZ": 0.2,
+      "meters_per_3d_unit": 5.0,
+      "formula": "worldX = X_m * 0.20, worldZ = Z_m * 0.20"
+    }
+  },
+  "maps": {
+    "ref1": {
+      "name": "Reference 1: Grant Associates Architectural Masterplan (North Up)",
+      "output_image_path": "/Users/momo/Desktop/Antigravity/GBB TreasureHunt Experiments/public/maps/ref_grid_1_masterplan_north_up.png",
+      "width": 2250,
+      "height": 1974,
+      "native_width": 750,
+      "native_height": 658,
+      "upscale_factor": 3.0,
+      "nominal_rotation_deg": 0.0,
+      "meter_to_pixel": [
+        [
+          1.90999402,
+          -0.01640037,
+          964.57142487
+        ],
+        [
+          -0.06570218,
+          1.86482151,
+          886.79449078
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "pixel_to_meter": [
+        [
+          0.52372029,
+          0.00460591,
+          -509.25012225
+        ],
+        [
+          0.01845193,
+          0.53640663,
+          -493.48065087
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "meter_to_native_pixel": [
+        [
+          0.63666467,
+          -0.00546679,
+          321.52380829
+        ],
+        [
+          -0.02190073,
+          0.62160717,
+          295.59816359
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "native_pixel_to_meter": [
+        [
+          1.57116086,
+          0.01381774,
+          -509.25012225
+        ],
+        [
+          0.0553558,
+          1.60921988,
+          -493.48065087
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "meter_to_percent": [
+        [
+          0.08488862,
+          -0.00072891,
+          42.86984111
+        ],
+        [
+          -0.00332838,
+          0.09446917,
+          44.92373307
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "percent_to_meter": [
+        [
+          11.78370648,
+          0.09092071,
+          -509.25012225
+        ],
+        [
+          0.41516852,
+          10.58866683,
+          -493.48065087
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "rms_residual_px": 14.14,
+      "mean_residual_m": 6.88,
+      "max_residual_m": 14.42,
+      "anchors": [
+        {
+          "name": "L01 Supertree Grove",
+          "x_m": 0.0,
+          "z_m": 0.0,
+          "actual_pct": [
+            43.0,
+            44.5
+          ],
+          "actual_px": [
+            967.5,
+            878.43
+          ],
+          "predicted_px": [
+            964.57,
+            886.79
+          ],
+          "residual_px": 8.86,
+          "residual_m": 4.68
+        },
+        {
+          "name": "L02 Flower Dome",
+          "x_m": 35.0,
+          "z_m": -210.0,
+          "actual_pct": [
+            46.0,
+            24.5
+          ],
+          "actual_px": [
+            1035.0,
+            483.63
+          ],
+          "predicted_px": [
+            1034.87,
+            492.88
+          ],
+          "residual_px": 9.25,
+          "residual_m": 4.96
+        },
+        {
+          "name": "L03 Cloud Forest",
+          "x_m": 160.0,
+          "z_m": -135.0,
+          "actual_pct": [
+            56.8,
+            31.2
+          ],
+          "actual_px": [
+            1278.0,
+            615.89
+          ],
+          "predicted_px": [
+            1272.38,
+            624.53
+          ],
+          "residual_px": 10.31,
+          "residual_m": 5.38
+        },
+        {
+          "name": "L09 The Meadow",
+          "x_m": -175.0,
+          "z_m": 235.0,
+          "actual_pct": [
+            27.5,
+            67.5
+          ],
+          "actual_px": [
+            618.75,
+            1332.45
+          ],
+          "predicted_px": [
+            626.47,
+            1336.53
+          ],
+          "residual_px": 8.73,
+          "residual_m": 4.68
+        },
+        {
+          "name": "V1 NW Waterfront Tip",
+          "x_m": -130.0,
+          "z_m": -330.0,
+          "actual_pct": [
+            31.8,
+            15.0
+          ],
+          "actual_px": [
+            715.5,
+            296.1
+          ],
+          "predicted_px": [
+            721.68,
+            279.94
+          ],
+          "residual_px": 17.3,
+          "residual_m": 9.12
+        },
+        {
+          "name": "V2 SW Corner",
+          "x_m": -395.0,
+          "z_m": 395.0,
+          "actual_pct": [
+            8.8,
+            83.2
+          ],
+          "actual_px": [
+            198.0,
+            1642.37
+          ],
+          "predicted_px": [
+            203.65,
+            1649.35
+          ],
+          "residual_px": 8.98,
+          "residual_m": 4.87
+        },
+        {
+          "name": "V3 Southernmost Tip",
+          "x_m": -185.0,
+          "z_m": 535.0,
+          "actual_pct": [
+            27.0,
+            96.5
+          ],
+          "actual_px": [
+            607.5,
+            1904.91
+          ],
+          "predicted_px": [
+            602.45,
+            1896.63
+          ],
+          "residual_px": 9.7,
+          "residual_m": 5.27
+        },
+        {
+          "name": "V5 Main Entrance Apex",
+          "x_m": 215.0,
+          "z_m": 125.0,
+          "actual_pct": [
+            62.0,
+            56.8
+          ],
+          "actual_px": [
+            1395.0,
+            1121.23
+          ],
+          "predicted_px": [
+            1373.17,
+            1105.77
+          ],
+          "residual_px": 26.75,
+          "residual_m": 14.42
+        },
+        {
+          "name": "L20 Marina Barrage / SE Tip",
+          "x_m": 565.0,
+          "z_m": 165.0,
+          "actual_pct": [
+            90.0,
+            58.5
+          ],
+          "actual_px": [
+            2025.0,
+            1154.79
+          ],
+          "predicted_px": [
+            2041.01,
+            1157.37
+          ],
+          "residual_px": 16.22,
+          "residual_m": 8.56
+        }
+      ]
+    },
+    "ref2": {
+      "name": "Reference 2: Official Illustrated Visitor Map (GB-Map-15-02-2026.jpg, North Up)",
+      "output_image_path": "/Users/momo/Desktop/Antigravity/GBB TreasureHunt Experiments/public/maps/ref_grid_2_official_visitor_map_north_up.png",
+      "width": 2599,
+      "height": 1772,
+      "native_width": 2599,
+      "native_height": 1772,
+      "upscale_factor": 1.0,
+      "nominal_rotation_deg": 0.0,
+      "meter_to_pixel": [
+        [
+          2.61415514,
+          -0.30249126,
+          1190.99391361
+        ],
+        [
+          0.15257423,
+          1.66514905,
+          674.20356188
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "pixel_to_meter": [
+        [
+          0.3785195,
+          0.06876192,
+          -497.17395366
+        ],
+        [
+          -0.03468297,
+          0.59424632,
+          -359.33577719
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "meter_to_native_pixel": [
+        [
+          2.61415514,
+          -0.30249126,
+          1190.99391361
+        ],
+        [
+          0.15257423,
+          1.66514905,
+          674.20356188
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "native_pixel_to_meter": [
+        [
+          0.3785195,
+          0.06876192,
+          -497.17395366
+        ],
+        [
+          -0.03468297,
+          0.59424632,
+          -359.33577719
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "meter_to_percent": [
+        [
+          0.10058311,
+          -0.01163876,
+          45.82508325
+        ],
+        [
+          0.00861028,
+          0.09397004,
+          38.04760507
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "percent_to_meter": [
+        [
+          9.83772187,
+          1.21846118,
+          -497.17395366
+        ],
+        [
+          -0.90141049,
+          10.53004485,
+          -359.33577719
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "rms_residual_px": 76.83,
+      "mean_residual_m": 34.73,
+      "max_residual_m": 56.53,
+      "anchors": [
+        {
+          "name": "L01 Supertree Grove",
+          "x_m": 0.0,
+          "z_m": 0.0,
+          "actual_pct": [
+            45.8,
+            38.2
+          ],
+          "actual_px": [
+            1190.34,
+            676.9
+          ],
+          "predicted_px": [
+            1190.99,
+            674.2
+          ],
+          "residual_px": 2.78,
+          "residual_m": 1.63
+        },
+        {
+          "name": "L02 Flower Dome",
+          "x_m": 35.0,
+          "z_m": -210.0,
+          "actual_pct": [
+            54.8,
+            20.2
+          ],
+          "actual_px": [
+            1424.25,
+            357.94
+          ],
+          "predicted_px": [
+            1346.01,
+            329.86
+          ],
+          "residual_px": 83.13,
+          "residual_m": 34.5
+        },
+        {
+          "name": "L03 Cloud Forest",
+          "x_m": 160.0,
+          "z_m": -135.0,
+          "actual_pct": [
+            66.2,
+            26.8
+          ],
+          "actual_px": [
+            1720.54,
+            474.9
+          ],
+          "predicted_px": [
+            1650.1,
+            473.82
+          ],
+          "residual_px": 70.45,
+          "residual_m": 26.8
+        },
+        {
+          "name": "L09 The Meadow",
+          "x_m": -175.0,
+          "z_m": 235.0,
+          "actual_pct": [
+            27.0,
+            59.5
+          ],
+          "actual_px": [
+            701.73,
+            1054.34
+          ],
+          "predicted_px": [
+            662.43,
+            1038.81
+          ],
+          "residual_px": 42.25,
+          "residual_m": 17.78
+        },
+        {
+          "name": "V1 NW Waterfront Tip",
+          "x_m": -130.0,
+          "z_m": -330.0,
+          "actual_pct": [
+            32.8,
+            4.5
+          ],
+          "actual_px": [
+            852.47,
+            79.74
+          ],
+          "predicted_px": [
+            950.98,
+            104.87
+          ],
+          "residual_px": 101.66,
+          "residual_m": 40.68
+        },
+        {
+          "name": "V2 SW Corner",
+          "x_m": -395.0,
+          "z_m": 395.0,
+          "actual_pct": [
+            1.5,
+            66.8
+          ],
+          "actual_px": [
+            38.98,
+            1183.7
+          ],
+          "predicted_px": [
+            38.92,
+            1271.67
+          ],
+          "residual_px": 87.97,
+          "residual_m": 52.63
+        },
+        {
+          "name": "V3 Southernmost Tip",
+          "x_m": -185.0,
+          "z_m": 535.0,
+          "actual_pct": [
+            20.6,
+            90.0
+          ],
+          "actual_px": [
+            535.39,
+            1594.8
+          ],
+          "predicted_px": [
+            545.54,
+            1536.83
+          ],
+          "residual_px": 58.85,
+          "residual_m": 34.8
+        },
+        {
+          "name": "V5 Main Entrance Apex",
+          "x_m": 215.0,
+          "z_m": 125.0,
+          "actual_pct": [
+            63.5,
+            56.5
+          ],
+          "actual_px": [
+            1650.37,
+            1001.18
+          ],
+          "predicted_px": [
+            1715.23,
+            915.15
+          ],
+          "residual_px": 107.74,
+          "residual_m": 56.53
+        },
+        {
+          "name": "L20 Marina Barrage / SE Tip",
+          "x_m": 565.0,
+          "z_m": 165.0,
+          "actual_pct": [
+            100.2,
+            54.0
+          ],
+          "actual_px": [
+            2604.2,
+            956.88
+          ],
+          "predicted_px": [
+            2618.08,
+            1035.16
+          ],
+          "residual_px": 79.5,
+          "residual_m": 47.25
+        }
+      ]
+    },
+    "ref3": {
+      "name": "Reference 3: Official Pedestrian & Cyclist Route Map (Rotated -58\u00b0 CCW)",
+      "output_image_path": "/Users/momo/Desktop/Antigravity/GBB TreasureHunt Experiments/public/maps/ref_grid_3_route_map_rotated.png",
+      "width": 2048,
+      "height": 2048,
+      "native_width": 1024,
+      "native_height": 1024,
+      "upscale_factor": 2.0,
+      "nominal_rotation_deg": -58.0,
+      "meter_to_pixel": [
+        [
+          1.04171191,
+          -1.92272525,
+          1339.50795781
+        ],
+        [
+          1.84584268,
+          0.73157559,
+          884.56680016
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "pixel_to_meter": [
+        [
+          0.16969426,
+          0.44599005,
+          -621.8148002
+        ],
+        [
+          -0.42815658,
+          0.24163262,
+          359.77895194
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "meter_to_native_pixel": [
+        [
+          0.52085596,
+          -0.96136262,
+          669.7539789
+        ],
+        [
+          0.92292134,
+          0.36578779,
+          442.28340008
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "native_pixel_to_meter": [
+        [
+          0.33938851,
+          0.8919801,
+          -621.8148002
+        ],
+        [
+          -0.85631317,
+          0.48326525,
+          359.77895194
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "meter_to_percent": [
+        [
+          0.05086484,
+          -0.09388307,
+          65.405662
+        ],
+        [
+          0.09012904,
+          0.03572146,
+          43.19173829
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "percent_to_meter": [
+        [
+          3.47533839,
+          9.13387624,
+          -621.8148002
+        ],
+        [
+          -8.76864681,
+          4.94863615,
+          359.77895194
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "rms_residual_px": 52.81,
+      "mean_residual_m": 23.1,
+      "max_residual_m": 44.28,
+      "anchors": [
+        {
+          "name": "L01 Supertree Grove",
+          "x_m": 0.0,
+          "z_m": 0.0,
+          "actual_pct": [
+            63.5,
+            42.5
+          ],
+          "actual_px": [
+            1300.48,
+            870.4
+          ],
+          "predicted_px": [
+            1339.51,
+            884.57
+          ],
+          "residual_px": 41.52,
+          "residual_m": 18.55
+        },
+        {
+          "name": "L02 Flower Dome",
+          "x_m": 35.0,
+          "z_m": -210.0,
+          "actual_pct": [
+            88.0,
+            39.5
+          ],
+          "actual_px": [
+            1802.24,
+            808.96
+          ],
+          "predicted_px": [
+            1779.74,
+            795.54
+          ],
+          "residual_px": 26.2,
+          "residual_m": 11.7
+        },
+        {
+          "name": "L03 Cloud Forest",
+          "x_m": 160.0,
+          "z_m": -135.0,
+          "actual_pct": [
+            87.0,
+            54.5
+          ],
+          "actual_px": [
+            1781.76,
+            1116.16
+          ],
+          "predicted_px": [
+            1765.75,
+            1081.14
+          ],
+          "residual_px": 38.51,
+          "residual_m": 18.41
+        },
+        {
+          "name": "L09 The Meadow",
+          "x_m": -175.0,
+          "z_m": 235.0,
+          "actual_pct": [
+            33.0,
+            38.0
+          ],
+          "actual_px": [
+            675.84,
+            778.24
+          ],
+          "predicted_px": [
+            705.37,
+            733.46
+          ],
+          "residual_px": 53.64,
+          "residual_m": 27.82
+        },
+        {
+          "name": "V1 NW Waterfront Tip",
+          "x_m": -130.0,
+          "z_m": -330.0,
+          "actual_pct": [
+            90.5,
+            18.2
+          ],
+          "actual_px": [
+            1853.44,
+            372.74
+          ],
+          "predicted_px": [
+            1838.58,
+            403.19
+          ],
+          "residual_px": 33.88,
+          "residual_m": 17.62
+        },
+        {
+          "name": "V2 SW Corner",
+          "x_m": -395.0,
+          "z_m": 395.0,
+          "actual_pct": [
+            10.5,
+            19.8
+          ],
+          "actual_px": [
+            215.04,
+            405.5
+          ],
+          "predicted_px": [
+            168.56,
+            444.43
+          ],
+          "residual_px": 60.63,
+          "residual_m": 30.8
+        },
+        {
+          "name": "V3 Southernmost Tip",
+          "x_m": -185.0,
+          "z_m": 535.0,
+          "actual_pct": [
+            6.0,
+            46.2
+          ],
+          "actual_px": [
+            122.88,
+            946.18
+          ],
+          "predicted_px": [
+            118.13,
+            934.48
+          ],
+          "residual_px": 12.62,
+          "residual_m": 6.07
+        },
+        {
+          "name": "V5 Main Entrance Apex",
+          "x_m": 215.0,
+          "z_m": 125.0,
+          "actual_pct": [
+            60.0,
+            67.5
+          ],
+          "actual_px": [
+            1228.8,
+            1382.4
+          ],
+          "predicted_px": [
+            1323.14,
+            1372.87
+          ],
+          "residual_px": 94.82,
+          "residual_m": 44.28
+        },
+        {
+          "name": "L20 Marina Barrage / SE Tip",
+          "x_m": 565.0,
+          "z_m": 165.0,
+          "actual_pct": [
+            81.5,
+            98.5
+          ],
+          "actual_px": [
+            1669.12,
+            2017.28
+          ],
+          "predicted_px": [
+            1610.83,
+            2048.18
+          ],
+          "residual_px": 65.98,
+          "residual_m": 32.66
+        }
+      ]
+    }
+  },
+  "peninsula_vertices": [
+    {
+      "id": "V1",
+      "name": "NW Waterfront Tip",
+      "x_m": -130.0,
+      "z_m": -330.0,
+      "note": "Sharp ~75 deg corner where 775m straight NW edge meets Marina Channel",
+      "ref1_pct": [
+        31.8,
+        15.0
+      ],
+      "ref2_pct": [
+        32.8,
+        4.5
+      ],
+      "ref3_pct": [
+        90.5,
+        18.2
+      ],
+      "badge_offset": [
+        -165,
+        -42
+      ]
+    },
+    {
+      "id": "V2",
+      "name": "SW Corner (Sheares x Blvd)",
+      "x_m": -395.0,
+      "z_m": 395.0,
+      "note": "90 deg corner at Sheares Ave (775m NW edge) & Marina Blvd (250m SW edge)",
+      "ref1_pct": [
+        8.8,
+        83.2
+      ],
+      "ref2_pct": [
+        1.5,
+        66.8
+      ],
+      "ref3_pct": [
+        10.5,
+        19.8
+      ],
+      "badge_offset": [
+        16,
+        -38
+      ]
+    },
+    {
+      "id": "V3",
+      "name": "Southernmost Tip",
+      "x_m": -185.0,
+      "z_m": 535.0,
+      "note": "90 deg corner where Marina Blvd meets Marina Gardens Drive",
+      "ref1_pct": [
+        27.0,
+        96.5
+      ],
+      "ref2_pct": [
+        20.6,
+        90.0
+      ],
+      "ref3_pct": [
+        6.0,
+        46.2
+      ],
+      "badge_offset": [
+        20,
+        -28
+      ]
+    },
+    {
+      "id": "V4",
+      "name": "Concave S-Curve W",
+      "x_m": -25.0,
+      "z_m": 270.0,
+      "note": "Marina Gardens Drive inflection along Meadow SE edge",
+      "ref1_pct": [
+        41.0,
+        71.0
+      ],
+      "ref2_pct": [
+        44.0,
+        62.5
+      ],
+      "ref3_pct": [
+        43.0,
+        53.0
+      ],
+      "badge_offset": [
+        22,
+        16
+      ]
+    },
+    {
+      "id": "V5",
+      "name": "Main Entrance Apex",
+      "x_m": 215.0,
+      "z_m": 125.0,
+      "note": "Deepest concave southern boundary apex pinching waist to 330m",
+      "ref1_pct": [
+        62.0,
+        56.8
+      ],
+      "ref2_pct": [
+        63.5,
+        56.5
+      ],
+      "ref3_pct": [
+        60.0,
+        67.5
+      ],
+      "badge_offset": [
+        18,
+        28
+      ]
+    },
+    {
+      "id": "V6",
+      "name": "SE Southern Edge (MRT)",
+      "x_m": 560.0,
+      "z_m": 320.0,
+      "note": "SE arm of concave arch near Satay by the Bay & GBTB MRT",
+      "ref1_pct": [
+        91.8,
+        75.2
+      ],
+      "ref2_pct": [
+        94.5,
+        73.0
+      ],
+      "ref3_pct": [
+        83.2,
+        95.0
+      ],
+      "badge_offset": [
+        -215,
+        22
+      ]
+    },
+    {
+      "id": "V7",
+      "name": "SE Barrage Tip",
+      "x_m": 645.0,
+      "z_m": 235.0,
+      "note": "Tapered SE point of orchid-leaf peninsula at Marina Barrage",
+      "ref1_pct": [
+        98.5,
+        67.5
+      ],
+      "ref2_pct": [
+        99.2,
+        53.5
+      ],
+      "ref3_pct": [
+        89.5,
+        98.5
+      ],
+      "badge_offset": [
+        -215,
+        -34
+      ]
+    }
+  ],
+  "ne_waterfront_curve_m": [
+    [
+      -130.0,
+      -330.0
+    ],
+    [
+      -55.0,
+      -280.0
+    ],
+    [
+      25.0,
+      -230.0
+    ],
+    [
+      110.0,
+      -185.0
+    ],
+    [
+      185.0,
+      -145.0
+    ],
+    [
+      320.0,
+      -65.0
+    ],
+    [
+      475.0,
+      60.0
+    ],
+    [
+      645.0,
+      235.0
+    ]
+  ],
+  "landmarks": [
+    {
+      "id": "L01",
+      "name": "Supertree Grove (12 Trees)",
+      "x_m": 0.0,
+      "z_m": 0.0,
+      "w_m": 175.0,
+      "l_m": 155.0,
+      "angle_deg": 140.0,
+      "ref1_pct": [
+        43.0,
+        44.5
+      ],
+      "ref2_pct": [
+        45.8,
+        38.2
+      ],
+      "ref3_pct": [
+        63.5,
+        42.5
+      ],
+      "badge_offset": [
+        -210,
+        -45
+      ]
+    },
+    {
+      "id": "L02",
+      "name": "Flower Dome (#1)",
+      "x_m": 35.0,
+      "z_m": -210.0,
+      "w_m": 150.0,
+      "l_m": 80.0,
+      "angle_deg": 125.0,
+      "ref1_pct": [
+        46.0,
+        24.5
+      ],
+      "ref2_pct": [
+        54.8,
+        20.2
+      ],
+      "ref3_pct": [
+        88.0,
+        39.5
+      ],
+      "badge_offset": [
+        22,
+        -46
+      ]
+    },
+    {
+      "id": "L03",
+      "name": "Cloud Forest (#2)",
+      "x_m": 160.0,
+      "z_m": -135.0,
+      "w_m": 115.0,
+      "l_m": 70.0,
+      "angle_deg": 155.0,
+      "ref1_pct": [
+        56.8,
+        31.2
+      ],
+      "ref2_pct": [
+        66.2,
+        26.8
+      ],
+      "ref3_pct": [
+        87.0,
+        54.5
+      ],
+      "badge_offset": [
+        26,
+        -36
+      ]
+    },
+    {
+      "id": "L04",
+      "name": "Conservatory Plaza & Clock",
+      "x_m": 95.0,
+      "z_m": -125.0,
+      "w_m": 95.0,
+      "l_m": 75.0,
+      "angle_deg": 140.0,
+      "ref1_pct": [
+        51.2,
+        32.5
+      ],
+      "ref2_pct": [
+        58.0,
+        29.0
+      ],
+      "ref3_pct": [
+        81.5,
+        47.0
+      ],
+      "badge_offset": [
+        -235,
+        -18
+      ]
+    },
+    {
+      "id": "L05",
+      "name": "Silver Garden (3 Trees)",
+      "x_m": -75.0,
+      "z_m": -245.0,
+      "w_m": 70.0,
+      "l_m": 65.0,
+      "angle_deg": 120.0,
+      "ref1_pct": [
+        36.8,
+        21.2
+      ],
+      "ref2_pct": [
+        45.2,
+        17.5
+      ],
+      "ref3_pct": [
+        83.5,
+        30.8
+      ],
+      "badge_offset": [
+        -220,
+        -28
+      ]
+    },
+    {
+      "id": "L06",
+      "name": "Golden Garden (3 Trees)",
+      "x_m": 145.0,
+      "z_m": -25.0,
+      "w_m": 75.0,
+      "l_m": 60.0,
+      "angle_deg": 135.0,
+      "ref1_pct": [
+        55.5,
+        43.0
+      ],
+      "ref2_pct": [
+        62.5,
+        36.5
+      ],
+      "ref3_pct": [
+        73.5,
+        57.5
+      ],
+      "badge_offset": [
+        -215,
+        16
+      ]
+    },
+    {
+      "id": "L07",
+      "name": "Heritage Gardens (4 Zones)",
+      "x_m": -55.0,
+      "z_m": -70.0,
+      "w_m": 190.0,
+      "l_m": 65.0,
+      "angle_deg": 45.0,
+      "ref1_pct": [
+        38.5,
+        38.0
+      ],
+      "ref2_pct": [
+        40.5,
+        31.0
+      ],
+      "ref3_pct": [
+        65.0,
+        33.5
+      ],
+      "badge_offset": [
+        -235,
+        -24
+      ]
+    },
+    {
+      "id": "L08",
+      "name": "World of Plants & Understorey",
+      "x_m": -65.0,
+      "z_m": 105.0,
+      "w_m": 90.0,
+      "l_m": 70.0,
+      "angle_deg": 0.0,
+      "ref1_pct": [
+        37.0,
+        54.5
+      ],
+      "ref2_pct": [
+        42.5,
+        51.0
+      ],
+      "ref3_pct": [
+        52.5,
+        47.0
+      ],
+      "badge_offset": [
+        22,
+        -14
+      ]
+    },
+    {
+      "id": "L09",
+      "name": "The Meadow & Stage Canopy",
+      "x_m": -175.0,
+      "z_m": 235.0,
+      "w_m": 210.0,
+      "l_m": 165.0,
+      "angle_deg": 35.0,
+      "ref1_pct": [
+        27.5,
+        67.5
+      ],
+      "ref2_pct": [
+        27.0,
+        59.5
+      ],
+      "ref3_pct": [
+        33.0,
+        38.0
+      ],
+      "badge_offset": [
+        -110,
+        26
+      ]
+    },
+    {
+      "id": "L10",
+      "name": "Planet Floating Baby (#19)",
+      "x_m": -145.0,
+      "z_m": 115.0,
+      "w_m": 24.0,
+      "l_m": 10.0,
+      "angle_deg": 20.0,
+      "ref1_pct": [
+        30.0,
+        56.0
+      ],
+      "ref2_pct": [
+        27.5,
+        48.2
+      ],
+      "ref3_pct": [
+        44.0,
+        30.0
+      ],
+      "badge_offset": [
+        -225,
+        14
+      ]
+    },
+    {
+      "id": "L11",
+      "name": "Serene Garden (#21 West)",
+      "x_m": -235.0,
+      "z_m": 75.0,
+      "w_m": 95.0,
+      "l_m": 65.0,
+      "angle_deg": -25.0,
+      "ref1_pct": [
+        22.5,
+        52.0
+      ],
+      "ref2_pct": [
+        14.2,
+        60.8
+      ],
+      "ref3_pct": [
+        24.0,
+        32.0
+      ],
+      "badge_offset": [
+        -230,
+        -20
+      ]
+    },
+    {
+      "id": "L12",
+      "name": "Floral Fantasy & Bayfront",
+      "x_m": -200.0,
+      "z_m": 25.0,
+      "w_m": 115.0,
+      "l_m": 45.0,
+      "angle_deg": 30.0,
+      "ref1_pct": [
+        25.5,
+        48.0
+      ],
+      "ref2_pct": [
+        20.2,
+        37.5
+      ],
+      "ref3_pct": [
+        49.5,
+        20.5
+      ],
+      "badge_offset": [
+        -235,
+        -36
+      ]
+    },
+    {
+      "id": "L13",
+      "name": "IMBA Theatre (#37)",
+      "x_m": -145.0,
+      "z_m": -145.0,
+      "w_m": 95.0,
+      "l_m": 55.0,
+      "angle_deg": 30.0,
+      "ref1_pct": [
+        30.5,
+        31.0
+      ],
+      "ref2_pct": [
+        31.2,
+        24.8
+      ],
+      "ref3_pct": [
+        66.5,
+        19.5
+      ],
+      "badge_offset": [
+        -215,
+        -24
+      ]
+    },
+    {
+      "id": "L14",
+      "name": "Active Garden (#27 NW)",
+      "x_m": -125.0,
+      "z_m": -265.0,
+      "w_m": 130.0,
+      "l_m": 50.0,
+      "angle_deg": 30.0,
+      "ref1_pct": [
+        32.2,
+        19.5
+      ],
+      "ref2_pct": [
+        34.5,
+        12.5
+      ],
+      "ref3_pct": [
+        83.5,
+        16.5
+      ],
+      "badge_offset": [
+        -220,
+        -18
+      ]
+    },
+    {
+      "id": "L15",
+      "name": "Sun Pavilion & Canyon (#22)",
+      "x_m": 215.0,
+      "z_m": -65.0,
+      "w_m": 85.0,
+      "l_m": 40.0,
+      "angle_deg": 130.0,
+      "ref1_pct": [
+        62.0,
+        38.0
+      ],
+      "ref2_pct": [
+        69.5,
+        34.5
+      ],
+      "ref3_pct": [
+        82.0,
+        60.5
+      ],
+      "badge_offset": [
+        24,
+        -28
+      ]
+    },
+    {
+      "id": "L16",
+      "name": "Children's Garden (#23)",
+      "x_m": 295.0,
+      "z_m": -35.0,
+      "w_m": 130.0,
+      "l_m": 75.0,
+      "angle_deg": 125.0,
+      "ref1_pct": [
+        68.5,
+        41.0
+      ],
+      "ref2_pct": [
+        76.5,
+        38.5
+      ],
+      "ref3_pct": [
+        86.5,
+        67.5
+      ],
+      "badge_offset": [
+        26,
+        -18
+      ]
+    },
+    {
+      "id": "L17",
+      "name": "Kingfisher Wetlands (#28)",
+      "x_m": 355.0,
+      "z_m": 55.0,
+      "w_m": 160.0,
+      "l_m": 90.0,
+      "angle_deg": 125.0,
+      "ref1_pct": [
+        74.0,
+        50.0
+      ],
+      "ref2_pct": [
+        80.8,
+        46.8
+      ],
+      "ref3_pct": [
+        81.5,
+        73.5
+      ],
+      "badge_offset": [
+        24,
+        -8
+      ]
+    },
+    {
+      "id": "L18",
+      "name": "Main Entrance & Coach Bay",
+      "x_m": 165.0,
+      "z_m": 95.0,
+      "w_m": 165.0,
+      "l_m": 105.0,
+      "angle_deg": 45.0,
+      "ref1_pct": [
+        57.5,
+        54.0
+      ],
+      "ref2_pct": [
+        65.5,
+        50.5
+      ],
+      "ref3_pct": [
+        67.5,
+        65.5
+      ],
+      "badge_offset": [
+        -230,
+        22
+      ]
+    },
+    {
+      "id": "L19",
+      "name": "Satay by the Bay (g)",
+      "x_m": 445.0,
+      "z_m": 135.0,
+      "w_m": 150.0,
+      "l_m": 95.0,
+      "angle_deg": 125.0,
+      "ref1_pct": [
+        82.0,
+        58.0
+      ],
+      "ref2_pct": [
+        88.0,
+        49.5
+      ],
+      "ref3_pct": [
+        75.5,
+        83.5
+      ],
+      "badge_offset": [
+        -215,
+        24
+      ]
+    },
+    {
+      "id": "L20",
+      "name": "Marina Barrage Visitor Ctr",
+      "x_m": 565.0,
+      "z_m": 165.0,
+      "w_m": 180.0,
+      "l_m": 110.0,
+      "angle_deg": 125.0,
+      "ref1_pct": [
+        90.0,
+        58.5
+      ],
+      "ref2_pct": [
+        98.0,
+        51.0
+      ],
+      "ref3_pct": [
+        81.5,
+        97.5
+      ],
+      "badge_offset": [
+        -235,
+        -36
+      ]
+    }
+  ]
+}

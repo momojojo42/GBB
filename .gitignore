@@ -1,0 +1,15 @@
+# Dependencies & Build Output
+node_modules/
+dist/
+Showcase Progress/
+GBB_3D_AI_Technical_Sharing.pptx
+
+# Python Bytecode
+__pycache__/
+*.py[cod]
+
+# OS & Editor Files
+.DS_Store
+.vscode/
+.idea/
+*.log

@@ -1,0 +1,386 @@
+/* Gardens by the Bay — Mobile & Tablet Landscape Modals Responsive Rules (src/styles/screens-responsive-modals.css) */
+@media (max-width: 1024px) and (orientation: landscape), (max-height: 680px) and (orientation: landscape) {
+  .pearl-col-actions,
+  .pearl-header-right {
+    gap: 6px;
+    flex-wrap: nowrap;
+    min-width: 0;
+  }
+
+  .pearl-col-filter-bar,
+  .pearl-filter-bar {
+    gap: 4px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+  }
+
+  .pearl-filter-pill,
+  .pearl-filter-chip {
+    padding: 4px 9px;
+    font-size: 10px;
+    white-space: nowrap;
+  }
+
+  .btn-pearl-close {
+    padding: 4px 10px;
+    font-size: 10.5px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .pearl-helper-pill {
+    display: none !important;
+  }
+
+  .pearl-toolbar-row {
+    margin-bottom: 6px;
+  }
+
+  .pearl-col-divider {
+    margin: 4px 0 6px;
+  }
+
+  .pearl-collection-grid,
+  .pearl-relic-grid,
+  .treasures-grid-42 {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 6px;
+    padding: 2px 4px 4px 2px;
+  }
+
+  .pearl-relic-card {
+    padding: 4px 6px 5px;
+    border-radius: 11px;
+    gap: 2px;
+  }
+
+  .prc-new-tag,
+  .prc-status-pill.is-new,
+  .prc-status-pill.is-owned,
+  .prc-status-pill.is-mystery {
+    font-size: 7.5px;
+    padding: 0.5px 4px;
+  }
+
+  .prc-id-tag,
+  .prc-pts-tag,
+  .prc-id-pill,
+  .prc-status-pill.is-pts {
+    font-size: 8.5px;
+    padding: 1px 5px;
+  }
+
+  .prc-thumb-stage {
+    height: 46px;
+    border-radius: 8px;
+  }
+
+  .prc-thumb-img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .prc-title {
+    font-size: 10px;
+    line-height: 1.15;
+  }
+
+  .prc-zone-sub {
+    display: none !important;
+  }
+
+  .prc-gag-pill,
+  .prc-cta-pill {
+    padding: 2px 5px;
+    font-size: 8.5px;
+  }
+
+  .pearl-collection-empty {
+    padding: 16px 14px;
+    gap: 6px;
+  }
+
+  .pce-icon {
+    font-size: 28px;
+  }
+
+  .pce-title {
+    font-size: 14px;
+  }
+
+  .pce-desc {
+    font-size: 11px;
+  }
+
+  .modal-top-bar {
+    padding-bottom: 6px;
+    margin-bottom: 6px;
+    flex-shrink: 0;
+  }
+
+  .modal-eyebrow {
+    display: none;
+  }
+
+  .modal-heading {
+    font-size: 14px;
+  }
+
+  .fullmap-hint {
+    display: none;
+  }
+
+  .btn-modal-close {
+    width: 28px;
+    height: 28px;
+    font-size: 13px;
+  }
+
+  .encyclopedia-split {
+    flex: 1;
+    min-height: 0;
+    grid-template-columns: 1.25fr 0.95fr;
+    gap: 10px;
+    overflow: hidden;
+  }
+
+  .encyc-left {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  .encyc-filter-bar {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    margin-bottom: 6px;
+    flex-shrink: 0;
+  }
+
+  .filter-chip {
+    white-space: nowrap;
+    padding: 4px 8px;
+    font-size: 10px;
+  }
+
+  .rsc-thumb-wrap {
+    height: 62px;
+  }
+
+  .encyc-right {
+    min-height: 0;
+    overflow-y: auto;
+    gap: 6px;
+    padding-right: 2px;
+  }
+
+  .selected-relic-inspector {
+    padding: 10px;
+  }
+
+  .inspector-main-img-wrap {
+    height: 96px;
+  }
+
+  .fullmap-body {
+    flex: 1;
+    min-height: 0;
+    grid-template-columns: 1fr 164px;
+    gap: 8px;
+    overflow: hidden;
+  }
+
+  .fullmap-canvas-container {
+    min-height: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  #tacticalFullMapCanvas {
+    max-height: 100%;
+    max-width: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .fullmap-legend-sidebar {
+    min-height: 0;
+    overflow-y: auto;
+    padding: 6px 8px;
+    gap: 6px;
+  }
+
+  .fullmap-legend-sidebar h3 {
+    font-size: 10px;
+    margin: 0;
+  }
+
+  .tactical-legend-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 3px 6px;
+    font-size: 9.5px;
+  }
+
+  .teleport-buttons-stack {
+    gap: 4px;
+  }
+
+  .teleport-buttons-stack button {
+    padding: 4px 7px;
+    font-size: 10px;
+  }
+
+  /* 3D Relic Toybox Inspector (#screenRelic3DInspectorOverlay) */
+  .pearl-inspector-modal {
+    gap: 5px;
+  }
+
+  .pearl-inspector-header {
+    padding-bottom: 4px;
+    margin-bottom: 0;
+  }
+
+  .btn-pearl-back {
+    padding: 4px 10px;
+    font-size: 10.5px;
+  }
+
+  .pearl-badge-id,
+  .pearl-badge-zone,
+  .pearl-badge-pts {
+    padding: 2px 8px;
+    font-size: 9.5px;
+  }
+
+  #relic3DItemCounter {
+    display: none !important;
+  }
+
+  .pearl-3d-stage-wrap {
+    min-height: 0 !important;
+    flex: 1 1 auto !important;
+    border-radius: 14px;
+  }
+
+  .pearl-3d-orbit-cue {
+    display: none !important;
+  }
+
+  .pearl-3d-controls-bar {
+    bottom: 6px;
+    gap: 5px;
+    white-space: nowrap;
+  }
+
+  .btn-pearl-3d-ctrl,
+  #btnPlayRelicToy,
+  .btn-play-relic-toy,
+  #btnPlayRelicToy.is-hero-gag-btn {
+    padding: 3px 9px;
+    font-size: 9.5px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .relic-toy-reaction-pill {
+    top: 10px;
+    padding: 5px 11px;
+    font-size: 11px;
+    gap: 5px;
+    border-width: 2px;
+  }
+
+  .comic-shiok-combo-badge {
+    font-size: 9.5px;
+    padding: 1px 6px;
+  }
+
+  .pearl-minimal-text-card {
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: center;
+    gap: 8px;
+    padding: 4px 10px;
+    border-radius: 10px;
+  }
+
+  .pearl-minimal-title {
+    font-size: 13px;
+    white-space: nowrap;
+  }
+
+  .pearl-minimal-sentence {
+    font-size: 10.5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .pearl-quick-strip-bar {
+    padding: 4px 8px;
+    border-radius: 10px;
+    gap: 6px;
+  }
+
+  .pearl-strip-label {
+    display: none !important;
+  }
+
+  .pearl-strip-thumb {
+    padding: 2px 7px 2px 4px;
+    font-size: 9.5px;
+  }
+
+  .pst-img {
+    width: 20px;
+    height: 20px;
+  }
+
+  /* 3. Compact Loading Splash on Mobile Landscape */
+  .loading-pearl-card {
+    width: min(560px, calc(100dvw - 24px));
+    padding: 10px 14px;
+    gap: 6px;
+    max-height: calc(100dvh - 16px);
+    overflow-y: auto;
+  }
+
+  .loading-title {
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: center;
+    gap: 6px;
+  }
+
+  .loading-title-gold {
+    font-size: 16px;
+  }
+
+  .loading-title-teal {
+    font-size: 13px;
+  }
+
+  .loading-chibi-parade {
+    gap: 10px;
+    padding: 2px 0;
+  }
+
+  .loading-chibi-ring {
+    width: 34px;
+    height: 34px;
+  }
+
+  .loading-tip-box {
+    display: none !important;
+  }
+}

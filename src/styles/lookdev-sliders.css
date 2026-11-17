@@ -1,0 +1,215 @@
+/* ============================================================================
+ * Gardens by the Bay — LookDev Sliders, JSON Export & 3D Inspector Tab
+ * (src/styles/lookdev-sliders.css)
+ * ============================================================================ */
+
+.lookdev-slider-row {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.lookdev-slider-head {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  color: #CBD5E1;
+}
+
+.lookdev-val {
+  color: #FDE047;
+  font-weight: 700;
+}
+
+.lookdev-range {
+  width: 100%;
+  accent-color: #10B981;
+  cursor: pointer;
+}
+
+.lookdev-color-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 10px;
+  color: #CBD5E1;
+}
+
+.lookdev-color-input-wrap {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.lookdev-color {
+  width: 26px;
+  height: 22px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.lookdev-json-help {
+  font-size: 10px;
+  color: #CBD5E1;
+  line-height: 1.4;
+  margin-bottom: 6px;
+}
+
+.lookdev-textarea {
+  width: 100%;
+  background: #051014;
+  border: 1px solid rgba(52, 211, 153, 0.35);
+  border-radius: 8px;
+  color: #A7F3D0;
+  font-family: monospace;
+  font-size: 10px;
+  padding: 8px;
+  resize: vertical;
+  margin-bottom: 6px;
+}
+
+.lookdev-apply-json-btn {
+  width: 100%;
+  padding: 7px;
+  border-radius: 8px;
+  border: none;
+  background: #38BDF8;
+  color: #082F49;
+  font-size: 11px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.lookdev-footer {
+  display: flex;
+  gap: 8px;
+  padding: 10px 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.lookdev-copy-btn {
+  flex: 1;
+  border: none;
+  background: linear-gradient(135deg, #10B981, #059669);
+  color: #042F2E;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 8px 10px;
+  border-radius: 9px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.lookdev-reset-btn {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.06);
+  color: #E2E8F0;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 8px 10px;
+  border-radius: 9px;
+  cursor: pointer;
+}
+
+.lookdev-toast {
+  font-size: 10px;
+  font-weight: 700;
+  color: #FDE047;
+  text-align: center;
+  padding: 0 12px;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+.lookdev-toast.visible {
+  padding: 6px 12px;
+  max-height: 40px;
+}
+
+/* ============================================================================
+ * Admin 3D Models, Animation Speed & Viewport Inspector (🎬 3D & Anim Tab)
+ * ============================================================================ */
+
+.inspect-section-card {
+  background: rgba(15, 23, 42, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 8px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.inspect-section-title {
+  font-size: 9.5px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #34D399;
+}
+
+.inspect-btn-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+
+.inspect-seg-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
+}
+
+.inspect-seg-row.inspect-3col {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.inspect-seg-btn,
+.inspect-action-btn {
+  padding: 6px 6px;
+  border-radius: 7px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.06);
+  color: #E2E8F0;
+  font-size: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.inspect-seg-btn:hover,
+.inspect-action-btn:hover {
+  background: rgba(255, 255, 255, 0.14);
+  color: #FFFFFF;
+}
+
+.inspect-seg-btn.active,
+.inspect-action-btn.active {
+  background: linear-gradient(135deg, #F59E0B, #D97706);
+  color: #1E1B4B;
+  border-color: #FDE047;
+  font-weight: 800;
+}
+
+.inspect-action-btn.primary {
+  background: linear-gradient(135deg, #10B981, #059669);
+  border-color: rgba(52, 211, 153, 0.6);
+  color: #042F2E;
+  font-weight: 800;
+}
+
+body.admin-clean-3d-view #centerClockCard,
+body.admin-clean-3d-view #standingsCard,
+body.admin-clean-3d-view #miniRadarCard,
+body.admin-clean-3d-view #hudCollectionCard {
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transition: opacity 0.2s ease;
+}

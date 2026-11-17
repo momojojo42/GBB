@@ -1,0 +1,23 @@
+{
+  "name": "gbb-3d-treasure-hunt",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Gardens by the Bay (Bay South) 3D Miniature Treasure Hunt Game — Vite + Three.js + Headless Blender (.glb) Pipeline",
+  "scripts": {
+    "dev": "vite --port 8080 --host 127.0.0.1",
+    "build": "vite build",
+    "preview": "vite preview --port 8080 --host 127.0.0.1",
+    "start": "node server.js",
+    "blender:buildings": "HOME=/tmp /tmp/blender_mnt/Blender.app/Contents/MacOS/Blender --background --factory-startup --python scripts/blender/build_buildings.py",
+    "blender:characters": "HOME=/tmp /tmp/blender_mnt/Blender.app/Contents/MacOS/Blender --background --factory-startup --python scripts/blender/build_characters.py",
+    "blender:sculptures": "HOME=/tmp /tmp/blender_mnt/Blender.app/Contents/MacOS/Blender --background --factory-startup --python scripts/blender/build_sculptures.py",
+    "blender:treasures": "HOME=/tmp /tmp/blender_mnt/Blender.app/Contents/MacOS/Blender --background --factory-startup --python scripts/blender/build_treasures_foliage.py"
+  },
+  "dependencies": {
+    "three": "^0.170.0"
+  },
+  "devDependencies": {
+    "vite": "^8.2.2"
+  }
+}

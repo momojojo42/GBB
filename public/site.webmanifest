@@ -1,0 +1,25 @@
+{
+  "name": "Gardens by the Bay — 3D Treasure Hunt",
+  "short_name": "GBB 3D Hunt",
+  "description": "Explore a miniature 3D Gardens by the Bay (Bay South, Singapore)! Guide your Chibi Explorer to collect 42 iconic Singapore botanical & cultural relics across 5 garden zones in a 4-Player Timed Race or Relaxed Solo Mode.",
+  "start_url": "./index.html",
+  "display": "fullscreen",
+  "display_override": ["fullscreen", "standalone"],
+  "background_color": "#06393A",
+  "theme_color": "#0D9488",
+  "orientation": "landscape",
+  "icons": [
+    {
+      "src": "./favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "./assets/avatars/avatar_you.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

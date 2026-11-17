@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0D9488"/>
+      <stop offset="55%" stop-color="#065F46"/>
+      <stop offset="100%" stop-color="#042F2E"/>
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="16" y1="8" x2="48" y2="56" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FEF08A"/>
+      <stop offset="50%" stop-color="#FACC15"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+    <linearGradient id="canopyGrad" x1="12" y1="12" x2="52" y2="28" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#F472B6"/>
+      <stop offset="50%" stop-color="#FB7185"/>
+      <stop offset="100%" stop-color="#FACC15"/>
+    </linearGradient>
+  </defs>
+  <!-- Rounded Tropical Gem Badge -->
+  <rect x="2" y="2" width="60" height="60" rx="16" fill="url(#bgGrad)" stroke="#FEF08A" stroke-width="2.5"/>
+  <!-- Soft Sunburst Halo -->
+  <circle cx="32" cy="24" r="18" fill="#38BDF8" fill-opacity="0.18"/>
+  <!-- Supertree Canopy Crown -->
+  <ellipse cx="32" cy="19" rx="20" ry="7.5" fill="url(#canopyGrad)" stroke="#FEF08A" stroke-width="1.8"/>
+  <ellipse cx="32" cy="18" rx="13" ry="4" fill="#FEF08A" fill-opacity="0.55"/>
+  <!-- Supertree Flared Trunk Lattice -->
+  <path d="M22 23 C27 32, 28 42, 24 52 L40 52 C36 42, 37 32, 42 23 Z" fill="url(#goldGrad)"/>
+  <path d="M26 24 L38 51 M38 24 L26 51" stroke="#064E3B" stroke-width="1.6" stroke-linecap="round" opacity="0.55"/>
+  <!-- Emerald Lawn Base -->
+  <path d="M14 52 Q32 48 50 52 L52 55 Q32 58 12 55 Z" fill="#34D399"/>
+  <!-- Glowing Sparkle Stars -->
+  <circle cx="15" cy="14" r="2" fill="#FEF08A"/>
+  <circle cx="49" cy="14" r="2.2" fill="#FEF08A"/>
+  <circle cx="32" cy="10" r="2.4" fill="#FFFFFF"/>
+</svg>

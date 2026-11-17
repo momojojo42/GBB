@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Admin &amp; LookDev Studio — Gardens by the Bay 3D Treasure Hunt</title>
+  <meta name="application-name" content="Gardens by the Bay 3D — LookDev Studio" />
+  <meta name="description" content="Real-time 3D LookDev Studio, Lighting &amp; Post-FX Inspector, Camera Presets, and Milestone Debugger for the Gardens by the Bay (Bay South) 3D Treasure Hunt." />
+  <meta name="theme-color" content="#06393A" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Gardens by the Bay 3D Treasure Hunt" />
+  <meta property="og:title" content="🛠️ Admin &amp; LookDev Studio — Gardens by the Bay 3D Treasure Hunt" />
+  <meta property="og:description" content="Interactive Three.js + Blender .GLB LookDev Studio for real-time PBR lighting, UnrealBloom, and milestone inspection across Bay South." />
+  <meta property="og:image" content="./og-preview.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="🛠️ Admin &amp; LookDev Studio — Gardens by the Bay 3D Treasure Hunt" />
+  <meta name="twitter:description" content="Interactive Three.js + Blender .GLB LookDev Studio for real-time PBR lighting, UnrealBloom, and milestone inspection across Bay South." />
+  <meta name="twitter:image" content="./og-preview.png" />
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+  <link rel="icon" type="image/png" sizes="192x192" href="./assets/avatars/avatar_you.png" />
+  <link rel="apple-touch-icon" href="./assets/avatars/avatar_you.png" />
+  <link rel="manifest" href="./site.webmanifest" />
+  <link rel="preload" as="image" href="./assets/avatars/avatar_you.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./src/styles/main.css" />
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "./node_modules/three/build/three.module.js",
+        "three/addons/": "./node_modules/three/examples/jsm/"
+      }
+    }
+  </script>
+</head>
+<body data-page-mode="admin">
+  <!-- STRICT DESKTOP-ONLY GATE OVERLAY (Admin & Plan Views Disabled on Mobile & Tablet) -->
+  <div id="desktopOnlyGateOverlay" class="desktop-only-gate-overlay" role="dialog" aria-modal="true" aria-labelledby="desktopOnlyGateTitle">
+    <div class="desktop-only-gate-card">
+      <div class="desktop-only-gate-eyebrow">🌿 GARDENS BY THE BAY • DESKTOP STUDIO</div>
+      <div class="desktop-only-gate-icon" aria-hidden="true">🖥️</div>
+      <h2 class="desktop-only-gate-title" id="desktopOnlyGateTitle">Desktop Access Only</h2>
+      <p class="desktop-only-gate-sub">
+        Admin LookDev Studio and Engineering Plan Views are designed exclusively for Desktop screens (&gt; 1024px). They are disabled on mobile phones and tablets.
+      </p>
+      <a href="index.html" class="btn-desktop-gate-back">🎮 Return to 3D Treasure Hunt Game</a>
+    </div>
+  </div>
+  <script>
+    (function enforceDesktopOnlyGate() {
+      function checkViewport() {
+        var isCoarse = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
+        var isMobileOrTablet = window.innerWidth <= 1024 || window.innerHeight <= 680 || isCoarse;
+        document.body.classList.toggle('mobile-tablet-blocked', isMobileOrTablet);
+        var gate = document.getElementById('desktopOnlyGateOverlay');
+        if (gate) gate.setAttribute('aria-hidden', String(!isMobileOrTablet));
+      }
+      window.addEventListener('resize', checkViewport);
+      window.addEventListener('orientationchange', checkViewport);
+      checkViewport();
+    })();
+  </script>
+
+  <!-- CUTE CHIBI EXPEDITION ASSET LOADING OVERLAY -->
+  <div class="loading-splash-overlay" id="loadingSplashOverlay" role="status" aria-live="polite" aria-label="Loading Gardens by the Bay 3D Assets">
+    <div class="loading-ambient-glow" aria-hidden="true"></div>
+    <div class="loading-pearl-card">
+      <div class="loading-eyebrow-pill">
+        <span>🌺 SINGAPORE • BAY SOUTH 3D EXPEDITION</span>
+      </div>
+
+      <h2 class="loading-title">
+        <span class="loading-title-gold">PLANTING THE GARDENS</span>
+        <span class="loading-title-teal">3D WORLD &amp; 42 RELICS</span>
+      </h2>
+
+      <!-- Cute Bobbing Chibi Explorer Squad Parade -->
+      <div class="loading-chibi-parade" aria-hidden="true">
+        <div class="loading-chibi-hopper hopper-you">
+          <div class="loading-chibi-ring" style="--ring-clr: #38BDF8;">
+            <img src="./assets/avatars/avatar_you.png" alt="" />
+          </div>
+          <span class="loading-chibi-tag">You</span>
+        </div>
+        <div class="loading-chibi-hopper hopper-kai">
+          <div class="loading-chibi-ring" style="--ring-clr: #FB7185;">
+            <img src="./assets/avatars/avatar_kai.png" alt="" />
+          </div>
+          <span class="loading-chibi-tag">Bot Kai</span>
+        </div>
+        <div class="loading-chibi-hopper hopper-mei">
+          <div class="loading-chibi-ring" style="--ring-clr: #34D399;">
+            <img src="./assets/avatars/avatar_mei.png" alt="" />
+          </div>
+          <span class="loading-chibi-tag">Bot Mei</span>
+        </div>
+        <div class="loading-chibi-hopper hopper-raj">
+          <div class="loading-chibi-ring" style="--ring-clr: #FBBF24;">
+            <img src="./assets/avatars/avatar_raj.png" alt="" />
+          </div>
+          <span class="loading-chibi-tag">Bot Raj</span>
+        </div>
+      </div>
+
+      <!-- Progress Bar Header (Stage Label + Percentage & MB Counter) -->
+      <div class="loading-status-row">
+        <span class="loading-stage-text" id="loadingStageText">📦 Unpacking 3D Botanical Assets...</span>
+        <div class="loading-metrics-cluster">
+          <span class="loading-bytes-pill" id="loadingBytesPill">0.0 / 28.0 MB</span>
+          <strong class="loading-percent-badge" id="loadingPercentBadge">0%</strong>
+        </div>
+      </div>
+
+      <!-- Cute Candy-Striped Botanical Progress Track with Running Chibi Mascot -->
+      <div class="loading-bar-outer" id="loadingBarOuter">
+        <div class="loading-bar-track">
+          <div class="loading-bar-fill" id="loadingBarFill" style="width: 4%;">
+            <div class="loading-bar-shimmer"></div>
+          </div>
+        </div>
+        <div class="loading-bar-runner" id="loadingBarRunner" style="left: 4%;" aria-hidden="true">
+          <span class="runner-sparkle">✨</span>
+          <div class="runner-avatar-bubble">
+            <img src="./assets/avatars/avatar_you.png" alt="" />
+          </div>
+        </div>
+      </div>
+
+      <!-- 4 Asset Bundle Check-Off Pills -->
+      <div class="loading-bundles-grid" id="loadingBundlesGrid">
+        <div class="loading-bundle-pill" data-bundle-key="buildings">
+          <span class="bundle-label-cluster">
+            <span class="bundle-icon">🏛️</span>
+            <span class="bundle-name">Supertrees &amp; Domes</span>
+          </span>
+          <span class="bundle-check" aria-hidden="true">⏳</span>
+        </div>
+        <div class="loading-bundle-pill" data-bundle-key="characters">
+          <span class="bundle-label-cluster">
+            <span class="bundle-icon">🧭</span>
+            <span class="bundle-name">Chibi Squad</span>
+          </span>
+          <span class="bundle-check" aria-hidden="true">⏳</span>
+        </div>
+        <div class="loading-bundle-pill" data-bundle-key="sculptures">
+          <span class="bundle-label-cluster">
+            <span class="bundle-icon">🌉</span>
+            <span class="bundle-name">Bridges &amp; Art</span>
+          </span>
+          <span class="bundle-check" aria-hidden="true">⏳</span>
+        </div>
+        <div class="loading-bundle-pill" data-bundle-key="treasures">
+          <span class="bundle-label-cluster">
+            <span class="bundle-icon">🌸</span>
+            <span class="bundle-name">42 Relics &amp; Flora</span>
+          </span>
+          <span class="bundle-check" aria-hidden="true">⏳</span>
+        </div>
+      </div>
+
+      <!-- Cute Rotating Fun Fact / Explorer Tip Box -->
+      <div class="loading-tip-box">
+        <span class="loading-tip-badge">💡 EXPLORER TIP</span>
+        <p class="loading-tip-text" id="loadingTipText">
+          Collect glowing Singapore keepsakes in quick succession to build a 🔥 Combo Streak!
+        </p>
+      </div>
+    </div>
+  </div>
+  <!-- 3D WebGL Viewport Container -->
+  <div id="viewportContainer" class="viewport-container">
+    <canvas id="gameCanvas" aria-label="Gardens by the Bay 3D Interactive World (Admin & LookDev View)"></canvas>
+
+    <!-- 3D-to-2D Projected Floating World Labels (Player/Bot Nameplates, Landmark Badges, Collect Popups) -->
+    <div id="worldLabelsLayer" class="world-labels-layer" aria-hidden="true"></div>
+  </div>
+
+  <!-- TOP GLOBAL BAR: Brand, Unified 3-View Navigation & Admin Security Controls -->
+  <header class="top-nav-bar" id="topNavBar">
+    <div class="brand-cluster">
+      <div class="brand-emblem" aria-hidden="true">🛠️</div>
+      <div class="brand-text">
+        <span class="brand-eyebrow">GARDENS BY THE BAY • INTERNAL DEBUG CONSOLE</span>
+        <h1 class="brand-heading">Admin &amp; LookDev Studio <span class="version-badge" id="milestoneBadge">M5 • FULL 3D v2.0</span></h1>
+      </div>
+    </div>
+
+    <!-- Unified 3-Page Global Navigation (Game Page | Admin View | Plan View) -->
+    <nav class="primary-page-nav" aria-label="Primary Application Views">
+      <a href="index.html" class="page-nav-pill" title="Public Live 3D Game Page">
+        🎮 Game Page
+      </a>
+      <a href="admin.html" class="page-nav-pill active" aria-current="page">
+        🛠️ Admin View
+      </a>
+      <a href="progress.html" class="page-nav-pill" title="Plan View: MVP Progress &amp; Post-MVP Roadmap">
+        📋 Plan View
+      </a>
+    </nav>
+
+    <!-- Right Action Buttons -->
+    <div class="top-right-actions">
+      <button type="button" class="btn-collection-top" id="btnSwitchMapTop" title="Click to Switch Between Map 1 (Gardens by the Bay) &amp; Map 2 (Botanic Gardens)">
+        🌿 Map 1: Gardens ▾
+      </button>
+
+      <div class="mode-toggle-group" role="group" aria-label="Game Mode">
+        <button type="button" class="mode-chip" data-mode="relaxed" id="btnModeRelaxed">
+          🌸 Relaxed Solo
+        </button>
+        <button type="button" class="mode-chip active" data-mode="race" id="btnModeRace">
+          ⚡ 4P Timed Race
+        </button>
+      </div>
+
+      <div class="bot-diff-group" id="topBotDiffGroup" role="group" aria-label="AI Bot Difficulty">
+        <span class="diff-group-label">🤖 BOTS:</span>
+        <button type="button" class="diff-chip" data-bot-diff="chill" title="Chill Bots: 0.38x speed &amp; 6.5s sightseeing pause after each pickup">
+          🌱 Chill
+        </button>
+        <button type="button" class="diff-chip active" data-bot-diff="normal" title="Normal Bots: Balanced 0.54x speed &amp; 4s inspection pause">
+          ⚖️ Normal
+        </button>
+        <button type="button" class="diff-chip" data-bot-diff="pro" title="Pro Bots: Fast 0.80x speed &amp; short pause">
+          🔥 Pro
+        </button>
+      </div>
+
+      <button type="button" class="btn-collection-top" id="btnOpenCollectionTop" title="Open My Collected Relics &amp; Lore Inspector (Shortcut: C)">
+        🎒 Collection <span class="collection-top-badge" id="topCollectionCountBadge">0/42</span>
+      </button>
+
+      <button type="button" class="btn-sound-toggle" id="btnToggleSound" title="Toggle Web Audio Chimes &amp; Sound Effects">
+        🔊 SFX
+      </button>
+    </div>
+  </header>
+
+  <!-- ADMIN DEBUG SUB-HEADER: Screen-State Switcher (01–11) & Instant Debug Triggers -->
+  <div class="admin-debug-bar" id="adminDebugBar" role="region" aria-label="Admin Screen Switcher and Debug Controls">
+    <div class="admin-bar-left">
+      <span class="admin-bar-label">🎛️ SCREEN SWITCHER (DEBUG):</span>
+      <nav class="screen-nav-pills" aria-label="Game Screens and Overlays">
+        <button type="button" class="nav-pill" data-screen="title" id="btnScreenTitle" title="Screen 01: Panoramic Title Screen">
+          <span>01</span> Title
+        </button>
+        <button type="button" class="nav-pill" data-screen="setup" id="btnScreenSetup" title="Screen 02: Mode, Chibi Avatar & AI Bots Setup">
+          <span>02</span> Setup
+        </button>
+        <button type="button" class="nav-pill active" data-screen="gameplay" id="btnScreenGameplay" title="Screens 03–09: Live 3D Gameplay & Camera Angles">
+          <span>03–09</span> Live 3D World
+        </button>
+        <button type="button" class="nav-pill" data-screen="encyclopedia" id="btnScreenEncyclopedia" title="Screen 10: 42-Treasure Encyclopedia & 4P Leaderboard">
+          <span>10</span> 42 Relics &amp; Ranks
+        </button>
+        <button type="button" class="nav-pill" data-screen="relic3d" id="btnScreenRelic3D" title="Screen 10B: Interactive 360° 3D Model Turntable">
+          <span>10B</span> 3D Turntable
+        </button>
+        <button type="button" class="nav-pill" data-screen="fullmap" id="btnScreenFullMap" title="Screen 11: Full-Map 42-Treasure & 4-Player Tracker (Shortcut: M)">
+          <span>11</span> Tactical Map (M)
+        </button>
+      </nav>
+    </div>
+
+    <div class="admin-bar-right">
+      <span class="admin-lock-badge" title="This Admin View will be locked behind role-based authentication in Post-MVP Milestone #4">
+        🔒 DEBUG ONLY • FUTURE AUTH LOCK
+      </span>
+      <button type="button" class="btn-admin-lock-sim" id="btnToggleAdminLockPreview" title="Simulate the Post-MVP Milestone #4 Admin Authentication Gate">
+        🛡️ Test Lock Gate
+      </button>
+      <button type="button" class="btn-trigger-finale" id="btnTriggerEndGameHud" title="Trigger the End-Game Victory Jump &amp; Fireworks Finale right now (Shortcut: F)">
+        🎉 Finale (F)
+      </button>
+      <button type="button" class="btn-admin-reset" id="btnAdminResetMatch" title="Reset All 42 Relics &amp; Restart 4-Player Match">
+        ↺ Reset Match
+      </button>
+    </div>
+  </div>
+
+  <!-- LIVE GAMEPLAY HUD OVERLAY (Screens 03 - 09) -->
+  <section class="gameplay-hud" id="gameplayHud" aria-label="Live Gameplay Heads-Up Display">
+    <!-- Top-Center Race Clock & Total Relics Banner -->
+    <div class="hud-card center-clock-card" id="centerClockCard">
+      <div class="clock-top-bar">
+        <div class="clock-mode-tag" id="hudClockModeTag">4-PLAYER TIMED RACE • VS. 3 AI BOTS</div>
+      </div>
+      <div class="clock-main-row">
+        <div class="clock-time-block">
+          <span class="clock-icon" aria-hidden="true">⏱️</span>
+          <span class="clock-digits" id="hudClockDigits">02:45</span>
+        </div>
+        <div class="clock-divider"></div>
+        <div class="relic-total-block clickable-score-block" id="hudPlayerScoreBlock" role="button" tabindex="0" title="Click to view your collected relics (Shortcut: C)">
+          <span class="relic-total-label">YOUR RELICS 🎒</span>
+          <strong class="relic-total-val" id="hudPlayerScore">0 <small>/ 42</small></strong>
+        </div>
+        <div class="clock-divider"></div>
+        <div class="relic-total-block">
+          <span class="relic-total-label">MAP REMAINING</span>
+          <strong class="relic-total-val" id="hudRemainingRelics">18 <small>/ 42</small></strong>
+        </div>
+      </div>
+      <div class="hud-toast-banner" id="hudToastBanner" aria-live="polite">
+        🛠️ Admin &amp; LookDev Mode Active — Use the right-hand LookDev Studio or top Screen Switcher (01–11) to inspect any state!
+      </div>
+    </div>
+
+    <!-- End-Game Celebration & Podium Modal (Right-Docked Luminous Frosted-Crystal Card — Option A) -->
+    <div class="hud-card endgame-celebration-banner hidden" id="endGameBannerOverlay" role="dialog" aria-label="End Game Celebration and Podium Standings">
+      <div class="eg-header">
+        <span class="eg-reason-badge" id="endGameReasonBadge">🏆 ALL 42 RELICS FOUND! • MATCH COMPLETE</span>
+        <button type="button" class="eg-close-btn" id="btnEndGameFreeRoamClose" title="Dismiss modal and keep exploring">✕</button>
+      </div>
+
+      <h2 class="eg-title" id="endGameTitle">
+        <span class="eg-title-line1" id="endGameTitleLine1">🥇 1st Place Victory!</span>
+        <span class="eg-title-line2" id="endGameTitleLine2">Explorer You Wins!</span>
+      </h2>
+
+      <!-- Compact Frosted Stats Pill -->
+      <div class="eg-stats-pill" id="endGameStatsPill">
+        <span>⏱️ Time: <strong id="egStatTime">02:18</strong></span>
+        <span class="eg-stat-dot">•</span>
+        <span>🌸 Your Relics: <strong id="egStatRelics">18 / 42</strong></span>
+        <span class="eg-stat-dot">•</span>
+        <span>🔥 Best Streak: <strong id="egStatStreak">6x Combo</strong></span>
+      </div>
+
+      <!-- Stepped Championship Podium Stage (#2 Silver | #1 Gold | #3 Bronze + #4 Bar) -->
+      <div class="eg-podium-stage" id="endGamePodiumList">
+        <!-- Populated dynamically with stepped 3D-style podium columns and 2D portraits -->
+      </div>
+
+      <!-- Compact Strip: Actual Relics Collected by Player -->
+      <div class="eg-relics-showcase" aria-label="My Collected Singapore Keepsakes">
+        <div class="eg-relics-header-row">
+          <span class="eg-relics-label" id="endGameRelicsLabel">🎒 MY COLLECTED KEEPSAKES (0 / 42)</span>
+          <button type="button" class="eg-relics-viewall-btn" id="btnEndGameViewAllRelics">Inspect Passport →</button>
+        </div>
+        <div class="eg-relics-strip" id="endGameRelicTrophies">
+          <!-- Populated dynamically with actual relics collected by the player -->
+        </div>
+      </div>
+
+      <!-- Unified 2x2 Action Buttons Grid -->
+      <div class="eg-actions-grid">
+        <button type="button" class="btn-eg-jump" id="btnEndGameSuperJump">
+          🤸 360° Victory Jump!
+        </button>
+        <button type="button" class="btn-eg-primary" id="btnEndGamePlayAgain">
+          🔄 Play New Match
+        </button>
+        <button type="button" class="btn-eg-secondary" id="btnEndGameOpenEncyc">
+          📖 42 Relics Passport
+        </button>
+        <button type="button" class="btn-eg-ghost" id="btnEndGameFreeRoam">
+          🏃 Free Roam
+        </button>
+      </div>
+    </div>
+
+    <!-- Top-Right 4-Player Live Standings Card -->
+    <div class="hud-card standings-card" id="standingsCard">
+      <div class="standings-header">
+        <span class="standings-eyebrow">LIVE COMPETITOR STANDINGS</span>
+        <span class="standings-total-pill">42 RELICS TOTAL</span>
+      </div>
+      <div class="standings-list" id="hudStandingsList">
+        <!-- Populated dynamically by src/main3d.js -->
+      </div>
+    </div>
+
+    <!-- Bottom-Left Circular Mini-Radar & Compass -->
+    <div class="hud-card mini-radar-card" id="miniRadarCard">
+      <div class="radar-header-row">
+        <span class="radar-title-tag">🧭 TREASURE RADAR</span>
+        <button type="button" class="btn-radar-zoom" id="btnToggleRadarZoom" title="Toggle Local 45m Zoom vs. Full Peninsula Radar">
+          🔍 Local 45m
+        </button>
+      </div>
+      <div class="radar-canvas-wrap">
+        <canvas id="miniRadarCanvas" width="180" height="180"></canvas>
+        <div class="radar-north-badge">N</div>
+      </div>
+      <div class="radar-footer">
+        <button type="button" class="btn-radar-action" id="btnOpenFullMapHud" title="Open Full-Screen Tactical Map with all 42 Relics (Shortcut: M)">
+          🗺️ Map (M)
+        </button>
+      </div>
+    </div>
+
+    <!-- Bottom-Center Zone Camera Quick-Jump Bar (Admin Debug Angle Presets) -->
+    <div class="hud-card camera-quickbar" id="cameraQuickBar">
+      <span class="quickbar-label">🎥 MAIN CAMERA ANGLES:</span>
+      <div class="quickbar-buttons" id="quickbarAngleButtons">
+        <button type="button" class="angle-chip" data-preset="angle_01_overview">1. Overview</button>
+        <button type="button" class="angle-chip" data-preset="angle_02_supertree">2. Supertrees</button>
+        <button type="button" class="angle-chip" data-preset="angle_03_conservatories">3. Domes</button>
+        <button type="button" class="angle-chip" data-preset="angle_04_dragonfly">4. Dragonfly</button>
+        <button type="button" class="angle-chip" data-preset="angle_05_meadow_baby">5. Planet Baby</button>
+        <button type="button" class="angle-chip" data-preset="angle_06_wetlands">6. Wetlands</button>
+        <button type="button" class="angle-chip" data-preset="angle_07_night_rhapsody">7. Night Show</button>
+        <button type="button" class="angle-chip" data-preset="angle_08_race_action">8. 4P Race</button>
+        <button type="button" class="angle-chip active" data-preset="player_follow">🏃 Follow You</button>
+      </div>
+    </div>
+
+    <!-- Bottom-Right Live Player Collection Dock -->
+    <div class="hud-card collection-hud-card" id="hudCollectionCard" aria-label="My Collected Relics">
+      <div class="collection-hud-header">
+        <div class="collection-hud-title-wrap">
+          <span class="collection-hud-title">🎒 MY COLLECTION</span>
+          <span class="collection-hud-count-pill" id="hudCollectionCountPill">0 / 42</span>
+        </div>
+        <div class="collection-hud-actions">
+          <button type="button" class="btn-collection-hud-open" id="btnOpenCollectionHud" title="Open Full Collection &amp; Lore Inspector (Shortcut: C)">
+            📖 View All (C)
+          </button>
+          <button type="button" class="btn-collection-hud-toggle" id="btnToggleCollectionTray" title="Collapse or expand collection tray" aria-expanded="true">
+            ▾
+          </button>
+        </div>
+      </div>
+
+      <div class="collection-hud-body" id="hudCollectionBody">
+        <div class="latest-relic-spotlight hidden" id="hudLatestRelicBanner" role="button" tabindex="0" title="Click to inspect this relic in detail">
+          <div class="latest-relic-thumb-wrap">
+            <img id="hudLatestRelicImg" class="latest-relic-thumb" src="./assets/renders/relics42/relic_01.png" alt="Latest Collected Relic" />
+            <span class="latest-relic-badge" id="hudLatestRelicBadge">NEW</span>
+          </div>
+          <div class="latest-relic-meta">
+            <span class="latest-relic-eyebrow">✨ LATEST DISCOVERY</span>
+            <strong class="latest-relic-name" id="hudLatestRelicName">🌸 RISIS Gold-Plated Vanda Miss Joaquim</strong>
+            <span class="latest-relic-zone" id="hudLatestRelicZone">Supertree Grove • Click to inspect</span>
+          </div>
+        </div>
+
+        <div class="hud-collection-grid" id="hudCollectionTrayGrid" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCREEN 01 OVERLAY: RIGHT-DOCKED LUMINOUS FROSTED-PEARL START SCREEN (v3 9.43/10) -->
+  <section class="screen-overlay title-screen-overlay hidden" id="screenTitleOverlay" aria-label="Start Screen Expedition Setup">
+    <div class="start-pearl-card" role="region" aria-label="Gardens by the Bay 3D Treasure Hunt Start Panel">
+      <div class="start-eyebrow-pill">
+        SINGAPORE • GARDENS BY THE BAY • BAY SOUTH 3D
+      </div>
+
+      <h2 class="start-main-heading">
+        GARDENS BY THE BAY<br/>
+        <span>— 3D TREASURE HUNT</span>
+      </h2>
+
+      <p class="start-subtitle">
+        Explore 5 iconic garden zones &amp; collect 42 Singapore botanical &amp; cultural relics!
+      </p>
+
+      <!-- 2-Map World Selector Pill Bar (Map 01: Gardens by the Bay | Map 02: Singapore Botanic Gardens) -->
+      <div class="start-map-selector-bar" id="startMapSelectorBar" role="group" aria-label="Select 3D Singapore Map World">
+        <button type="button" class="start-map-pill active" data-select-map="gbb" aria-pressed="true">
+          <span class="map-pill-badge">MAP 01</span>
+          <span class="map-pill-title">🌿 Gardens by the Bay</span>
+        </button>
+        <button type="button" class="start-map-pill" data-select-map="sbg" aria-pressed="false">
+          <span class="map-pill-badge">MAP 02 • NEW</span>
+          <span class="map-pill-title">🦢 Botanic Gardens</span>
+        </button>
+      </div>
+
+      <!-- 2 Side-by-Side Mode Selector Cards -->
+      <div class="start-mode-grid" role="group" aria-label="Select Game Mode">
+        <button type="button" class="start-mode-card active" data-select-mode="race" id="startCardRace">
+          <span class="start-mode-icon" aria-hidden="true">⚡</span>
+          <strong class="start-mode-title">4-Player<br/>Timed Race</strong>
+          <span class="start-mode-sub">(03:00 vs. 3 AI Bots)</span>
+        </button>
+
+        <button type="button" class="start-mode-card" data-select-mode="relaxed" id="startCardRelaxed">
+          <span class="start-mode-icon" aria-hidden="true">🌸</span>
+          <strong class="start-mode-title">Relaxed<br/>Solo Explore</strong>
+          <span class="start-mode-sub">(42/42 Stopwatch)</span>
+        </button>
+      </div>
+
+      <!-- Difficulty Segmented Pill Bar -->
+      <div class="start-section-block" id="startDiffSection">
+        <div class="start-section-label">Difficulty</div>
+        <div class="start-diff-bar" role="group" aria-label="Select AI Bot Difficulty">
+          <button type="button" class="start-diff-pill" data-bot-diff="chill" data-diff-label="🌱 Chill">
+            🌱 Chill
+          </button>
+          <button type="button" class="start-diff-pill active" data-bot-diff="normal" data-diff-label="⚖️ Normal">
+            ⚖️ Normal (Active)
+          </button>
+          <button type="button" class="start-diff-pill" data-bot-diff="pro" data-diff-label="🔥 Pro">
+            🔥 Pro
+          </button>
+        </div>
+      </div>
+
+      <!-- Explorer Squad Row (4 Cute Circular 2D Portraits) -->
+      <div class="start-section-block">
+        <div class="start-section-label">Explorer Squad</div>
+        <div class="start-squad-row" role="list" aria-label="Chibi Explorer Squad">
+          <div class="start-squad-member" role="listitem" title="Player 1 (You) — Cobalt Blue Scarf &amp; Golden Compass">
+            <div class="start-squad-avatar-ring" style="--squad-ring: #60A5FA;">
+              <img src="./assets/avatars/avatar_you.png" alt="Explorer You" class="start-squad-avatar-img" />
+            </div>
+            <span class="start-squad-name">You</span>
+          </div>
+
+          <div class="start-squad-member" role="listitem" title="Bot Kai — Coral Red Speedster">
+            <div class="start-squad-avatar-ring" style="--squad-ring: #FB7185;">
+              <img src="./assets/avatars/avatar_kai.png" alt="Bot Kai" class="start-squad-avatar-img" />
+            </div>
+            <span class="start-squad-name">Bot Kai</span>
+          </div>
+
+          <div class="start-squad-member" role="listitem" title="Bot Mei — Mint Green Radar Tracker">
+            <div class="start-squad-avatar-ring" style="--squad-ring: #34D399;">
+              <img src="./assets/avatars/avatar_mei.png" alt="Bot Mei" class="start-squad-avatar-img" />
+            </div>
+            <span class="start-squad-name">Bot Mei</span>
+          </div>
+
+          <div class="start-squad-member" role="listitem" title="Bot Raj — Amber Gold Pathfinder">
+            <div class="start-squad-avatar-ring" style="--squad-ring: #FBBF24;">
+              <img src="./assets/avatars/avatar_raj.png" alt="Bot Raj" class="start-squad-avatar-img" />
+            </div>
+            <span class="start-squad-name">Bot Raj</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom CTA Row -->
+      <div class="start-cta-row">
+        <button type="button" class="btn-start-expedition" id="btnStartRaceFromTitle">
+          🚀 START 3D EXPEDITION
+        </button>
+        <button type="button" class="btn-start-passport" id="btnOpenPassportFromTitle">
+          📖 42 Relics Passport
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCREEN 02 OVERLAY: MODE, CHIBI EXPLORER & AI BOTS SETUP -->
+  <section class="screen-overlay hidden" id="screenSetupOverlay" aria-label="Screen 02 Mode and Explorer Setup">
+    <div class="modal-glass-panel setup-panel">
+      <div class="modal-top-bar">
+        <div>
+          <span class="modal-eyebrow">SCREEN 02 • EXPEDITION CONFIGURATION</span>
+          <h2 class="modal-heading">Choose Game Mode &amp; Meet Your Chibi Explorer Squad</h2>
+        </div>
+        <button type="button" class="btn-modal-close" data-close-screen="gameplay" aria-label="Return to 3D World">✕</button>
+      </div>
+
+      <div class="setup-grid">
+        <!-- Left Column: 2 Game Modes -->
+        <div class="setup-col">
+          <h3 class="setup-section-title">1. Select Expedition Mode</h3>
+          <div class="mode-cards-stack">
+            <div class="setup-mode-card" data-select-mode="relaxed" id="setupCardRelaxed">
+              <div class="smc-header">
+                <span class="smc-icon">🌸</span>
+                <div>
+                  <h4>Relaxed Mode (Solo 42/42)</h4>
+                  <span class="smc-tag">Count-Up Stopwatch • Golden Hour • Zero Pressure</span>
+                </div>
+              </div>
+              <p>Stroll through all 5 garden zones at your own pace, read real Singapore botanical lore, and collect every single one of the 42 treasures.</p>
+            </div>
+
+            <div class="setup-mode-card selected" data-select-mode="race" id="setupCardRace">
+              <div class="smc-header">
+                <span class="smc-icon">⚡</span>
+                <div>
+                  <h4>Timed Race (4 Players vs. 3 AI Bots)</h4>
+                  <span class="smc-tag">03:00 Countdown • Live 4P Leaderboard • 42 Shared Relics</span>
+                </div>
+              </div>
+              <p>Compete simultaneously on the same 3D Bay South peninsula against 3 distinct AI Bot explorers racing to claim the 42 shared treasures!</p>
+            </div>
+          </div>
+
+          <h3 class="setup-section-title" style="margin-top: 14px;">3. AI Bot Pace &amp; Difficulty</h3>
+          <div class="setup-diff-row">
+            <button type="button" class="setup-diff-btn" data-bot-diff="chill">
+              <strong>🌱 Chill Sightseers</strong>
+              <span>Slow pace (0.38x) • Long 6.5s pause after pickups</span>
+            </button>
+            <button type="button" class="setup-diff-btn active" data-bot-diff="normal">
+              <strong>⚖️ Normal Explorers</strong>
+              <span>Balanced pace (0.54x) • 4s inspection pause</span>
+            </button>
+            <button type="button" class="setup-diff-btn" data-bot-diff="pro">
+              <strong>🔥 Pro Sprinters</strong>
+              <span>Brisk pace (0.80x) • Quick 2s recovery</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Right Column: 4 Cute Chibi Explorers -->
+        <div class="setup-col">
+          <h3 class="setup-section-title">2. Competitors (Chibi Explorer Squad)</h3>
+          <div class="chibi-roster-grid">
+            <div class="chibi-card player-card">
+              <div class="chibi-avatar-badge" style="--avatar-color: #2D7FF9;">
+                <img src="./assets/avatars/avatar_you.png" alt="Explorer You" class="chibi-avatar-img" />
+              </div>
+              <div class="chibi-meta">
+                <span class="chibi-role-pill" style="background:#2D7FF9">PLAYER 1 • YOU</span>
+                <h4>Explorer You</h4>
+                <p>Cobalt Blue Band • Balanced Speed &amp; Golden Compass Ring</p>
+              </div>
+            </div>
+
+            <div class="chibi-card">
+              <div class="chibi-avatar-badge" style="--avatar-color: #FF5A5F;">
+                <img src="./assets/avatars/avatar_kai.png" alt="Bot Kai" class="chibi-avatar-img" />
+              </div>
+              <div class="chibi-meta">
+                <span class="chibi-role-pill" style="background:#FF5A5F">AI RIVAL • SPEEDSTER</span>
+                <h4>Bot Kai</h4>
+                <p>Coral-Red Band • High sprint speed along main garden avenues</p>
+              </div>
+            </div>
+
+            <div class="chibi-card">
+              <div class="chibi-avatar-badge" style="--avatar-color: #10B981;">
+                <img src="./assets/avatars/avatar_mei.png" alt="Bot Mei" class="chibi-avatar-img" />
+              </div>
+              <div class="chibi-meta">
+                <span class="chibi-role-pill" style="background:#10B981">AI RIVAL • RADAR TRACKER</span>
+                <h4>Bot Mei</h4>
+                <p>Emerald-Green Band • Prioritizes high-density orchid &amp; dome clusters</p>
+              </div>
+            </div>
+
+            <div class="chibi-card">
+              <div class="chibi-avatar-badge" style="--avatar-color: #F59E0B;">
+                <img src="./assets/avatars/avatar_raj.png" alt="Bot Raj" class="chibi-avatar-img" />
+              </div>
+              <div class="chibi-meta">
+                <span class="chibi-role-pill" style="background:#F59E0B">AI RIVAL • PATHFINDER</span>
+                <h4>Bot Raj</h4>
+                <p>Amber-Gold Band • Hunts rare sculptures &amp; outer wetland relics</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer-bar">
+        <button type="button" class="btn-hero-primary" id="btnLaunchFromSetup">
+          🚀 Launch 3D Expedition Now
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCREEN 10 OVERLAY: 42-TREASURE ENCYCLOPEDIA & 4-PLAYER LEADERBOARD -->
+  <section class="screen-overlay hidden" id="screenEncyclopediaOverlay" aria-label="Screen 10 42-Treasure Encyclopedia and 4-Player Standings">
+    <div class="modal-glass-panel encyclopedia-panel">
+      <div class="modal-top-bar">
+        <div>
+          <span class="modal-eyebrow">SCREEN 10 • BOTANICAL PASSPORT &amp; RACE SUMMARY (SHORTCUT: C)</span>
+          <h2 class="modal-heading">🎒 My Collected Keepsakes &amp; 42-Treasure Standings</h2>
+        </div>
+        <div class="encyc-top-right">
+          <span class="encyc-progress-pill" id="encycMyProgressPill">🎒 Collected by You: 0 / 42</span>
+          <button type="button" class="btn-modal-close" data-close-screen="gameplay" aria-label="Close Encyclopedia">✕</button>
+        </div>
+      </div>
+
+      <div class="encyclopedia-split">
+        <!-- Left: 42 Treasure Grid with Category Filter -->
+        <div class="encyc-left">
+          <div class="encyc-filter-bar" id="encycFilterBar">
+            <button type="button" class="filter-chip active" data-encyc-filter="collected_you" data-cat="collected_you" id="filterChipMyCollection">🎒 My Collected (0)</button>
+            <button type="button" class="filter-chip" data-encyc-filter="all" data-cat="all" id="filterChipAllRelics">🌐 All 42 Relics</button>
+            <button type="button" class="filter-chip" data-cat="orchid">🌸 Orchids (10)</button>
+            <button type="button" class="filter-chip" data-cat="supertree">🌳 Supertree Seeds (8)</button>
+            <button type="button" class="filter-chip" data-cat="conservatory">🏛️ Dome Flora (8)</button>
+            <button type="button" class="filter-chip" data-cat="heritage">🏮 Dragonfly &amp; Heritage (8)</button>
+            <button type="button" class="filter-chip" data-cat="sculpture">🗿 Sculptures &amp; Rocks (8)</button>
+          </div>
+          <div class="treasures-grid-42" id="treasuresGrid42">
+            <!-- Populated dynamically from TREASURES_CATALOG -->
+          </div>
+        </div>
+
+        <!-- Right: 4-Player Podium & Selected Relic Details -->
+        <div class="encyc-right">
+          <div class="selected-relic-inspector" id="selectedRelicInspector">
+            <div class="inspector-top-meta">
+              <span class="inspector-badge" id="inspRelicZone">SUPERTREE GROVE • RELIC #01</span>
+              <span class="inspector-status-pill" id="inspRelicStatus">Uncollected</span>
+            </div>
+            <div class="inspector-visual-showcase">
+              <div class="inspector-main-img-wrap">
+                <img id="inspRelicImg" class="inspector-main-img" src="./assets/renders/models/model_22_relic_orchid.png" alt="Selected 3D Relic Render" />
+                <span class="inspector-img-caption" id="inspRelicModelTag">3D Vanda Orchid Sculpt</span>
+              </div>
+              <div class="inspector-habitat-img-wrap" title="3D Landmark / Botanical Habitat">
+                <img id="inspLandmarkImg" class="inspector-habitat-img" src="./assets/renders/models/model_01_supertree_hero.png" alt="Landmark Habitat Render" />
+                <span class="inspector-habitat-caption" id="inspRelicCoordsTag">GPS (0, 3)</span>
+              </div>
+            </div>
+            <h3 id="inspRelicTitle">🌸 Golden Vanda Miss Joaquim</h3>
+            <p id="inspRelicLore">Singapore’s national flower, a vibrant hybrid orchid symbolizing resilience and year-round vitality.</p>
+            <button type="button" class="btn-teleport-relic" id="btnTeleportToRelic">
+              📍 Teleport Camera &amp; Explorer Here
+            </button>
+            <button type="button" class="btn-teleport-relic" id="btnAdminOpenRelic3DFromEncyc" style="margin-top: 6px; background: linear-gradient(135deg, #10B981, #059669);">
+              🔍 Spin &amp; Play in 360° 3D Turntable
+            </button>
+          </div>
+
+          <div class="podium-card-box">
+            <h3 class="podium-heading">🏆 4-Player Match Standings</h3>
+            <div id="encyclopediaLeaderboardList" class="encyc-leaderboard-list"></div>
+            <div class="podium-actions">
+              <button type="button" class="btn-reset-match" id="btnResetMatch">
+                ↺ Reset All 42 Relics &amp; Restart Race
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCREEN 10B OVERLAY: INTERACTIVE 360° 3D DRAG-TO-ROTATE RELIC VIEW (LIGHT FROSTED-PEARL THEME) -->
+  <section class="screen-overlay hidden" id="screenRelic3DInspectorOverlay" aria-label="Interactive 360 Degree 3D Relic View">
+    <div class="pearl-inspector-modal" role="dialog" aria-modal="true" aria-labelledby="relic3DInspectorTitle">
+      <div class="pearl-modal-header pearl-inspector-header">
+        <button type="button" class="btn-pearl-back" id="btnBackToCollectionFrom3D">
+          ← Vault
+        </button>
+
+        <div class="pearl-inspector-badges">
+          <span class="pearl-badge-id" id="relic3DIdBadge">#01</span>
+          <span class="pearl-badge-zone" id="relic3DZoneBadge">📍 Supertree Grove</span>
+          <span class="pearl-badge-pts" id="relic3DPtsBadge">🟡 +350 PTS</span>
+          <span class="pearl-badge-id" id="relic3DItemCounter">1 / 42</span>
+        </div>
+
+        <button type="button" class="btn-pearl-close" id="btnClose3DInspector" data-close-screen="gameplay" title="Return to 3D Garden (Esc)" aria-label="Close 3D Inspector">
+          ✕ Close
+        </button>
+      </div>
+
+      <div class="pearl-3d-stage-wrap" id="relic3DStageWrap">
+        <div class="pearl-3d-stage-halo" aria-hidden="true"></div>
+        <div class="pearl-3d-orbit-cue" aria-hidden="true">
+          ↻ DRAG TO SPIN • SCROLL ZOOM • ✨ TAP TOY!
+        </div>
+
+        <button type="button" class="btn-3d-stage-arrow prev-arrow" id="btnRelic3DPrev" title="Previous Relic (Left Arrow)" aria-label="Previous Relic">
+          ‹
+        </button>
+
+        <canvas id="relic3DInspectorCanvas" class="pearl-3d-canvas" width="860" height="360" aria-label="Interactive 360° 3D Relic Turntable"></canvas>
+        <img id="relic3DFallbackImg" class="pearl-3d-fallback-img hidden" src="./assets/renders/relics42_front/relic_01.png" alt="Relic 3D Front Render" />
+
+        <button type="button" class="btn-3d-stage-arrow next-arrow" id="btnRelic3DNext" title="Next Relic (Right Arrow)" aria-label="Next Relic">
+          ›
+        </button>
+
+        <div class="pearl-3d-controls-bar">
+          <button type="button" class="btn-pearl-3d-ctrl" id="btnRelic3DReset">⟲ Reset</button>
+          <button type="button" class="btn-pearl-3d-ctrl active" id="btnRelic3DAutoSpin">⟳ Spin: ON</button>
+          <button type="button" class="btn-pearl-3d-ctrl" id="btnRelic3DZoomIn" title="Zoom In">＋</button>
+          <button type="button" class="btn-pearl-3d-ctrl" id="btnRelic3DZoomOut" title="Zoom Out">－</button>
+        </div>
+      </div>
+
+      <div class="pearl-minimal-text-card">
+        <h2 class="pearl-minimal-title" id="relic3DInspectorTitle">🌸 24K Gold Orchid</h2>
+        <p class="pearl-minimal-sentence" id="relic3DInspectorSentence">
+          Real orchid flower dipped in pure 24K gold!
+        </p>
+      </div>
+
+      <div class="pearl-quick-strip-bar">
+        <span class="pearl-strip-label">ITEMS:</span>
+        <div class="pearl-strip-scroll" id="relic3DInspectorStrip" role="list" aria-label="Quick Switch Collected Relics"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCREEN 11 OVERLAY: FULL-MAP 42-TREASURE & 4-PLAYER TACTICAL TRACKER -->
+  <section class="screen-overlay hidden" id="screenFullMapOverlay" aria-label="Screen 11 Tactical Full Map Tracker">
+    <div class="modal-glass-panel fullmap-panel">
+      <div class="modal-top-bar">
+        <div>
+          <span class="modal-eyebrow">SCREEN 11 • SATELLITE &amp; DIORAMA TACTICAL TRACKER (SHORTCUT: M)</span>
+          <h2 class="modal-heading">Bay South Peninsula — All 42 Treasures &amp; Live 4-Player GPS</h2>
+        </div>
+        <div class="fullmap-top-controls">
+          <button type="button" class="btn-map-click-mode" id="btnToggleMapClickMode" title="Switch what happens when you click a treasure or point on the map">
+            ⚡ Click Mode: Instant Teleport
+          </button>
+          <span class="fullmap-hint">💡 Hover any relic for details • Click any relic or ground point!</span>
+          <button type="button" class="btn-modal-close" data-close-screen="gameplay" aria-label="Close Tactical Map">✕</button>
+        </div>
+      </div>
+
+      <div class="fullmap-body">
+        <div class="fullmap-canvas-container" id="fullmapCanvasContainer">
+          <canvas id="tacticalFullMapCanvas" width="1080" height="620"></canvas>
+          <div id="tacticalMapTooltip" class="tactical-map-tooltip hidden"></div>
+        </div>
+        <aside class="fullmap-legend-sidebar">
+          <h3>Map Legend &amp; Zones</h3>
+          <ul class="tactical-legend-list">
+            <li><span class="t-dot" style="background:#2D7FF9"></span> <strong>YOU (Blue #2D7FF9)</strong> — Player Explorer</li>
+            <li><span class="t-dot" style="background:#FF5A5F"></span> <strong>Bot Kai (Coral #FF5A5F)</strong> — Speedster</li>
+            <li><span class="t-dot" style="background:#10B981"></span> <strong>Bot Mei (Emerald #10B981)</strong> — Radar Tracker</li>
+            <li><span class="t-dot" style="background:#F59E0B"></span> <strong>Bot Raj (Amber #F59E0B)</strong> — Pathfinder</li>
+            <li><span class="t-dot" style="background:#FACC15; box-shadow:0 0 8px #FACC15;"></span> <strong>Uncollected Relic</strong> (Click to teleport)</li>
+            <li><span class="t-dot" style="background:#64748B;"></span> <strong>Collected Relic</strong> (Claimed)</li>
+          </ul>
+
+          <h3>Key Landmark Teleports</h3>
+          <div class="teleport-buttons-stack" id="tacticalTeleportButtons">
+            <button type="button" data-tp-zone="supertree">🌳 Supertree Grove &amp; Skyway (0, 0)</button>
+            <button type="button" data-tp-zone="conservatories">🏛️ Flower Dome &amp; Cloud Forest (24, -30)</button>
+            <button type="button" data-tp-zone="dragonfly">🏮 Dragonfly Bridge &amp; Moon Gate (-30, -14)</button>
+            <button type="button" data-tp-zone="planet">👶 Supine Planet Baby Sculpture (-36, 10)</button>
+            <button type="button" data-tp-zone="wetlands">⛩️ Kingfisher Wetlands &amp; Pavilion (46, 8)</button>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main 3D Application Entry Point -->
+  <script type="module" src="./src/main3d.js"></script>
+</body>
+</html>

@@ -1,0 +1,2478 @@
+{
+  "coordinate_system": {
+    "name": "GBB_Bay_South_Canonical_Meters_XZ",
+    "origin_name": "Supertree Grove Central Plaza",
+    "origin_gps": "1\u00b016'54.8\"N, 103\u00b051'50.2\"E",
+    "origin_meters": [
+      0.0,
+      0.0
+    ],
+    "bounds_meters": {
+      "x_min": -450.0,
+      "x_max": 650.0,
+      "width_m": 1100.0,
+      "z_min": -380.0,
+      "z_max": 570.0,
+      "height_m": 950.0
+    },
+    "stage2_3d_scale": {
+      "SCALE_XZ": 0.2,
+      "SCALE_Y": 0.35,
+      "meters_per_3d_unit": 5.0
+    }
+  },
+  "outer_vertices": [
+    {
+      "id": "V1",
+      "name": "NW Waterfront Tip (Active Garden)",
+      "x_m": -130.0,
+      "z_m": -330.0,
+      "ref1_pct": [
+        31.8,
+        15.0
+      ],
+      "ref2_pct": [
+        34.5,
+        8.5
+      ],
+      "world_xz": [
+        -26.0,
+        -66.0
+      ]
+    },
+    {
+      "id": "V2",
+      "name": "SW Corner (Sheares x Marina Blvd)",
+      "x_m": -395.0,
+      "z_m": 395.0,
+      "ref1_pct": [
+        8.8,
+        83.2
+      ],
+      "ref2_pct": [
+        1.5,
+        67.5
+      ],
+      "world_xz": [
+        -79.0,
+        79.0
+      ]
+    },
+    {
+      "id": "V3",
+      "name": "Southernmost Tip (Blvd x Gardens Dr)",
+      "x_m": -185.0,
+      "z_m": 535.0,
+      "ref1_pct": [
+        27.0,
+        96.5
+      ],
+      "ref2_pct": [
+        21.5,
+        87.5
+      ],
+      "world_xz": [
+        -37.0,
+        107.0
+      ]
+    },
+    {
+      "id": "V4",
+      "name": "Concave S-Curve W (Meadow SE)",
+      "x_m": -25.0,
+      "z_m": 270.0,
+      "ref1_pct": [
+        41.0,
+        71.0
+      ],
+      "ref2_pct": [
+        40.5,
+        64.5
+      ],
+      "world_xz": [
+        -5.0,
+        54.0
+      ]
+    },
+    {
+      "id": "V5",
+      "name": "Main Entrance Concave Apex",
+      "x_m": 215.0,
+      "z_m": 125.0,
+      "ref1_pct": [
+        62.0,
+        56.8
+      ],
+      "ref2_pct": [
+        67.0,
+        53.5
+      ],
+      "world_xz": [
+        43.0,
+        25.0
+      ]
+    },
+    {
+      "id": "V6",
+      "name": "SE Southern Edge (GBTB MRT)",
+      "x_m": 560.0,
+      "z_m": 320.0,
+      "ref1_pct": [
+        91.8,
+        75.2
+      ],
+      "ref2_pct": [
+        93.5,
+        73.0
+      ],
+      "world_xz": [
+        112.0,
+        64.0
+      ]
+    },
+    {
+      "id": "V7",
+      "name": "SE Barrage Tip (Marina Barrage)",
+      "x_m": 645.0,
+      "z_m": 235.0,
+      "ref1_pct": [
+        99.0,
+        67.5
+      ],
+      "ref2_pct": [
+        99.2,
+        63.5
+      ],
+      "world_xz": [
+        129.0,
+        47.0
+      ]
+    }
+  ],
+  "landmasses": {
+    "main_bay_south_island_m": [
+      [
+        -95.0,
+        -312.0
+      ],
+      [
+        -20.0,
+        -272.0
+      ],
+      [
+        65.0,
+        -225.0
+      ],
+      [
+        185.0,
+        -150.0
+      ],
+      [
+        275.0,
+        -90.0
+      ],
+      [
+        375.0,
+        -25.0
+      ],
+      [
+        490.0,
+        65.0
+      ],
+      [
+        585.0,
+        145.0
+      ],
+      [
+        645.0,
+        235.0
+      ],
+      [
+        560.0,
+        320.0
+      ],
+      [
+        435.0,
+        240.0
+      ],
+      [
+        325.0,
+        165.0
+      ],
+      [
+        215.0,
+        125.0
+      ],
+      [
+        105.0,
+        155.0
+      ],
+      [
+        -25.0,
+        270.0
+      ],
+      [
+        -95.0,
+        350.0
+      ],
+      [
+        -165.0,
+        395.0
+      ],
+      [
+        -245.0,
+        325.0
+      ],
+      [
+        -215.0,
+        185.0
+      ],
+      [
+        -180.0,
+        105.0
+      ],
+      [
+        -130.0,
+        20.0
+      ],
+      [
+        -85.0,
+        -65.0
+      ],
+      [
+        -80.0,
+        -155.0
+      ],
+      [
+        -75.0,
+        -235.0
+      ]
+    ],
+    "outer_west_bank_m": [
+      [
+        -130.0,
+        -330.0
+      ],
+      [
+        -112.0,
+        -320.0
+      ],
+      [
+        -115.0,
+        -225.0
+      ],
+      [
+        -125.0,
+        -135.0
+      ],
+      [
+        -145.0,
+        -55.0
+      ],
+      [
+        -175.0,
+        35.0
+      ],
+      [
+        -235.0,
+        145.0
+      ],
+      [
+        -295.0,
+        265.0
+      ],
+      [
+        -185.0,
+        485.0
+      ],
+      [
+        -40.0,
+        260.0
+      ],
+      [
+        -25.0,
+        270.0
+      ],
+      [
+        -185.0,
+        535.0
+      ],
+      [
+        -395.0,
+        395.0
+      ],
+      [
+        -290.0,
+        110.0
+      ],
+      [
+        -210.0,
+        -110.0
+      ]
+    ],
+    "dragonfly_island_m": [
+      [
+        -122.0,
+        -125.0
+      ],
+      [
+        -105.0,
+        -115.0
+      ],
+      [
+        -110.0,
+        -78.0
+      ],
+      [
+        -128.0,
+        -82.0
+      ],
+      [
+        -135.0,
+        -105.0
+      ]
+    ],
+    "nibong_island_m": [
+      [
+        -104.0,
+        -210.0
+      ],
+      [
+        -90.0,
+        -202.0
+      ],
+      [
+        -92.0,
+        -172.0
+      ],
+      [
+        -108.0,
+        -176.0
+      ]
+    ]
+  },
+  "water_bodies": [
+    {
+      "id": "dragonfly_lake_main",
+      "name": "Dragonfly Lake (#16)",
+      "type": "channel_polygon",
+      "width_range_m": [
+        35.0,
+        65.0
+      ],
+      "length_m": 540.0,
+      "centerline_m": [
+        [
+          -104.0,
+          -316.0
+        ],
+        [
+          -96.0,
+          -220.0
+        ],
+        [
+          -102.0,
+          -145.0
+        ],
+        [
+          -112.0,
+          -65.0
+        ],
+        [
+          -152.0,
+          25.0
+        ],
+        [
+          -205.0,
+          110.0
+        ],
+        [
+          -255.0,
+          195.0
+        ]
+      ],
+      "polygon_m": [
+        [
+          -112.0,
+          -320.0
+        ],
+        [
+          -95.0,
+          -312.0
+        ],
+        [
+          -75.0,
+          -235.0
+        ],
+        [
+          -80.0,
+          -155.0
+        ],
+        [
+          -85.0,
+          -65.0
+        ],
+        [
+          -130.0,
+          20.0
+        ],
+        [
+          -180.0,
+          105.0
+        ],
+        [
+          -215.0,
+          185.0
+        ],
+        [
+          -245.0,
+          225.0
+        ],
+        [
+          -275.0,
+          215.0
+        ],
+        [
+          -235.0,
+          145.0
+        ],
+        [
+          -175.0,
+          35.0
+        ],
+        [
+          -145.0,
+          -55.0
+        ],
+        [
+          -125.0,
+          -135.0
+        ],
+        [
+          -115.0,
+          -225.0
+        ]
+      ]
+    },
+    {
+      "id": "sw_meadow_moat",
+      "name": "The Meadow Perimeter Moat",
+      "type": "canal_polyline",
+      "width_m": 14.0,
+      "length_m": 640.0,
+      "centerline_m": [
+        [
+          -255.0,
+          195.0
+        ],
+        [
+          -305.0,
+          295.0
+        ],
+        [
+          -355.0,
+          380.0
+        ],
+        [
+          -185.0,
+          500.0
+        ],
+        [
+          -90.0,
+          360.0
+        ],
+        [
+          -35.0,
+          265.0
+        ]
+      ]
+    },
+    {
+      "id": "heritage_north_branch",
+      "name": "Heritage Gardens North Water Stream",
+      "type": "canal_polyline",
+      "width_m": 12.0,
+      "length_m": 145.0,
+      "centerline_m": [
+        [
+          -80.0,
+          -165.0
+        ],
+        [
+          -40.0,
+          -150.0
+        ],
+        [
+          10.0,
+          -155.0
+        ],
+        [
+          35.0,
+          -168.0
+        ]
+      ]
+    },
+    {
+      "id": "central_koi_pond",
+      "name": "Koi Pond & Planet Stream",
+      "type": "pond_polygon",
+      "center_m": [
+        -110.0,
+        72.0
+      ],
+      "rx_m": 42.0,
+      "rz_m": 20.0,
+      "angle_deg": 32.0,
+      "polygon_m": [
+        [
+          -155.0,
+          48.0
+        ],
+        [
+          -115.0,
+          45.0
+        ],
+        [
+          -68.0,
+          75.0
+        ],
+        [
+          -75.0,
+          98.0
+        ],
+        [
+          -125.0,
+          92.0
+        ]
+      ]
+    },
+    {
+      "id": "water_lily_pond",
+      "name": "Victoria & Water Lily Pond",
+      "type": "pond_polygon",
+      "center_m": [
+        235.0,
+        25.0
+      ],
+      "rx_m": 48.0,
+      "rz_m": 24.0,
+      "angle_deg": 125.0,
+      "polygon_m": [
+        [
+          195.0,
+          5.0
+        ],
+        [
+          255.0,
+          -2.0
+        ],
+        [
+          282.0,
+          28.0
+        ],
+        [
+          245.0,
+          52.0
+        ],
+        [
+          198.0,
+          36.0
+        ]
+      ]
+    },
+    {
+      "id": "kingfisher_lake_lotus_pond",
+      "name": "Kingfisher Lake & Lotus Pond (#28)",
+      "type": "pond_polygon",
+      "center_m": [
+        355.0,
+        62.0
+      ],
+      "rx_m": 72.0,
+      "rz_m": 32.0,
+      "angle_deg": 128.0,
+      "polygon_m": [
+        [
+          295.0,
+          32.0
+        ],
+        [
+          355.0,
+          22.0
+        ],
+        [
+          420.0,
+          58.0
+        ],
+        [
+          410.0,
+          95.0
+        ],
+        [
+          345.0,
+          98.0
+        ],
+        [
+          298.0,
+          65.0
+        ]
+      ]
+    },
+    {
+      "id": "main_entrance_moat",
+      "name": "Arrival Square Reflective Canal",
+      "type": "canal_polyline",
+      "width_m": 10.0,
+      "length_m": 160.0,
+      "centerline_m": [
+        [
+          120.0,
+          65.0
+        ],
+        [
+          175.0,
+          45.0
+        ],
+        [
+          235.0,
+          68.0
+        ]
+      ]
+    }
+  ],
+  "bridges": [
+    {
+      "id": "waterfront_north_bridge",
+      "name": "Waterfront North Bridge",
+      "start_m": [
+        -115.0,
+        -308.0
+      ],
+      "end_m": [
+        -90.0,
+        -296.0
+      ],
+      "center_m": [
+        -102.5,
+        -302.0
+      ],
+      "length_m": 27.7,
+      "width_m": 8.0,
+      "arch_height_3d": 0.45,
+      "start_3d": [
+        -23.0,
+        -61.6
+      ],
+      "end_3d": [
+        -18.0,
+        -59.2
+      ],
+      "center_3d": [
+        -20.5,
+        -60.4
+      ],
+      "half_width_3d": 0.8
+    },
+    {
+      "id": "silver_garden_bridge",
+      "name": "Silver Garden Promenade Bridge",
+      "start_m": [
+        -116.0,
+        -215.0
+      ],
+      "end_m": [
+        -76.0,
+        -205.0
+      ],
+      "center_m": [
+        -96.0,
+        -210.0
+      ],
+      "length_m": 41.2,
+      "width_m": 8.5,
+      "arch_height_3d": 0.55,
+      "start_3d": [
+        -23.2,
+        -43.0
+      ],
+      "end_3d": [
+        -15.2,
+        -41.0
+      ],
+      "center_3d": [
+        -19.2,
+        -42.0
+      ],
+      "half_width_3d": 0.85
+    },
+    {
+      "id": "dragonfly_main_bridge",
+      "name": "Dragonfly Bridge (#16)",
+      "start_m": [
+        -146.0,
+        -72.0
+      ],
+      "end_m": [
+        -84.0,
+        -56.0
+      ],
+      "center_m": [
+        -115.0,
+        -64.0
+      ],
+      "length_m": 64.0,
+      "width_m": 10.0,
+      "arch_height_3d": 0.95,
+      "start_3d": [
+        -29.2,
+        -14.4
+      ],
+      "end_3d": [
+        -16.8,
+        -11.2
+      ],
+      "center_3d": [
+        -23.0,
+        -12.8
+      ],
+      "half_width_3d": 1.0
+    },
+    {
+      "id": "meadow_dragonfly_bridge",
+      "name": "Meadow West Bridge",
+      "start_m": [
+        -234.0,
+        132.0
+      ],
+      "end_m": [
+        -182.0,
+        114.0
+      ],
+      "center_m": [
+        -208.0,
+        123.0
+      ],
+      "length_m": 55.0,
+      "width_m": 9.0,
+      "arch_height_3d": 0.65,
+      "start_3d": [
+        -46.8,
+        26.4
+      ],
+      "end_3d": [
+        -36.4,
+        22.8
+      ],
+      "center_3d": [
+        -41.6,
+        24.6
+      ],
+      "half_width_3d": 0.9
+    },
+    {
+      "id": "koi_pond_central_bridge",
+      "name": "Planet & Koi Pond Footbridge",
+      "start_m": [
+        -120.0,
+        52.0
+      ],
+      "end_m": [
+        -96.0,
+        88.0
+      ],
+      "center_m": [
+        -108.0,
+        70.0
+      ],
+      "length_m": 43.3,
+      "width_m": 7.5,
+      "arch_height_3d": 0.35,
+      "start_3d": [
+        -24.0,
+        10.4
+      ],
+      "end_3d": [
+        -19.2,
+        17.6
+      ],
+      "center_3d": [
+        -21.6,
+        14.0
+      ],
+      "half_width_3d": 0.75
+    },
+    {
+      "id": "kingfisher_wetlands_boardwalk",
+      "name": "Kingfisher Wetlands Timber Boardwalk",
+      "start_m": [
+        315.0,
+        38.0
+      ],
+      "end_m": [
+        392.0,
+        82.0
+      ],
+      "center_m": [
+        353.5,
+        60.0
+      ],
+      "length_m": 88.7,
+      "width_m": 7.5,
+      "arch_height_3d": 0.3,
+      "start_3d": [
+        63.0,
+        7.6
+      ],
+      "end_3d": [
+        78.4,
+        16.4
+      ],
+      "center_3d": [
+        70.7,
+        12.0
+      ],
+      "half_width_3d": 0.75
+    }
+  ],
+  "roads": {
+    "marina_gardens_drive": {
+      "name": "Marina Gardens Drive (Concave Southern Boundary & Coach Loop)",
+      "width_m": 16.0,
+      "centerline_m": [
+        [
+          -185.0,
+          520.0
+        ],
+        [
+          -105.0,
+          390.0
+        ],
+        [
+          -25.0,
+          270.0
+        ],
+        [
+          75.0,
+          175.0
+        ],
+        [
+          165.0,
+          125.0
+        ],
+        [
+          215.0,
+          125.0
+        ],
+        [
+          315.0,
+          165.0
+        ],
+        [
+          435.0,
+          240.0
+        ],
+        [
+          555.0,
+          310.0
+        ]
+      ],
+      "closed_vehicle_loop_m": [
+        [
+          -175.0,
+          505.0
+        ],
+        [
+          -95.0,
+          375.0
+        ],
+        [
+          -20.0,
+          265.0
+        ],
+        [
+          85.0,
+          165.0
+        ],
+        [
+          165.0,
+          115.0
+        ],
+        [
+          215.0,
+          118.0
+        ],
+        [
+          320.0,
+          160.0
+        ],
+        [
+          440.0,
+          235.0
+        ],
+        [
+          540.0,
+          295.0
+        ],
+        [
+          455.0,
+          215.0
+        ],
+        [
+          330.0,
+          145.0
+        ],
+        [
+          215.0,
+          98.0
+        ],
+        [
+          155.0,
+          95.0
+        ],
+        [
+          75.0,
+          150.0
+        ],
+        [
+          -35.0,
+          250.0
+        ],
+        [
+          -110.0,
+          365.0
+        ]
+      ]
+    },
+    "sheares_avenue": {
+      "name": "Sheares Avenue (NW Straight Edge, 775m)",
+      "width_m": 22.0,
+      "centerline_m": [
+        [
+          -130.0,
+          -330.0
+        ],
+        [
+          -395.0,
+          395.0
+        ]
+      ]
+    },
+    "marina_boulevard": {
+      "name": "Marina Boulevard (SW Straight Edge, 250m)",
+      "width_m": 20.0,
+      "centerline_m": [
+        [
+          -395.0,
+          395.0
+        ],
+        [
+          -185.0,
+          535.0
+        ]
+      ]
+    }
+  },
+  "carparks": [
+    {
+      "id": "cp_bayfront",
+      "name": "Bayfront Plaza Carpark",
+      "x_m": -285.0,
+      "z_m": 135.0,
+      "w_m": 140.0,
+      "l_m": 55.0,
+      "angle_deg": -70.0
+    },
+    {
+      "id": "cp_meadow",
+      "name": "The Meadow Carpark",
+      "x_m": -285.0,
+      "z_m": 365.0,
+      "w_m": 180.0,
+      "l_m": 95.0,
+      "angle_deg": 32.0
+    },
+    {
+      "id": "cp_main_entrance",
+      "name": "Main Entrance & Coach Bay Carpark",
+      "x_m": 165.0,
+      "z_m": 95.0,
+      "w_m": 165.0,
+      "l_m": 105.0,
+      "angle_deg": -15.0
+    },
+    {
+      "id": "cp_satay",
+      "name": "Satay by the Bay Carpark",
+      "x_m": 445.0,
+      "z_m": 165.0,
+      "w_m": 130.0,
+      "l_m": 55.0,
+      "angle_deg": 125.0
+    }
+  ],
+  "pathways": [
+    {
+      "id": "waterfront_promenade",
+      "name": "Waterfront Promenade (NE Coastline, 930m)",
+      "width_m": 15.0,
+      "points_m": [
+        [
+          -105.0,
+          -305.0
+        ],
+        [
+          -25.0,
+          -262.0
+        ],
+        [
+          60.0,
+          -215.0
+        ],
+        [
+          175.0,
+          -140.0
+        ],
+        [
+          265.0,
+          -80.0
+        ],
+        [
+          365.0,
+          -15.0
+        ],
+        [
+          475.0,
+          72.0
+        ],
+        [
+          575.0,
+          155.0
+        ],
+        [
+          625.0,
+          220.0
+        ]
+      ]
+    },
+    {
+      "id": "central_spine_north_south",
+      "name": "Conservatory to Supertree Grove & Meadow Spine",
+      "width_m": 12.0,
+      "points_m": [
+        [
+          95.0,
+          -125.0
+        ],
+        [
+          45.0,
+          -65.0
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          -65.0,
+          105.0
+        ],
+        [
+          -145.0,
+          165.0
+        ],
+        [
+          -175.0,
+          235.0
+        ]
+      ]
+    },
+    {
+      "id": "west_east_cross_axis",
+      "name": "Bayfront -> Dragonfly Bridge -> Grove -> Golden Garden -> Main Entrance",
+      "width_m": 12.0,
+      "points_m": [
+        [
+          -200.0,
+          25.0
+        ],
+        [
+          -155.0,
+          -55.0
+        ],
+        [
+          -115.0,
+          -64.0
+        ],
+        [
+          -55.0,
+          -70.0
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          90.0,
+          -10.0
+        ],
+        [
+          145.0,
+          -25.0
+        ],
+        [
+          165.0,
+          95.0
+        ]
+      ]
+    },
+    {
+      "id": "outer_west_bank_trail",
+      "name": "Outer West Bank Promenade (Active Garden -> IMBA -> Floral Fantasy -> Serene -> Meadow)",
+      "width_m": 10.0,
+      "points_m": [
+        [
+          -115.0,
+          -308.0
+        ],
+        [
+          -125.0,
+          -265.0
+        ],
+        [
+          -145.0,
+          -145.0
+        ],
+        [
+          -200.0,
+          25.0
+        ],
+        [
+          -235.0,
+          75.0
+        ],
+        [
+          -234.0,
+          132.0
+        ],
+        [
+          -175.0,
+          235.0
+        ]
+      ]
+    },
+    {
+      "id": "eastern_valley_loop",
+      "name": "Cloud Forest -> Sun Pavilion -> Children's Garden -> Wetlands -> Satay -> Barrage",
+      "width_m": 11.0,
+      "points_m": [
+        [
+          95.0,
+          -125.0
+        ],
+        [
+          160.0,
+          -90.0
+        ],
+        [
+          215.0,
+          -65.0
+        ],
+        [
+          295.0,
+          -35.0
+        ],
+        [
+          355.0,
+          55.0
+        ],
+        [
+          445.0,
+          135.0
+        ],
+        [
+          565.0,
+          165.0
+        ]
+      ]
+    },
+    {
+      "id": "silver_garden_heritage_loop",
+      "name": "Silver Garden to Heritage & Flower Dome Loop",
+      "width_m": 9.5,
+      "points_m": [
+        [
+          -90.0,
+          -296.0
+        ],
+        [
+          -75.0,
+          -245.0
+        ],
+        [
+          -65.0,
+          -165.0
+        ],
+        [
+          -55.0,
+          -70.0
+        ],
+        [
+          35.0,
+          -155.0
+        ],
+        [
+          95.0,
+          -125.0
+        ]
+      ]
+    }
+  ],
+  "landmarks": [
+    {
+      "id": "L01",
+      "map_num": "#6/#7",
+      "name": "Supertree Grove (12 Trees & OCBC Skyway)",
+      "zone": "Supertree Grove",
+      "x_m": 0.0,
+      "z_m": 0.0,
+      "w_m": 175.0,
+      "l_m": 155.0,
+      "h_m": 50.0,
+      "angle_deg": 140.0,
+      "shape": "ellipse_grove",
+      "color": "#f43f5e",
+      "world_xz": [
+        0.0,
+        0.0
+      ],
+      "world_wl": [
+        35.0,
+        31.0
+      ],
+      "rot_y_rad": -2.4435
+    },
+    {
+      "id": "L02",
+      "map_num": "#3",
+      "name": "Flower Dome Conservatory",
+      "zone": "Conservatories",
+      "x_m": 35.0,
+      "z_m": -210.0,
+      "w_m": 150.0,
+      "l_m": 80.0,
+      "h_m": 38.0,
+      "angle_deg": 125.0,
+      "shape": "ribbed_dome",
+      "color": "#38bdf8",
+      "glb": "Flower_Dome_Conservatory",
+      "enterable": true,
+      "door_angle_rad": 0.85,
+      "world_xz": [
+        7.0,
+        -42.0
+      ],
+      "world_wl": [
+        30.0,
+        16.0
+      ],
+      "rot_y_rad": -2.1817
+    },
+    {
+      "id": "L03",
+      "map_num": "#4",
+      "name": "Cloud Forest Conservatory",
+      "zone": "Conservatories",
+      "x_m": 160.0,
+      "z_m": -135.0,
+      "w_m": 115.0,
+      "l_m": 70.0,
+      "h_m": 58.0,
+      "angle_deg": 155.0,
+      "shape": "tapered_dome",
+      "color": "#0ea5e9",
+      "glb": "Cloud_Forest_Conservatory",
+      "enterable": true,
+      "door_angle_rad": -2.1,
+      "world_xz": [
+        32.0,
+        -27.0
+      ],
+      "world_wl": [
+        23.0,
+        14.0
+      ],
+      "rot_y_rad": -2.7053
+    },
+    {
+      "id": "L04",
+      "map_num": "#2/#5",
+      "name": "Conservatory Arrival Plaza, Canopy & Floral Clock",
+      "zone": "Conservatories",
+      "x_m": 95.0,
+      "z_m": -125.0,
+      "w_m": 95.0,
+      "l_m": 75.0,
+      "h_m": 12.0,
+      "angle_deg": 140.0,
+      "shape": "plaza_clock",
+      "color": "#f59e0b",
+      "glb": "Floral_Clock",
+      "world_xz": [
+        19.0,
+        -25.0
+      ],
+      "world_wl": [
+        19.0,
+        15.0
+      ],
+      "rot_y_rad": -2.4435
+    },
+    {
+      "id": "L05",
+      "map_num": "#25",
+      "name": "Silver Garden (3 Supertrees)",
+      "zone": "Heritage & Dragonfly",
+      "x_m": -75.0,
+      "z_m": -245.0,
+      "w_m": 70.0,
+      "l_m": 65.0,
+      "h_m": 35.0,
+      "angle_deg": 120.0,
+      "shape": "supertree_triad",
+      "color": "#94a3b8",
+      "world_xz": [
+        -15.0,
+        -49.0
+      ],
+      "world_wl": [
+        14.0,
+        13.0
+      ],
+      "rot_y_rad": -2.0944
+    },
+    {
+      "id": "L06",
+      "map_num": "#1",
+      "name": "Golden Garden (3 Supertrees)",
+      "zone": "Wetlands & Serene",
+      "x_m": 145.0,
+      "z_m": -25.0,
+      "w_m": 75.0,
+      "l_m": 60.0,
+      "h_m": 35.0,
+      "angle_deg": 135.0,
+      "shape": "supertree_triad",
+      "color": "#eab308",
+      "world_xz": [
+        29.0,
+        -5.0
+      ],
+      "world_wl": [
+        15.0,
+        12.0
+      ],
+      "rot_y_rad": -2.3562
+    },
+    {
+      "id": "L07",
+      "map_num": "#15-#18",
+      "name": "Heritage Gardens (Indian, Chinese, Malay, Colonial)",
+      "zone": "Heritage & Dragonfly",
+      "x_m": -55.0,
+      "z_m": -70.0,
+      "w_m": 190.0,
+      "l_m": 65.0,
+      "h_m": 14.0,
+      "angle_deg": 45.0,
+      "shape": "Rect_pavilion",
+      "color": "#fb923c",
+      "glb": "Heritage_Moon_Gate",
+      "world_xz": [
+        -11.0,
+        -14.0
+      ],
+      "world_wl": [
+        38.0,
+        13.0
+      ],
+      "rot_y_rad": -0.7854
+    },
+    {
+      "id": "L08",
+      "map_num": "#9-#14",
+      "name": "World of Plants & The Understorey Dome",
+      "zone": "Supertree Grove",
+      "x_m": -65.0,
+      "z_m": 105.0,
+      "w_m": 90.0,
+      "l_m": 70.0,
+      "h_m": 16.0,
+      "angle_deg": 0.0,
+      "shape": "timber_dome",
+      "color": "#22c55e",
+      "glb": "Understorey_Timber_Dome",
+      "enterable": true,
+      "door_angle_rad": -1.57,
+      "world_xz": [
+        -13.0,
+        21.0
+      ],
+      "world_wl": [
+        18.0,
+        14.0
+      ],
+      "rot_y_rad": -0.0
+    },
+    {
+      "id": "L09",
+      "map_num": "#20",
+      "name": "The Meadow Amphitheatre & Stage Canopy",
+      "zone": "The Meadow",
+      "x_m": -175.0,
+      "z_m": 235.0,
+      "w_m": 210.0,
+      "l_m": 165.0,
+      "h_m": 18.0,
+      "angle_deg": 35.0,
+      "shape": "meadow_bowl",
+      "color": "#84cc16",
+      "glb": "Meadow_Stage_Canopy",
+      "world_xz": [
+        -35.0,
+        47.0
+      ],
+      "world_wl": [
+        42.0,
+        33.0
+      ],
+      "rot_y_rad": -0.6109
+    },
+    {
+      "id": "L10",
+      "map_num": "#19",
+      "name": "Planet (Marc Quinn Floating Baby Sculpture)",
+      "zone": "The Meadow",
+      "x_m": -145.0,
+      "z_m": 115.0,
+      "w_m": 24.0,
+      "l_m": 10.0,
+      "h_m": 9.0,
+      "angle_deg": 20.0,
+      "shape": "sculpture_plinth",
+      "color": "#f8fafc",
+      "glb": "Planet_Floating_Baby",
+      "world_xz": [
+        -29.0,
+        23.0
+      ],
+      "world_wl": [
+        4.8,
+        2.0
+      ],
+      "rot_y_rad": -0.3491
+    },
+    {
+      "id": "L11",
+      "map_num": "#21",
+      "name": "Serene Garden & Japanese Tea Pavilion",
+      "zone": "Waterfront & Fantasy",
+      "x_m": -235.0,
+      "z_m": 75.0,
+      "w_m": 95.0,
+      "l_m": 65.0,
+      "h_m": 12.0,
+      "angle_deg": -25.0,
+      "shape": "japanese_pavilion",
+      "color": "#14b8a6",
+      "glb": "Serene_Japanese_Pavilion",
+      "enterable": true,
+      "door_angle_rad": 0.5,
+      "world_xz": [
+        -47.0,
+        15.0
+      ],
+      "world_wl": [
+        19.0,
+        13.0
+      ],
+      "rot_y_rad": 0.4363
+    },
+    {
+      "id": "L12",
+      "map_num": "#26",
+      "name": "Floral Fantasy, Bayfront Plaza & SG50 Lattice",
+      "zone": "Waterfront & Fantasy",
+      "x_m": -200.0,
+      "z_m": 25.0,
+      "w_m": 115.0,
+      "l_m": 45.0,
+      "h_m": 15.0,
+      "angle_deg": 30.0,
+      "shape": "terraced_pavilion",
+      "color": "#c084fc",
+      "glb": "SG50_Celebration_Lattice",
+      "enterable": true,
+      "door_angle_rad": 0.2,
+      "world_xz": [
+        -40.0,
+        5.0
+      ],
+      "world_wl": [
+        23.0,
+        9.0
+      ],
+      "rot_y_rad": -0.5236
+    },
+    {
+      "id": "L13",
+      "map_num": "#37",
+      "name": "IMBA Theatre & West Lawn Gallery",
+      "zone": "Waterfront & Fantasy",
+      "x_m": -145.0,
+      "z_m": -145.0,
+      "w_m": 95.0,
+      "l_m": 55.0,
+      "h_m": 16.0,
+      "angle_deg": 30.0,
+      "shape": "modern_hall",
+      "color": "#a855f7",
+      "glb": "IMBA_Theatre_Hall",
+      "world_xz": [
+        -29.0,
+        -29.0
+      ],
+      "world_wl": [
+        19.0,
+        11.0
+      ],
+      "rot_y_rad": -0.5236
+    },
+    {
+      "id": "L14",
+      "map_num": "#27",
+      "name": "Active Garden & Waterfront Fitness Plaza",
+      "zone": "Waterfront & Fantasy",
+      "x_m": -125.0,
+      "z_m": -265.0,
+      "w_m": 130.0,
+      "l_m": 50.0,
+      "h_m": 10.0,
+      "angle_deg": 30.0,
+      "shape": "active_plaza",
+      "color": "#ec4899",
+      "world_xz": [
+        -25.0,
+        -53.0
+      ],
+      "world_wl": [
+        26.0,
+        10.0
+      ],
+      "rot_y_rad": -0.5236
+    },
+    {
+      "id": "L15",
+      "map_num": "#22/#24",
+      "name": "Sun Pavilion & The Canyon Dragon Rocks",
+      "zone": "Conservatories",
+      "x_m": 215.0,
+      "z_m": -65.0,
+      "w_m": 85.0,
+      "l_m": 40.0,
+      "h_m": 14.0,
+      "angle_deg": 130.0,
+      "shape": "glass_pavilion",
+      "color": "#fbbf24",
+      "glb": "Sun_Pavilion_And_Canyon",
+      "world_xz": [
+        43.0,
+        -13.0
+      ],
+      "world_wl": [
+        17.0,
+        8.0
+      ],
+      "rot_y_rad": -2.2689
+    },
+    {
+      "id": "L16",
+      "map_num": "#23",
+      "name": "Far East Organization Children's Garden",
+      "zone": "Wetlands & Serene",
+      "x_m": 295.0,
+      "z_m": -35.0,
+      "w_m": 130.0,
+      "l_m": 75.0,
+      "h_m": 14.0,
+      "angle_deg": 125.0,
+      "shape": "splash_canopy",
+      "color": "#2dd4bf",
+      "glb": "FEO_Children_Splash_Pad",
+      "world_xz": [
+        59.0,
+        -7.0
+      ],
+      "world_wl": [
+        26.0,
+        15.0
+      ],
+      "rot_y_rad": -2.1817
+    },
+    {
+      "id": "L17",
+      "map_num": "#28",
+      "name": "Kingfisher Wetlands & Mangrove Sanctuary",
+      "zone": "Wetlands & Serene",
+      "x_m": 355.0,
+      "z_m": 55.0,
+      "w_m": 160.0,
+      "l_m": 90.0,
+      "h_m": 12.0,
+      "angle_deg": 125.0,
+      "shape": "wetlands_sanctuary",
+      "color": "#0d9488",
+      "world_xz": [
+        71.0,
+        11.0
+      ],
+      "world_wl": [
+        32.0,
+        18.0
+      ],
+      "rot_y_rad": -2.1817
+    },
+    {
+      "id": "L18",
+      "map_num": "Main Gate",
+      "name": "Main Entrance Arrival Square & Coach Bay",
+      "zone": "Supertree Grove",
+      "x_m": 165.0,
+      "z_m": 95.0,
+      "w_m": 165.0,
+      "l_m": 105.0,
+      "h_m": 14.0,
+      "angle_deg": 45.0,
+      "shape": "arrival_canopy",
+      "color": "#fcd34d",
+      "glb": "Main_Entrance_Arrival_Canopy",
+      "world_xz": [
+        33.0,
+        19.0
+      ],
+      "world_wl": [
+        33.0,
+        21.0
+      ],
+      "rot_y_rad": -0.7854
+    },
+    {
+      "id": "L19",
+      "map_num": "g",
+      "name": "Satay by the Bay Dining Pavilions",
+      "zone": "Wetlands & Serene",
+      "x_m": 445.0,
+      "z_m": 135.0,
+      "w_m": 150.0,
+      "l_m": 95.0,
+      "h_m": 14.0,
+      "angle_deg": 125.0,
+      "shape": "dining_pavilions",
+      "color": "#f97316",
+      "glb": "Satay_By_The_Bay_Pavilion",
+      "world_xz": [
+        89.0,
+        27.0
+      ],
+      "world_wl": [
+        30.0,
+        19.0
+      ],
+      "rot_y_rad": -2.1817
+    },
+    {
+      "id": "L20",
+      "map_num": "Barrage",
+      "name": "Marina Barrage & Green Roof Visitor Centre",
+      "zone": "Wetlands & Serene",
+      "x_m": 565.0,
+      "z_m": 165.0,
+      "w_m": 180.0,
+      "l_m": 110.0,
+      "h_m": 22.0,
+      "angle_deg": 125.0,
+      "shape": "spiral_barrage",
+      "color": "#10b981",
+      "glb": "Marina_Barrage_Visitor_Centre",
+      "world_xz": [
+        113.0,
+        33.0
+      ],
+      "world_wl": [
+        36.0,
+        22.0
+      ],
+      "rot_y_rad": -2.1817
+    }
+  ],
+  "supertrees": [
+    {
+      "id": "ST01",
+      "cluster": "Supertree Grove",
+      "tier": "hero",
+      "x_m": -25.0,
+      "z_m": -16.0,
+      "canopy_r_m": 16.0,
+      "trunk_r_m": 4.5,
+      "h_m": 50.0,
+      "world_xz": [
+        -5.0,
+        -3.2
+      ],
+      "trunk_r_3d": 0.9
+    },
+    {
+      "id": "ST02",
+      "cluster": "Supertree Grove",
+      "tier": "hero",
+      "x_m": 28.0,
+      "z_m": -10.0,
+      "canopy_r_m": 15.5,
+      "trunk_r_m": 4.5,
+      "h_m": 50.0,
+      "world_xz": [
+        5.6,
+        -2.0
+      ],
+      "trunk_r_3d": 0.9
+    },
+    {
+      "id": "ST03",
+      "cluster": "Supertree Grove",
+      "tier": "hero",
+      "x_m": 2.0,
+      "z_m": 28.0,
+      "canopy_r_m": 15.0,
+      "trunk_r_m": 4.2,
+      "h_m": 48.0,
+      "world_xz": [
+        0.4,
+        5.6
+      ],
+      "trunk_r_3d": 0.84
+    },
+    {
+      "id": "ST04",
+      "cluster": "Supertree Grove",
+      "tier": "medium",
+      "x_m": -52.0,
+      "z_m": 12.0,
+      "canopy_r_m": 11.5,
+      "trunk_r_m": 3.0,
+      "h_m": 36.0,
+      "world_xz": [
+        -10.4,
+        2.4
+      ],
+      "trunk_r_3d": 0.6
+    },
+    {
+      "id": "ST05",
+      "cluster": "Supertree Grove",
+      "tier": "medium",
+      "x_m": -38.0,
+      "z_m": 44.0,
+      "canopy_r_m": 11.5,
+      "trunk_r_m": 3.0,
+      "h_m": 35.0,
+      "world_xz": [
+        -7.6,
+        8.8
+      ],
+      "trunk_r_3d": 0.6
+    },
+    {
+      "id": "ST06",
+      "cluster": "Supertree Grove",
+      "tier": "medium",
+      "x_m": 38.0,
+      "z_m": 40.0,
+      "canopy_r_m": 12.0,
+      "trunk_r_m": 3.0,
+      "h_m": 37.0,
+      "world_xz": [
+        7.6,
+        8.0
+      ],
+      "trunk_r_3d": 0.6
+    },
+    {
+      "id": "ST07",
+      "cluster": "Supertree Grove",
+      "tier": "medium",
+      "x_m": 56.0,
+      "z_m": 14.0,
+      "canopy_r_m": 11.0,
+      "trunk_r_m": 2.8,
+      "h_m": 34.0,
+      "world_xz": [
+        11.2,
+        2.8
+      ],
+      "trunk_r_3d": 0.56
+    },
+    {
+      "id": "ST08",
+      "cluster": "Supertree Grove",
+      "tier": "medium",
+      "x_m": 40.0,
+      "z_m": -42.0,
+      "canopy_r_m": 11.5,
+      "trunk_r_m": 3.0,
+      "h_m": 36.0,
+      "world_xz": [
+        8.0,
+        -8.4
+      ],
+      "trunk_r_3d": 0.6
+    },
+    {
+      "id": "ST09",
+      "cluster": "Supertree Grove",
+      "tier": "medium",
+      "x_m": 0.0,
+      "z_m": -50.0,
+      "canopy_r_m": 12.0,
+      "trunk_r_m": 3.0,
+      "h_m": 38.0,
+      "world_xz": [
+        0.0,
+        -10.0
+      ],
+      "trunk_r_3d": 0.6
+    },
+    {
+      "id": "ST10",
+      "cluster": "Supertree Grove",
+      "tier": "medium",
+      "x_m": -46.0,
+      "z_m": -38.0,
+      "canopy_r_m": 11.0,
+      "trunk_r_m": 2.8,
+      "h_m": 33.0,
+      "world_xz": [
+        -9.2,
+        -7.6
+      ],
+      "trunk_r_3d": 0.56
+    },
+    {
+      "id": "ST11",
+      "cluster": "Supertree Grove",
+      "tier": "medium",
+      "x_m": -15.0,
+      "z_m": 58.0,
+      "canopy_r_m": 11.0,
+      "trunk_r_m": 2.8,
+      "h_m": 32.0,
+      "world_xz": [
+        -3.0,
+        11.6
+      ],
+      "trunk_r_3d": 0.56
+    },
+    {
+      "id": "ST12",
+      "cluster": "Supertree Grove",
+      "tier": "medium",
+      "x_m": 20.0,
+      "z_m": -58.0,
+      "canopy_r_m": 10.5,
+      "trunk_r_m": 2.8,
+      "h_m": 31.0,
+      "world_xz": [
+        4.0,
+        -11.6
+      ],
+      "trunk_r_3d": 0.56
+    },
+    {
+      "id": "ST13",
+      "cluster": "Silver Garden",
+      "tier": "medium",
+      "x_m": -92.0,
+      "z_m": -238.0,
+      "canopy_r_m": 11.0,
+      "trunk_r_m": 2.8,
+      "h_m": 35.0,
+      "world_xz": [
+        -18.4,
+        -47.6
+      ],
+      "trunk_r_3d": 0.56
+    },
+    {
+      "id": "ST14",
+      "cluster": "Silver Garden",
+      "tier": "medium",
+      "x_m": -62.0,
+      "z_m": -262.0,
+      "canopy_r_m": 10.5,
+      "trunk_r_m": 2.6,
+      "h_m": 32.0,
+      "world_xz": [
+        -12.4,
+        -52.4
+      ],
+      "trunk_r_3d": 0.52
+    },
+    {
+      "id": "ST15",
+      "cluster": "Silver Garden",
+      "tier": "medium",
+      "x_m": -68.0,
+      "z_m": -228.0,
+      "canopy_r_m": 10.5,
+      "trunk_r_m": 2.6,
+      "h_m": 33.0,
+      "world_xz": [
+        -13.6,
+        -45.6
+      ],
+      "trunk_r_3d": 0.52
+    },
+    {
+      "id": "ST16",
+      "cluster": "Golden Garden",
+      "tier": "medium",
+      "x_m": 130.0,
+      "z_m": -32.0,
+      "canopy_r_m": 11.0,
+      "trunk_r_m": 2.8,
+      "h_m": 35.0,
+      "world_xz": [
+        26.0,
+        -6.4
+      ],
+      "trunk_r_3d": 0.56
+    },
+    {
+      "id": "ST17",
+      "cluster": "Golden Garden",
+      "tier": "medium",
+      "x_m": 162.0,
+      "z_m": -36.0,
+      "canopy_r_m": 10.5,
+      "trunk_r_m": 2.6,
+      "h_m": 32.0,
+      "world_xz": [
+        32.4,
+        -7.2
+      ],
+      "trunk_r_3d": 0.52
+    },
+    {
+      "id": "ST18",
+      "cluster": "Golden Garden",
+      "tier": "medium",
+      "x_m": 146.0,
+      "z_m": -8.0,
+      "canopy_r_m": 10.5,
+      "trunk_r_m": 2.6,
+      "h_m": 33.0,
+      "world_xz": [
+        29.2,
+        -1.6
+      ],
+      "trunk_r_3d": 0.52
+    }
+  ],
+  "ocbc_skyway_m": [
+    [
+      -25.0,
+      -16.0
+    ],
+    [
+      0.0,
+      -50.0
+    ],
+    [
+      28.0,
+      -10.0
+    ],
+    [
+      38.0,
+      40.0
+    ],
+    [
+      2.0,
+      28.0
+    ],
+    [
+      -38.0,
+      44.0
+    ]
+  ],
+  "treasures": [
+    {
+      "id": 1,
+      "name": "Golden Vanda Miss Joaquim",
+      "zone": "Supertree Grove",
+      "x_m": 0.0,
+      "z_m": 6.0,
+      "world_xz": [
+        0.0,
+        1.2
+      ]
+    },
+    {
+      "id": 2,
+      "name": "OCBC Skyway Star Orchid",
+      "zone": "Supertree Grove",
+      "x_m": -12.0,
+      "z_m": -28.0,
+      "world_xz": [
+        -2.4,
+        -5.6
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Millennium Olive Chalice",
+      "zone": "Conservatories",
+      "x_m": 20.0,
+      "z_m": -218.0,
+      "world_xz": [
+        4.0,
+        -43.6
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Cloud Forest Waterfall Drop",
+      "zone": "Conservatories",
+      "x_m": 150.0,
+      "z_m": -142.0,
+      "world_xz": [
+        30.0,
+        -28.4
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Audemars Piguet Floral Gear",
+      "zone": "Conservatories",
+      "x_m": 95.0,
+      "z_m": -112.0,
+      "world_xz": [
+        19.0,
+        -22.4
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Dragonfly Bridge Crest",
+      "zone": "Heritage & Dragonfly",
+      "x_m": -115.0,
+      "z_m": -64.0,
+      "world_xz": [
+        -23.0,
+        -12.8
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Colonial Spice Pavilion Prism",
+      "zone": "Heritage & Dragonfly",
+      "x_m": -32.0,
+      "z_m": -95.0,
+      "world_xz": [
+        -6.4,
+        -19.0
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Marc Quinn Planet Gravity Orb",
+      "zone": "The Meadow",
+      "x_m": -145.0,
+      "z_m": 128.0,
+      "world_xz": [
+        -29.0,
+        25.6
+      ]
+    },
+    {
+      "id": 9,
+      "name": "SG50 Lattice Jubilee Rose",
+      "zone": "Waterfront & Fantasy",
+      "x_m": -215.0,
+      "z_m": 10.0,
+      "world_xz": [
+        -43.0,
+        2.0
+      ]
+    },
+    {
+      "id": 10,
+      "name": "Children's Garden Splash Crown",
+      "zone": "Wetlands & Serene",
+      "x_m": 295.0,
+      "z_m": -35.0,
+      "world_xz": [
+        59.0,
+        -7.0
+      ]
+    },
+    {
+      "id": 11,
+      "name": "Supertree Solar Crown",
+      "zone": "Supertree Grove",
+      "x_m": 14.0,
+      "z_m": -22.0,
+      "world_xz": [
+        2.8,
+        -4.4
+      ]
+    },
+    {
+      "id": 12,
+      "name": "Scarlet Bromeliad Flame",
+      "zone": "Supertree Grove",
+      "x_m": -32.0,
+      "z_m": 18.0,
+      "world_xz": [
+        -6.4,
+        3.6
+      ]
+    },
+    {
+      "id": 13,
+      "name": "Silver Garden Waterfront Lantern",
+      "zone": "Heritage & Dragonfly",
+      "x_m": -75.0,
+      "z_m": -245.0,
+      "world_xz": [
+        -15.0,
+        -49.0
+      ]
+    },
+    {
+      "id": 14,
+      "name": "Golden Garden Gourd",
+      "zone": "Wetlands & Serene",
+      "x_m": 145.0,
+      "z_m": -22.0,
+      "world_xz": [
+        29.0,
+        -4.4
+      ]
+    },
+    {
+      "id": 15,
+      "name": "Rhapsody Wind Chime",
+      "zone": "Supertree Grove",
+      "x_m": 22.0,
+      "z_m": 24.0,
+      "world_xz": [
+        4.4,
+        4.8
+      ]
+    },
+    {
+      "id": 16,
+      "name": "Understorey Wood-Wide Node",
+      "zone": "Supertree Grove",
+      "x_m": -65.0,
+      "z_m": 105.0,
+      "world_xz": [
+        -13.0,
+        21.0
+      ]
+    },
+    {
+      "id": 17,
+      "name": "Giant Staghorn Spore",
+      "zone": "Supertree Grove",
+      "x_m": -26.0,
+      "z_m": 76.0,
+      "world_xz": [
+        -5.2,
+        15.2
+      ]
+    },
+    {
+      "id": 18,
+      "name": "Buttress Root Heart",
+      "zone": "Supertree Grove",
+      "x_m": -92.0,
+      "z_m": 128.0,
+      "world_xz": [
+        -18.4,
+        25.6
+      ]
+    },
+    {
+      "id": 19,
+      "name": "Agave Desert Rosette",
+      "zone": "Conservatories",
+      "x_m": 72.0,
+      "z_m": -155.0,
+      "world_xz": [
+        14.4,
+        -31.0
+      ]
+    },
+    {
+      "id": 20,
+      "name": "Nepenthes Highland Chalice",
+      "zone": "Conservatories",
+      "x_m": 175.0,
+      "z_m": -125.0,
+      "world_xz": [
+        35.0,
+        -25.0
+      ]
+    },
+    {
+      "id": 21,
+      "name": "Crystal Mountain Stalagmite",
+      "zone": "Conservatories",
+      "x_m": 145.0,
+      "z_m": -115.0,
+      "world_xz": [
+        29.0,
+        -23.0
+      ]
+    },
+    {
+      "id": 22,
+      "name": "African Baobab Bottle Relic",
+      "zone": "Conservatories",
+      "x_m": 52.0,
+      "z_m": -198.0,
+      "world_xz": [
+        10.4,
+        -39.6
+      ]
+    },
+    {
+      "id": 23,
+      "name": "Lost World Mist Orchid Bell",
+      "zone": "Conservatories",
+      "x_m": 182.0,
+      "z_m": -148.0,
+      "world_xz": [
+        36.4,
+        -29.6
+      ]
+    },
+    {
+      "id": 24,
+      "name": "Main Entrance Arrival Crest",
+      "zone": "Supertree Grove",
+      "x_m": 165.0,
+      "z_m": 95.0,
+      "world_xz": [
+        33.0,
+        19.0
+      ]
+    },
+    {
+      "id": 25,
+      "name": "Secret Life of Trees Totem",
+      "zone": "Supertree Grove",
+      "x_m": -42.0,
+      "z_m": 135.0,
+      "world_xz": [
+        -8.4,
+        27.0
+      ]
+    },
+    {
+      "id": 26,
+      "name": "Prehistoric Cycad Amber",
+      "zone": "Conservatories",
+      "x_m": 118.0,
+      "z_m": -92.0,
+      "world_xz": [
+        23.6,
+        -18.4
+      ]
+    },
+    {
+      "id": 27,
+      "name": "Chinese Moon Gate Jade",
+      "zone": "Heritage & Dragonfly",
+      "x_m": -55.0,
+      "z_m": -70.0,
+      "world_xz": [
+        -11.0,
+        -14.0
+      ]
+    },
+    {
+      "id": 28,
+      "name": "Indian Garden Banyan Bell",
+      "zone": "Heritage & Dragonfly",
+      "x_m": -78.0,
+      "z_m": -45.0,
+      "world_xz": [
+        -15.6,
+        -9.0
+      ]
+    },
+    {
+      "id": 29,
+      "name": "Malay Kampung Golden Gasing",
+      "zone": "Heritage & Dragonfly",
+      "x_m": -42.0,
+      "z_m": -122.0,
+      "world_xz": [
+        -8.4,
+        -24.4
+      ]
+    },
+    {
+      "id": 30,
+      "name": "Silver Promenade Brass Compass",
+      "zone": "Heritage & Dragonfly",
+      "x_m": -52.0,
+      "z_m": -195.0,
+      "world_xz": [
+        -10.4,
+        -39.0
+      ]
+    },
+    {
+      "id": 31,
+      "name": "Koi Pond Footbridge Pearl",
+      "zone": "Heritage & Dragonfly",
+      "x_m": -108.0,
+      "z_m": 70.0,
+      "world_xz": [
+        -21.6,
+        14.0
+      ]
+    },
+    {
+      "id": 32,
+      "name": "Meadow Dragonfly Bridge Totem",
+      "zone": "The Meadow",
+      "x_m": -208.0,
+      "z_m": 123.0,
+      "world_xz": [
+        -41.6,
+        24.6
+      ]
+    },
+    {
+      "id": 33,
+      "name": "Meadow Amphitheatre Sun Disc",
+      "zone": "The Meadow",
+      "x_m": -175.0,
+      "z_m": 235.0,
+      "world_xz": [
+        -35.0,
+        47.0
+      ]
+    },
+    {
+      "id": 34,
+      "name": "Floral Fantasy Hanging Key",
+      "zone": "Waterfront & Fantasy",
+      "x_m": -190.0,
+      "z_m": 35.0,
+      "world_xz": [
+        -38.0,
+        7.0
+      ]
+    },
+    {
+      "id": 35,
+      "name": "Meadow Stage Canopy Crest",
+      "zone": "The Meadow",
+      "x_m": -135.0,
+      "z_m": 185.0,
+      "world_xz": [
+        -27.0,
+        37.0
+      ]
+    },
+    {
+      "id": 36,
+      "name": "Southern Meadow Orchid Crown",
+      "zone": "The Meadow",
+      "x_m": -145.0,
+      "z_m": 315.0,
+      "world_xz": [
+        -29.0,
+        63.0
+      ]
+    },
+    {
+      "id": 37,
+      "name": "Kingfisher Boardwalk Lotus Crown",
+      "zone": "Wetlands & Serene",
+      "x_m": 353.5,
+      "z_m": 60.0,
+      "world_xz": [
+        70.7,
+        12.0
+      ]
+    },
+    {
+      "id": 38,
+      "name": "Serene Garden Yukimi Lantern",
+      "zone": "Waterfront & Fantasy",
+      "x_m": -235.0,
+      "z_m": 75.0,
+      "world_xz": [
+        -47.0,
+        15.0
+      ]
+    },
+    {
+      "id": 39,
+      "name": "Satay by the Bay Heritage Spice Gem",
+      "zone": "Wetlands & Serene",
+      "x_m": 445.0,
+      "z_m": 135.0,
+      "world_xz": [
+        89.0,
+        27.0
+      ]
+    },
+    {
+      "id": 40,
+      "name": "Marina Barrage Green Spiral Pearl",
+      "zone": "Wetlands & Serene",
+      "x_m": 565.0,
+      "z_m": 165.0,
+      "world_xz": [
+        113.0,
+        33.0
+      ]
+    },
+    {
+      "id": 41,
+      "name": "Sun Pavilion Desert Cactus Crown",
+      "zone": "Conservatories",
+      "x_m": 215.0,
+      "z_m": -65.0,
+      "world_xz": [
+        43.0,
+        -13.0
+      ]
+    },
+    {
+      "id": 42,
+      "name": "IMBA & Active Garden Waterfront Key",
+      "zone": "Waterfront & Fantasy",
+      "x_m": -135.0,
+      "z_m": -205.0,
+      "world_xz": [
+        -27.0,
+        -41.0
+      ]
+    }
+  ]
+}

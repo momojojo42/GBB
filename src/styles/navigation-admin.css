@@ -1,0 +1,243 @@
+/* ============================================================================
+ * Gardens by the Bay — Top Global Navigation Bar
+ * (src/styles/navigation-admin.css)
+ * ============================================================================ */
+
+.top-nav-bar {
+  position: fixed;
+  top: 12px;
+  left: 16px;
+  right: 16px;
+  height: 58px;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 0 18px;
+  background: linear-gradient(180deg, rgba(6, 22, 30, 0.96) 0%, rgba(4, 15, 22, 0.94) 100%);
+  border: 1.5px solid rgba(52, 211, 153, 0.48);
+  border-radius: 16px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(0, 0, 0, 0.4);
+  transition: opacity 0.22s ease, transform 0.22s ease;
+}
+
+body[data-page-mode="game"].title-or-endgame-open .top-nav-bar {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-16px);
+}
+
+.brand-cluster {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  flex-shrink: 0;
+}
+
+.brand-emblem {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #10B981, #047857);
+  display: grid;
+  place-items: center;
+  font-size: 18px;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.35);
+  flex-shrink: 0;
+}
+
+.brand-eyebrow {
+  display: block;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--accent-mint);
+  white-space: nowrap;
+}
+
+.brand-heading {
+  font-size: 15px;
+  font-weight: 800;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+.version-badge {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: rgba(250, 204, 21, 0.18);
+  border: 1px solid rgba(250, 204, 21, 0.45);
+  color: #FDE047;
+}
+
+.screen-nav-pills {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(0, 0, 0, 0.28);
+  padding: 4px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.nav-pill {
+  border: none;
+  background: transparent;
+  color: #CBD5E1;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 6px 11px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.15s ease;
+}
+
+.nav-pill span {
+  font-size: 10px;
+  font-weight: 800;
+  color: var(--accent-mint);
+  background: rgba(16, 185, 129, 0.16);
+  padding: 1px 5px;
+  border-radius: 4px;
+}
+
+.nav-pill:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #FFFFFF;
+}
+
+.nav-pill.active {
+  background: linear-gradient(135deg, #10B981, #059669);
+  color: #042F2E;
+  font-weight: 700;
+}
+
+.nav-pill.active span {
+  background: rgba(4, 47, 46, 0.25);
+  color: #ECFDF5;
+}
+
+.top-right-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.mode-toggle-group {
+  display: flex;
+  background: rgba(0, 0, 0, 0.32);
+  padding: 3px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mode-chip {
+  border: none;
+  background: transparent;
+  color: #94A3B8;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 5px 10px;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.mode-chip.active {
+  background: rgba(45, 127, 249, 0.25);
+  border: 1px solid rgba(45, 127, 249, 0.6);
+  color: #FFFFFF;
+  font-weight: 700;
+}
+
+.bot-diff-group {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  background: rgba(0, 0, 0, 0.32);
+  padding: 3px 6px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.diff-group-label {
+  font-size: 9px;
+  font-weight: 800;
+  color: #A7F3D0;
+  letter-spacing: 0.06em;
+  margin-right: 2px;
+}
+
+.diff-chip {
+  border: none;
+  background: transparent;
+  color: #94A3B8;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 4px 7px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.diff-chip:hover {
+  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.diff-chip.active {
+  background: rgba(16, 185, 129, 0.28);
+  border: 1px solid rgba(52, 211, 153, 0.65);
+  color: #ECFDF5;
+  font-weight: 700;
+}
+
+.btn-sound-toggle {
+  border: 1px solid rgba(110, 231, 183, 0.35);
+  background: rgba(16, 185, 129, 0.16);
+  color: #ECFDF5;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 6px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 0.15s ease;
+}
+
+.btn-sound-toggle.muted {
+  border-color: rgba(148, 163, 184, 0.3);
+  background: rgba(30, 41, 59, 0.6);
+  color: #94A3B8;
+}
+
+/* Compact Collapsible Developer & View Menu */
+.top-dev-menu {
+  position: relative;
+}
+
+.btn-dev-summary {
+  list-style: none;
+  user-select: none;
+}
+
+.btn-dev-summary::-webkit-details-marker {
+  display: none;
+}
+
+.top-dev-menu[open] .btn-dev-summary {
+  border-color: #38BDF8;
+  box-shadow: 0 0 14px rgba(56, 189, 248, 0.4);
+}

@@ -1,0 +1,316 @@
+/* ============================================================================
+   SIMPLE ONBOARDING UI: START CARD 3-STEP STRIP & INTERACTIVE HUD COACH PILL
+   (src/styles/hud-onboarding.css)
+   ============================================================================ */
+
+/* ----------------------------------------------------------------------------
+   1. Start Screen: 1-Glance 3-Pill "How to Play" Strip (.start-howto-strip)
+   ---------------------------------------------------------------------------- */
+.start-howto-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5px;
+  padding: 6px 8px;
+  border-radius: 13px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1.5px solid rgba(13, 148, 136, 0.2);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.start-howto-pill {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 4px 6px;
+  border-radius: 9px;
+  background: rgba(240, 253, 250, 0.9);
+  border: 1px solid rgba(13, 148, 136, 0.16);
+}
+
+.howto-num {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #0D9488, #059669);
+  color: #FFFFFF;
+  font-size: 9.5px;
+  font-weight: 900;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.howto-text {
+  font-size: 10.5px;
+  font-weight: 800;
+  color: #0F172A;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.start-howto-arrow {
+  font-size: 13px;
+  font-weight: 900;
+  color: #0D9488;
+  opacity: 0.65;
+  flex-shrink: 0;
+}
+
+/* ----------------------------------------------------------------------------
+   2. Top-Center Interactive 3-Step Coach Pill (#onboardingCoachCard)
+   ---------------------------------------------------------------------------- */
+#centerClockCard {
+  anchor-name: --hud-center-clock;
+}
+
+.onboarding-coach-card {
+  position: fixed;
+  inset: auto;
+  top: calc(var(--top-bar-h, 52px) + 98px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(440px, calc(100vw - 32px));
+  margin: 0;
+  padding: 10px 14px;
+  border-radius: 18px;
+  background: linear-gradient(165deg, rgba(255, 255, 255, 0.97) 0%, rgba(240, 253, 250, 0.96) 100%);
+  border: 2px solid rgba(245, 158, 11, 0.72);
+  box-shadow:
+    0 14px 32px rgba(6, 36, 38, 0.26),
+    0 0 0 3px rgba(254, 243, 199, 0.65),
+    inset 0 1px 0 #FFFFFF;
+  color: #0F172A;
+  z-index: 65;
+  pointer-events: auto;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+@supports (position-anchor: --hud-center-clock) {
+  .onboarding-coach-card {
+    position-anchor: --hud-center-clock;
+    top: calc(anchor(bottom) + 8px);
+  }
+}
+
+.onboarding-coach-card[popover]:is(:popover-open, .\:popover-open) {
+  display: block;
+}
+
+.onboarding-coach-card.hidden {
+  display: none !important;
+}
+
+.ob-coach-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.ob-step-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #FEF3C7, #FDE68A);
+  border: 1px solid #F59E0B;
+  color: #92400E;
+  font-size: 9.5px;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+}
+
+.ob-step-dots {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.ob-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: rgba(148, 163, 184, 0.45);
+  transition: all 0.2s ease;
+}
+
+.ob-dot.done {
+  background: #10B981;
+}
+
+.ob-dot.active {
+  width: 18px;
+  background: #F59E0B;
+}
+
+.ob-skip-btn {
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: rgba(241, 245, 249, 0.9);
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  color: #475569;
+  font-size: 10px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.ob-skip-btn:hover {
+  background: #E2E8F0;
+  color: #0F172A;
+}
+
+.ob-coach-body {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.ob-coach-icon {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #FEF3C7, #FDE68A);
+  border: 1.5px solid rgba(245, 158, 11, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 19px;
+  box-shadow: 0 3px 8px rgba(245, 158, 11, 0.18);
+}
+
+.ob-coach-copy {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.ob-coach-title {
+  margin: 0 0 2px;
+  font-size: 13px;
+  font-weight: 900;
+  color: #064E3B;
+  line-height: 1.2;
+}
+
+.ob-coach-desc {
+  margin: 0;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #334155;
+  line-height: 1.3;
+}
+
+.ob-coach-desc strong {
+  color: #0F766E;
+  font-weight: 800;
+}
+
+.ob-next-btn {
+  flex-shrink: 0;
+  padding: 8px 13px;
+  border-radius: 11px;
+  background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+  border: 1.5px solid #047857;
+  color: #FFFFFF;
+  font-size: 11.5px;
+  font-weight: 900;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.32);
+  transition: transform 0.14s ease, box-shadow 0.14s ease;
+}
+
+.ob-next-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(16, 185, 129, 0.42);
+}
+
+/* ----------------------------------------------------------------------------
+   3. HUD Target Spotlight Pulse Ring (.onboarding-spotlight-ring)
+   ---------------------------------------------------------------------------- */
+@keyframes onboardingPulseRing {
+  0%, 100% {
+    box-shadow: 0 0 0 3px rgba(250, 204, 21, 0.95), 0 0 20px rgba(245, 158, 11, 0.65);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(250, 204, 21, 0.45), 0 0 28px rgba(245, 158, 11, 0.9);
+  }
+}
+
+.onboarding-spotlight-ring {
+  animation: onboardingPulseRing 1.35s infinite ease-in-out !important;
+  border-color: #F59E0B !important;
+}
+
+/* ----------------------------------------------------------------------------
+   4. Mobile Landscape Compact Rules (max-height: 500px)
+   ---------------------------------------------------------------------------- */
+@media (max-height: 500px) and (orientation: landscape) {
+  .start-howto-strip {
+    padding: 4px 6px;
+    gap: 3px;
+    border-radius: 10px;
+  }
+
+  .start-howto-pill {
+    padding: 3px 4px;
+    gap: 4px;
+  }
+
+  .howto-num {
+    width: 14px;
+    height: 14px;
+    font-size: 8.5px;
+  }
+
+  .howto-text {
+    font-size: 9px;
+  }
+
+  .onboarding-coach-card {
+    top: calc(var(--top-bar-h, 36px) + 56px);
+    width: min(370px, calc(100vw - 230px));
+    padding: 6px 10px;
+    border-radius: 13px;
+  }
+
+  .ob-coach-top {
+    margin-bottom: 3px;
+  }
+
+  .ob-step-pill {
+    font-size: 8.5px;
+    padding: 1px 6px;
+  }
+
+  .ob-coach-icon {
+    width: 28px;
+    height: 28px;
+    font-size: 15px;
+    border-radius: 9px;
+  }
+
+  .ob-coach-title {
+    font-size: 11px;
+  }
+
+  .ob-coach-desc {
+    font-size: 9.8px;
+    line-height: 1.2;
+  }
+
+  .ob-next-btn {
+    padding: 5px 9px;
+    font-size: 10px;
+    border-radius: 9px;
+  }
+}

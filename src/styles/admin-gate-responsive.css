@@ -1,0 +1,341 @@
+/* Gardens by the Bay — Admin Auth Gate & Responsive Top Nav (src/styles/admin-gate-responsive.css) */
+/* Admin Auth Gate Preview Modal */
+.admin-auth-gate-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(3, 14, 20, 0.86);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.admin-auth-gate-overlay.hidden {
+  display: none !important;
+}
+
+.admin-auth-gate-card {
+  max-width: 520px;
+  width: 100%;
+  background: linear-gradient(145deg, rgba(10, 37, 48, 0.96), rgba(5, 22, 30, 0.98));
+  border: 1.5px solid rgba(250, 204, 21, 0.48);
+  border-radius: 20px;
+  padding: 28px 30px;
+  text-align: center;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.65);
+}
+
+.admin-auth-lock-icon {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.admin-auth-eyebrow {
+  display: inline-block;
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: #FACC15;
+  background: rgba(250, 204, 21, 0.14);
+  border: 1px solid rgba(250, 204, 21, 0.35);
+  padding: 4px 12px;
+  border-radius: 999px;
+  margin-bottom: 10px;
+}
+
+.admin-auth-title {
+  font-size: 22px;
+  font-weight: 800;
+  color: #F8FAFC;
+  margin-bottom: 10px;
+}
+
+.admin-auth-desc {
+  font-size: 13px;
+  line-height: 1.55;
+  color: #CBD5E1;
+  margin-bottom: 22px;
+}
+
+.admin-auth-desc code {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 2px 6px;
+  border-radius: 5px;
+  color: #38BDF8;
+}
+
+.admin-auth-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.btn-admin-unlock {
+  background: linear-gradient(135deg, #10B981, #059669);
+  color: #042F2E;
+  font-size: 12.5px;
+  font-weight: 800;
+  padding: 10px 18px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-admin-return-game {
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.08);
+  color: #F8FAFC;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  font-size: 12.5px;
+  font-weight: 700;
+  padding: 10px 18px;
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* ============================================================================
+ * Mobile/Tablet Landscape Ultra-Slim Top Navigation Bar (<= 1024pxW or <= 680pxH)
+ * ============================================================================ */
+body.mobile-landscape[data-page-mode="game"].modal-or-title-open #topNavBar,
+body.mobile-landscape[data-page-mode="game"].modal-or-title-open .top-nav-bar {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-16px);
+}
+
+body.mobile-landscape #topNavBar,
+body.mobile-landscape .top-nav-bar {
+  top: max(2px, var(--safe-top));
+  left: max(8px, var(--safe-left));
+  right: max(8px, var(--safe-right));
+  height: 32px;
+  padding: 0 10px;
+  border-radius: 10px;
+  gap: 8px;
+}
+
+body.mobile-landscape .brand-eyebrow,
+body.mobile-landscape #topDevMenu,
+body.mobile-landscape .top-dev-menu {
+  display: none !important;
+}
+
+body.mobile-landscape .brand-emblem {
+  width: 22px;
+  height: 22px;
+  font-size: 12px;
+  border-radius: 6px;
+}
+
+body.mobile-landscape .brand-heading {
+  font-size: 12px;
+}
+
+body.mobile-landscape .btn-collection-top,
+body.mobile-landscape .btn-sound-toggle {
+  padding: 3px 8px;
+  font-size: 10.5px;
+  min-height: 24px;
+  border-radius: 8px;
+}
+
+.btn-fullscreen-top {
+  border-color: rgba(56, 189, 248, 0.55);
+  background: rgba(14, 116, 144, 0.25);
+  color: #E0F2FE;
+}
+
+.btn-fullscreen-top:hover {
+  background: rgba(14, 116, 144, 0.42);
+  border-color: #38BDF8;
+}
+
+.btn-fullscreen-top.active {
+  border-color: rgba(52, 211, 153, 0.75);
+  background: rgba(16, 185, 129, 0.28);
+  color: #ECFDF5;
+}
+
+body.mobile-landscape:not(.is-fullscreen) .btn-fullscreen-top {
+  border-color: #FACC15;
+  background: linear-gradient(135deg, rgba(250, 204, 21, 0.28), rgba(16, 185, 129, 0.32));
+  color: #FEF08A;
+  box-shadow: 0 0 10px rgba(250, 204, 21, 0.35);
+}
+
+@media (max-width: 1024px) and (orientation: landscape), (max-height: 680px) and (orientation: landscape) {
+  body[data-page-mode="game"].modal-or-title-open #topNavBar,
+  body[data-page-mode="game"].modal-or-title-open .top-nav-bar {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-16px);
+  }
+
+  #topNavBar,
+  .top-nav-bar {
+    top: max(2px, var(--safe-top));
+    left: max(8px, var(--safe-left));
+    right: max(8px, var(--safe-right));
+    height: 32px;
+    padding: 0 10px;
+    border-radius: 10px;
+    gap: 8px;
+  }
+
+  .brand-cluster {
+    gap: 6px;
+  }
+
+  .brand-emblem {
+    width: 22px;
+    height: 22px;
+    font-size: 12px;
+    border-radius: 6px;
+  }
+
+  .brand-eyebrow {
+    display: none !important;
+  }
+
+  #topDevMenu,
+  .top-dev-menu {
+    display: none !important;
+  }
+
+  .brand-heading {
+    font-size: 12px;
+  }
+
+  .primary-page-nav {
+    padding: 2px 4px;
+    gap: 4px;
+  }
+
+  .page-nav-pill,
+  .page-nav-pill:visited {
+    padding: 3px 10px;
+    font-size: 11px;
+  }
+
+  .top-right-actions {
+    gap: 6px;
+  }
+
+  .btn-collection-top,
+  .btn-sound-toggle {
+    padding: 3px 8px;
+    font-size: 10.5px;
+    min-height: 24px;
+    border-radius: 8px;
+  }
+}
+
+/* ============================================================================
+ * Desktop-Only Gate Overlay for Admin Studio (admin.html)
+ * ============================================================================ */
+.desktop-only-gate-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 100000;
+  background: radial-gradient(circle at 50% 35%, #0A3842 0%, #03131A 100%);
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  text-align: center;
+}
+
+body.mobile-tablet-blocked {
+  overflow: hidden !important;
+}
+
+body.mobile-tablet-blocked .desktop-only-gate-overlay {
+  display: flex !important;
+}
+
+@media (max-width: 1024px), (max-height: 680px), (pointer: coarse) {
+  body[data-page-mode="admin"] .desktop-only-gate-overlay,
+  .desktop-only-gate-overlay {
+    display: flex !important;
+  }
+}
+
+.desktop-only-gate-card {
+  max-width: 420px;
+  width: 100%;
+  border-radius: 24px;
+  background: linear-gradient(155deg, rgba(10, 38, 46, 0.96) 0%, rgba(5, 22, 28, 0.99) 100%);
+  border: 1.5px solid rgba(52, 211, 153, 0.48);
+  padding: 28px 24px;
+  box-shadow:
+    0 24px 60px rgba(0, 0, 0, 0.7),
+    0 0 36px rgba(16, 185, 129, 0.24);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  color: #F8FAFC;
+}
+
+.desktop-only-gate-eyebrow {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #6EE7B7;
+  background: rgba(16, 185, 129, 0.16);
+  border: 1px solid rgba(52, 211, 153, 0.4);
+  padding: 4px 12px;
+  border-radius: 999px;
+}
+
+.desktop-only-gate-icon {
+  font-size: 42px;
+  line-height: 1.1;
+  margin: 4px 0;
+  filter: drop-shadow(0 4px 12px rgba(250, 204, 21, 0.35));
+}
+
+.desktop-only-gate-title {
+  font-size: 22px;
+  font-weight: 900;
+  color: #FEF08A;
+  line-height: 1.2;
+}
+
+.desktop-only-gate-sub {
+  font-size: 13px;
+  color: #E2E8F0;
+  line-height: 1.55;
+}
+
+.btn-desktop-gate-back,
+.btn-desktop-gate-back:visited {
+  width: 100%;
+  margin-top: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-decoration: none;
+  border: 1.5px solid #FEF08A;
+  background: linear-gradient(135deg, #34D399 0%, #10B981 55%, #FACC15 100%);
+  color: #042F2E;
+  font-size: 13px;
+  font-weight: 800;
+  padding: 12px 18px;
+  border-radius: 999px;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(16, 185, 129, 0.35);
+  transition: transform 0.15s ease, filter 0.15s ease;
+}
+
+.btn-desktop-gate-back:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.05);
+}

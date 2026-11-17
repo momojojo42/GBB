@@ -1,0 +1,370 @@
+/* Gardens by the Bay — Mobile & Tablet Landscape Start Screen Responsive Rules (src/styles/screens-responsive.css) */
+/* ============================================================================
+ * Mobile & Tablet Landscape Start Screen & Modal Shell
+ * ============================================================================ */
+@media (max-width: 1024px) and (orientation: landscape), (max-height: 680px) and (orientation: landscape) {
+  .screen-overlay {
+    inset: max(6px, var(--safe-top)) max(10px, var(--safe-right)) max(6px, var(--safe-bottom)) max(10px, var(--safe-left));
+    padding: 0;
+  }
+
+  /* 1. Start Screen: 2-Step Mobile Flow (Step 1: 3D Vista Dock -> Step 2: Compact Choices Card) */
+  .title-screen-overlay {
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+  }
+
+  .title-show-preview-pill {
+    display: none !important;
+  }
+
+  /* Step 1: Floating 3D Vista Overview Dock at Bottom-Center */
+  #screenTitleOverlay:not(.mobile-choices-open) .start-pearl-card {
+    display: none !important;
+  }
+
+  #screenTitleOverlay:not(.mobile-choices-open) .mobile-title-vista-dock {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    position: absolute;
+    bottom: max(8px, var(--safe-bottom));
+    left: 50%;
+    translate: -50% 0;
+    width: min(440px, calc(100dvw - 24px));
+    padding: 7px 11px;
+    border-radius: 999px;
+    background: linear-gradient(145deg, rgba(6, 38, 46, 0.9) 0%, rgba(4, 22, 30, 0.94) 100%);
+    border: 2px solid #FACC15;
+    box-shadow:
+      0 12px 30px rgba(0, 0, 0, 0.55),
+      0 0 22px rgba(250, 204, 21, 0.38);
+    backdrop-filter: blur(14px) saturate(160%);
+    -webkit-backdrop-filter: blur(14px) saturate(160%);
+    pointer-events: auto;
+    z-index: 35;
+  }
+
+  .title-screen-overlay.is-night-show-active .mobile-title-vista-dock {
+    border-color: #F472B6;
+    box-shadow:
+      0 12px 32px rgba(0, 0, 0, 0.62),
+      0 0 26px rgba(236, 72, 153, 0.55);
+  }
+
+  .mobile-vista-brand-chip {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1px;
+    min-width: 0;
+    padding-left: 4px;
+  }
+
+  .mobile-vista-title {
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 0.03em;
+    color: #FEF08A;
+    white-space: nowrap;
+  }
+
+  .mobile-vista-phase {
+    font-size: 9.5px;
+    font-weight: 700;
+    color: #A7F3D0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .title-screen-overlay.is-night-show-active .mobile-vista-phase {
+    color: #F9A8D4;
+  }
+
+  .mobile-vista-cta-cluster {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+  }
+
+  .btn-mobile-vista-start {
+    border: 2px solid #FEF08A;
+    background: linear-gradient(180deg, #34D399 0%, #10B981 52%, #059669 100%);
+    color: #FFFFFF;
+    text-shadow: 0 1px 2px rgba(4, 47, 46, 0.65);
+    font-size: 11.5px;
+    font-weight: 900;
+    padding: 7px 14px;
+    border-radius: 999px;
+    cursor: pointer;
+    white-space: nowrap;
+    box-shadow: 0 4px 14px rgba(16, 185, 129, 0.45);
+  }
+
+  .btn-mobile-vista-vault {
+    border: 1.5px solid rgba(56, 189, 248, 0.6);
+    background: rgba(255, 255, 255, 0.14);
+    color: #F8FAFC;
+    font-size: 11px;
+    font-weight: 800;
+    padding: 7px 11px;
+    border-radius: 999px;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+
+  /* Step 2: Compact 2-Column Choices Card when .mobile-choices-open is active */
+  #screenTitleOverlay.mobile-choices-open .mobile-title-vista-dock {
+    display: none !important;
+  }
+
+  .start-pearl-card {
+    width: min(690px, calc(100dvw - 20px));
+    max-width: 100%;
+    max-height: calc(100dvh - 14px);
+    padding: 10px 14px;
+    border-radius: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    overflow: hidden;
+  }
+
+  .start-mobile-top-row {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .start-eyebrow-pill {
+    font-size: 9px;
+    padding: 3px 10px;
+    margin: 0;
+    white-space: nowrap;
+  }
+
+  .btn-mobile-vista-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 9px;
+    border-radius: 999px;
+    border: 1.5px solid rgba(13, 148, 136, 0.48);
+    background: rgba(255, 255, 255, 0.92);
+    color: #064E3B;
+    font-size: 9.5px;
+    font-weight: 800;
+    cursor: pointer;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .start-main-heading {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 10px;
+    text-align: left;
+    margin: 0;
+  }
+
+  .start-heading-gold,
+  .start-main-heading > span:first-child {
+    font-size: 17px;
+    white-space: nowrap;
+  }
+
+  .start-heading-teal,
+  .start-main-heading > span:last-child {
+    font-size: 11.5px;
+    white-space: nowrap;
+  }
+
+  .start-mode-grid,
+  .start-mode-grid.is-three-cols {
+    margin: 0;
+    gap: 7px;
+  }
+
+  .start-mode-card,
+  .start-mode-grid.is-three-cols .start-mode-card {
+    padding: 6px 8px;
+    min-height: 0;
+    flex-direction: row;
+    justify-content: center;
+    gap: 7px;
+    border-radius: 12px;
+  }
+
+  .start-mode-icon {
+    font-size: 17px;
+    margin: 0;
+  }
+
+  .start-mode-title,
+  .start-mode-grid.is-three-cols .start-mode-title {
+    font-size: 11px;
+    margin: 0;
+  }
+
+  .start-mode-sub,
+  .start-mode-meta {
+    font-size: 9.5px;
+  }
+
+  .start-setup-pod {
+    padding: 7px 10px;
+    border-radius: 14px;
+    gap: 6px;
+  }
+
+  .start-race-setup-pane {
+    display: grid;
+    grid-template-columns: 1fr 1.15fr;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .start-section-block {
+    gap: 4px;
+  }
+
+  .start-squad-row {
+    gap: 5px;
+    padding: 0;
+  }
+
+  .start-squad-avatar-ring {
+    width: 32px;
+    height: 32px;
+    padding: 1.5px;
+    border-width: 2px;
+  }
+
+  .start-squad-name,
+  .start-squad-pill {
+    font-size: 8.5px;
+    padding: 1px 5px;
+  }
+
+  .start-relaxed-info-pod {
+    padding: 3px 6px;
+    gap: 10px;
+  }
+
+  .start-relaxed-avatar-wrap {
+    width: 38px;
+    height: 38px;
+  }
+
+  .start-relaxed-copy strong {
+    font-size: 11px;
+  }
+
+  .start-relaxed-copy span {
+    font-size: 9.5px;
+  }
+
+  #startPartyRoomPanel {
+    padding: 5px 8px;
+    gap: 4px;
+    border-radius: 11px;
+  }
+
+  #startPartyRoomPanel .mp-room-code-pill {
+    font-size: 9.5px;
+    padding: 2px 7px;
+  }
+
+  #startPartyRoomPanel .mp-room-code-pill strong {
+    font-size: 10.5px;
+  }
+
+  #startPartyRoomPanel .btn-mp-mini {
+    font-size: 9px;
+    padding: 2px 7px;
+  }
+
+  #startPartyRoomPanel .mp-join-code-input {
+    padding: 4px 8px;
+    font-size: 10px;
+  }
+
+  #startPartyRoomPanel .btn-mp-join-go {
+    padding: 4px 9px;
+    font-size: 10px;
+  }
+
+  .start-diff-pill {
+    padding: 4px 6px;
+    font-size: 10px;
+    white-space: nowrap;
+  }
+
+  .start-cta-row {
+    margin: 0;
+    gap: 8px;
+  }
+
+  .btn-start-expedition,
+  .btn-start-passport {
+    padding: 8px 12px;
+    font-size: 11.5px;
+    border-radius: 12px;
+  }
+
+  /* 2. 42-Relic Passport (#screenEncyclopediaOverlay) & Tactical Map (#screenFullMapOverlay) */
+  .modal-glass-panel,
+  .pearl-collection-modal,
+  .pearl-inspector-modal {
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    max-height: 100%;
+    padding: 7px 11px;
+    border-radius: 14px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .pearl-col-header,
+  .pearl-modal-header {
+    gap: 8px;
+    flex-wrap: nowrap;
+    padding-bottom: 4px;
+    margin-bottom: 4px;
+  }
+
+  .pearl-col-eyebrow,
+  .pearl-eyebrow,
+  .pearl-col-subtitle {
+    display: none;
+  }
+
+  .pearl-col-heading-row {
+    gap: 8px;
+    flex-wrap: nowrap;
+  }
+
+  .pearl-col-heading,
+  .pearl-heading {
+    font-size: 14.5px;
+    white-space: nowrap;
+  }
+
+  .pearl-col-count-pill,
+  .pearl-progress-pill {
+    font-size: 10px;
+    padding: 2px 8px;
+    white-space: nowrap;
+  }
+}

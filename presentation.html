@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Technical Sharing Deck — Building a 3D World with AI, Subagents & Headless Blender</title>
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./src/styles/presentation.css" />
+</head>
+<body>
+
+  <!-- Top Presenter Bar -->
+  <header class="deck-topbar">
+    <div class="deck-brand">
+      <span class="deck-badge">⚡ Tech Sharing</span>
+      <span class="deck-title">🌿 Gardens by the Bay 3D — Building with AI</span>
+    </div>
+
+    <nav class="deck-nav-pills" aria-label="Slide Jump Navigation">
+      <button type="button" class="slide-dot-btn active" title="Slide 1: Demo to WOW">1</button>
+      <button type="button" class="slide-dot-btn" title="Slide 2: WOW #1 — Headless Blender">2</button>
+      <button type="button" class="slide-dot-btn" title="Slide 3: WOW #2 — Subagents">3</button>
+      <button type="button" class="slide-dot-btn" title="Slide 4: Journey (v1 to v5)">4</button>
+      <button type="button" class="slide-dot-btn" title="Slide 5: Learning 1 — Tech Blog">5</button>
+      <button type="button" class="slide-dot-btn" title="Slide 6: Learning 2 — Dev/PM to AI Director">6</button>
+      <button type="button" class="slide-dot-btn" title="Slide 7: Learning 3 — Image Milestones">7</button>
+      <button type="button" class="slide-dot-btn" title="Slide 8: Learning 4 — Power Prompts">8</button>
+      <button type="button" class="slide-dot-btn" title="Slide 9: Learnings 5 & 6 — Cost & Records">9</button>
+      <button type="button" class="slide-dot-btn" title="Slide 10: Summary & Q&A">10</button>
+    </nav>
+
+    <div class="deck-actions">
+      <button type="button" class="deck-btn" id="toggleNotesBtn">🗣️ Notes [N]</button>
+      <button type="button" class="deck-btn" id="fullscreenBtn">⛶ Fullscreen [F]</button>
+      <button type="button" class="deck-btn" id="printDeckBtn">🖨️ Export PDF</button>
+      <a href="https://gorgeous-jelly-d58182.netlify.app/" target="_blank" class="deck-btn primary">🌐 Live Demo ↗</a>
+    </div>
+  </header>
+
+  <div class="deck-progress-track">
+    <div class="deck-progress-fill" id="deckProgressFill"></div>
+  </div>
+
+  <!-- ==================================================================== -->
+  <!-- MAIN SLIDE STAGE (10 VISUAL SLIDES, PUNCHY & LOW-TEXT)               -->
+  <!-- ==================================================================== -->
+  <main class="deck-stage">
+
+    <!-- ================================================================== -->
+    <!-- SLIDE 1: DEMO TO WOW                                               -->
+    <!-- ================================================================== -->
+    <section class="slide-frame active" data-slide="1">
+      <div class="slide-header">
+        <div>
+          <div class="slide-eyebrow">1 • Share the Demo to WOW</div>
+          <h1 class="slide-title">Gardens by the Bay — 3D Treasure Hunt</h1>
+        </div>
+        <a href="https://gorgeous-jelly-d58182.netlify.app/" target="_blank" class="slide-time-pill" style="text-decoration:none;">🌐 gorgeous-jelly-d58182.netlify.app ↗</a>
+      </div>
+
+      <div class="slide-body">
+        <div class="ppt-kpi-row">
+          <div class="ppt-kpi">
+            <div class="ppt-kpi-val">69 .GLB Models</div>
+            <div class="ppt-kpi-label">27 Landmarks + 42 SG Relics</div>
+          </div>
+          <div class="ppt-kpi">
+            <div class="ppt-kpi-val">5 Park Zones</div>
+            <div class="ppt-kpi-label">Real Boomerang Map</div>
+          </div>
+          <div class="ppt-kpi">
+            <div class="ppt-kpi-val">3-Min Sky Show</div>
+            <div class="ppt-kpi-label">Morning → Night Rhapsody</div>
+          </div>
+          <div class="ppt-kpi">
+            <div class="ppt-kpi-val">4-Player Party</div>
+            <div class="ppt-kpi-label">Live Sync + Spicy AI Bots</div>
+          </div>
+        </div>
+
+        <div class="grid-3col" style="align-items:stretch;">
+          <div class="ppt-card gold-highlight" style="justify-content:space-between;">
+            <div>
+              <h3>🎬 60s Live Demo</h3>
+              <ul class="ppt-list" style="margin-top:8px;">
+                <li><strong>Explore 3D Park:</strong> 18 Supertrees &amp; Domes at 60 FPS</li>
+                <li><strong>Spicy Bots:</strong> <em>"🤚 CHOPE!"</em>, bump-steal &amp; Durian traps</li>
+                <li><strong>360° Toybox:</strong> Spin 42 SG keepsakes + audio</li>
+                <li><strong>Finale:</strong> Click <code>🎉 End Finale</code> for 3D fireworks</li>
+              </ul>
+            </div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;padding-top:8px;">
+              <a href="https://gorgeous-jelly-d58182.netlify.app/" target="_blank" class="deck-btn primary">🚀 Open Netlify Demo ↗</a>
+              <a href="index.html" target="_blank" class="deck-btn">🎮 Local Game</a>
+            </div>
+          </div>
+
+          <div class="ppt-img-box" data-zoom-src="assets/progress/m5_full_screen01_title_v2.png" data-zoom-caption="Core Screen 01: Title & 3D Peninsula Overview">
+            <img src="assets/progress/m5_full_screen01_title_v2.png" alt="Screen 01 Live Game" style="height:260px;" />
+            <div class="ppt-img-caption">
+              <span>🖥️ Core Screen 01: Live 3D Title View</span>
+              <span>🔍 Zoom</span>
+            </div>
+          </div>
+
+          <div class="ppt-img-box" data-zoom-src="assets/progress/m8_emotional_01_sky_rhapsody_before_after.png" data-zoom-caption="Core Gameplay: Morning Sun to Night Garden Rhapsody Show">
+            <img src="assets/progress/m8_emotional_01_sky_rhapsody_before_after.png" alt="Morning to Night Sky Cycle" style="height:260px;" />
+            <div class="ppt-img-caption">
+              <span>🌅 Core Gameplay: Day → Night Rhapsody</span>
+              <span>🔍 Zoom</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="speaker-note-Drawer">
+        <strong>🗣️ Note:</strong> Open https://gorgeous-jelly-d58182.netlify.app/ first, grab 1 relic, and hit "🎉 End Finale" to hook the room in 60 seconds.
+      </div>
+
+      <div class="slide-footer">
+        <span>Demo: https://gorgeous-jelly-d58182.netlify.app/</span>
+        <span>Slide 1 / 10 (Use ⬅️ ➡️ Keys or Click Any Screen to Zoom)</span>
+      </div>
+    </section>
+
+    <!-- ================================================================== -->
+    <!-- SLIDE 2: DEV WOW #1 — HEADLESS BLENDER                             -->
+    <!-- ================================================================== -->
+    <section class="slide-frame" data-slide="2">
+      <div class="slide-header">
+        <div>
+          <div class="slide-eyebrow">2 • Dev WOW Point #1</div>
+          <h2 class="slide-title">Headless Blender — 69 3D Models, Zero Manual Sculpting</h2>
+        </div>
+        <span class="slide-time-pill">🤖 100% Python CLI</span>
+      </div>
+
+      <div class="slide-body">
+        <div class="grid-3col">
+          <div class="ppt-card gold-highlight" style="justify-content:space-between;">
+            <div>
+              <h3>🛠️ How It Works</h3>
+              <ul class="ppt-list" style="margin-top:8px;">
+                <li><strong>No Blender GUI:</strong> Never dragged a single vertex by hand.</li>
+                <li><strong>AI Wrote `bpy` Scripts:</strong> 9 Python scripts build buildings, Chibi rigs &amp; 42 relics.</li>
+                <li><strong>Auto `.GLB` + Contact Sheets:</strong> Exports models &amp; renders studio sheets in seconds.</li>
+              </ul>
+            </div>
+            <div class="ppt-code-box">blender --background \
+  --python scripts/blender/build_buildings.py
+blender --background \
+  --python scripts/blender/build_characters.py</div>
+          </div>
+
+          <div class="ppt-img-box" data-zoom-src="assets/renders/key_assets_buildings_v1.png" data-zoom-caption="Headless Blender Output: Auto-Rendered Landmarks & Buildings Contact Sheet">
+            <img src="assets/renders/key_assets_buildings_v1.png" alt="Headless Blender Landmarks" style="height:340px;" />
+            <div class="ppt-img-caption">
+              <span>🏛️ Auto-Rendered Landmarks (`build_buildings.py`)</span>
+              <span>🔍 Zoom</span>
+            </div>
+          </div>
+
+          <div class="ppt-img-box" data-zoom-src="assets/progress/blender_chibi_explorers_v2.png" data-zoom-caption="Headless Blender Output: 4 Articulated Chibi Explorers">
+            <img src="assets/progress/blender_chibi_explorers_v2.png" alt="Headless Blender Characters" style="height:340px;" />
+            <div class="ppt-img-caption">
+              <span>🏃‍♂️ 4 Chibi Explorers (`build_characters.py`)</span>
+              <span>🔍 Zoom</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="speaker-note-Drawer">
+        <strong>🗣️ Note:</strong> When character sizes looked wrong in v1, we didn't re-sculpt—we changed 2 numbers in Python and re-ran headless Blender in 5 seconds.
+      </div>
+
+      <div class="slide-footer">
+        <span>WOW #1: Code-Driven 3D Pipeline (`scripts/blender/*.py`)</span>
+        <span>Slide 2 / 10</span>
+      </div>
+    </section>
+
+    <!-- ================================================================== -->
+    <!-- SLIDE 3: DEV WOW #2 — SUBAGENTS                                    -->
+    <!-- ================================================================== -->
+    <section class="slide-frame" data-slide="3">
+      <div class="slide-header">
+        <div>
+          <div class="slide-eyebrow">2 • Dev WOW Point #2</div>
+          <h2 class="slide-title">Subagents — Split Builders, Emotional Engineer &amp; QA Critic</h2>
+        </div>
+        <span class="slide-time-pill">🧠 Multi-Agent</span>
+      </div>
+
+      <div class="slide-body">
+        <div class="grid-3col">
+          <div class="ppt-card">
+            <h3>🏗️ 1. Builder Subagents</h3>
+            <ul class="ppt-list">
+              <li>Split by domain (Terrain, Shaders, UI, Netcode)</li>
+              <li>Strict <strong>`&lt; 350 lines/file`</strong> rule</li>
+              <li>Zero context bloat</li>
+            </ul>
+          </div>
+
+          <div class="ppt-card gold-highlight">
+            <h3>🎭 2. Emotional Engineer</h3>
+            <ul class="ppt-list">
+              <li><strong>🌅 WOW:</strong> 3-Min Sky Show</li>
+              <li><strong>💡 Amazed:</strong> ≤12-word Aha cards</li>
+              <li><strong>🔥 Fun:</strong> Bot pickpocketing</li>
+              <li><strong>🍌 Funny:</strong> Durian spinouts</li>
+            </ul>
+          </div>
+
+          <div class="ppt-card emerald-highlight">
+            <h3>🕵️‍♂️ 3. QA Critic Subagent</h3>
+            <ul class="ppt-list">
+              <li>Opens live browser automatically</li>
+              <li>Checks <strong>0 errors &amp; 60 FPS</strong></li>
+              <li>Diffs live screen vs blueprint</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="grid-2col-equal">
+          <div class="ppt-img-box" data-zoom-src="assets/progress/m8_emotional_06_four_emotional_pillars_summary.png" data-zoom-caption="8-Agent Roundtable: 4 Emotional Pillars Summary">
+            <img src="assets/progress/m8_emotional_06_four_emotional_pillars_summary.png" alt="Emotional Engineer 4 Pillars" style="height:215px;object-fit:contain;background:#031c1d;" />
+            <div class="ppt-img-caption">
+              <span>🎭 Emotional Engineer: 4 Pillars Board</span>
+              <span>🔍 Zoom</span>
+            </div>
+          </div>
+
+          <div class="ppt-img-box" data-zoom-src="assets/progress/m8_emotional_04_spicy_bots_pickpocket_before_after.png" data-zoom-caption="Subagent Output: Sleepy Bots (Before) vs Spicy Bots Chope & Pickpocket (After)">
+            <img src="assets/progress/m8_emotional_04_spicy_bots_pickpocket_before_after.png" alt="Spicy Bots Before After" style="height:215px;" />
+            <div class="ppt-img-caption">
+              <span>🔥 Before vs After: Sleepy Bots → Spicy Rivalry</span>
+              <span>🔍 Zoom</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="speaker-note-Drawer">
+        <strong>🗣️ Note:</strong> Never let one agent write code and grade its own homework. Spawn a separate QA Critic subagent to check the live browser.
+      </div>
+
+      <div class="slide-footer">
+        <span>WOW #2: Specialized Subagents + Automated Browser QA</span>
+        <span>Slide 3 / 10</span>
+      </div>
+    </section>
+
+    <!-- ================================================================== -->
+    <!-- SLIDE 4: THE TECHNICAL JOURNEY (V1 -> V5)                          -->
+    <!-- ================================================================== -->
+    <section class="slide-frame" data-slide="4">
+      <div class="slide-header">
+        <div>
+          <div class="slide-eyebrow">3 • The Technical Journey</div>
+          <h2 class="slide-title">Version Updates: How `v1` Evolved into `v5`</h2>
+        </div>
+        <span class="slide-time-pill">📦 5 Snapshots Saved</span>
+      </div>
+
+      <div class="slide-body">
+        <div class="grid-5ver">
+          <div class="ver-step-card">
+            <span class="ver-badge">v1.0</span>
+            <h4>First 3D World</h4>
+            <p>Oval island + 69 `.glb` models + 4 racers.</p>
+          </div>
+
+          <div class="ver-step-card">
+            <span class="ver-badge">v2.1</span>
+            <h4>Fair AI &amp; Finale</h4>
+            <p>Bots 50% slower, 28m sky beams &amp; fireworks.</p>
+          </div>
+
+          <div class="ver-step-card">
+            <span class="ver-badge">v2.2</span>
+            <h4>Real Park Map</h4>
+            <p>Boomerang map + cleared roads.</p>
+          </div>
+
+          <div class="ver-step-card active-ver">
+            <span class="ver-badge">v3.0</span>
+            <h4>Emotional UX</h4>
+            <p>Sky show, 12w Aha cards, Spicy Bots &amp; Durians.</p>
+          </div>
+
+          <div class="ver-step-card active-ver">
+            <span class="ver-badge">v4–v5</span>
+            <h4>Studio &amp; 4P Party</h4>
+            <p>Slow-Mo Admin + 20Hz Party Sync (`GBB-XXX`).</p>
+          </div>
+        </div>
+
+        <div class="grid-3col">
+          <div class="ppt-img-box" data-zoom-src="assets/progress/same_scale_side_by_side_2d_diff.png" data-zoom-caption="v1 Oval Island vs v2.2 Real Boomerang Park Map">
+            <img src="assets/progress/same_scale_side_by_side_2d_diff.png" alt="Map Diff v1 vs v2.2" style="height:230px;" />
+            <div class="ppt-img-caption"><span>🗺️ v1 Oval → v2.2 Real Boomerang Map</span><span>🔍</span></div>
+          </div>
+
+          <div class="ppt-img-box" data-zoom-src="assets/progress/m8_emotional_03_calm_toast_before_after.png" data-zoom-caption="v2 Shouting Banner vs v3.0 Calm Top-Right Toast">
+            <img src="assets/progress/m8_emotional_03_calm_toast_before_after.png" alt="Calm Toast Update" style="height:230px;" />
+            <div class="ppt-img-caption"><span>😌 v2 Noisy Banner → v3.0 Calm Toast</span><span>🔍</span></div>
+          </div>
+
+          <div class="ppt-img-box" data-zoom-src="assets/progress/mp_v32_02_party_lobby.png" data-zoom-caption="v5 Real-Time 4-Player Party Waiting Lobby">
+            <img src="assets/progress/mp_v32_02_party_lobby.png" alt="v5 Party Lobby" style="height:230px;" />
+            <div class="ppt-img-caption"><span>🌐 v5 Live 4-Player Party Lobby</span><span>🔍</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="speaker-note-Drawer">
+        <strong>🗣️ Note:</strong> Every version fixed a real gap: v1 got 3D working, v2 fixed map truth, v3 added emotion, and v4–v5 added Admin tools and multiplayer.
+      </div>
+
+      <div class="slide-footer">
+        <span>All 5 Builds Archived in `Showcase Progress/GBBTreasureHunt3Dv1..v5.zip`</span>
+        <span>Slide 4 / 10</span>
+      </div>
+    </section>
+
+    <!-- ================================================================== -->
+    <!-- SLIDE 5: LEARNING #1 — THE TECHNICAL BLOG                          -->
+    <!-- ================================================================== -->
+    <section class="slide-frame" data-slide="5">
+      <div class="slide-header">
+        <div>
+          <div class="slide-eyebrow">4 • Key Learning #1</div>
+          <h2 class="slide-title">Start From the Tech Blog — "Every Prompt Took 1 Hour to Understand"</h2>
+        </div>
+        <span class="slide-time-pill">📖 1 Hr / Prompt</span>
+      </div>
+
+      <div class="slide-body">
+        <div class="grid-2col">
+          <div style="display:flex;flex-direction:column;gap:14px;justify-content:center;">
+            <div class="ppt-card gold-highlight">
+              <h3>🔗 The Starting Point</h3>
+              <p style="word-break:break-all;background:rgba(0,0,0,0.35);padding:10px 12px;border-radius:8px;font-family:monospace;font-size:12.5px;color:#FFD15C;">
+                https://aistudio.google.com/learn/building-3d-games-and-worlds-with-gemini-4-argon
+              </p>
+              <ul class="ppt-list" style="margin-top:6px;">
+                <li><strong>Don't Blindly Copy-Paste:</strong> Spent <strong>1 full hour per prompt</strong> understanding the 3D architecture first.</li>
+                <li><strong>What Matter Most:</strong> Scene graph, `InstancedMesh` batching, 0 allocations in `requestAnimationFrame`, and `&lt; 350 lines` per file.</li>
+              </ul>
+            </div>
+
+            <div class="ppt-code-box">/goal Build Stage 1 only: Bay South 3D peninsula + water + paths.
+STRICT RULES:
+1. Max 350 lines per file under src/world/
+2. Zero allocations inside requestAnimationFrame
+3. Spawn QA Critic subagent to verify 60 FPS &amp; 0 errors</div>
+          </div>
+
+          <div style="display:grid;grid-template-rows:1fr 1fr;gap:14px;">
+            <div class="ppt-img-box" data-zoom-src="assets/progress/m3_landmarks_angle02_supertree_grove_v2.png" data-zoom-caption="Core Screen: Supertree Grove & OCBC Skyway in 60 FPS WebGL">
+              <img src="assets/progress/m3_landmarks_angle02_supertree_grove_v2.png" alt="Supertree Grove 3D" style="height:175px;" />
+              <div class="ppt-img-caption"><span>🌴 Stage 2 Output: Supertree Grove &amp; Skyway</span><span>🔍</span></div>
+            </div>
+            <div class="ppt-img-box" data-zoom-src="assets/progress/m3_landmarks_angle03_conservatories_v2.png" data-zoom-caption="Core Screen: Flower Dome & Cloud Forest Glass Gridshells">
+              <img src="assets/progress/m3_landmarks_angle03_conservatories_v2.png" alt="Conservatories 3D" style="height:175px;" />
+              <div class="ppt-img-caption"><span>🏛️ Stage 2 Output: Glass Conservatories</span><span>🔍</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="speaker-note-Drawer">
+        <strong>🗣️ Note:</strong> Spending 1 hour to understand the prompt's 3D engineering rules saved days of debugging spaghetti code later.
+      </div>
+
+      <div class="slide-footer">
+        <span>Learning #1: Deep Prompt Understanding Beats Blind Prompting</span>
+        <span>Slide 5 / 10</span>
+      </div>
+    </section>
+
+    <!-- ================================================================== -->
+    <!-- SLIDE 6: LEARNING #2 — DEV/PM TO AI DIRECTOR                       -->
+    <!-- ================================================================== -->
+    <section class="slide-frame" data-slide="6">
+      <div class="slide-header">
+        <div>
+          <div class="slide-eyebrow">4 • Key Learning #2</div>
+          <h2 class="slide-title">Job Shift: Tell AI What to Do, QA It, and Guard the Product "Why"</h2>
+        </div>
+        <span class="slide-time-pill">🧭 AI Director</span>
+      </div>
+
+      <div class="slide-body">
+        <div class="grid-2col-equal">
+          <div class="ppt-card">
+            <h3>🔄 Our Job Now</h3>
+            <ul class="ppt-list">
+              <li><strong>Used to be:</strong> Dev / PM figuring out <em>how</em> to build.</li>
+              <li><strong>Now is:</strong>
+                <br/>1️⃣ Tell AI <strong>what to do</strong>
+                <br/>2️⃣ <strong>QA whether &amp; where</strong> it is actually done.
+              </li>
+            </ul>
+          </div>
+
+          <div class="ppt-card gold-highlight">
+            <h3>⚠️ The New Danger</h3>
+            <ul class="ppt-list">
+              <li>Because AI builds so fast, it is <strong>much harder to understand the Product WHY and Product VALUE (WHAT)</strong>.</li>
+              <li>When execution is free, <strong>product taste &amp; QA</strong> are everything.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="grid-2col-equal">
+          <div class="ppt-img-box" data-zoom-src="assets/progress/m5_full_lookdev_studio_overview_v2.png" data-zoom-caption="Core Screen: Admin LookDev & Slow-Mo QA Studio (admin.html)">
+            <img src="assets/progress/m5_full_lookdev_studio_overview_v2.png" alt="Admin LookDev Studio" style="height:225px;" />
+            <div class="ppt-img-caption"><span>🛠️ Built `admin.html` to QA Lighting &amp; Slow-Mo Rigs</span><span>🔍</span></div>
+          </div>
+
+          <div class="ppt-img-box" data-zoom-src="assets/progress/m8_emotional_02_relic_toybox_before_after.png" data-zoom-caption="Product Value Shift: 65-Word Essay (Before) vs 12-Word Aha! + 3D Toybox (After)">
+            <img src="assets/progress/m8_emotional_02_relic_toybox_before_after.png" alt="Relic Toybox Before After" style="height:225px;" />
+            <div class="ppt-img-caption"><span>💡 Product Why: Cut 65w Essay → 12w Aha! Toybox</span><span>🔍</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="speaker-note-Drawer">
+        <strong>🗣️ Note:</strong> Look at the bottom right: AI happily wrote 65-word encyclopedia essays, which nobody reads in an arcade game! Human product sense cut it to 12 words + a 3D toybox.
+      </div>
+
+      <div class="slide-footer">
+        <span>Learning #2: Execution is Automated — Product "Why" &amp; QA Are Our Core Job</span>
+        <span>Slide 6 / 10</span>
+      </div>
+    </section>
+
+    <!-- ================================================================== -->
+    <!-- SLIDE 7: LEARNING #3 — IMAGE MILESTONES                            -->
+    <!-- ================================================================== -->
+    <section class="slide-frame" data-slide="7">
+      <div class="slide-header">
+        <div>
+          <div class="slide-eyebrow">4 • Key Learning #3</div>
+          <h2 class="slide-title">Set Milestones via Images — Pinterest + ChatGPT / Imagen 2</h2>
+        </div>
+        <span class="slide-time-pill">🎨 Visual North Star</span>
+      </div>
+
+      <div class="slide-body">
+        <div class="ppt-kpi-row" style="grid-template-columns:repeat(3, 1fr);">
+          <div class="ppt-kpi">
+            <div class="ppt-kpi-val" style="font-size:20px;">📌 1. Pinterest</div>
+            <div class="ppt-kpi-label">Best for moodboards, lighting &amp; UI feel</div>
+          </div>
+          <div class="ppt-kpi">
+            <div class="ppt-kpi-val" style="font-size:20px;">🎨 2. ChatGPT / Imagen 2</div>
+            <div class="ppt-kpi-label">Still better for generating 2D screen mockups</div>
+          </div>
+          <div class="ppt-kpi">
+            <div class="ppt-kpi-val" style="font-size:20px;">🔍 3. Visual QA Diff</div>
+            <div class="ppt-kpi-label">Subagents compare live 3D build vs target image</div>
+          </div>
+        </div>
+
+        <div class="grid-3col">
+          <div class="ppt-img-box" data-zoom-src="assets/screens/screen_02_mode_and_map_select.png" data-zoom-caption="Target Blueprint: Screen 02 Mode & Explorer Select">
+            <img src="assets/screens/screen_02_mode_and_map_select.png" alt="Screen 02 Blueprint" style="height:245px;" />
+            <div class="ppt-img-caption"><span>🎨 Target Image (`screen_02` Mockup)</span><span>🔍</span></div>
+          </div>
+
+          <div class="ppt-img-box" data-zoom-src="assets/progress/m5_full_screen02_setup_v2.png" data-zoom-caption="Live Build: Screen 02 Explorer & Gadget Select">
+            <img src="assets/progress/m5_full_screen02_setup_v2.png" alt="Screen 02 Live Build" style="height:245px;" />
+            <div class="ppt-img-caption"><span>🎮 Live Build (`Screen 02` Setup)</span><span>🔍</span></div>
+          </div>
+
+          <div class="ppt-img-box" data-zoom-src="assets/progress/m5_full_screen11_tactical_map_v2.png" data-zoom-caption="Live Build: Screen 11 Full-Park Tactical Radar Map">
+            <img src="assets/progress/m5_full_screen11_tactical_map_v2.png" alt="Screen 11 Live Radar" style="height:245px;" />
+            <div class="ppt-img-caption"><span>🗺️ Live Build (`Screen 11` Radar `[M]`)</span><span>🔍</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="speaker-note-Drawer">
+        <strong>🗣️ Note:</strong> Don't write 10 pages of UI text specs. Curate on Pinterest, generate the target screen in ChatGPT/Imagen 2, and tell the AI "build this".
+      </div>
+
+      <div class="slide-footer">
+        <span>Learning #3: Lock Visual Milestones First (`assets/screens/screen_01..11.png`)</span>
+        <span>Slide 7 / 10</span>
+      </div>
+    </section>
+
+    <!-- ================================================================== -->
+    <!-- SLIDE 8: LEARNING #4 — TWO POWERFUL PROMPTS                        -->
+    <!-- ================================================================== -->
+    <section class="slide-frame" data-slide="8">
+      <div class="slide-header">
+        <div>
+          <div class="slide-eyebrow">4 • Key Learning #4</div>
+          <h2 class="slide-title">Two Power Prompts That Changed Everything</h2>
+        </div>
+        <span class="slide-time-pill">⚡ Copy &amp; Use</span>
+      </div>
+
+      <div class="slide-body">
+        <div class="grid-2col-equal">
+          <div class="ppt-card gold-highlight">
+            <h3>🔥 Prompt 1: Subagent Roundtable to 9/10</h3>
+            <div class="ppt-code-box" id="powerPrompt1">Spin into different subagents (Game Designer, 3D Artist, Perf Engineer, QA Critic) and have a roundtable discussion.
+Fix every gap until everyone scores it 9/10 or above.
+            <button type="button" class="copy-prompt-btn" data-copy-target="powerPrompt1">📋 Copy</button></div>
+          </div>
+
+          <div class="ppt-card emerald-highlight">
+            <h3>🎭 Prompt 2: Prompt the Emotion</h3>
+            <div class="ppt-code-box" id="powerPrompt2">This is the Emotion I wanna achieve:
+1. WOW! (Living sky &amp; Night Rhapsody)
+2. AMAZED (12-word Aha! relics)
+3. FUN (Spicy bot rivalry)
+4. FUNNY (Durian slip traps)
+            <button type="button" class="copy-prompt-btn" data-copy-target="powerPrompt2">📋 Copy</button></div>
+          </div>
+        </div>
+
+        <div class="grid-2col-equal">
+          <div class="ppt-img-box" data-zoom-src="assets/progress/m8_emotional_05_arcade_hazards_durian_shuttle.png" data-zoom-caption="Result of Emotion Prompt: Spiky Durian Traps & Auto-Tram Knockback">
+            <img src="assets/progress/m8_emotional_05_arcade_hazards_durian_shuttle.png" alt="Durian Hazards" style="height:215px;" />
+            <div class="ppt-img-caption"><span>🍌 "FUNNY" Output: Spiky Durian Traps &amp; Tram Knockback</span><span>🔍</span></div>
+          </div>
+
+          <div class="ppt-img-box" data-zoom-src="assets/progress/m4_characters_angle08_4p_race_action_v2.png" data-zoom-caption="Result of Roundtable Prompt: 4-Player Action Chase & Sky Beams">
+            <img src="assets/progress/m4_characters_angle08_4p_race_action_v2.png" alt="4P Race Action" style="height:215px;" />
+            <div class="ppt-img-caption"><span>🔥 "9/10 Roundtable" Output: 4-Player Chase Action</span><span>🔍</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="speaker-note-Drawer">
+        <strong>🗣️ Note:</strong> Asking for a "9/10 subagent roundtable" and stating "This is the Emotion I want to achieve" pushed the game from a tech demo to a fun product.
+      </div>
+
+      <div class="slide-footer">
+        <span>Learning #4: 9/10 Subagent Consensus + Emotion-Driven Prompting</span>
+        <span>Slide 8 / 10</span>
+      </div>
+    </section>
+
+    <!-- ================================================================== -->
+    <!-- SLIDE 9: LEARNINGS #5 & #6 — COST & RECORDS                        -->
+    <!-- ================================================================== -->
+    <section class="slide-frame" data-slide="9">
+      <div class="slide-header">
+        <div>
+          <div class="slide-eyebrow">4 • Key Learnings #5 &amp; #6</div>
+          <h2 class="slide-title">Review Cost per Prompt &amp; Always Keep Visual Records</h2>
+        </div>
+        <span class="slide-time-pill">💰 Cost + 📸 Records</span>
+      </div>
+
+      <div class="slide-body">
+        <div class="grid-2col-equal">
+          <div class="ppt-card">
+            <h3>💰 Learning 5: Review Cost at Every Prompt</h3>
+            <ul class="ppt-list">
+              <li><strong>🧠 Gemini 4 (Complex):</strong> 3D math, headless Blender scripts, multi-agent roundtables.</li>
+              <li><strong>⚡ Gemini 2.5 (Simple Fix):</strong> CSS tweaks, copy updates, single-file bug fixes.</li>
+            </ul>
+          </div>
+
+          <div class="ppt-card gold-highlight">
+            <h3>📸 Learning 6: Keep Records &amp; Screenshots</h3>
+            <ul class="ppt-list">
+              <li>Saved <strong>before/after screenshots</strong> (`progress.html`) + <strong>`v1–v5.zip`</strong> builds at every step.</li>
+              <li>Makes spotting bugs and adjusting prompts <strong>5× easier</strong>.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="grid-2col-equal">
+          <div class="ppt-img-box" data-zoom-src="assets/progress/chibi_explorer_car_ratio_and_eyes_v2.png" data-zoom-caption="Visual Record Example: Fixing Character-to-Car Scale & Face Eyes (v1 vs v2)">
+            <img src="assets/progress/chibi_explorer_car_ratio_and_eyes_v2.png" alt="v1 vs v2 Scale Fix" style="height:225px;" />
+            <div class="ppt-img-caption"><span>📸 Screenshot Record Fixed Car Ratio &amp; Eyes (`v1 → v2`)</span><span>🔍</span></div>
+          </div>
+
+          <div class="ppt-img-box" data-zoom-src="assets/progress/m5_full_screen10_encyclopedia_v2.png" data-zoom-caption="Core Screen 10: 42 Singapore Relics Encyclopedia & 3D Inspector">
+            <img src="assets/progress/m5_full_screen10_encyclopedia_v2.png" alt="Screen 10 42 Relics" style="height:225px;" />
+            <div class="ppt-img-caption"><span>🏺 Core Screen 10: 42-Relic Passport &amp; 3D Inspector</span><span>🔍</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="speaker-note-Drawer">
+        <strong>🗣️ Note:</strong> Look at the bottom left: because we kept screenshots, it was obvious that characters were as big as cars in v1—making the fix super easy.
+      </div>
+
+      <div class="slide-footer">
+        <span>Learnings #5 &amp; #6: Gemini 4 vs 2.5 Routing + Visual Progress Ledger (`progress.html`)</span>
+        <span>Slide 9 / 10</span>
+      </div>
+    </section>
+
+    <!-- ================================================================== -->
+    <!-- SLIDE 10: SUMMARY & Q&A                                            -->
+    <!-- ================================================================== -->
+    <section class="slide-frame" data-slide="10">
+      <div class="slide-header">
+        <div>
+          <div class="slide-eyebrow">Wrap-Up &amp; Q&amp;A</div>
+          <h2 class="slide-title">6 Key Takeaways from Building in 3D with AI</h2>
+        </div>
+        <span class="slide-time-pill">🙌 Q&amp;A Time</span>
+      </div>
+
+      <div class="slide-body">
+        <div class="grid-3col">
+          <div class="ppt-card">
+            <h3>1️⃣ 1 Hr / Prompt</h3>
+            <p>Start from the Gemini 4 3D blog. Understand the prompt deeply before running.</p>
+          </div>
+          <div class="ppt-card">
+            <h3>2️⃣ Guard the "Why"</h3>
+            <p>We tell AI <em>what</em> &amp; <em>QA where</em>. Protecting Product Why &amp; Value is our real job.</p>
+          </div>
+          <div class="ppt-card">
+            <h3>3️⃣ Image Milestones</h3>
+            <p>Pinterest + ChatGPT/Imagen 2 mockups (`Screens 01–11`) beat long text specs.</p>
+          </div>
+          <div class="ppt-card gold-highlight">
+            <h3>4️⃣ Two Power Prompts</h3>
+            <p><em>"Subagent roundtable to 9/10"</em> + <em>"This is the Emotion I want to achieve"</em>.</p>
+          </div>
+          <div class="ppt-card">
+            <h3>5️⃣ Route by Cost</h3>
+            <p><strong>Gemini 4</strong> for complex 3D/architecture; <strong>Gemini 2.5</strong> for simple fixes.</p>
+          </div>
+          <div class="ppt-card emerald-highlight">
+            <h3>6️⃣ Keep Screenshots</h3>
+            <p>Save visual records (`progress.html` + `v1–v5.zip`) so adjustments are effortless.</p>
+          </div>
+        </div>
+
+        <div class="ppt-card gold-highlight" style="flex-direction:row;align-items:center;justify-content:space-between;padding:16px 24px;">
+          <div>
+            <h3 style="margin-bottom:4px;">🌐 Try the Live Demo &amp; Visual Progress Log</h3>
+            <p style="font-size:13px;color:#E2F1F2;">https://gorgeous-jelly-d58182.netlify.app/</p>
+          </div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;">
+            <a href="https://gorgeous-jelly-d58182.netlify.app/" target="_blank" class="deck-btn primary">🌐 Netlify Live Demo ↗</a>
+            <a href="progress.html" target="_blank" class="deck-btn">📸 11-Step Gallery (`progress.html`)</a>
+            <a href="admin.html" target="_blank" class="deck-btn">🛠️ Admin Studio (`admin.html`)</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="speaker-note-Drawer">
+        <strong>🗣️ Note:</strong> Invite the team to scan/open the Netlify link or jump into a 4-player room together!
+      </div>
+
+      <div class="slide-footer">
+        <span>Thank You! • Live Demo: https://gorgeous-jelly-d58182.netlify.app/</span>
+        <span>Slide 10 / 10</span>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Floating Bottom Slide Controls -->
+  <div class="deck-bottom-controls">
+    <button type="button" class="deck-btn" id="prevSlideBtn">⬅️ Prev</button>
+    <span class="slide-counter-label" id="slideCounterLabel">Slide 1 / 10</span>
+    <button type="button" class="deck-btn primary" id="nextSlideBtn">Next ➡️</button>
+  </div>
+
+  <!-- Full-Screen Image Zoom Lightbox -->
+  <div class="ppt-lightbox" id="pptLightbox" role="dialog" aria-modal="true" aria-label="Slide Image Zoom">
+    <img src="" alt="Slide Zoom Preview" id="pptLightboxImg" />
+    <div class="ppt-lightbox-caption" id="pptLightboxCaption">Click anywhere or press ESC to close</div>
+  </div>
+
+  <script type="module" src="./src/plan/presentationDeck.js"></script>
+</body>
+</html>

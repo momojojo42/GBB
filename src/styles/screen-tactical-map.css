@@ -1,0 +1,153 @@
+/* Gardens by the Bay — Screen 11 Full-Map Tracker Overlay (src/styles/screen-tactical-map.css) */
+/* Screen 11: Full-Map Tracker */
+.fullmap-top-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.fullmap-hint {
+  font-size: 11px;
+  color: #FDE047;
+  font-weight: 600;
+}
+
+.fullmap-body {
+  display: grid;
+  grid-template-columns: 1fr 270px;
+  gap: 16px;
+  flex: 1;
+  min-height: 0;
+}
+
+.fullmap-canvas-container {
+  position: relative;
+  background: #06181E;
+  border-radius: 16px;
+  border: 1px solid rgba(52, 211, 153, 0.35);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-map-click-mode {
+  border: 1px solid rgba(56, 189, 248, 0.5);
+  background: rgba(14, 116, 144, 0.3);
+  color: #E0F2FE;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 6px 11px;
+  border-radius: 9px;
+  cursor: pointer;
+}
+
+.tactical-map-tooltip {
+  position: absolute;
+  translate: -50% -115%;
+  scale: 1;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: 10px;
+  background: rgba(7, 20, 26, 0.96);
+  border: 1.5px solid #FACC15;
+  color: #F8FAFC;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.65);
+  z-index: 15;
+}
+
+.tactical-tooltip-thumb {
+  width: 38px;
+  height: 38px;
+  border-radius: 7px;
+  object-fit: cover;
+  object-position: 28% center;
+  border: 1px solid rgba(52, 211, 153, 0.55);
+  background: #041216;
+  flex-shrink: 0;
+}
+
+.tactical-tooltip-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  line-height: 1.2;
+}
+
+.tactical-map-tooltip.hidden {
+  display: none !important;
+}
+
+#tacticalFullMapCanvas {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  cursor: crosshair;
+}
+
+.fullmap-legend-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: auto;
+}
+
+.fullmap-legend-sidebar h3 {
+  font-size: 12px;
+  font-weight: 800;
+  color: #A7F3D0;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.tactical-legend-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 11px;
+  color: #E2E8F0;
+}
+
+.tactical-legend-list li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.t-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.teleport-buttons-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.teleport-buttons-stack button {
+  text-align: left;
+  padding: 7px 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.05);
+  color: #F8FAFC;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.teleport-buttons-stack button:hover {
+  background: rgba(16, 185, 129, 0.22);
+  border-color: #34D399;
+}
+

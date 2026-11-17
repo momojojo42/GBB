@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-450 -380 1100 950" width="2200" height="1900">
+  <g id="layer-surrounding-canopy">
+    <rect x="-450" y="-380" width="1100" height="950" fill="#07221b"/>
+    <polygon points="-450,-380 650,-380 650,260 -130,-330 -450,-330" fill="#0b3126" opacity="0.72"/>
+    <text x="330" y="-235" fill="#34d399" opacity="0.48" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="bold" letter-spacing="4" transform="rotate(28 330 -235)">CLUNY PARK &amp; BUKIT TIMAH UNESCO BUFFER ZONE</text>
+  </g>
+  <g id="layer-unesco-park-landmass">
+    <polygon points="-140.0,-240.0 -60.0,-215.0 20.0,-227.5 90.0,-240.0 160.0,-205.0 235.0,-170.0 280.0,-90.0 350.0,-5.0 470.0,90.0 450.0,175.0 360.0,197.5 260.0,165.0 140.0,145.0 45.0,165.0 -55.0,200.0 -135.0,240.0 -230.0,325.0 -390.0,190.0 -340.0,75.0 -320.0,-40.0 -270.0,-130.0 -200.0,-190.0" fill="#143d23" stroke="#a7f3d0" stroke-width="4.0" stroke-linejoin="round"/>
+    <polygon points="-140.0,-240.0 -60.0,-215.0 20.0,-227.5 90.0,-240.0 160.0,-205.0 235.0,-170.0 280.0,-90.0 350.0,-5.0 470.0,90.0 450.0,175.0 360.0,197.5 260.0,165.0 140.0,145.0 45.0,165.0 -55.0,200.0 -135.0,240.0 -230.0,325.0 -390.0,190.0 -340.0,75.0 -320.0,-40.0 -270.0,-130.0 -200.0,-190.0" fill="#1d5430" stroke="#6ee7b7" stroke-width="1.4" opacity="0.94"/>
+    <ellipse cx="0" cy="0" rx="92" ry="76" fill="#256b3c" opacity="0.45"/>
+    <ellipse cx="120" cy="-145" rx="115" ry="75" fill="#2b6e3f" opacity="0.38"/>
+    <ellipse cx="-185" cy="115" rx="95" ry="72" fill="#256b3c" opacity="0.42"/>
+  </g>
+  <g id="layer-lakes-and-streams">
+    <polyline id="swan_to_symphony_channel" points="-130.0,-210.0 -145.0,-150.0 -157.5,-90.0 -170.0,-45.0 -195.0,0.0 -220.0,50.0 -240.0,87.5 -280.0,120.0 -360.0,180.0" fill="none" stroke="#7dd3fc" stroke-width="38.0" stroke-linecap="round" stroke-linejoin="round" opacity="0.72"/>
+    <polyline points="-130.0,-210.0 -145.0,-150.0 -157.5,-90.0 -170.0,-45.0 -195.0,0.0 -220.0,50.0 -240.0,87.5 -280.0,120.0 -360.0,180.0" fill="none" stroke="#0284c7" stroke-width="33.0" stroke-linecap="round" stroke-linejoin="round"/>
+    <ellipse id="ginger_waterfall_pool" cx="-75.0" cy="50.0" rx="16.0" ry="10.0" fill="#0284c7" stroke="#7dd3fc" stroke-width="1.8"/>
+    <ellipse id="swan_east_pond" cx="210.0" cy="-7.5" rx="22.0" ry="11.0" fill="#0284c7" stroke="#7dd3fc" stroke-width="1.8"/>
+    <ellipse id="symphony_lotus_lake" cx="210.0" cy="25.0" rx="30.0" ry="13.0" fill="#0284c7" stroke="#7dd3fc" stroke-width="1.8"/>
+    <ellipse id="bukit_timah_eco_lake" cx="297.5" cy="49.0" rx="32.0" ry="14.0" fill="#0284c7" stroke="#7dd3fc" stroke-width="1.8"/>
+    <ellipse id="keppel_discovery_marsh" cx="312.5" cy="84.0" rx="28.0" ry="13.0" fill="#0284c7" stroke="#7dd3fc" stroke-width="1.8"/>
+    <circle id="swan_nest_island" cx="-157.5" cy="-90.0" r="15.5" fill="#2e6b3e" stroke="#a7f3d0" stroke-width="1.6"/>
+    <text x="-157.5" y="-88.0" fill="#d1fae5" font-family="Helvetica, Arial, sans-serif" font-size="6.5" text-anchor="middle">Swan Nest Isl.</text>
+    <circle id="dell_fig_island" cx="-195.0" cy="0.0" r="16.5" fill="#2e6b3e" stroke="#a7f3d0" stroke-width="1.6"/>
+    <text x="-195.0" y="2.0" fill="#d1fae5" font-family="Helvetica, Arial, sans-serif" font-size="6.5" text-anchor="middle">Dell Fig Isl.</text>
+  </g>
+  <g id="layer-roads-and-gates">
+    <g transform="translate(-250.0,-55.0) rotate(-20.0)"><rect x="-55.0" y="-22.0" width="110.0" height="44.0" rx="6" fill="#334155" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="5,3" opacity="0.85"/><text x="0" y="3" fill="#cbd5e1" font-family="Helvetica, Arial, sans-serif" font-size="7.5" text-anchor="middle">Gallop &amp; Tyersall Carpark</text></g>
+    <g transform="translate(-110.0,-80.0) rotate(22.0)"><rect x="-55.0" y="-22.0" width="110.0" height="44.0" rx="6" fill="#334155" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="5,3" opacity="0.85"/><text x="0" y="3" fill="#cbd5e1" font-family="Helvetica, Arial, sans-serif" font-size="7.5" text-anchor="middle">Tanglin Gate Botany Centre</text></g>
+    <g transform="translate(142.5,52.0) rotate(-10.0)"><rect x="-70.0" y="-32.0" width="140.0" height="64.0" rx="6" fill="#334155" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="5,3" opacity="0.85"/><text x="0" y="3" fill="#cbd5e1" font-family="Helvetica, Arial, sans-serif" font-size="7.5" text-anchor="middle">Nassim Gate Visitor Centre &amp; Coach Bay</text></g>
+    <g transform="translate(370.0,75.0) rotate(25.0)"><rect x="-60.0" y="-24.0" width="120.0" height="48.0" rx="6" fill="#334155" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="5,3" opacity="0.85"/><text x="0" y="3" fill="#cbd5e1" font-family="Helvetica, Arial, sans-serif" font-size="7.5" text-anchor="middle">Bukit Timah Gate &amp; Eco-Garden</text></g>
+    <polyline id="holland_cluny_road" points="-220.0,280.0 -120.0,210.0 -40.0,170.0 50.0,142.5 137.5,125.0 240.0,142.5 340.0,172.5 415.0,157.5" fill="none" stroke="#1e293b" stroke-width="15.0" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="-220.0,280.0 -120.0,210.0 -40.0,170.0 50.0,142.5 137.5,125.0 240.0,142.5 340.0,172.5 415.0,157.5" fill="none" stroke="#f8fafc" stroke-width="1.2" stroke-dasharray="8,8" opacity="0.65"/>
+    <polyline id="tyersall_avenue" points="-140.0,-240.0 -320.0,-40.0 -390.0,190.0" fill="none" stroke="#1e293b" stroke-width="18.0" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="135" y="160" fill="#f8fafc" font-family="Helvetica, Arial, sans-serif" font-size="9.5" font-weight="bold" transform="rotate(-8 135 160)">CLUNY ROAD &amp; HOLLAND ROAD HERITAGE TREE-TUNNEL</text>
+    <text x="-285" y="-65" fill="#cbd5e1" font-family="Helvetica, Arial, sans-serif" font-size="9.5" font-weight="bold" transform="rotate(-48 -285 -65)">TYERSALL AVENUE &amp; GALLOP ROAD</text>
+  </g>
+  <g id="layer-pathways-and-bridges">
+    <polyline id="path_0_north_orchid_trail" points="-110.0,-80.0 -95.0,-140.0 -60.0,-170.0 -20.0,-172.5 30.0,-185.0 120.0,-130.0 220.0,-90.0 280.0,-20.0 380.0,80.0 360.0,120.0" fill="none" stroke="#e2d5b5" stroke-width="12.0" stroke-linecap="round" stroke-linejoin="round" opacity="0.82"/>
+    <polyline id="path_1_bandstand_to_orchid" points="0.0,0.0 -5.0,-120.0 70.0,-130.0 120.0,-130.0" fill="none" stroke="#e2d5b5" stroke-width="12.0" stroke-linecap="round" stroke-linejoin="round" opacity="0.82"/>
+    <polyline id="path_2_bandstand_to_nassim" points="0.0,0.0 75.0,-10.0 142.5,7.5" fill="none" stroke="#e2d5b5" stroke-width="11.0" stroke-linecap="round" stroke-linejoin="round" opacity="0.82"/>
+    <polyline id="path_3_bandstand_to_swan_bridge" points="0.0,0.0 -60.0,-50.0 -110.0,-75.0 -140.0,-32.5" fill="none" stroke="#e2d5b5" stroke-width="11.0" stroke-linecap="round" stroke-linejoin="round" opacity="0.82"/>
+    <polyline id="path_4_swan_west_to_gallop" points="-200.0,-57.5 -250.0,-55.0 -210.0,-100.0 -185.0,-140.0" fill="none" stroke="#e2d5b5" stroke-width="10.0" stroke-linecap="round" stroke-linejoin="round" opacity="0.82"/>
+    <polyline id="path_5_bandstand_to_symphony" points="0.0,0.0 -55.0,72.5 -105.0,87.5 -165.0,120.0 -210.0,190.0" fill="none" stroke="#e2d5b5" stroke-width="12.0" stroke-linecap="round" stroke-linejoin="round" opacity="0.82"/>
+    <polyline id="path_6_bonsai_to_symphony" points="-270.0,160.0 -215.0,135.0 -165.0,120.0 -197.5,70.0" fill="none" stroke="#e2d5b5" stroke-width="10.0" stroke-linecap="round" stroke-linejoin="round" opacity="0.82"/>
+    <polyline id="path_7_west_lawn_loop" points="-292.5,80.0 -280.0,10.0 -250.0,-55.0" fill="none" stroke="#e2d5b5" stroke-width="10.0" stroke-linecap="round" stroke-linejoin="round" opacity="0.82"/>
+    <polyline id="path_8_holttum_to_ginger" points="0.0,0.0 70.0,75.0 140.0,60.0 175.0,47.5" fill="none" stroke="#e2d5b5" stroke-width="11.0" stroke-linecap="round" stroke-linejoin="round" opacity="0.82"/>
+    <polyline id="path_9_orchid_to_ecolake" points="120.0,-130.0 180.0,-90.0 177.5,-37.5 235.0,-67.5 254.0,7.5 254.0,47.5 265.0,95.0 330.0,110.0 370.0,75.0" fill="none" stroke="#e2d5b5" stroke-width="11.0" stroke-linecap="round" stroke-linejoin="round" opacity="0.82"/>
+    <line id="dragonfly_main_bridge" x1="-140.0" y1="-32.5" x2="-200.0" y2="-57.5" stroke="#78350f" stroke-width="13.0"/>
+    <line x1="-140.0" y1="-32.5" x2="-200.0" y2="-57.5" stroke="#f59e0b" stroke-width="9.5"/>
+    <text x="-170.0" y="-52.0" fill="#fde68a" font-family="Helvetica, Arial, sans-serif" font-size="7.2" font-weight="bold" text-anchor="middle">Swan Lake Heritage Bridge</text>
+    <line id="south_meadow_bridge" x1="-202.5" y1="75.0" x2="-292.5" y2="110.0" stroke="#78350f" stroke-width="12.0"/>
+    <line x1="-202.5" y1="75.0" x2="-292.5" y2="110.0" stroke="#f59e0b" stroke-width="9.0"/>
+    <text x="-247.5" y="86.0" fill="#fde68a" font-family="Helvetica, Arial, sans-serif" font-size="7.2" font-weight="bold" text-anchor="middle">Symphony Lake Boardwalk Bridge</text>
+    <line id="lotus_pond_boardwalk" x1="177.5" y1="6.0" x2="247.5" y2="36.0" stroke="#78350f" stroke-width="11.0"/>
+    <line x1="177.5" y1="6.0" x2="247.5" y2="36.0" stroke="#f59e0b" stroke-width="8.0"/>
+    <text x="212.5" y="14.0" fill="#fde68a" font-family="Helvetica, Arial, sans-serif" font-size="7.2" font-weight="bold" text-anchor="middle">Ginger Lily Pond Boardwalk</text>
+    <line id="wetlands_mangrove_boardwalk" x1="260.0" y1="32.5" x2="337.5" y2="64.0" stroke="#78350f" stroke-width="11.0"/>
+    <line x1="260.0" y1="32.5" x2="337.5" y2="64.0" stroke="#f59e0b" stroke-width="8.0"/>
+    <text x="298.0" y="42.0" fill="#fde68a" font-family="Helvetica, Arial, sans-serif" font-size="7.2" font-weight="bold" text-anchor="middle">Keppel Discovery Wetlands Boardwalk</text>
+    <line id="mbs_pedestrian_bridge" x1="-275.0" y1="-70.0" x2="-370.0" y2="-70.0" stroke="#475569" stroke-width="12.0"/>
+    <line x1="-275.0" y1="-70.0" x2="-370.0" y2="-70.0" stroke="#38bdf8" stroke-width="8.0"/>
+    <text x="-322.5" y="-78.0" fill="#bae6fd" font-family="Helvetica, Arial, sans-serif" font-size="7.2" font-weight="bold" text-anchor="middle">Tyersall Gallop Overpass Bridge</text>
+  </g>
+  <g id="layer-landmarks-and-heritage-trees">
+    <g id="L01" transform="translate(0.0,0.0)"><circle cx="0" cy="0" r="75.0" fill="#10b981" fill-opacity="0.22" stroke="#10b981" stroke-width="2.2" stroke-dasharray="6,3"/><circle cx="0" cy="0" r="18.0" fill="#f8fafc" fill-opacity="0.35" stroke="#facc15" stroke-width="2.4"/></g>
+    <g id="L02" transform="translate(70.0,-180.0) rotate(-20.0)"><ellipse cx="0" cy="0" rx="73.5" ry="50.0" fill="#34d399" fill-opacity="0.45" stroke="#f8fafc" stroke-width="2.6"/></g>
+    <g id="L03" transform="translate(180.0,-130.0) rotate(14.0)"><ellipse cx="0" cy="0" rx="52.0" ry="45.0" fill="#f59e0b" fill-opacity="0.45" stroke="#f8fafc" stroke-width="2.6"/></g>
+    <g id="L04" transform="translate(120.0,-130.0)"><ellipse cx="0" cy="0" rx="48.0" ry="38.0" fill="#fbbf24" fill-opacity="0.25" stroke="#fbbf24" stroke-width="2.2" stroke-dasharray="6,3"/></g>
+    <g id="L05" transform="translate(-10.0,-135.0)"><ellipse cx="0" cy="0" rx="35.0" ry="32.0" fill="#e2e8f0" fill-opacity="0.22" stroke="#e2e8f0" stroke-width="2.0" stroke-dasharray="5,3"/></g>
+    <g id="L06" transform="translate(150.0,-20.0)"><ellipse cx="0" cy="0" rx="36.0" ry="28.0" fill="#eab308" fill-opacity="0.22" stroke="#eab308" stroke-width="2.0" stroke-dasharray="5,3"/></g>
+    <g id="L07" transform="translate(-110.0,-80.0)"><circle cx="0" cy="0" r="24.0" fill="#38bdf8" fill-opacity="0.32" stroke="#38bdf8" stroke-width="2.2"/></g>
+    <g id="L08" transform="translate(82.5,72.5)"><circle cx="0" cy="0" r="22.0" fill="#fbbf24" fill-opacity="0.38" stroke="#fbbf24" stroke-width="2.2"/></g>
+    <g id="L09" transform="translate(-165.0,120.0) rotate(25.0)"><ellipse cx="0" cy="0" rx="75.0" ry="55.0" fill="#ec4899" fill-opacity="0.22" stroke="#ec4899" stroke-width="2.2" stroke-dasharray="6,3"/></g>
+    <g id="L10" transform="translate(-180.0,50.0)"><circle cx="0" cy="0" r="18.0" fill="#f8fafc" fill-opacity="0.45" stroke="#ec4899" stroke-width="2.4"/></g>
+    <g id="L11" transform="translate(-270.0,160.0) rotate(25.0)"><rect x="-24.0" y="-22.0" width="48.0" height="44.0" rx="6" fill="#10b981" fill-opacity="0.38" stroke="#10b981" stroke-width="2.2"/></g>
+    <g id="L12" transform="translate(-270.0,-20.0)"><rect x="-24.0" y="-24.0" width="48.0" height="48.0" rx="6" fill="#10b981" fill-opacity="0.38" stroke="#f8fafc" stroke-width="2.2"/></g>
+    <g id="L13" transform="translate(-205.0,-100.0)"><rect x="-28.0" y="-18.0" width="56.0" height="36.0" rx="6" fill="#a855f7" fill-opacity="0.34" stroke="#a855f7" stroke-width="2.0"/></g>
+    <g id="L14" transform="translate(-90.0,-130.0)"><circle cx="0" cy="0" r="27.5" fill="#f59e0b" fill-opacity="0.32" stroke="#f59e0b" stroke-width="2.2"/></g>
+    <g id="L15" transform="translate(202.5,-27.5)"><rect x="-26.0" y="-16.0" width="52.0" height="32.0" rx="6" fill="#fbbf24" fill-opacity="0.34" stroke="#fbbf24" stroke-width="2.0"/></g>
+    <g id="L16" transform="translate(270.0,-40.0)"><circle cx="0" cy="0" r="28.0" fill="#2dd4bf" fill-opacity="0.34" stroke="#2dd4bf" stroke-width="2.2"/></g>
+    <g id="L17" transform="translate(297.5,49.0)"><ellipse cx="0" cy="0" rx="52.0" ry="32.0" fill="#0d9488" fill-opacity="0.22" stroke="#0d9488" stroke-width="2.0" stroke-dasharray="6,3"/></g>
+    <g id="L18" transform="translate(142.5,27.5)"><circle cx="0" cy="0" r="22.0" fill="#fcd34d" fill-opacity="0.35" stroke="#fcd34d" stroke-width="2.0"/></g>
+    <g id="L19" transform="translate(370.0,75.0)"><rect x="-32.0" y="-20.0" width="64.0" height="40.0" rx="6" fill="#f97316" fill-opacity="0.35" stroke="#f97316" stroke-width="2.0"/></g>
+    <g id="L20" transform="translate(-210.0,190.0)"><rect x="-26.0" y="-16.0" width="52.0" height="32.0" rx="6" fill="#cbd5e1" fill-opacity="0.35" stroke="#cbd5e1" stroke-width="2.0"/></g>
+    <polyline id="Walk_of_Giants_Boardwalk" points="-27.5,-17.5 32.5,-10.0 2.5,32.5 -27.5,-17.5" fill="none" stroke="#facc15" stroke-width="4.2" stroke-linejoin="round" opacity="0.9"/>
+    <circle id="ST01" cx="-27.5" cy="-17.5" r="16.0" fill="#10b981" fill-opacity="0.52" stroke="#facc15" stroke-width="2.2"/>
+    <circle id="ST02" cx="32.5" cy="-10.0" r="15.5" fill="#10b981" fill-opacity="0.52" stroke="#facc15" stroke-width="2.2"/>
+    <circle id="ST03" cx="2.5" cy="32.5" r="15.0" fill="#10b981" fill-opacity="0.52" stroke="#facc15" stroke-width="2.2"/>
+    <circle id="ST04" cx="-62.5" cy="-47.5" r="12.0" fill="#34d399" fill-opacity="0.45" stroke="#34d399" stroke-width="1.8"/>
+    <circle id="ST05" cx="-10.0" cy="-62.5" r="12.5" fill="#34d399" fill-opacity="0.45" stroke="#34d399" stroke-width="1.8"/>
+    <circle id="ST06" cx="57.5" cy="-45.0" r="12.4" fill="#34d399" fill-opacity="0.45" stroke="#34d399" stroke-width="1.8"/>
+    <circle id="ST07" cx="72.5" cy="7.5" r="11.4" fill="#34d399" fill-opacity="0.45" stroke="#34d399" stroke-width="1.8"/>
+    <circle id="ST08" cx="55.0" cy="57.5" r="12.0" fill="#34d399" fill-opacity="0.45" stroke="#34d399" stroke-width="1.8"/>
+    <circle id="ST09" cx="0.0" cy="75.0" r="11.2" fill="#34d399" fill-opacity="0.45" stroke="#34d399" stroke-width="1.8"/>
+    <circle id="ST10" cx="-52.5" cy="55.0" r="11.6" fill="#34d399" fill-opacity="0.45" stroke="#34d399" stroke-width="1.8"/>
+    <circle id="ST11" cx="-75.0" cy="7.5" r="10.8" fill="#34d399" fill-opacity="0.45" stroke="#34d399" stroke-width="1.8"/>
+    <circle id="ST12" cx="22.5" cy="-77.5" r="10.6" fill="#34d399" fill-opacity="0.45" stroke="#34d399" stroke-width="1.8"/>
+    <circle id="ST13" cx="-21.0" cy="-147.5" r="11.0" fill="#94a3b8" fill-opacity="0.45" stroke="#94a3b8" stroke-width="1.8"/>
+    <circle id="ST14" cx="2.5" cy="-140.0" r="10.2" fill="#94a3b8" fill-opacity="0.45" stroke="#94a3b8" stroke-width="1.8"/>
+    <circle id="ST15" cx="-9.0" cy="-115.0" r="9.8" fill="#94a3b8" fill-opacity="0.45" stroke="#94a3b8" stroke-width="1.8"/>
+    <circle id="ST16" cx="140.0" cy="-29.0" r="11.2" fill="#eab308" fill-opacity="0.45" stroke="#eab308" stroke-width="1.8"/>
+    <circle id="ST17" cx="162.5" cy="-20.0" r="10.2" fill="#eab308" fill-opacity="0.45" stroke="#eab308" stroke-width="1.8"/>
+    <circle id="ST18" cx="151.0" cy="-2.5" r="10.4" fill="#eab308" fill-opacity="0.45" stroke="#eab308" stroke-width="1.8"/>
+  </g>
+  <g id="layer-42-treasures">
+    <g id="T01" transform="translate(0.0,15.0)"><circle cx="0" cy="0" r="6.2" fill="#0f172a" stroke="#10b981" stroke-width="2.0"/><text x="0" y="2.8" fill="#ffffff" font-family="Helvetica, Arial, sans-serif" font-size="7.2" font-weight="bold" text-anchor="middle">1</text></g>
+    <g id="T02" transform="translate(-45.0,20.0)"><circle cx="0" cy="0" r="6.2" fill="#0f172a" stroke="#10b981" stroke-width="2.0"/><text x="0" y="2.8" fill="#ffffff" font-family="Helvetica, Arial, sans-serif" font-size="7.2" font-weight="bold" text-anchor="middle">2</text></g>
+    <g id="T03" transform="translate(67.5,-167.5)"><circle cx="0" cy="0" r="6.2" fill="#0f172a" stroke="#f59e0b" stroke-width="2.0"/><text x="0" y="2.8" fill="#ffffff" font-family="Helvetica, Arial, sans-serif" font-size="7.2" font-weight="bold" text-anchor="middle">3</text></g>
+    <g id="T04" transform="translate(163.0,-142.0)"><circle cx="0" cy="0" r="6.2" fill="#0f172a" stroke="#f59e0b" stroke-width="2.0"/><text x="0" y="2.8" fill="#ffffff" font-family="Helvetica, Arial, sans-serif" font-size="7.2" font-weight="bold" text-anchor="middle">4</text></g>
+    <g id="T05" transform="translate(122.5,-145.0)"><circle cx="0" cy="0" r="6.2" fill="#0f172a" stroke="#f59e0b" stroke-width="2.0"/><text x="0" y="2.8" fill="#ffffff" font-family="Helvetica, Arial, sans-serif" font-size="7.2" font-weight="bold" text-anchor="middle">5</text></g>
+    <g id="T06" transform="translate(-122.5,-92.5)"><circle cx="0" cy="0" r="6.2" fill="#0f172a" stroke="#38bdf8" stroke-width="2.0"/><text x="0" y="2.8" fill="#ffffff" font-family="Helvetica, Arial, sans-serif" font-size="7.2" font-weight="bold" text-anchor="middle">6</text></g>
+    <g id="T07" transform="translate(-57.5,-125.0)"><circle cx="0" cy="0" r="6.2" fill="#0f172a" stroke="#38bdf8" stroke-width="2.0"/><text x="0" y="2.8" fill="#ffffff" font-family="Helvetica, Arial, sans-serif" font-size="7.2" font-weight="bold" text-anchor="middle">7</text></g>
+    <g id="T08" transform="translate(-30.0,-40.0)"><circle cx="0" cy="0" r="6.2" fill="#0f172a" stroke="#10b981" stroke-width="2.0"/><text x="0" y="2.8" fill="#ffffff" font-family="Helvetica, Arial, sans-serif" font-size="7.2" font-weight="bold" text-anchor="middle">8</text></g>
+    <g id="T09" transform="translate(200.0,60.0)"><circle cx="0" cy="0" r="6.2" fill="#0f172a" stroke="#34d399" stroke-width="2.0"/><text x="0" y="2.8" fill="#ffffff" font-family="Helvetica, Arial, sans-serif" font-size="7.2" font-weight="bold" text-anchor="middle">9</text></g>
+    <g id="T10" transform="translate(-200.0,110.0)"><circle cx="0" cy="0" r="6.2" fill="#0f172a" stroke="#ec4899" stroke-width="2.0"/><text x="0" y="2.8" fill="#ffffff" font-family="Helvetica, Arial, sans-serif" font-size="7.2" font-weight="bold" text-anchor="middle">10</text></g>
+    <g id="T11" transform="translate(12.5,-17.5)"><circle cx="0" cy="0" r="6.2" fill="#0f172a" stroke="#10b981" stroke-width="2.0"/><text x="0" y="2.8" fill="#ffffff" font-family="Helvetica, Arial, sans-serif" font-size="7.2" font-weight="bold" text-anchor="middle">11</text></g>
+    <g id="T12" transform="translate(-20.0,35.0)"><circle cx="0" cy="0" r="6.2" fill="#0f172a" stroke="#10b981" stroke-width="2.0"/><text x="0" y="2.8" fill="#ffffff" font-family="Helvetica, Arial, sans-serif" font-size="7.2" font-weight="bold" text-anchor="middle">12</text></g>
+    <g id="T13" transform="translate(55.0,10.0)"><circle cx="0" cy="0" r="6.2" fill="#0f172a" stroke="#10b981" stroke-width="2.0"/><text x="0" y="2.8" fill="#ffffff" font-family="Helvetica, Arial, sans-serif" font-size="7.2" font-weight="bold" text-anchor="middle">13</text></g>
+    <g id="T14" transform="translate(150.0,-20.0)"><circle cx="0" cy="0" r="6.2" fill="#0f172a" stroke="#34d399" stroke-width="2.0"/><text x="0" y="2.8" fill="#ffffff" font-family="Helvetica, Arial, sans-serif" font-size="7.2" font-weight="bold" text-anchor="middle">14</text></g>
+    <g id="T15" transform="translate(-80.0,-110.0)"><circle cx="0" cy="0" r="6.2" fill="#0f172a" stroke="#38bdf8" stroke-width="2.0"/><text x="0" y="2.8" fill="#ffffff" font-family="Helvetica, Arial, sans-serif" font-size="7.2" font-weight="bold" text-anchor="middle">15</text></g>
+    <g id="T16" transform="translate(82.5,72.5)"><circle cx="0" cy="0" r="6.2" fill="#0f172a" stroke="#10b981" stroke-width="2.0"/><text x="0" y="2.8" fill="#ffffff" font-family="Helvetica, Arial, sans-serif" font-size="7.2" font-weight="bold" text-anchor="middle">16</text></g>
+    <g id="T17" transform="translate(-60.0,-15.0)"><circle cx="0" cy="0" r="6.2" fill="#0f172a" stroke="#10b981" stroke-width="2.0"/><text x="0" y="2.8" fill="#ffffff" font-family="Helvetica, Arial, sans-serif" font-size="7.2" font-weight="bold" text-anchor="middle">17</text></g>
+    <g id="T18" transform="translate(20.0,70.0)"><circle cx="0" cy="0" r="6.2" fill="#0f172a" stroke="#10b981" stroke-width="2.0"/><text x="0" y="2.8" fill="#ffffff" font-family="Helvetica, Arial, sans-serif" font-size="7.2" font-weight="bold" text-anchor="middle">18</text></g>
+    <g id="T19" transform="translate(110.0,-120.0)"><circle cx="0" cy="0" r="6.2" fill="#0f172a" stroke="#f59e0b" stroke-width="2.0"/><text x="0" y="2.8" fill="#ffffff" font-family="Helvetica, Arial, sans-serif" font-size="7.2" font-weight="bold" text-anchor="middle">19</text></g>
+    <g id="T20" transform="translate(172.5,-107.5)"><circle cx="0" cy="0" r="6.2" fill="#0f172a" stroke="#f59e0b" stroke-width="2.0"/><text x="0" y="2.8" fill="#ffffff" font-family="Helvetica, Arial, sans-serif" font-size="7.2" font-weight="bold" text-anchor="middle">20</text></g>
+    <g id="T21" transform="translate(65.0,-185.0)"><circle cx="0" cy="0" r="6.2" fill="#0f172a" stroke="#f59e0b" stroke-width="2.0"/><text x="0" y="2.8" fill="#ffffff" font-family="Helvetica, Arial, sans-serif" font-size="7.2" font-weight="bold" text-anchor="middle">21</text></g>
+    <g id="T22" transform="translate(81.0,-187.5)"><circle cx="0" cy="0" r="6.2" fill="#0f172a" stroke="#f59e0b" stroke-width="2.0"/><text x="0" y="2.8" fill="#ffffff" font-family="Helvetica, Arial, sans-serif" font-size="7.2" font-weight="bold" text-anchor="middle">22</text></g>
+    <g id="T23" transform="translate(202.5,-117.5)"><circle cx="0" cy="0" r="6.2" fill="#0f172a" stroke="#f59e0b" stroke-width="2.0"/><text x="0" y="2.8" fill="#ffffff" font-family="Helvetica, Arial, sans-serif" font-size="7.2" font-weight="bold" text-anchor="middle">23</text></g>
+    <g id="T24" transform="translate(110.0,-70.0)"><circle cx="0" cy="0" r="6.2" fill="#0f172a" stroke="#f59e0b" stroke-width="2.0"/><text x="0" y="2.8" fill="#ffffff" font-family="Helvetica, Arial, sans-serif" font-size="7.2" font-weight="bold" text-anchor="middle">24</text></g>
+    <g id="T25" transform="translate(52.5,-162.5)"><circle cx="0" cy="0" r="6.2" fill="#0f172a" stroke="#f59e0b" stroke-width="2.0"/><text x="0" y="2.8" fill="#ffffff" font-family="Helvetica, Arial, sans-serif" font-size="7.2" font-weight="bold" text-anchor="middle">25</text></g>
+    <g id="T26" transform="translate(191.0,-151.0)"><circle cx="0" cy="0" r="6.2" fill="#0f172a" stroke="#f59e0b" stroke-width="2.0"/><text x="0" y="2.8" fill="#ffffff" font-family="Helvetica, Arial, sans-serif" font-size="7.2" font-weight="bold" text-anchor="middle">26</text></g>
+    <g id="T27" transform="translate(-170.0,-45.0)"><circle cx="0" cy="0" r="6.2" fill="#0f172a" stroke="#38bdf8" stroke-width="2.0"/><text x="0" y="2.8" fill="#ffffff" font-family="Helvetica, Arial, sans-serif" font-size="7.2" font-weight="bold" text-anchor="middle">27</text></g>
+    <g id="T28" transform="translate(-110.0,-80.0)"><circle cx="0" cy="0" r="6.2" fill="#0f172a" stroke="#38bdf8" stroke-width="2.0"/><text x="0" y="2.8" fill="#ffffff" font-family="Helvetica, Arial, sans-serif" font-size="7.2" font-weight="bold" text-anchor="middle">28</text></g>
+    <g id="T29" transform="translate(-90.0,-130.0)"><circle cx="0" cy="0" r="6.2" fill="#0f172a" stroke="#38bdf8" stroke-width="2.0"/><text x="0" y="2.8" fill="#ffffff" font-family="Helvetica, Arial, sans-serif" font-size="7.2" font-weight="bold" text-anchor="middle">29</text></g>
+    <g id="T30" transform="translate(-205.0,-60.0)"><circle cx="0" cy="0" r="6.2" fill="#0f172a" stroke="#38bdf8" stroke-width="2.0"/><text x="0" y="2.8" fill="#ffffff" font-family="Helvetica, Arial, sans-serif" font-size="7.2" font-weight="bold" text-anchor="middle">30</text></g>
+    <g id="T31" transform="translate(-120.0,-20.0)"><circle cx="0" cy="0" r="6.2" fill="#0f172a" stroke="#38bdf8" stroke-width="2.0"/><text x="0" y="2.8" fill="#ffffff" font-family="Helvetica, Arial, sans-serif" font-size="7.2" font-weight="bold" text-anchor="middle">31</text></g>
+    <g id="T32" transform="translate(-115.0,-115.0)"><circle cx="0" cy="0" r="6.2" fill="#0f172a" stroke="#38bdf8" stroke-width="2.0"/><text x="0" y="2.8" fill="#ffffff" font-family="Helvetica, Arial, sans-serif" font-size="7.2" font-weight="bold" text-anchor="middle">32</text></g>
+    <g id="T33" transform="translate(-70.0,-70.0)"><circle cx="0" cy="0" r="6.2" fill="#0f172a" stroke="#38bdf8" stroke-width="2.0"/><text x="0" y="2.8" fill="#ffffff" font-family="Helvetica, Arial, sans-serif" font-size="7.2" font-weight="bold" text-anchor="middle">33</text></g>
+    <g id="T34" transform="translate(-270.0,-20.0)"><circle cx="0" cy="0" r="6.2" fill="#0f172a" stroke="#ec4899" stroke-width="2.0"/><text x="0" y="2.8" fill="#ffffff" font-family="Helvetica, Arial, sans-serif" font-size="7.2" font-weight="bold" text-anchor="middle">34</text></g>
+    <g id="T35" transform="translate(-165.0,50.0)"><circle cx="0" cy="0" r="6.2" fill="#0f172a" stroke="#ec4899" stroke-width="2.0"/><text x="0" y="2.8" fill="#ffffff" font-family="Helvetica, Arial, sans-serif" font-size="7.2" font-weight="bold" text-anchor="middle">35</text></g>
+    <g id="T36" transform="translate(-180.0,120.0)"><circle cx="0" cy="0" r="6.2" fill="#0f172a" stroke="#ec4899" stroke-width="2.0"/><text x="0" y="2.8" fill="#ffffff" font-family="Helvetica, Arial, sans-serif" font-size="7.2" font-weight="bold" text-anchor="middle">36</text></g>
+    <g id="T37" transform="translate(247.5,10.0)"><circle cx="0" cy="0" r="6.2" fill="#0f172a" stroke="#34d399" stroke-width="2.0"/><text x="0" y="2.8" fill="#ffffff" font-family="Helvetica, Arial, sans-serif" font-size="7.2" font-weight="bold" text-anchor="middle">37</text></g>
+    <g id="T38" transform="translate(-270.0,160.0)"><circle cx="0" cy="0" r="6.2" fill="#0f172a" stroke="#ec4899" stroke-width="2.0"/><text x="0" y="2.8" fill="#ffffff" font-family="Helvetica, Arial, sans-serif" font-size="7.2" font-weight="bold" text-anchor="middle">38</text></g>
+    <g id="T39" transform="translate(270.0,-40.0)"><circle cx="0" cy="0" r="6.2" fill="#0f172a" stroke="#34d399" stroke-width="2.0"/><text x="0" y="2.8" fill="#ffffff" font-family="Helvetica, Arial, sans-serif" font-size="7.2" font-weight="bold" text-anchor="middle">39</text></g>
+    <g id="T40" transform="translate(260.0,90.0)"><circle cx="0" cy="0" r="6.2" fill="#0f172a" stroke="#34d399" stroke-width="2.0"/><text x="0" y="2.8" fill="#ffffff" font-family="Helvetica, Arial, sans-serif" font-size="7.2" font-weight="bold" text-anchor="middle">40</text></g>
+    <g id="T41" transform="translate(225.0,70.0)"><circle cx="0" cy="0" r="6.2" fill="#0f172a" stroke="#34d399" stroke-width="2.0"/><text x="0" y="2.8" fill="#ffffff" font-family="Helvetica, Arial, sans-serif" font-size="7.2" font-weight="bold" text-anchor="middle">41</text></g>
+    <g id="T42" transform="translate(-240.0,-90.0)"><circle cx="0" cy="0" r="6.2" fill="#0f172a" stroke="#facc15" stroke-width="2.0"/><text x="0" y="2.8" fill="#ffffff" font-family="Helvetica, Arial, sans-serif" font-size="7.2" font-weight="bold" text-anchor="middle">42</text></g>
+  </g>
+  <g id="layer-grid-and-callouts">
+    <line x1="-400" y1="-380" x2="-400" y2="570" stroke="#34d399" stroke-width="0.9" opacity="0.4"/>
+    <line x1="-200" y1="-380" x2="-200" y2="570" stroke="#34d399" stroke-width="0.9" opacity="0.4"/>
+    <line x1="0" y1="-380" x2="0" y2="570" stroke="#facc15" stroke-width="2.0" opacity="0.8"/>
+    <line x1="200" y1="-380" x2="200" y2="570" stroke="#34d399" stroke-width="0.9" opacity="0.4"/>
+    <line x1="400" y1="-380" x2="400" y2="570" stroke="#34d399" stroke-width="0.9" opacity="0.4"/>
+    <line x1="-450" y1="-200" x2="650" y2="-200" stroke="#34d399" stroke-width="0.9" opacity="0.4"/>
+    <line x1="-450" y1="0" x2="650" y2="0" stroke="#facc15" stroke-width="2.0" opacity="0.8"/>
+    <line x1="-450" y1="200" x2="650" y2="200" stroke="#34d399" stroke-width="0.9" opacity="0.4"/>
+    <rect x="-85.0" y="-58.0" width="170.0" height="24" rx="4" fill="#0f172a" stroke="#10b981" stroke-width="1.4" opacity="0.93"/>
+    <text x="0.0" y="-48.0" fill="#f8fafc" font-family="Helvetica, Arial, sans-serif" font-size="8.0" font-weight="bold" text-anchor="middle">ZONE 1: The Bandstand (1930) &amp; Tembusu</text>
+    <text x="0.0" y="-37.5" fill="#fde047" font-family="Courier, monospace" font-size="7.8" font-weight="bold" text-anchor="middle">(0m, 0m) • Tanglin Heritage Core</text>
+    <rect x="-15.0" y="-232.0" width="170.0" height="24" rx="4" fill="#0f172a" stroke="#34d399" stroke-width="1.4" opacity="0.93"/>
+    <text x="70.0" y="-222.0" fill="#f8fafc" font-family="Helvetica, Arial, sans-serif" font-size="8.0" font-weight="bold" text-anchor="middle">Sembcorp Cool House Conservatory</text>
+    <text x="70.0" y="-211.5" fill="#fde047" font-family="Courier, monospace" font-size="7.8" font-weight="bold" text-anchor="middle">(+70m, -180m) • Montane Orchids</text>
+    <rect x="95.0" y="-190.0" width="170.0" height="24" rx="4" fill="#0f172a" stroke="#f59e0b" stroke-width="1.4" opacity="0.93"/>
+    <text x="180.0" y="-180.0" fill="#f8fafc" font-family="Helvetica, Arial, sans-serif" font-size="8.0" font-weight="bold" text-anchor="middle">ZONE 2: Burkill Hall (1868) &amp; Mist House</text>
+    <text x="180.0" y="-169.5" fill="#fde047" font-family="Courier, monospace" font-size="7.8" font-weight="bold" text-anchor="middle">(+180m, -130m) • National Orchid Garden</text>
+    <rect x="-255.0" y="-115.0" width="170.0" height="24" rx="4" fill="#0f172a" stroke="#38bdf8" stroke-width="1.4" opacity="0.93"/>
+    <text x="-170.0" y="-105.0" fill="#f8fafc" font-family="Helvetica, Arial, sans-serif" font-size="8.0" font-weight="bold" text-anchor="middle">ZONE 3: Swan Lake (1866) &amp; Tanglin Gate</text>
+    <text x="-170.0" y="-94.5" fill="#fde047" font-family="Courier, monospace" font-size="7.8" font-weight="bold" text-anchor="middle">(-170m, -45m) • Mute Swans &amp; Silver Gate</text>
+    <rect x="-250.0" y="138.0" width="170.0" height="24" rx="4" fill="#0f172a" stroke="#ec4899" stroke-width="1.4" opacity="0.93"/>
+    <text x="-165.0" y="148.0" fill="#f8fafc" font-family="Helvetica, Arial, sans-serif" font-size="8.0" font-weight="bold" text-anchor="middle">ZONE 4: Palm Valley &amp; Symphony Stage</text>
+    <text x="-165.0" y="158.5" fill="#fde047" font-family="Courier, monospace" font-size="7.8" font-weight="bold" text-anchor="middle">(-165m, +120m) • Shaw Symphony Lake</text>
+    <rect x="-355.0" y="175.0" width="170.0" height="24" rx="4" fill="#0f172a" stroke="#10b981" stroke-width="1.4" opacity="0.93"/>
+    <text x="-270.0" y="185.0" fill="#f8fafc" font-family="Helvetica, Arial, sans-serif" font-size="8.0" font-weight="bold" text-anchor="middle">Japanese Bonsai &amp; Sundial Pavilion</text>
+    <text x="-270.0" y="195.5" fill="#fde047" font-family="Courier, monospace" font-size="7.8" font-weight="bold" text-anchor="middle">(-270m, +160m) • Penjing Courtyard</text>
+    <rect x="212.5" y="102.0" width="170.0" height="24" rx="4" fill="#0f172a" stroke="#34d399" stroke-width="1.4" opacity="0.93"/>
+    <text x="297.5" y="112.0" fill="#f8fafc" font-family="Helvetica, Arial, sans-serif" font-size="8.0" font-weight="bold" text-anchor="middle">ZONE 5: Eco-Lake, Ginger &amp; Children</text>
+    <text x="297.5" y="122.5" fill="#fde047" font-family="Courier, monospace" font-size="7.8" font-weight="bold" text-anchor="middle">(+297m, +49m) • Black Swans &amp; Treehouse</text>
+    <rect x="95" y="-348" width="490" height="68" rx="6" fill="#0f172a" stroke="#10b981" stroke-width="2.0" opacity="0.95"/>
+    <text x="110" y="-326" fill="#f8fafc" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="bold">SINGAPORE BOTANIC GARDENS (UNESCO 2015) — 2D MASTER FLOORPLAN</text>
+    <text x="110" y="-308" fill="#34d399" font-family="Courier, monospace" font-size="10" font-weight="bold">Scale: 1 SVG Unit = 1.0 Meter | Origin (0m,0m) = The Bandstand (1930)</text>
+    <text x="110" y="-292" fill="#fde047" font-family="Courier, monospace" font-size="9.5">Stage 2 3D Transform: worldX = X_m * 0.20, worldZ = Z_m * 0.20 (1:5 Uniform)</text>
+    <g transform="translate(215, 375)">
+      <rect x="0" y="0" width="355" height="120" rx="6" fill="#0f172a" stroke="#facc15" stroke-width="1.8" opacity="0.95"/>
+      <text x="16" y="22" fill="#f8fafc" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="bold">METER SCALE BAR &amp; COMPASS (TRUE NORTH UP 0°)</text>
+      <rect x="16" y="34" width="100" height="10" fill="#10b981" stroke="#f8fafc" stroke-width="1"/>
+      <rect x="116" y="34" width="100" height="10" fill="#0f172a" stroke="#f8fafc" stroke-width="1"/>
+      <text x="16" y="56" fill="#fde047" font-family="Courier, monospace" font-size="9" font-weight="bold">0m</text>
+      <text x="104" y="56" fill="#fde047" font-family="Courier, monospace" font-size="9" font-weight="bold">100m</text>
+      <text x="202" y="56" fill="#fde047" font-family="Courier, monospace" font-size="9" font-weight="bold">200m</text>
+      <text x="16" y="78" fill="#cbd5e1" font-family="Helvetica, Arial, sans-serif" font-size="9.5">• 5 UNESCO Heritage Cores: Tanglin, Orchid, Swan Lake, Symphony, Eco-Lake</text>
+      <text x="16" y="94" fill="#cbd5e1" font-family="Helvetica, Arial, sans-serif" font-size="9.5">• 18 Heritage Tembusu &amp; Rain Trees + 5 Bridges + 42 UNESCO Relics</text>
+      <text x="16" y="110" fill="#34d399" font-family="Helvetica, Arial, sans-serif" font-size="9.5" font-weight="bold">• Founded 1859 • Inscribed UNESCO World Heritage Site 4 July 2015</text>
+      <g transform="translate(305, 58)">
+        <circle cx="0" cy="0" r="24" fill="#1e293b" stroke="#10b981" stroke-width="1.5"/>
+        <polygon points="0,-20 -6,6 0,2 6,6" fill="#facc15"/>
+        <text x="0" y="-26" fill="#facc15" font-family="Helvetica, Arial, sans-serif" font-size="10" font-weight="bold" text-anchor="middle">N (0°)</text>
+      </g>
+    </g>
+  </g>
+</svg>

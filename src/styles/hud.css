@@ -1,0 +1,230 @@
+/* ============================================================================
+ * Gardens by the Bay — Live Gameplay HUD Cards & Race Clock Header
+ * (src/styles/hud.css)
+ * ============================================================================ */
+
+.gameplay-hud {
+  position: fixed;
+  inset: var(--hud-top-offset, 78px) var(--hud-edge-pad, 16px) calc(var(--safe-bottom, 0px) + var(--hud-edge-pad, 16px)) var(--hud-edge-pad, 16px);
+  pointer-events: none;
+  z-index: 20;
+}
+
+.hud-card {
+  pointer-events: auto;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  backdrop-filter: blur(14px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
+  padding: 12px 14px;
+}
+
+/* Top-Left Zone Card */
+.zone-status-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 310px;
+}
+
+.zone-pill-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.zone-badge {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #34D399;
+  background: rgba(16, 185, 129, 0.16);
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+
+.weather-badge {
+  font-size: 10px;
+  font-weight: 600;
+  color: #FDE68A;
+}
+
+.zone-title {
+  font-size: 15px;
+  font-weight: 800;
+  color: #FFFFFF;
+  margin-bottom: 3px;
+}
+
+.zone-subtitle {
+  font-size: 11px;
+  color: #CBD5E1;
+  line-height: 1.35;
+  margin-bottom: 10px;
+}
+
+.nearest-relic-box {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 8px 10px;
+  border-radius: 12px;
+  background: rgba(250, 204, 21, 0.1);
+  border: 1px solid rgba(250, 204, 21, 0.32);
+}
+
+.nearest-relic-thumb-wrap {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1.5px solid rgba(250, 204, 21, 0.65);
+  background: radial-gradient(circle, #0D2D36 0%, #051419 100%);
+  flex-shrink: 0;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.45);
+}
+
+.nearest-relic-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: left center;
+  transform: scale(1.22);
+  display: block;
+}
+
+.relic-radar-dot {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #FACC15;
+  box-shadow: 0 0 8px #FACC15;
+}
+
+.nearest-relic-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.nearest-label {
+  display: block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #FDE047;
+}
+
+.nearest-name {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  color: #FFFFFF;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.nearest-dist {
+  display: block;
+  font-size: 10px;
+  color: #CBD5E1;
+}
+
+.btn-collect-now {
+  border: none;
+  background: linear-gradient(135deg, #FACC15, #F59E0B);
+  color: #1E1B4B;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 6px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.nearest-actions-col {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.btn-jump-now {
+  border: 1px solid rgba(56, 189, 248, 0.55);
+  background: rgba(56, 189, 248, 0.16);
+  color: #E0F2FE;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 5px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  white-space: nowrap;
+  scale: 1;
+  translate: 0 0;
+  transition: scale 0.15s ease, background 0.15s ease;
+}
+
+.btn-jump-now:hover {
+  scale: 1.05;
+  background: rgba(56, 189, 248, 0.3);
+}
+
+/* Top-Center Race Clock & Banner */
+.center-clock-card {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 420px;
+  text-align: center;
+  padding: 10px 18px;
+}
+
+.clock-top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+
+.clock-mode-tag {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: #38BDF8;
+  margin-bottom: 4px;
+  transition: color 0.25s ease, text-shadow 0.25s ease;
+}
+
+.clock-mode-tag.is-night-fever {
+  color: #FDE047;
+  text-shadow: 0 0 12px rgba(250, 204, 21, 0.75);
+}
+
+.clock-top-bar .clock-mode-tag {
+  margin-bottom: 0;
+}
+
+.btn-trigger-finale {
+  border: 1px solid rgba(250, 204, 21, 0.55);
+  background: linear-gradient(135deg, rgba(250, 204, 21, 0.22), rgba(245, 158, 11, 0.18));
+  color: #FEF08A;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: 999px;
+  cursor: pointer;
+  scale: 1;
+  transition: scale 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn-trigger-finale:hover {
+  scale: 1.06;
+  box-shadow: 0 0 12px rgba(250, 204, 21, 0.5);
+}

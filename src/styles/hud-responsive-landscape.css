@@ -1,0 +1,242 @@
+/* Gardens by the Bay — Mobile & Tablet Landscape End-Game Modal Responsive Rules (src/styles/hud-responsive-landscape.css) */
+@media (max-width: 1024px) and (orientation: landscape), (max-height: 680px) and (orientation: landscape) {
+  /* 6. Compact End-Game Celebration Modal (Fits Landscape Viewport) */
+  .endgame-celebration-banner {
+    top: 50%;
+    right: 0;
+    translate: 0 -50%;
+    width: min(430px, 56dvw);
+    max-height: calc(100dvh - 14px);
+    padding: 5px 10px;
+    gap: 3px;
+    border-radius: 16px;
+    overflow-y: auto;
+  }
+
+  .eg-reason-badge {
+    font-size: 8.5px;
+    padding: 1.5px 7px;
+  }
+
+  .eg-close-btn {
+    width: 20px;
+    height: 20px;
+    font-size: 10px;
+  }
+
+  .eg-title {
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: center;
+    gap: 6px;
+  }
+
+  .eg-title-line1 {
+    font-size: 13px;
+  }
+
+  .eg-title-line2 {
+    font-size: 11.5px;
+  }
+
+  .eg-stats-pill {
+    padding: 1.5px 7px;
+    font-size: 9px;
+    gap: 5px;
+  }
+
+  .eg-podium-stage {
+    border-radius: 12px;
+    min-height: 0;
+  }
+
+  .btn-eg-stage-emote {
+    top: 4px;
+    right: 4px;
+    font-size: 8.5px;
+    padding: 2px 7px;
+  }
+
+  .podium-solo-card {
+    padding: 8px 10px;
+    gap: 10px;
+  }
+
+  .podium-avatar-ring.is-solo-ring {
+    width: 38px;
+    height: 38px;
+    border-width: 2px;
+  }
+
+  .podium-funny-title-pill.is-solo-title {
+    font-size: 9px;
+    padding: 1.5px 7px;
+    max-width: 190px;
+  }
+
+  .podium-columns-row {
+    padding: 3px 6px 0;
+    gap: 5px;
+  }
+
+  .podium-col-figure {
+    padding-bottom: 2px;
+    gap: 0.5px;
+  }
+
+  .podium-crown-float {
+    font-size: 11px;
+    margin-bottom: -3px;
+  }
+
+  .podium-avatar-ring {
+    width: 24px;
+    height: 24px;
+    padding: 1px;
+    border-width: 1.5px;
+  }
+
+  .podium-col.rank-1 .podium-avatar-ring {
+    width: 28px;
+    height: 28px;
+    border-width: 2px;
+  }
+
+  .podium-you-pill {
+    font-size: 7.5px;
+    padding: 0 4px;
+    bottom: -3px;
+  }
+
+  .podium-col-name,
+  .podium-col.rank-1 .podium-col-name {
+    font-size: 9.5px;
+    margin-top: 0;
+  }
+
+  .podium-col-score {
+    font-size: 8.5px;
+    padding: 0.5px 5px;
+  }
+
+  .podium-funny-title-pill {
+    font-size: 7px;
+    padding: 0.5px 4px;
+    max-width: 92px;
+  }
+
+  .podium-pedestal-step {
+    padding-top: 2px;
+  }
+
+  .podium-pedestal-step.step-1 {
+    height: 21px;
+  }
+
+  .podium-pedestal-step.step-2 {
+    height: 17px;
+  }
+
+  .podium-pedestal-step.step-3 {
+    height: 14px;
+  }
+
+  .podium-step-medal {
+    font-size: 8px;
+    padding: 0.5px 4px;
+  }
+
+  .podium-step-num {
+    font-size: 16px;
+    bottom: -3px;
+  }
+
+  .podium-pedestal-step.step-1 .podium-step-num {
+    font-size: 20px;
+  }
+
+  .podium-pedestal-step.step-3 .podium-step-num {
+    font-size: 14px;
+  }
+
+  .podium-fourth-bar {
+    padding: 2px 7px;
+  }
+
+  .podium-fourth-avatar {
+    width: 18px;
+    height: 18px;
+  }
+
+  .podium-fourth-name {
+    font-size: 9.5px;
+  }
+
+  .podium-fourth-rank,
+  .podium-fourth-score,
+  .podium-you-inline {
+    font-size: 8.5px;
+    padding: 1px 5px;
+  }
+
+  .eg-relics-showcase {
+    padding: 4px 8px;
+    gap: 2px;
+    border-radius: 10px;
+  }
+
+  .eg-relics-label,
+  .eg-relics-viewall-btn,
+  .btn-eg-vault-inline {
+    font-size: 9px;
+  }
+
+  .btn-eg-vault-inline {
+    padding: 1.5px 7px;
+  }
+
+  .eg-relics-strip {
+    min-height: 26px;
+    max-height: 30px;
+  }
+
+  .eg-collected-empty {
+    padding: 2px 6px;
+    font-size: 9px;
+  }
+
+  .eg-collected-chip {
+    height: 26px;
+    padding: 2px 6px 2px 3px;
+  }
+
+  .eg-chip-thumb-wrap {
+    width: 20px;
+    height: 20px;
+  }
+
+  .eg-chip-id {
+    font-size: 8px;
+  }
+
+  .eg-chip-name {
+    font-size: 9px;
+  }
+
+  .eg-actions-grid {
+    gap: 5px;
+  }
+
+  .eg-actions-grid button,
+  .btn-eg-jump,
+  .btn-eg-primary,
+  .btn-eg-secondary,
+  .btn-eg-ghost {
+    padding: 5px 8px;
+    font-size: 10.5px;
+    min-height: 28px;
+    border-radius: 9px;
+  }
+}

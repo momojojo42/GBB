@@ -1,0 +1,203 @@
+/* ============================================================================
+   POST-MVP ROADMAP MILESTONE CARDS & DESKTOP GATE (src/styles/roadmap-cards.css)
+   ============================================================================ */
+
+/* Post-MVP Milestone Text Specification Cards */
+.milestone-list {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.roadmap-card {
+  background: var(--bg-card);
+  border: 1.5px solid var(--border-gold);
+  border-radius: 18px;
+  padding: 26px 30px;
+  box-shadow: var(--shadow-card);
+}
+
+.roadmap-card-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 14px;
+  margin-bottom: 16px;
+  border-bottom: 1.5px dashed rgba(200, 138, 30, 0.3);
+}
+
+.roadmap-title-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.milestone-num-badge {
+  font-size: 12px;
+  font-weight: 800;
+  padding: 5px 13px;
+  border-radius: 999px;
+  background: var(--forest);
+  color: #FFFFFF;
+  letter-spacing: 0.06em;
+}
+
+.roadmap-card h2 {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--forest);
+}
+
+.status-pill {
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: var(--gold-light);
+  color: #8C5A08;
+  border: 1px solid var(--border-gold);
+}
+
+.roadmap-lead {
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--espresso);
+  margin-bottom: 14px;
+}
+
+.spec-columns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 18px;
+}
+
+.spec-box {
+  background: #FFFDF8;
+  border: 1px solid rgba(200, 138, 30, 0.25);
+  border-radius: 12px;
+  padding: 16px 18px;
+}
+
+.spec-box h3 {
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--teal);
+  margin-bottom: 8px;
+}
+
+.spec-box ul {
+  padding-left: 18px;
+  font-size: 13.5px;
+  color: var(--muted);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.spec-box li strong {
+  color: var(--espresso);
+}
+
+/* ============================================================================
+ * Desktop-Only Gate Overlay (Mobile & Tablet Block)
+ * ============================================================================ */
+.desktop-only-gate-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  padding: 24px;
+  background:
+    radial-gradient(circle at 50% 24%, rgba(250, 204, 21, 0.22) 0%, rgba(16, 185, 129, 0.25) 42%, rgba(4, 23, 28, 0.96) 100%),
+    linear-gradient(160deg, #06393A 0%, #041F26 100%);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+body.mobile-tablet-blocked .desktop-only-gate-overlay {
+  display: flex !important;
+}
+
+@media (max-width: 1024px), (max-height: 680px), (pointer: coarse) {
+  .desktop-only-gate-overlay {
+    display: flex !important;
+  }
+}
+
+.desktop-only-gate-card {
+  max-width: 420px;
+  width: 100%;
+  padding: 28px 24px;
+  border-radius: 24px;
+  background: linear-gradient(155deg, rgba(244, 254, 255, 0.96) 0%, rgba(220, 247, 253, 0.92) 100%);
+  border: 2.5px solid #FFFFFF;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55), 0 0 36px rgba(56, 189, 248, 0.35);
+  color: #06393A;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.desktop-gate-icon,
+.desktop-only-gate-icon {
+  font-size: 42px;
+  line-height: 1;
+}
+
+.desktop-gate-eyebrow,
+.desktop-only-gate-eyebrow {
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #FEF08A, #F59E0B);
+  color: #052E2B;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.desktop-gate-title,
+.desktop-only-gate-title {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 900;
+  color: #06393A;
+}
+
+.desktop-gate-desc,
+.desktop-only-gate-sub {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #134E4A;
+  font-weight: 600;
+}
+
+.desktop-gate-btn,
+.btn-desktop-gate-back {
+  margin-top: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 22px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+  color: #FFFFFF;
+  font-size: 13px;
+  font-weight: 800;
+  text-decoration: none;
+  box-shadow: 0 8px 20px rgba(16, 185, 129, 0.38);
+  border: 1.5px solid rgba(255, 255, 255, 0.85);
+}
