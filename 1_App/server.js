@@ -13,7 +13,7 @@ import { viteMultiplayerPlugin } from './scripts/server/viteMultiplayerPlugin.js
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const PORT = Number(process.env.PORT) || 8080;
+const PORT = Number(process.env.PORT) || 3000;
 const HOST = process.env.HOST || '0.0.0.0';
 const DIST_DIR = path.resolve(__dirname, 'dist');
 const ASSETS_DIR = path.resolve(__dirname, 'assets');

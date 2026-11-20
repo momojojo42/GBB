@@ -166,15 +166,17 @@ export function buildPeninsulaTerrain(THREE, terrainGroup, matLib) {
   for (const isl of LAKE_ISLANDS) {
     const ix = isl.x ?? isl.cx ?? 0;
     const iz = isl.z ?? isl.cz ?? 0;
+    const rx = Number.isFinite(isl.rx) ? isl.rx : (Number.isFinite(isl.r) ? isl.r : 2.5);
+    const rz = Number.isFinite(isl.rz) ? isl.rz : (Number.isFinite(isl.r) ? isl.r : 2.5);
     const islRimGeo = new THREE.CylinderGeometry(1, 1.08, 0.16, 24);
-    islRimGeo.scale(isl.rx * 1.12, 1, isl.rz * 1.12);
+    islRimGeo.scale(rx * 1.12, 1, rz * 1.12);
     const islRim = new THREE.Mesh(islRimGeo, baseBevelMat);
     islRim.position.set(ix, 0.09, iz);
     islRim.rotation.y = isl.rotY || 0;
     terrainGroup.add(islRim);
 
     const islTopGeo = new THREE.CylinderGeometry(1, 1, 0.14, 24);
-    islTopGeo.scale(isl.rx, 1, isl.rz);
+    islTopGeo.scale(rx, 1, rz);
     const islTop = new THREE.Mesh(islTopGeo, meadowLawnMat);
     islTop.position.set(ix, 0.15, iz);
     islTop.rotation.y = isl.rotY || 0;

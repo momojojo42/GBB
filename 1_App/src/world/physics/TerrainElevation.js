@@ -60,7 +60,7 @@ export function getTerrainElevationAt(x, z) {
     const sinR = Math.sin(isl.rotY || 0);
     const lx = dx * cosR - dz * sinR;
     const lz = dx * sinR + dz * cosR;
-    const u = Math.hypot(lx / (isl.rx || 2.5), lz / (isl.rz || 2.0));
+    const u = Math.hypot(lx / (isl.rx ?? isl.r ?? 2.5), lz / (isl.rz ?? isl.r ?? 2.0));
     if (u <= 1.0) {
       if (0.22 > y) y = 0.22;
     }

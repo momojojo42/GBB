@@ -5,9 +5,9 @@
   "type": "module",
   "description": "Gardens by the Bay (Bay South) 3D Miniature Treasure Hunt Game — Vite + Three.js + Headless Blender (.glb) Pipeline",
   "scripts": {
-    "dev": "vite --port 8080 --host 127.0.0.1",
+    "dev": "vite --port 3000 --host 0.0.0.0",
     "build": "vite build",
-    "preview": "vite preview --port 8080 --host 127.0.0.1",
+    "preview": "vite preview --port 3000 --host 0.0.0.0",
     "start": "node server.js",
     "blender:buildings": "HOME=/tmp /tmp/blender_mnt/Blender.app/Contents/MacOS/Blender --background --factory-startup --python scripts/blender/gbb/build_buildings.py",
     "blender:characters": "HOME=/tmp /tmp/blender_mnt/Blender.app/Contents/MacOS/Blender --background --factory-startup --python scripts/blender/gbb/build_characters.py",

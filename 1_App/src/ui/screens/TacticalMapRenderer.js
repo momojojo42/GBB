@@ -157,8 +157,10 @@ export function createTacticalMapRenderer({
     for (const isl of LAKE_ISLANDS) {
       const ix = isl.x ?? isl.cx ?? 0;
       const iz = isl.z ?? isl.cz ?? 0;
+      const rx = Number.isFinite(isl.rx) ? isl.rx : (Number.isFinite(isl.r) ? isl.r : 2.5);
+      const rz = Number.isFinite(isl.rz) ? isl.rz : (Number.isFinite(isl.r) ? isl.r : 2.5);
       tacticalCtx.beginPath();
-      tacticalCtx.ellipse(cx + ix * scaleX, cy + iz * scaleZ, isl.rx * scaleX, isl.rz * scaleZ, -(isl.rotY || 0), 0, Math.PI * 2);
+      tacticalCtx.ellipse(cx + ix * scaleX, cy + iz * scaleZ, rx * scaleX, rz * scaleZ, -(isl.rotY || 0), 0, Math.PI * 2);
       tacticalCtx.fill();
     }
 
