@@ -1,0 +1,385 @@
+/* ============================================================================
+ * Gardens by the Bay — 3-Stage Multiplayer UI Stylesheet
+ * (src/styles/screen-multiplayer-lobby.css)
+ * Covers:
+ *   Step 1: Start Screen 3-Mode Selector & Party Room Code Panel (`GBB-XXX`)
+ *   Step 2: 3D Supertree Grove Party Waiting Lobby Card (`#multiplayerPartyLobbyCard`)
+ *   Step 3: Synchronized `3 • 2 • 1 • GO!` Starting-Line Countdown Banner
+ * ============================================================================ */
+.start-mode-grid.is-three-cols { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.start-mode-grid.is-three-cols .start-mode-card { padding: 10px 9px; }
+.start-mode-grid.is-three-cols .start-mode-title { font-size: 12px; line-height: 1.2; }
+.start-party-room-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  padding: 9px 11px;
+  border-radius: 14px;
+  background: linear-gradient(145deg, rgba(6, 78, 59, 0.92), rgba(15, 118, 110, 0.9));
+  border: 2px solid #FACC15;
+  color: #FFFFFF;
+  box-shadow: 0 8px 20px rgba(6, 57, 58, 0.22);
+}
+.start-party-room-panel.hidden { display: none !important; }
+.mp-room-top-row { display: flex; align-items: center; justify-content: space-between; gap: 6px; flex-wrap: wrap; }
+.mp-room-code-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(4, 47, 46, 0.85);
+  border: 1.5px solid #FACC15;
+  font-size: 11px;
+  font-weight: 800;
+  color: #FEF08A;
+  letter-spacing: 0.05em;
+}
+.mp-room-code-pill strong { color: #FFFFFF; font-size: 12.5px; letter-spacing: 0.08em; }
+.mp-room-actions-cluster { display: inline-flex; align-items: center; gap: 5px; }
+.btn-mp-mini {
+  border: 1.5px solid rgba(254, 240, 138, 0.75);
+  background: rgba(255, 255, 255, 0.14);
+  color: #FFFFFF;
+  font-size: 10.5px;
+  font-weight: 800;
+  padding: 4px 9px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: transform 0.14s ease, background 0.14s ease;
+}
+.btn-mp-mini:hover { transform: translateY(-1px); background: rgba(250, 204, 21, 0.28); }
+.mp-join-code-row { display: grid; grid-template-columns: 1fr auto; gap: 6px; align-items: center; }
+.mp-join-code-input {
+  width: 100%;
+  padding: 6px 10px;
+  border-radius: 10px;
+  border: 1.5px solid rgba(255, 255, 255, 0.45);
+  background: rgba(4, 47, 46, 0.72);
+  color: #FFFFFF;
+  font-family: inherit;
+  font-size: 11.5px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.mp-join-code-input::placeholder { color: rgba(226, 232, 240, 0.65); }
+.btn-mp-join-go {
+  padding: 6px 12px;
+  border-radius: 10px;
+  border: 1.5px solid #FFFFFF;
+  background: linear-gradient(135deg, #FACC15, #F59E0B);
+  color: #052E2B;
+  font-size: 11px;
+  font-weight: 900;
+  cursor: pointer;
+}
+.mp-party-lobby-card {
+  position: fixed;
+  top: 66px;
+  right: 18px;
+  width: min(410px, calc(100vw - 32px));
+  max-height: calc(100vh - 84px);
+  overflow-y: auto;
+  z-index: 65;
+  padding: 16px 18px;
+  border-radius: 24px;
+  background: linear-gradient(160deg, rgba(244, 253, 250, 0.95) 0%, rgba(226, 248, 243, 0.93) 100%);
+  backdrop-filter: blur(22px);
+  border: 2.5px solid #FACC15;
+  box-shadow:
+    0 20px 46px rgba(4, 38, 44, 0.42),
+    0 0 0 2px rgba(255, 255, 255, 0.85);
+  color: #06393A;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  pointer-events: auto;
+}
+.mp-party-lobby-card.hidden { display: none !important; }
+.mp-lobby-header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.mp-lobby-eyebrow {
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: #064E3B;
+  color: #FEF08A;
+  border: 1px solid #FACC15;
+}
+.mp-lobby-transport-pill {
+  font-size: 10px;
+  font-weight: 800;
+  color: #047857;
+  background: rgba(16, 185, 129, 0.14);
+  padding: 3px 9px;
+  border-radius: 999px;
+  border: 1px solid rgba(16, 185, 129, 0.35);
+}
+.mp-lobby-code-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #064E3B, #0F766E);
+  border: 2px solid #FACC15;
+  color: #FFFFFF;
+}
+.mp-lobby-code-text {
+  font-size: 11px;
+  font-weight: 800;
+  color: #FEF08A;
+}
+.mp-lobby-code-text strong {
+  font-size: 15px;
+  color: #FFFFFF;
+  letter-spacing: 0.08em;
+  margin-left: 4px;
+}
+.mp-lobby-slots-list {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.mp-lobby-slot-row {
+  display: grid;
+  grid-template-columns: 42px 1fr auto;
+  align-items: center;
+  gap: 9px;
+  padding: 7px 10px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.84);
+  border: 1.5px solid rgba(14, 116, 144, 0.22);
+}
+.mp-lobby-slot-row.is-my-slot {
+  border: 2px solid #0D9488;
+  background: #FFFFFF;
+  box-shadow: 0 4px 12px rgba(13, 148, 136, 0.16);
+}
+.mp-lobby-slot-avatar {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2.5px solid var(--slot-clr, #38BDF8);
+  overflow: hidden;
+  background: #0F3D3E;
+}
+.mp-lobby-slot-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.mp-lobby-slot-num {
+  position: absolute;
+  bottom: -1px;
+  right: -1px;
+  font-size: 8.5px;
+  font-weight: 900;
+  padding: 1px 4px;
+  border-radius: 6px;
+  background: #052E2B;
+  color: #FEF08A;
+}
+.mp-lobby-slot-info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.mp-lobby-slot-name {
+  font-size: 12px;
+  font-weight: 800;
+  color: #06393A;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.mp-lobby-slot-sub {
+  font-size: 10px;
+  font-weight: 600;
+  color: #0F766E;
+}
+.mp-lobby-slot-pill {
+  font-size: 9.5px;
+  font-weight: 800;
+  padding: 4px 8px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.mp-lobby-slot-pill.is-human-ready {
+  background: rgba(16, 185, 129, 0.18);
+  color: #047857;
+  border: 1px solid rgba(16, 185, 129, 0.45);
+}
+.mp-lobby-slot-pill.is-ai-bot {
+  background: rgba(245, 158, 11, 0.18);
+  color: #B45309;
+  border: 1px solid rgba(245, 158, 11, 0.45);
+}
+.mp-lobby-slot-pill.is-empty-slot {
+  background: rgba(100, 116, 139, 0.14);
+  color: #475569;
+}
+.mp-ai-backfill-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 7px 11px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.76);
+  border: 1.5px solid rgba(14, 116, 144, 0.22);
+  font-size: 11px;
+  font-weight: 800;
+  color: #06393A;
+}
+.mp-toggle-switch {
+  border: 1.5px solid #0D9488;
+  background: rgba(13, 148, 136, 0.14);
+  color: #065F46;
+  font-size: 10.5px;
+  font-weight: 900;
+  padding: 4px 11px;
+  border-radius: 999px;
+  cursor: pointer;
+}
+.mp-toggle-switch.active {
+  background: linear-gradient(135deg, #10B981, #059669);
+  color: #FFFFFF;
+  border-color: #FEF08A;
+}
+.mp-lobby-emote-bar {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px;
+}
+.btn-mp-emote {
+  padding: 6px 8px;
+  border-radius: 11px;
+  border: 1.5px solid rgba(14, 116, 144, 0.28);
+  background: rgba(255, 255, 255, 0.88);
+  color: #06393A;
+  font-size: 11px;
+  font-weight: 800;
+  cursor: pointer;
+}
+.btn-mp-emote:hover {
+  background: #FEF08A;
+  border-color: #F59E0B;
+}
+.mp-countdown-banner {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 80;
+  min-width: min(440px, 90vw);
+  padding: 20px 28px;
+  border-radius: 28px;
+  text-align: center;
+  background: linear-gradient(160deg, rgba(6, 57, 58, 0.94), rgba(4, 47, 46, 0.96));
+  backdrop-filter: blur(20px);
+  border: 3px solid #FACC15;
+  box-shadow:
+    0 24px 56px rgba(0, 0, 0, 0.55),
+    0 0 36px rgba(250, 204, 21, 0.45);
+  color: #FFFFFF;
+  pointer-events: none;
+}
+.mp-countdown-banner.hidden { display: none !important; }
+.mp-countdown-room-tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  color: #FEF08A;
+  background: rgba(250, 204, 21, 0.16);
+  border: 1px solid rgba(250, 204, 21, 0.5);
+  padding: 4px 12px;
+  border-radius: 999px;
+}
+.mp-countdown-digit {
+  font-size: 74px;
+  font-weight: 900;
+  line-height: 1.05;
+  margin: 6px 0;
+  background: linear-gradient(180deg, #FFFFFF 0%, #FEF08A 55%, #F59E0B 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 6px 18px rgba(250, 204, 21, 0.55));
+}
+.mp-countdown-sub {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #A7F3D0;
+}
+/* ============================================================================
+ * Mobile & Tablet Landscape Responsive Overrides for Multiplayer Lobby & Countdown
+ * ============================================================================ */
+@media (max-width: 1024px) and (orientation: landscape), (max-height: 680px) and (orientation: landscape) {
+  .gameplay-hud:has(#multiplayerPartyLobbyCard:not(.hidden)) > :not(#multiplayerPartyLobbyCard):not(#multiplayerCountdownBanner) {
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+  .mp-party-lobby-card {
+    top: 38px;
+    right: 8px;
+    width: min(390px, 58dvw);
+    max-height: calc(100dvh - 44px);
+    padding: 8px 11px;
+    gap: 5px;
+    border-radius: 16px;
+  }
+  .mp-lobby-code-banner {
+    padding: 4px 9px;
+    border-radius: 10px;
+  }
+  .mp-lobby-slots-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 5px;
+  }
+  .mp-lobby-slot-row {
+    grid-template-columns: 28px 1fr;
+    gap: 6px;
+    padding: 4px 7px;
+    border-radius: 10px;
+  }
+  .mp-lobby-slot-avatar {
+    width: 28px;
+    height: 28px;
+    border-width: 2px;
+  }
+  .mp-lobby-slot-name { font-size: 10.5px; }
+  .mp-lobby-slot-sub,
+  .mp-lobby-slot-pill { display: none !important; }
+  .mp-ai-backfill-row {
+    padding: 4px 8px;
+    font-size: 10px;
+  }
+  .btn-mp-emote {
+    padding: 4px 6px;
+    font-size: 10px;
+  }
+  .mp-party-lobby-card .btn-start-expedition {
+    padding: 6px 10px;
+    font-size: 11px;
+  }
+  .mp-countdown-banner {
+    min-width: min(310px, 78dvw);
+    padding: 10px 16px;
+    border-radius: 18px;
+  }
+  .mp-countdown-digit {
+    font-size: 46px;
+    margin: 2px 0;
+  }
+}

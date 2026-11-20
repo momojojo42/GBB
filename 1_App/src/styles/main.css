@@ -1,0 +1,52 @@
+/* ============================================================================
+   GARDENS BY THE BAY — 3D TREASURE HUNT MASTER STYLESHEET (src/styles/main.css)
+   ============================================================================
+   Modular CSS entry point organized by functional domain:
+   - base/     Design tokens, reset & 3D-projected world labels
+   - admin/    Top navigation bar, auth gate & LookDev Studio panels
+   - hud/      Gameplay HUD, scoreboard, bottom dock, touch controls & podium
+   - screens/  Welcome SG map, title card, lobby, passport gallery & 3D inspector
+   ============================================================================ */
+
+/* 1. Base & World Labels */
+@import './base/variables-base.css';
+@import './base/world-labels.css';
+
+/* 2. Navigation & Admin Workbench */
+@import './admin/navigation-admin.css';
+@import './admin/admin-workbench-panels.css';
+@import './admin/admin-gate-responsive.css';
+
+/* 3. Gameplay HUD & Responsive Controls */
+@import './hud/hud.css';
+@import './hud/hud-onboarding.css';
+@import './hud/hud-scoreboard.css';
+@import './hud/hud-bottom-dock.css';
+@import './hud/hud-camera-and-dock.css';
+@import './hud/hud-popups-bubbles.css';
+@import './hud/hud-endgame-podium.css';
+@import './hud/hud-endgame-leaderboard.css';
+@import './hud/hud-mobile-touch.css';
+@import './hud/hud-touch-controls.css';
+@import './hud/hud-responsive.css';
+@import './hud/hud-responsive-landscape.css';
+
+/* 4. Full-Screen Overlays & Modals */
+@import './screens/modals-screens.css';
+@import './screens/screen-welcome-sgmap.css';
+@import './screens/screen-welcome-carousel.css';
+@import './screens/screen-start-pearl-card.css';
+@import './screens/screen-multiplayer-lobby.css';
+@import './screens/screen-setup-modal.css';
+@import './screens/screen-collection-modal.css';
+@import './screens/screen-collection-cards.css';
+@import './screens/screen-inspector-modal.css';
+@import './screens/screen-tactical-map.css';
+@import './screens/screen-loading-splash.css';
+@import './screens/screen-loading-animations.css';
+@import './screens/screens-responsive.css';
+@import './screens/screens-responsive-modals.css';
+
+/* 5. LookDev Studio Controls */
+@import './admin/lookdev.css';
+@import './admin/lookdev-sliders.css';

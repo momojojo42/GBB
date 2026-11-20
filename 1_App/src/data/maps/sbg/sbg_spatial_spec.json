@@ -1,0 +1,2537 @@
+{
+  "mapId": "sbg",
+  "title": "Singapore Botanic Gardens (UNESCO World Heritage Site, 1859)",
+  "referenceUrl": "https://sbg.nparks.gov.sg/visit/general-info/",
+  "coordinateSystem": {
+    "name": "SBG_NParks_Canonical_1to1_Meters_XZ",
+    "xRangeMeters": [
+      -380.0,
+      380.0
+    ],
+    "zRangeMeters": [
+      -380.0,
+      380.0
+    ],
+    "northDirection": "-Z",
+    "southDirection": "+Z",
+    "svgViewBox": "0 0 2400 2400",
+    "svgTransformFormula": "svg_x = 1200 + x * 3.0, svg_y = 1200 + z * 3.0"
+  },
+  "parkBoundaryPolygon": [
+    [
+      -45.0,
+      -335.0
+    ],
+    [
+      35.0,
+      -332.0
+    ],
+    [
+      135.0,
+      -305.0
+    ],
+    [
+      182.0,
+      -235.0
+    ],
+    [
+      168.0,
+      -135.0
+    ],
+    [
+      198.0,
+      -25.0
+    ],
+    [
+      192.0,
+      55.0
+    ],
+    [
+      178.0,
+      135.0
+    ],
+    [
+      185.0,
+      215.0
+    ],
+    [
+      145.0,
+      295.0
+    ],
+    [
+      55.0,
+      328.0
+    ],
+    [
+      -45.0,
+      318.0
+    ],
+    [
+      -135.0,
+      285.0
+    ],
+    [
+      -215.0,
+      302.0
+    ],
+    [
+      -298.0,
+      285.0
+    ],
+    [
+      -315.0,
+      205.0
+    ],
+    [
+      -285.0,
+      115.0
+    ],
+    [
+      -192.0,
+      88.0
+    ],
+    [
+      -188.0,
+      15.0
+    ],
+    [
+      -185.0,
+      -52.0
+    ],
+    [
+      -142.0,
+      -125.0
+    ],
+    [
+      -148.0,
+      -235.0
+    ],
+    [
+      -105.0,
+      -310.0
+    ]
+  ],
+  "cores": [
+    {
+      "id": "tanglin_core",
+      "number": 1,
+      "name": "Core 1 \u2014 Tanglin Core (1859 Historic Heritage Core)",
+      "shortName": "Tanglin Core",
+      "badge": "CORE 1 \u2022 TANGLIN HERITAGE (SOUTH)",
+      "color": "#10b981",
+      "bounds_m": {
+        "x_min": -140.0,
+        "x_max": 180.0,
+        "z_min": 135.0,
+        "z_max": 325.0
+      },
+      "label_pos_m": [
+        32.0,
+        282.0
+      ],
+      "description": "Historic 1859 pleasure grounds featuring Tanglin Silver Gate, Swan Lake, the 1930 Octagonal Bandstand, the $5-Note Tembusu Tree, and Holttum Hall."
+    },
+    {
+      "id": "central_core",
+      "number": 2,
+      "name": "Core 2 \u2014 Central Core (National Orchid Garden & Palm Valley)",
+      "shortName": "Central Core",
+      "badge": "CORE 2 \u2022 CENTRAL & ORCHID PLATEAU",
+      "color": "#f59e0b",
+      "bounds_m": {
+        "x_min": -185.0,
+        "x_max": 195.0,
+        "z_min": -115.0,
+        "z_max": 125.0
+      },
+      "label_pos_m": [
+        20.0,
+        -92.0
+      ],
+      "description": "Mid-spine heart with Nassim Gate Visitor Centre, Symphony Lake & Shaw Stage, National Orchid Garden (Burkill Hall, Cool House, Mist House), Ginger Waterfall, and 6-ha Primary Rainforest."
+    },
+    {
+      "id": "tyersall_gallop_core",
+      "number": 3,
+      "name": "Core 3 \u2014 Tyersall\u2013Gallop Extension (Learning Forest & Colonial Ridges)",
+      "shortName": "Tyersall\u2013Gallop",
+      "badge": "CORE 3 \u2022 TYERSALL\u2013GALLOP WING (SW)",
+      "color": "#38bdf8",
+      "bounds_m": {
+        "x_min": -310.0,
+        "x_max": -145.0,
+        "z_min": 95.0,
+        "z_max": 295.0
+      },
+      "label_pos_m": [
+        -232.0,
+        115.0
+      ],
+      "description": "South-West forest wing with Keppel Discovery Wetlands, SPH Walk of Giants Canopy Boardwalk, 1898 Atbara House, 1906 Inverturret Gallery, and COMO Adventure Grove."
+    },
+    {
+      "id": "bukit_timah_core",
+      "number": 4,
+      "name": "Core 4 \u2014 Bukit Timah Core (Eco-Lake & Jacob Ballas Children's Garden)",
+      "shortName": "Bukit Timah Core",
+      "badge": "CORE 4 \u2022 BUKIT TIMAH CORE (NORTH)",
+      "color": "#a855f7",
+      "bounds_m": {
+        "x_min": -145.0,
+        "x_max": 175.0,
+        "z_min": -325.0,
+        "z_max": -120.0
+      },
+      "label_pos_m": [
+        15.0,
+        -295.0
+      ],
+      "description": "Northern academic and family core anchored by Eco-Lake Black-Necked Swans Sanctuary, Foliage & Evolution Garden, Jacob Ballas Children's Garden, and Bukit Timah MRT Gate."
+    }
+  ],
+  "lakes": [
+    {
+      "id": "swan_lake",
+      "name": "Swan Lake (1866 Heritage Lake)",
+      "coreId": "tanglin_core",
+      "isPrimaryLake": true,
+      "lakeNumber": 1,
+      "cx": -10.0,
+      "cz": 215.0,
+      "rx": 45.0,
+      "rz": 40.0,
+      "bounds_m": {
+        "x_min": -55.0,
+        "x_max": 35.0,
+        "z_min": 175.0,
+        "z_max": 255.0
+      },
+      "waterHex": "#0ea5e9",
+      "deepHex": "#0284c7",
+      "islands": [
+        {
+          "id": "swan_nest_island",
+          "name": "Swan Nest Island",
+          "cx": -14.0,
+          "cz": 196.0,
+          "rx": 9.5,
+          "rz": 7.0
+        }
+      ],
+      "polygon_m": [
+        [
+          -52.0,
+          192.0
+        ],
+        [
+          -36.0,
+          177.0
+        ],
+        [
+          -10.0,
+          175.0
+        ],
+        [
+          18.0,
+          179.0
+        ],
+        [
+          34.0,
+          196.0
+        ],
+        [
+          35.0,
+          218.0
+        ],
+        [
+          26.0,
+          242.0
+        ],
+        [
+          4.0,
+          254.0
+        ],
+        [
+          -24.0,
+          255.0
+        ],
+        [
+          -46.0,
+          243.0
+        ],
+        [
+          -55.0,
+          222.0
+        ],
+        [
+          -54.0,
+          205.0
+        ]
+      ]
+    },
+    {
+      "id": "symphony_lake",
+      "name": "Symphony Lake (Palm Valley Lotus Lake)",
+      "coreId": "central_core",
+      "isPrimaryLake": true,
+      "lakeNumber": 2,
+      "cx": 23.5,
+      "cz": -20.0,
+      "rx": 48.5,
+      "rz": 55.0,
+      "bounds_m": {
+        "x_min": -25.0,
+        "x_max": 72.0,
+        "z_min": -75.0,
+        "z_max": 35.0
+      },
+      "waterHex": "#06b6d4",
+      "deepHex": "#0891b2",
+      "islands": [
+        {
+          "id": "symphony_stage_islet",
+          "name": "Shaw Symphony Stage Islet",
+          "cx": 18.0,
+          "cz": -22.0,
+          "rx": 14.0,
+          "rz": 11.5
+        }
+      ],
+      "polygon_m": [
+        [
+          -22.0,
+          -52.0
+        ],
+        [
+          -4.0,
+          -72.0
+        ],
+        [
+          24.0,
+          -75.0
+        ],
+        [
+          54.0,
+          -66.0
+        ],
+        [
+          70.0,
+          -42.0
+        ],
+        [
+          72.0,
+          -12.0
+        ],
+        [
+          64.0,
+          18.0
+        ],
+        [
+          42.0,
+          34.0
+        ],
+        [
+          12.0,
+          35.0
+        ],
+        [
+          -14.0,
+          24.0
+        ],
+        [
+          -25.0,
+          -4.0
+        ],
+        [
+          -24.0,
+          -30.0
+        ]
+      ]
+    },
+    {
+      "id": "eco_lake",
+      "name": "Eco-Lake (Black-Necked Swans Sanctuary)",
+      "coreId": "bukit_timah_core",
+      "isPrimaryLake": true,
+      "lakeNumber": 3,
+      "cx": 5.0,
+      "cz": -215.0,
+      "rx": 50.0,
+      "rz": 50.0,
+      "bounds_m": {
+        "x_min": -45.0,
+        "x_max": 55.0,
+        "z_min": -265.0,
+        "z_max": -165.0
+      },
+      "waterHex": "#14b8a6",
+      "deepHex": "#0d9488",
+      "islands": [
+        {
+          "id": "black_swan_islet",
+          "name": "Black-Necked Swans Nesting Islet",
+          "cx": 6.0,
+          "cz": -218.0,
+          "rx": 11.0,
+          "rz": 8.5
+        }
+      ],
+      "polygon_m": [
+        [
+          -42.0,
+          -242.0
+        ],
+        [
+          -20.0,
+          -262.0
+        ],
+        [
+          10.0,
+          -265.0
+        ],
+        [
+          38.0,
+          -256.0
+        ],
+        [
+          54.0,
+          -234.0
+        ],
+        [
+          55.0,
+          -206.0
+        ],
+        [
+          44.0,
+          -178.0
+        ],
+        [
+          18.0,
+          -165.0
+        ],
+        [
+          -14.0,
+          -166.0
+        ],
+        [
+          -38.0,
+          -180.0
+        ],
+        [
+          -45.0,
+          -208.0
+        ],
+        [
+          -44.0,
+          -228.0
+        ]
+      ]
+    },
+    {
+      "id": "keppel_wetlands",
+      "name": "Keppel Discovery Wetlands (Pulai Marsh)",
+      "coreId": "tyersall_gallop_core",
+      "isPrimaryLake": false,
+      "lakeNumber": 4,
+      "cx": -215.0,
+      "cz": 155.0,
+      "rx": 26.0,
+      "rz": 21.0,
+      "bounds_m": {
+        "x_min": -241.0,
+        "x_max": -189.0,
+        "z_min": 134.0,
+        "z_max": 176.0
+      },
+      "waterHex": "#10b981",
+      "deepHex": "#059669",
+      "islands": [],
+      "polygon_m": [
+        [
+          -190.7,
+          155.0
+        ],
+        [
+          -192.6,
+          162.5
+        ],
+        [
+          -196.0,
+          170.4
+        ],
+        [
+          -204.6,
+          175.3
+        ],
+        [
+          -215.0,
+          176.3
+        ],
+        [
+          -224.9,
+          174.4
+        ],
+        [
+          -232.3,
+          169.0
+        ],
+        [
+          -237.9,
+          162.7
+        ],
+        [
+          -242.7,
+          155.0
+        ],
+        [
+          -240.6,
+          146.4
+        ],
+        [
+          -232.8,
+          140.7
+        ],
+        [
+          -224.5,
+          136.5
+        ],
+        [
+          -215.0,
+          134.3
+        ],
+        [
+          -205.0,
+          135.6
+        ],
+        [
+          -195.6,
+          139.3
+        ],
+        [
+          -189.8,
+          146.6
+        ]
+      ]
+    },
+    {
+      "id": "ginger_pool",
+      "name": "Ginger Waterfall & Halia Pool",
+      "coreId": "central_core",
+      "isPrimaryLake": false,
+      "lakeNumber": 5,
+      "cx": -72.0,
+      "cz": 98.0,
+      "rx": 12.0,
+      "rz": 10.0,
+      "bounds_m": {
+        "x_min": -84.0,
+        "x_max": -60.0,
+        "z_min": 88.0,
+        "z_max": 108.0
+      },
+      "waterHex": "#2dd4bf",
+      "deepHex": "#0f766e",
+      "islands": [],
+      "polygon_m": [
+        [
+          -59.4,
+          98.0
+        ],
+        [
+          -60.7,
+          102.5
+        ],
+        [
+          -64.8,
+          105.6
+        ],
+        [
+          -69.4,
+          107.5
+        ],
+        [
+          -74.6,
+          107.6
+        ],
+        [
+          -79.7,
+          106.1
+        ],
+        [
+          -83.4,
+          102.6
+        ],
+        [
+          -83.4,
+          98.0
+        ],
+        [
+          -82.3,
+          93.9
+        ],
+        [
+          -79.7,
+          89.9
+        ],
+        [
+          -74.7,
+          88.0
+        ],
+        [
+          -69.3,
+          88.1
+        ],
+        [
+          -64.8,
+          90.4
+        ],
+        [
+          -61.8,
+          93.9
+        ]
+      ]
+    }
+  ],
+  "buildings": [
+    {
+      "id": "bandstand_1930",
+      "glbNode": "SBG_Bandstand_Gazebo_1930",
+      "name": "Iconic 1930 Octagonal Bandstand",
+      "coreId": "tanglin_core",
+      "x": 25.0,
+      "z": 145.0,
+      "rx": 11.0,
+      "rz": 11.0,
+      "rotY": 0.0,
+      "enterable": false,
+      "openAirPavilion": true,
+      "color": "#f8fafc",
+      "accentColor": "#10b981"
+    },
+    {
+      "id": "botany_centre_holttum_hall",
+      "glbNode": "SBG_Botany_Centre_Holttum_Hall",
+      "name": "Botany Centre & Holttum Hall (1921 Heritage Museum)",
+      "coreId": "tanglin_core",
+      "x": 88.0,
+      "z": 255.0,
+      "rx": 16.0,
+      "rz": 13.0,
+      "rotY": -0.25,
+      "enterable": true,
+      "openAirPavilion": false,
+      "doorWorldAngle": -1.57,
+      "doorHalfAngle": 0.44,
+      "portalHeight": 3.2,
+      "portalColor": "#fbbf24",
+      "color": "#d97706",
+      "accentColor": "#fef3c7"
+    },
+    {
+      "id": "burkill_hall_1868",
+      "glbNode": "SBG_Burkill_Hall_1868",
+      "name": "Burkill Hall (1868 Anglo-Malayan Plantation Manor)",
+      "coreId": "central_core",
+      "x": -125.0,
+      "z": 18.0,
+      "rx": 15.0,
+      "rz": 12.0,
+      "rotY": 0.2,
+      "enterable": true,
+      "openAirPavilion": false,
+      "doorWorldAngle": 1.57,
+      "doorHalfAngle": 0.42,
+      "portalHeight": 3.4,
+      "portalColor": "#f59e0b",
+      "color": "#f8fafc",
+      "accentColor": "#c2410c"
+    },
+    {
+      "id": "sembcorp_cool_house",
+      "glbNode": "SBG_Sembcorp_Cool_House",
+      "name": "Sembcorp Cool House (Glass Montane Orchidetum)",
+      "coreId": "central_core",
+      "x": -158.0,
+      "z": -28.0,
+      "rx": 18.0,
+      "rz": 14.0,
+      "rotY": -0.3,
+      "enterable": true,
+      "openAirPavilion": false,
+      "doorWorldAngle": 1.57,
+      "doorHalfAngle": 0.38,
+      "portalHeight": 3.6,
+      "portalColor": "#38bdf8",
+      "color": "#38bdf8",
+      "accentColor": "#e0f2fe"
+    },
+    {
+      "id": "tan_hoon_siang_mist_house",
+      "glbNode": "SBG_Tan_Hoon_Siang_Mist_House",
+      "name": "Tan Hoon Siang Mist House & Golden Shower Arches",
+      "coreId": "central_core",
+      "x": -88.0,
+      "z": 52.0,
+      "rx": 13.0,
+      "rz": 11.0,
+      "rotY": 0.35,
+      "enterable": true,
+      "openAirPavilion": true,
+      "doorWorldAngle": 0.0,
+      "doorHalfAngle": 0.45,
+      "portalHeight": 3.0,
+      "portalColor": "#facc15",
+      "color": "#fbbf24",
+      "accentColor": "#fef08a"
+    },
+    {
+      "id": "shaw_symphony_stage",
+      "glbNode": "SBG_Shaw_Symphony_Stage",
+      "name": "Shaw Foundation Symphony Stage",
+      "coreId": "central_core",
+      "x": 18.0,
+      "z": -22.0,
+      "rx": 13.0,
+      "rz": 10.5,
+      "rotY": 0.0,
+      "enterable": false,
+      "openAirPavilion": true,
+      "color": "#f8fafc",
+      "accentColor": "#ec4899"
+    },
+    {
+      "id": "atbara_house_1898",
+      "glbNode": "SBG_Atbara_House_1898",
+      "name": "Atbara House (1898 Black-and-White Forest Discovery Centre)",
+      "coreId": "tyersall_gallop_core",
+      "x": -275.0,
+      "z": 245.0,
+      "rx": 14.0,
+      "rz": 12.0,
+      "rotY": 0.15,
+      "enterable": true,
+      "openAirPavilion": false,
+      "doorWorldAngle": 1.57,
+      "doorHalfAngle": 0.44,
+      "portalHeight": 3.0,
+      "portalColor": "#10b981",
+      "color": "#f8fafc",
+      "accentColor": "#1e293b"
+    },
+    {
+      "id": "inverturret_gallery_1906",
+      "glbNode": "SBG_Inverturret_Gallery_1906",
+      "name": "Inverturret (1906 Botanical Art Gallery Bungalow)",
+      "coreId": "tyersall_gallop_core",
+      "x": -242.0,
+      "z": 278.0,
+      "rx": 13.0,
+      "rz": 11.0,
+      "rotY": -0.18,
+      "enterable": true,
+      "openAirPavilion": false,
+      "doorWorldAngle": 0.0,
+      "doorHalfAngle": 0.44,
+      "portalHeight": 3.0,
+      "portalColor": "#38bdf8",
+      "color": "#f8fafc",
+      "accentColor": "#c2410c"
+    }
+  ],
+  "enterablePortals": [
+    {
+      "id": "botany_centre_holttum_hall",
+      "glbNode": "SBG_Botany_Centre_Holttum_Hall",
+      "name": "Botany Centre & Holttum Hall (1921 Heritage Museum)",
+      "coreId": "tanglin_core",
+      "x": 88.0,
+      "z": 255.0,
+      "rx": 16.0,
+      "rz": 13.0,
+      "rotY": -0.25,
+      "enterable": true,
+      "openAirPavilion": false,
+      "doorWorldAngle": -1.57,
+      "doorHalfAngle": 0.44,
+      "portalHeight": 3.2,
+      "portalColor": "#fbbf24",
+      "color": "#d97706",
+      "accentColor": "#fef3c7"
+    },
+    {
+      "id": "burkill_hall_1868",
+      "glbNode": "SBG_Burkill_Hall_1868",
+      "name": "Burkill Hall (1868 Anglo-Malayan Plantation Manor)",
+      "coreId": "central_core",
+      "x": -125.0,
+      "z": 18.0,
+      "rx": 15.0,
+      "rz": 12.0,
+      "rotY": 0.2,
+      "enterable": true,
+      "openAirPavilion": false,
+      "doorWorldAngle": 1.57,
+      "doorHalfAngle": 0.42,
+      "portalHeight": 3.4,
+      "portalColor": "#f59e0b",
+      "color": "#f8fafc",
+      "accentColor": "#c2410c"
+    },
+    {
+      "id": "sembcorp_cool_house",
+      "glbNode": "SBG_Sembcorp_Cool_House",
+      "name": "Sembcorp Cool House (Glass Montane Orchidetum)",
+      "coreId": "central_core",
+      "x": -158.0,
+      "z": -28.0,
+      "rx": 18.0,
+      "rz": 14.0,
+      "rotY": -0.3,
+      "enterable": true,
+      "openAirPavilion": false,
+      "doorWorldAngle": 1.57,
+      "doorHalfAngle": 0.38,
+      "portalHeight": 3.6,
+      "portalColor": "#38bdf8",
+      "color": "#38bdf8",
+      "accentColor": "#e0f2fe"
+    },
+    {
+      "id": "tan_hoon_siang_mist_house",
+      "glbNode": "SBG_Tan_Hoon_Siang_Mist_House",
+      "name": "Tan Hoon Siang Mist House & Golden Shower Arches",
+      "coreId": "central_core",
+      "x": -88.0,
+      "z": 52.0,
+      "rx": 13.0,
+      "rz": 11.0,
+      "rotY": 0.35,
+      "enterable": true,
+      "openAirPavilion": true,
+      "doorWorldAngle": 0.0,
+      "doorHalfAngle": 0.45,
+      "portalHeight": 3.0,
+      "portalColor": "#facc15",
+      "color": "#fbbf24",
+      "accentColor": "#fef08a"
+    },
+    {
+      "id": "atbara_house_1898",
+      "glbNode": "SBG_Atbara_House_1898",
+      "name": "Atbara House (1898 Black-and-White Forest Discovery Centre)",
+      "coreId": "tyersall_gallop_core",
+      "x": -275.0,
+      "z": 245.0,
+      "rx": 14.0,
+      "rz": 12.0,
+      "rotY": 0.15,
+      "enterable": true,
+      "openAirPavilion": false,
+      "doorWorldAngle": 1.57,
+      "doorHalfAngle": 0.44,
+      "portalHeight": 3.0,
+      "portalColor": "#10b981",
+      "color": "#f8fafc",
+      "accentColor": "#1e293b"
+    },
+    {
+      "id": "inverturret_gallery_1906",
+      "glbNode": "SBG_Inverturret_Gallery_1906",
+      "name": "Inverturret (1906 Botanical Art Gallery Bungalow)",
+      "coreId": "tyersall_gallop_core",
+      "x": -242.0,
+      "z": 278.0,
+      "rx": 13.0,
+      "rz": 11.0,
+      "rotY": -0.18,
+      "enterable": true,
+      "openAirPavilion": false,
+      "doorWorldAngle": 0.0,
+      "doorHalfAngle": 0.44,
+      "portalHeight": 3.0,
+      "portalColor": "#38bdf8",
+      "color": "#f8fafc",
+      "accentColor": "#c2410c"
+    }
+  ],
+  "gatesBridgesSculptures": [
+    {
+      "id": "tanglin_silver_gate",
+      "glbNode": "SBG_Tanglin_Silver_Gate",
+      "name": "Tanglin Gate (Silver Foliage Gate)",
+      "category": "gate",
+      "coreId": "tanglin_core",
+      "x": 45.0,
+      "z": 305.0,
+      "r": 7.5
+    },
+    {
+      "id": "swan_lake_gazebo_bridge",
+      "glbNode": "SBG_Swan_Lake_Gazebo_Bridge",
+      "name": "Swan Lake Victorian Gazebo Bridge",
+      "category": "bridge",
+      "coreId": "tanglin_core",
+      "x": -10.0,
+      "z": 212.0,
+      "r": 8.0
+    },
+    {
+      "id": "flight_of_swans_sculpture",
+      "glbNode": "SBG_Flight_Of_Swans_Sculpture",
+      "name": "Flight of Swans Bronze Sculpture",
+      "category": "sculpture",
+      "coreId": "tanglin_core",
+      "x": -18.0,
+      "z": 228.0,
+      "r": 4.5
+    },
+    {
+      "id": "sundial_bonsai_pergola",
+      "glbNode": "SBG_Sundial_Bonsai_Pergola",
+      "name": "1929 Victorian Sundial & Bonsai Pergola",
+      "category": "sculpture",
+      "coreId": "tanglin_core",
+      "x": 112.0,
+      "z": 160.0,
+      "r": 9.0
+    },
+    {
+      "id": "nassim_gate_clock_tower",
+      "glbNode": "SBG_Nassim_Gate_Clock_Tower",
+      "name": "Nassim Gate Visitor Centre & Clock Tower",
+      "category": "gate",
+      "coreId": "central_core",
+      "x": 128.0,
+      "z": 35.0,
+      "r": 11.0
+    },
+    {
+      "id": "ginger_cavern_waterfall",
+      "glbNode": "SBG_Ginger_Cavern_Waterfall",
+      "name": "Ginger Garden Walk-Behind Cavern Waterfall",
+      "category": "sculpture",
+      "coreId": "central_core",
+      "x": -72.0,
+      "z": 98.0,
+      "r": 10.0
+    },
+    {
+      "id": "chopin_memorial_sculpture",
+      "glbNode": "SBG_Chopin_Memorial_Sculpture",
+      "name": "Fr\u00e9d\u00e9ric Chopin 2008 Bronze Memorial Statue",
+      "category": "sculpture",
+      "coreId": "central_core",
+      "x": 32.0,
+      "z": 46.0,
+      "r": 4.5
+    },
+    {
+      "id": "walk_of_giants_boardwalk",
+      "glbNode": "SBG_Walk_Of_Giants_Boardwalk",
+      "name": "SPH Walk of Giants Elevated Canopy Boardwalk",
+      "category": "bridge",
+      "coreId": "tyersall_gallop_core",
+      "x": -235.0,
+      "z": 205.0,
+      "r": 12.0
+    },
+    {
+      "id": "como_cempedak_play_pod",
+      "glbNode": "SBG_Como_Cempedak_Play_Pod",
+      "name": "COMO Adventure Grove (Giant Cempedak Play Pod)",
+      "category": "sculpture",
+      "coreId": "tyersall_gallop_core",
+      "x": -182.0,
+      "z": 258.0,
+      "r": 10.0
+    },
+    {
+      "id": "jacob_ballas_treehouse_bridge",
+      "glbNode": "SBG_Jacob_Ballas_Treehouse_Bridge",
+      "name": "Jacob Ballas Children's Garden & Suspension Treehouse Bridge",
+      "category": "bridge",
+      "coreId": "bukit_timah_core",
+      "x": 95.0,
+      "z": -278.0,
+      "r": 13.0
+    }
+  ],
+  "entranceGates": [
+    {
+      "id": "tanglin_gate",
+      "name": "Tanglin Gate (Silver Gate South)",
+      "coreId": "tanglin_core",
+      "x": 45.0,
+      "z": 305.0
+    },
+    {
+      "id": "nassim_gate",
+      "name": "Nassim Gate Visitor Centre (East)",
+      "coreId": "central_core",
+      "x": 128.0,
+      "z": 35.0
+    },
+    {
+      "id": "gallop_gate",
+      "name": "Gallop Gate (South-West)",
+      "coreId": "tyersall_gallop_core",
+      "x": -242.0,
+      "z": 292.0
+    },
+    {
+      "id": "bukit_timah_gate",
+      "name": "Bukit Timah Gate (Botanic Gardens MRT North)",
+      "coreId": "bukit_timah_core",
+      "x": -12.0,
+      "z": -312.0
+    }
+  ],
+  "walkableBridges": [
+    {
+      "id": "swan_lake_gazebo_bridge",
+      "name": "Swan Lake Gazebo Bridge",
+      "coreId": "tanglin_core",
+      "ax": -56.0,
+      "az": 212.0,
+      "bx": 36.0,
+      "bz": 212.0,
+      "cx": -10.0,
+      "cz": 212.0,
+      "halfWidth": 4.5,
+      "archHeight": 1.25,
+      "style": "victorian_gazebo_bridge"
+    },
+    {
+      "id": "symphony_lake_bridge",
+      "name": "Symphony Lake Palm Valley Bridge",
+      "coreId": "central_core",
+      "ax": -26.0,
+      "az": -12.0,
+      "bx": 73.0,
+      "bz": -12.0,
+      "cx": 23.5,
+      "cz": -12.0,
+      "halfWidth": 4.2,
+      "archHeight": 0.95,
+      "style": "timber_arch"
+    },
+    {
+      "id": "keppel_wetlands_boardwalk",
+      "name": "Keppel Discovery Wetlands Timber Boardwalk",
+      "coreId": "tyersall_gallop_core",
+      "ax": -244.0,
+      "az": 155.0,
+      "bx": -186.0,
+      "bz": 155.0,
+      "cx": -215.0,
+      "cz": 155.0,
+      "halfWidth": 4.0,
+      "archHeight": 0.45,
+      "style": "wetlands_boardwalk"
+    },
+    {
+      "id": "walk_of_giants_boardwalk",
+      "name": "SPH Walk of Giants Elevated Canopy Boardwalk",
+      "coreId": "tyersall_gallop_core",
+      "ax": -262.0,
+      "az": 192.0,
+      "bx": -208.0,
+      "bz": 218.0,
+      "cx": -235.0,
+      "cz": 205.0,
+      "halfWidth": 4.5,
+      "archHeight": 2.4,
+      "style": "canopy_skywalk"
+    },
+    {
+      "id": "jacob_ballas_suspension_bridge",
+      "name": "Jacob Ballas Suspension Treehouse Bridge",
+      "coreId": "bukit_timah_core",
+      "ax": 68.0,
+      "az": -278.0,
+      "bx": 122.0,
+      "bz": -278.0,
+      "cx": 95.0,
+      "cz": -278.0,
+      "halfWidth": 4.0,
+      "archHeight": 1.6,
+      "style": "suspension_bridge"
+    }
+  ],
+  "heritageTreesFlora": [
+    {
+      "id": "tembusu_five_dollar_hero",
+      "glbNode": "SBG_Tembusu_Five_Dollar_Hero",
+      "name": "Five-Dollar Note Heritage Tembusu Tree (Lawn E #6)",
+      "species": "Cyrtophyllum fragrans",
+      "coreId": "tanglin_core",
+      "x": 32.5,
+      "z": 175.0,
+      "gameX": 6.5,
+      "gameZ": 35.0,
+      "r": 7.5,
+      "height_m": 32.0,
+      "hero": true
+    },
+    {
+      "id": "bandstand_rain_tree_monarch",
+      "glbNode": "SBG_Rain_Tree_Monarch",
+      "name": "Bandstand Hill Heritage Rain Tree Ring",
+      "species": "Samanea saman",
+      "coreId": "tanglin_core",
+      "x": 25.0,
+      "z": 132.0,
+      "r": 7.0,
+      "height_m": 30.0,
+      "hero": true
+    },
+    {
+      "id": "golden_shower_orchid_arches",
+      "glbNode": "SBG_Golden_Shower_Orchid_Arch",
+      "name": "Golden Shower Orchid Arches (Oncidium Goldiana)",
+      "species": "Oncidium Goldiana",
+      "coreId": "central_core",
+      "x": -95.0,
+      "z": 38.0,
+      "r": 6.5,
+      "height_m": 6.0,
+      "hero": false
+    },
+    {
+      "id": "primary_rainforest_trail",
+      "glbNode": "SBG_Rainforest_Dipterocarp_Giant",
+      "name": "6-Hectare Primary Rain Forest Trail",
+      "species": "Shorea & Dyera costulata (Jelutong)",
+      "coreId": "central_core",
+      "x": 125.0,
+      "z": 85.0,
+      "r": 32.0,
+      "height_m": 48.0,
+      "hero": true
+    },
+    {
+      "id": "palm_valley_coco_de_mer",
+      "glbNode": "SBG_Palm_Valley_Talipot_Grove",
+      "name": "Palm Valley Talipot & Double Coconut Grove",
+      "species": "Lodoicea maldivica & Corypha umbraculifera",
+      "coreId": "central_core",
+      "x": 85.0,
+      "z": -18.0,
+      "r": 14.0,
+      "height_m": 24.0,
+      "hero": false
+    },
+    {
+      "id": "learning_forest_kapok_giant",
+      "glbNode": "SBG_Kapok_Buttress_Giant",
+      "name": "Learning Forest & Keppel Discovery Wetlands",
+      "species": "Ceiba pentandra & Alstonia pneumatophora",
+      "coreId": "tyersall_gallop_core",
+      "x": -215.0,
+      "z": 155.0,
+      "r": 18.0,
+      "height_m": 42.0,
+      "hero": true
+    },
+    {
+      "id": "gallop_arboretum_dipterocarps",
+      "glbNode": "SBG_Gallop_Arboretum_Tree",
+      "name": "Gallop Arboretum & Pre-War Dipterocarp Sanctuary",
+      "species": "Dipterocarpaceae Collection",
+      "coreId": "tyersall_gallop_core",
+      "x": -255.0,
+      "z": 262.0,
+      "r": 12.0,
+      "height_m": 34.0,
+      "hero": false
+    },
+    {
+      "id": "foliage_evolution_garden_spine",
+      "glbNode": "SBG_Evolution_Cycad_Tree_Fern",
+      "name": "Foliage Valley & Bamboo / Evolution Garden Spine",
+      "species": "Cycas rumphii & Sphaeropteris glauca",
+      "coreId": "bukit_timah_core",
+      "x": 82.0,
+      "z": -155.0,
+      "r": 22.0,
+      "height_m": 18.0,
+      "hero": false
+    },
+    {
+      "id": "eco_lake_fig_hornbill_sanctuary",
+      "glbNode": "SBG_Eco_Lake_Fig_Sanctuary",
+      "name": "Eco-Lake Weeping Fig & Hornbill Sanctuary",
+      "species": "Ficus benjamina & Taxodium distichum",
+      "coreId": "bukit_timah_core",
+      "x": -58.0,
+      "z": -215.0,
+      "r": 14.0,
+      "height_m": 26.0,
+      "hero": false
+    }
+  ],
+  "pathways": [
+    {
+      "id": "north_south_unesco_grand_spine",
+      "name": "Main North\u2013South UNESCO Heritage Spine (Tanglin Gate -> Bandstand -> Palm Valley -> Eco-Lake -> Bukit Timah MRT Gate)",
+      "width_m": 9.0,
+      "points_m": [
+        [
+          45.0,
+          305.0
+        ],
+        [
+          42.0,
+          265.0
+        ],
+        [
+          48.0,
+          212.0
+        ],
+        [
+          25.0,
+          162.0
+        ],
+        [
+          25.0,
+          145.0
+        ],
+        [
+          22.0,
+          95.0
+        ],
+        [
+          18.0,
+          56.0
+        ],
+        [
+          -12.0,
+          54.0
+        ],
+        [
+          -38.0,
+          8.0
+        ],
+        [
+          -36.0,
+          -55.0
+        ],
+        [
+          12.0,
+          -98.0
+        ],
+        [
+          25.0,
+          -142.0
+        ],
+        [
+          68.0,
+          -185.0
+        ],
+        [
+          78.0,
+          -215.0
+        ],
+        [
+          55.0,
+          -272.0
+        ],
+        [
+          18.0,
+          -292.0
+        ],
+        [
+          -12.0,
+          -312.0
+        ]
+      ]
+    },
+    {
+      "id": "tanglin_core_swan_lake_loop",
+      "name": "Tanglin Core, Lawn E Tembusu (+32.5,+175m), Swan Lake & Holttum Hall Heritage Loop",
+      "width_m": 7.5,
+      "points_m": [
+        [
+          45.0,
+          305.0
+        ],
+        [
+          68.0,
+          298.0
+        ],
+        [
+          62.0,
+          268.0
+        ],
+        [
+          88.0,
+          255.0
+        ],
+        [
+          112.0,
+          248.0
+        ],
+        [
+          112.0,
+          182.0
+        ],
+        [
+          112.0,
+          160.0
+        ],
+        [
+          55.0,
+          167.0
+        ],
+        [
+          32.5,
+          175.0
+        ],
+        [
+          25.0,
+          145.0
+        ],
+        [
+          -5.0,
+          152.0
+        ],
+        [
+          -47.5,
+          175.0
+        ],
+        [
+          -68.0,
+          212.0
+        ],
+        [
+          -45.0,
+          268.0
+        ],
+        [
+          25.0,
+          295.0
+        ],
+        [
+          45.0,
+          305.0
+        ]
+      ]
+    },
+    {
+      "id": "national_orchid_garden_plateau_loop",
+      "name": "National Orchid Garden Plateau Trail (Mist House -> Burkill Hall -> Cool House -> Bromeliads -> Ginger Waterfall)",
+      "width_m": 7.0,
+      "points_m": [
+        [
+          -38.0,
+          8.0
+        ],
+        [
+          -62.0,
+          12.0
+        ],
+        [
+          -92.0,
+          24.0
+        ],
+        [
+          -88.0,
+          52.0
+        ],
+        [
+          -64.0,
+          52.0
+        ],
+        [
+          -45.0,
+          96.0
+        ],
+        [
+          -72.0,
+          98.0
+        ],
+        [
+          -102.0,
+          92.0
+        ],
+        [
+          -148.0,
+          48.0
+        ],
+        [
+          -125.0,
+          18.0
+        ],
+        [
+          -125.0,
+          -6.0
+        ],
+        [
+          -158.0,
+          -28.0
+        ],
+        [
+          -132.0,
+          -28.0
+        ],
+        [
+          -105.0,
+          -12.0
+        ],
+        [
+          -62.0,
+          12.0
+        ]
+      ]
+    },
+    {
+      "id": "central_nassim_rainforest_loop",
+      "name": "Nassim Gate, Primary Rain Forest & Palm Valley East Loop",
+      "width_m": 7.5,
+      "points_m": [
+        [
+          25.0,
+          145.0
+        ],
+        [
+          68.0,
+          195.0
+        ],
+        [
+          96.0,
+          108.0
+        ],
+        [
+          142.0,
+          85.0
+        ],
+        [
+          105.0,
+          68.0
+        ],
+        [
+          128.0,
+          35.0
+        ],
+        [
+          102.0,
+          22.0
+        ],
+        [
+          92.0,
+          -28.0
+        ],
+        [
+          78.0,
+          -78.0
+        ],
+        [
+          12.0,
+          -98.0
+        ]
+      ]
+    },
+    {
+      "id": "tyersall_gallop_learning_forest_trail",
+      "name": "Tyersall\u2013Gallop Extension, Learning Forest, Walk of Giants & Colonial Houses Trail",
+      "width_m": 7.0,
+      "points_m": [
+        [
+          -68.0,
+          212.0
+        ],
+        [
+          -135.0,
+          185.0
+        ],
+        [
+          -168.0,
+          145.0
+        ],
+        [
+          -186.0,
+          155.0
+        ],
+        [
+          -244.0,
+          155.0
+        ],
+        [
+          -258.0,
+          155.0
+        ],
+        [
+          -262.0,
+          192.0
+        ],
+        [
+          -235.0,
+          205.0
+        ],
+        [
+          -275.0,
+          245.0
+        ],
+        [
+          -252.0,
+          235.0
+        ],
+        [
+          -242.0,
+          278.0
+        ],
+        [
+          -212.0,
+          272.0
+        ],
+        [
+          -182.0,
+          284.0
+        ],
+        [
+          -182.0,
+          258.0
+        ],
+        [
+          -165.0,
+          232.0
+        ],
+        [
+          -195.0,
+          205.0
+        ],
+        [
+          -135.0,
+          185.0
+        ]
+      ]
+    },
+    {
+      "id": "bukit_timah_ecolake_children_loop",
+      "name": "Bukit Timah Core, Eco-Lake West Bank, Evolution Garden & Jacob Ballas Loop",
+      "width_m": 7.0,
+      "points_m": [
+        [
+          25.0,
+          -142.0
+        ],
+        [
+          82.0,
+          -155.0
+        ],
+        [
+          108.0,
+          -155.0
+        ],
+        [
+          98.0,
+          -225.0
+        ],
+        [
+          95.0,
+          -278.0
+        ],
+        [
+          68.0,
+          -282.0
+        ],
+        [
+          18.0,
+          -292.0
+        ],
+        [
+          -12.0,
+          -312.0
+        ],
+        [
+          -52.0,
+          -282.0
+        ],
+        [
+          -68.0,
+          -252.0
+        ],
+        [
+          -72.0,
+          -195.0
+        ],
+        [
+          -48.0,
+          -152.0
+        ],
+        [
+          25.0,
+          -142.0
+        ]
+      ]
+    }
+  ],
+  "relics": [
+    {
+      "id": 1,
+      "name": "Vanda Miss Joaquim 1893 Hybrid Gold Brooch",
+      "shortName": "1893 Vanda Miss Joaquim",
+      "coreId": "tanglin_core",
+      "zoneId": "supertree",
+      "zoneName": "Tanglin Core",
+      "category": "orchid",
+      "icon": "\ud83c\udf38",
+      "x": 16.0,
+      "z": 162.0,
+      "isLandmarkRelic": true,
+      "glbModel": "Relic_01",
+      "sbgGlbModel": "SBG_Relic_01",
+      "world_xz": [
+        3.2,
+        32.4
+      ],
+      "svg_xy": [
+        1248.0,
+        1686.0
+      ]
+    },
+    {
+      "id": 2,
+      "name": "The 1930 Octagonal Bandstand Gazebo Bell",
+      "shortName": "1930 Bandstand Gazebo",
+      "coreId": "tanglin_core",
+      "zoneId": "supertree",
+      "zoneName": "Tanglin Core",
+      "category": "orchid",
+      "icon": "\ud83c\udfdb\ufe0f",
+      "x": 44.0,
+      "z": 145.0,
+      "isLandmarkRelic": true,
+      "glbModel": "Relic_02",
+      "sbgGlbModel": "SBG_Relic_02",
+      "world_xz": [
+        8.8,
+        29.0
+      ],
+      "svg_xy": [
+        1332.0,
+        1635.0
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Sembcorp Cool House High-Mountain Orchid Globe",
+      "shortName": "Cool House Mist Orchid",
+      "coreId": "central_core",
+      "zoneId": "conservatories",
+      "zoneName": "Central Core",
+      "category": "orchid",
+      "icon": "\u2744\ufe0f",
+      "x": -132.0,
+      "z": -28.0,
+      "isLandmarkRelic": false,
+      "glbModel": "Relic_03",
+      "sbgGlbModel": "SBG_Relic_03",
+      "world_xz": [
+        -26.4,
+        -5.6
+      ],
+      "svg_xy": [
+        804.0,
+        1116.0
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Burkill Hall 1868 Anglo-Malayan Plantation Model",
+      "shortName": "1868 Burkill Hall",
+      "coreId": "central_core",
+      "zoneId": "conservatories",
+      "zoneName": "Central Core",
+      "category": "orchid",
+      "icon": "\ud83c\udfe1",
+      "x": -125.0,
+      "z": -6.0,
+      "isLandmarkRelic": false,
+      "glbModel": "Relic_04",
+      "sbgGlbModel": "SBG_Relic_04",
+      "world_xz": [
+        -25.0,
+        -1.2
+      ],
+      "svg_xy": [
+        825.0,
+        1182.0
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Golden Shower Arches (Oncidium Goldiana) Doll",
+      "shortName": "Golden Shower Orchid",
+      "coreId": "central_core",
+      "zoneId": "conservatories",
+      "zoneName": "Central Core",
+      "category": "orchid",
+      "icon": "\ud83c\udf3c",
+      "x": -92.0,
+      "z": 24.0,
+      "isLandmarkRelic": false,
+      "glbModel": "Relic_05",
+      "sbgGlbModel": "SBG_Relic_05",
+      "world_xz": [
+        -18.4,
+        4.8
+      ],
+      "svg_xy": [
+        924.0,
+        1272.0
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Swan Lake \"Flight of Swans\" Bronze Plaque",
+      "shortName": "Flight of Swans Bronze",
+      "coreId": "tanglin_core",
+      "zoneId": "dragonfly",
+      "zoneName": "Tanglin Core",
+      "category": "orchid",
+      "icon": "\ud83e\udda2",
+      "x": 48.0,
+      "z": 212.0,
+      "isLandmarkRelic": false,
+      "glbModel": "Relic_06",
+      "sbgGlbModel": "SBG_Relic_06",
+      "world_xz": [
+        9.6,
+        42.4
+      ],
+      "svg_xy": [
+        1344.0,
+        1836.0
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Five-Dollar Note Heritage Tembusu Tree Capsule",
+      "shortName": "$5-Note Tembusu Tree",
+      "coreId": "tanglin_core",
+      "zoneId": "supertree",
+      "zoneName": "Tanglin Core",
+      "category": "orchid",
+      "icon": "\ud83d\udcb5",
+      "x": 55.0,
+      "z": 167.0,
+      "isLandmarkRelic": true,
+      "glbModel": "Relic_07",
+      "sbgGlbModel": "SBG_Relic_07",
+      "world_xz": [
+        11.0,
+        33.4
+      ],
+      "svg_xy": [
+        1365.0,
+        1701.0
+      ]
+    },
+    {
+      "id": 8,
+      "name": "1859 Agri-Horticultural Society Brass Music Box",
+      "shortName": "1859 Founding Music Box",
+      "coreId": "tanglin_core",
+      "zoneId": "supertree",
+      "zoneName": "Tanglin Core",
+      "category": "orchid",
+      "icon": "\ud83c\udfb5",
+      "x": -5.0,
+      "z": 152.0,
+      "isLandmarkRelic": false,
+      "glbModel": "Relic_08",
+      "sbgGlbModel": "SBG_Relic_08",
+      "world_xz": [
+        -1.0,
+        30.4
+      ],
+      "svg_xy": [
+        1185.0,
+        1656.0
+      ]
+    },
+    {
+      "id": 9,
+      "name": "Giant Tiger Orchid (Grammatophyllum) Blossom",
+      "shortName": "Giant Tiger Orchid",
+      "coreId": "bukit_timah_core",
+      "zoneId": "wetlands",
+      "zoneName": "Bukit Timah Core",
+      "category": "orchid",
+      "icon": "\ud83d\udc2f",
+      "x": -72.0,
+      "z": -195.0,
+      "isLandmarkRelic": false,
+      "glbModel": "Relic_09",
+      "sbgGlbModel": "SBG_Relic_09",
+      "world_xz": [
+        -14.4,
+        -39.0
+      ],
+      "svg_xy": [
+        984.0,
+        615.0
+      ]
+    },
+    {
+      "id": 10,
+      "name": "\"Mad Ridley\" Henry Nicholas Ridley Pith Helmet",
+      "shortName": "Ridley Rubber Helmet",
+      "coreId": "tyersall_gallop_core",
+      "zoneId": "dragonfly",
+      "zoneName": "Tyersall\u2013Gallop",
+      "category": "orchid",
+      "icon": "\ud83e\ude96",
+      "x": -168.0,
+      "z": 145.0,
+      "isLandmarkRelic": false,
+      "glbModel": "Relic_10",
+      "sbgGlbModel": "SBG_Relic_10",
+      "world_xz": [
+        -33.6,
+        29.0
+      ],
+      "svg_xy": [
+        696.0,
+        1635.0
+      ]
+    },
+    {
+      "id": 11,
+      "name": "1890 Herringbone Latex Tapping Porcelain Cup",
+      "shortName": "Rubber Latex Cup",
+      "coreId": "tanglin_core",
+      "zoneId": "supertree",
+      "zoneName": "Tanglin Core",
+      "category": "supertree",
+      "icon": "\u2615",
+      "x": 68.0,
+      "z": 195.0,
+      "isLandmarkRelic": false,
+      "glbModel": "Relic_11",
+      "sbgGlbModel": "SBG_Relic_11",
+      "world_xz": [
+        13.6,
+        39.0
+      ],
+      "svg_xy": [
+        1404.0,
+        1785.0
+      ]
+    },
+    {
+      "id": 12,
+      "name": "Corner\u2019s Botanical Monkey-Training Brass Pot",
+      "shortName": "Botanical Monkey Pot",
+      "coreId": "central_core",
+      "zoneId": "supertree",
+      "zoneName": "Central Core",
+      "category": "supertree",
+      "icon": "\ud83e\uded6",
+      "x": 105.0,
+      "z": 68.0,
+      "isLandmarkRelic": false,
+      "glbModel": "Relic_12",
+      "sbgGlbModel": "SBG_Relic_12",
+      "world_xz": [
+        21.0,
+        13.6
+      ],
+      "svg_xy": [
+        1515.0,
+        1404.0
+      ]
+    },
+    {
+      "id": 13,
+      "name": "Tanglin Heritage Kaya & Pandan Veranda Set",
+      "shortName": "Veranda Kaya Set",
+      "coreId": "tanglin_core",
+      "zoneId": "supertree",
+      "zoneName": "Tanglin Core",
+      "category": "supertree",
+      "icon": "\ud83c\udf5e",
+      "x": 62.0,
+      "z": 268.0,
+      "isLandmarkRelic": false,
+      "glbModel": "Relic_13",
+      "sbgGlbModel": "SBG_Relic_13",
+      "world_xz": [
+        12.4,
+        53.6
+      ],
+      "svg_xy": [
+        1386.0,
+        2004.0
+      ]
+    },
+    {
+      "id": 14,
+      "name": "The Halia Torch-Ginger & Chili Crab Cauldron",
+      "shortName": "Torch Ginger Cauldron",
+      "coreId": "central_core",
+      "zoneId": "conservatories",
+      "zoneName": "Central Core",
+      "category": "supertree",
+      "icon": "\ud83e\udd80",
+      "x": -45.0,
+      "z": 96.0,
+      "isLandmarkRelic": false,
+      "glbModel": "Relic_14",
+      "sbgGlbModel": "SBG_Relic_14",
+      "world_xz": [
+        -9.0,
+        19.2
+      ],
+      "svg_xy": [
+        1065.0,
+        1488.0
+      ]
+    },
+    {
+      "id": 15,
+      "name": "Plantation Director\u2019s Enamel Tingkat Tiffin",
+      "shortName": "Botanist Field Tingkat",
+      "coreId": "tyersall_gallop_core",
+      "zoneId": "dragonfly",
+      "zoneName": "Tyersall\u2013Gallop",
+      "category": "supertree",
+      "icon": "\ud83c\udf71",
+      "x": -258.0,
+      "z": 155.0,
+      "isLandmarkRelic": false,
+      "glbModel": "Relic_15",
+      "sbgGlbModel": "SBG_Relic_15",
+      "world_xz": [
+        -51.6,
+        31.0
+      ],
+      "svg_xy": [
+        426.0,
+        1665.0
+      ]
+    },
+    {
+      "id": 16,
+      "name": "Holttum Hall 1921 Orchid-Breeding Laboratory Box",
+      "shortName": "Holttum Lab Relic",
+      "coreId": "tanglin_core",
+      "zoneId": "supertree",
+      "zoneName": "Tanglin Core",
+      "category": "supertree",
+      "icon": "\ud83e\uddea",
+      "x": 112.0,
+      "z": 248.0,
+      "isLandmarkRelic": true,
+      "glbModel": "Relic_16",
+      "sbgGlbModel": "SBG_Relic_16",
+      "world_xz": [
+        22.4,
+        49.6
+      ],
+      "svg_xy": [
+        1536.0,
+        1944.0
+      ]
+    },
+    {
+      "id": 17,
+      "name": "Nutmeg & Clove 1822 Raffles Spice Goblet",
+      "shortName": "1822 Spice Goblet",
+      "coreId": "central_core",
+      "zoneId": "supertree",
+      "zoneName": "Central Core",
+      "category": "supertree",
+      "icon": "\ud83c\udf79",
+      "x": 96.0,
+      "z": 108.0,
+      "isLandmarkRelic": false,
+      "glbModel": "Relic_17",
+      "sbgGlbModel": "SBG_Relic_17",
+      "world_xz": [
+        19.2,
+        21.6
+      ],
+      "svg_xy": [
+        1488.0,
+        1524.0
+      ]
+    },
+    {
+      "id": 18,
+      "name": "Evolution Garden Cycad & Tree-Fern Amber Chest",
+      "shortName": "Prehistoric Cycad Chest",
+      "coreId": "bukit_timah_core",
+      "zoneId": "wetlands",
+      "zoneName": "Bukit Timah Core",
+      "category": "supertree",
+      "icon": "\ud83e\udd95",
+      "x": 108.0,
+      "z": -155.0,
+      "isLandmarkRelic": false,
+      "glbModel": "Relic_18",
+      "sbgGlbModel": "SBG_Relic_18",
+      "world_xz": [
+        21.6,
+        -31.0
+      ],
+      "svg_xy": [
+        1524.0,
+        735.0
+      ]
+    },
+    {
+      "id": 19,
+      "name": "Tan Hoon Siang Mist House Porcelain Orchid Urn",
+      "shortName": "Mist House Orchid Urn",
+      "coreId": "central_core",
+      "zoneId": "conservatories",
+      "zoneName": "Central Core",
+      "category": "conservatory",
+      "icon": "\ud83c\udffa",
+      "x": -64.0,
+      "z": 52.0,
+      "isLandmarkRelic": false,
+      "glbModel": "Relic_19",
+      "sbgGlbModel": "SBG_Relic_19",
+      "world_xz": [
+        -12.8,
+        10.4
+      ],
+      "svg_xy": [
+        1008.0,
+        1356.0
+      ]
+    },
+    {
+      "id": 20,
+      "name": "Lady Yuen-Peng McNeice Bromeliad Slippers",
+      "shortName": "McNeice Bromeliad Gem",
+      "coreId": "central_core",
+      "zoneId": "conservatories",
+      "zoneName": "Central Core",
+      "category": "conservatory",
+      "icon": "\ud83c\udf4d",
+      "x": -148.0,
+      "z": 48.0,
+      "isLandmarkRelic": false,
+      "glbModel": "Relic_20",
+      "sbgGlbModel": "SBG_Relic_20",
+      "world_xz": [
+        -29.6,
+        9.6
+      ],
+      "svg_xy": [
+        756.0,
+        1344.0
+      ]
+    },
+    {
+      "id": 21,
+      "name": "750,000-Sheet Singapore Herbarium Specimen Press",
+      "shortName": "1875 Herbarium Press",
+      "coreId": "tyersall_gallop_core",
+      "zoneId": "dragonfly",
+      "zoneName": "Tyersall\u2013Gallop",
+      "category": "conservatory",
+      "icon": "\ud83d\udcda",
+      "x": -212.0,
+      "z": 272.0,
+      "isLandmarkRelic": false,
+      "glbModel": "Relic_21",
+      "sbgGlbModel": "SBG_Relic_21",
+      "world_xz": [
+        -42.4,
+        54.4
+      ],
+      "svg_xy": [
+        564.0,
+        2016.0
+      ]
+    },
+    {
+      "id": 22,
+      "name": "Atbara 1898 Black-and-White House Miniature",
+      "shortName": "1898 Atbara Bungalow",
+      "coreId": "tyersall_gallop_core",
+      "zoneId": "dragonfly",
+      "zoneName": "Tyersall\u2013Gallop",
+      "category": "conservatory",
+      "icon": "\ud83c\udfd8\ufe0f",
+      "x": -252.0,
+      "z": 235.0,
+      "isLandmarkRelic": true,
+      "glbModel": "Relic_22",
+      "sbgGlbModel": "SBG_Relic_22",
+      "world_xz": [
+        -50.4,
+        47.0
+      ],
+      "svg_xy": [
+        444.0,
+        1905.0
+      ]
+    },
+    {
+      "id": 23,
+      "name": "VIP Celebrity & Royal Orchid Naming Lantern",
+      "shortName": "VIP Orchid Lantern",
+      "coreId": "central_core",
+      "zoneId": "conservatories",
+      "zoneName": "Central Core",
+      "category": "conservatory",
+      "icon": "\ud83d\udc51",
+      "x": -105.0,
+      "z": -12.0,
+      "isLandmarkRelic": false,
+      "glbModel": "Relic_23",
+      "sbgGlbModel": "SBG_Relic_23",
+      "world_xz": [
+        -21.0,
+        -2.4
+      ],
+      "svg_xy": [
+        885.0,
+        1164.0
+      ]
+    },
+    {
+      "id": 24,
+      "name": "1929 Victorian Sundial Garden Brass Gnomon",
+      "shortName": "1929 Victorian Sundial",
+      "coreId": "tanglin_core",
+      "zoneId": "supertree",
+      "zoneName": "Tanglin Core",
+      "category": "conservatory",
+      "icon": "\u2600\ufe0f",
+      "x": 112.0,
+      "z": 182.0,
+      "isLandmarkRelic": false,
+      "glbModel": "Relic_24",
+      "sbgGlbModel": "SBG_Relic_24",
+      "world_xz": [
+        22.4,
+        36.4
+      ],
+      "svg_xy": [
+        1536.0,
+        1746.0
+      ]
+    },
+    {
+      "id": 25,
+      "name": "Crane Fountain & Waterbird Brass Lamp",
+      "shortName": "Crane Fountain Lamp",
+      "coreId": "central_core",
+      "zoneId": "conservatories",
+      "zoneName": "Central Core",
+      "category": "conservatory",
+      "icon": "\ud83e\udda9",
+      "x": -62.0,
+      "z": 12.0,
+      "isLandmarkRelic": false,
+      "glbModel": "Relic_25",
+      "sbgGlbModel": "SBG_Relic_25",
+      "world_xz": [
+        -12.4,
+        2.4
+      ],
+      "svg_xy": [
+        1014.0,
+        1236.0
+      ]
+    },
+    {
+      "id": 26,
+      "name": "Flying Fox & Javan Myna Botanical Weather Vane",
+      "shortName": "Canopy Bat & Bird Vane",
+      "coreId": "central_core",
+      "zoneId": "conservatories",
+      "zoneName": "Central Core",
+      "category": "conservatory",
+      "icon": "\ud83e\udd87",
+      "x": 142.0,
+      "z": 85.0,
+      "isLandmarkRelic": false,
+      "glbModel": "Relic_26",
+      "sbgGlbModel": "SBG_Relic_26",
+      "world_xz": [
+        28.4,
+        17.0
+      ],
+      "svg_xy": [
+        1626.0,
+        1455.0
+      ]
+    },
+    {
+      "id": 27,
+      "name": "Swan Lake Victorian Gazebo & Terrapin Bell",
+      "shortName": "Swan Lake Gazebo Bell",
+      "coreId": "tanglin_core",
+      "zoneId": "dragonfly",
+      "zoneName": "Tanglin Core",
+      "category": "heritage",
+      "icon": "\ud83d\udc22",
+      "x": -68.0,
+      "z": 212.0,
+      "isLandmarkRelic": true,
+      "glbModel": "Relic_27",
+      "sbgGlbModel": "SBG_Relic_27",
+      "world_xz": [
+        -13.6,
+        42.4
+      ],
+      "svg_xy": [
+        996.0,
+        1836.0
+      ]
+    },
+    {
+      "id": 28,
+      "name": "Tanglin Gate Cast-Iron Silver Leaf Medallion",
+      "shortName": "Tanglin Silver Gate",
+      "coreId": "tanglin_core",
+      "zoneId": "dragonfly",
+      "zoneName": "Tanglin Core",
+      "category": "heritage",
+      "icon": "\ud83d\udeaa",
+      "x": 25.0,
+      "z": 295.0,
+      "isLandmarkRelic": false,
+      "glbModel": "Relic_28",
+      "sbgGlbModel": "SBG_Relic_28",
+      "world_xz": [
+        5.0,
+        59.0
+      ],
+      "svg_xy": [
+        1275.0,
+        2085.0
+      ]
+    },
+    {
+      "id": 29,
+      "name": "Dawn Tai Chi Fan & Morning Jogger Towel",
+      "shortName": "6AM Tai Chi Fan & Towel",
+      "coreId": "bukit_timah_core",
+      "zoneId": "wetlands",
+      "zoneName": "Bukit Timah Core",
+      "category": "heritage",
+      "icon": "\ud83e\udead",
+      "x": 78.0,
+      "z": -215.0,
+      "isLandmarkRelic": false,
+      "glbModel": "Relic_29",
+      "sbgGlbModel": "SBG_Relic_29",
+      "world_xz": [
+        15.6,
+        -43.0
+      ],
+      "svg_xy": [
+        1434.0,
+        555.0
+      ]
+    },
+    {
+      "id": 30,
+      "name": "Tanglin Gate Uncle\u2019s Ice Cream Cart & Bell",
+      "shortName": "Tanglin Ice Cream Cart",
+      "coreId": "tanglin_core",
+      "zoneId": "dragonfly",
+      "zoneName": "Tanglin Core",
+      "category": "heritage",
+      "icon": "\ud83c\udf66",
+      "x": 68.0,
+      "z": 298.0,
+      "isLandmarkRelic": false,
+      "glbModel": "Relic_30",
+      "sbgGlbModel": "SBG_Relic_30",
+      "world_xz": [
+        13.6,
+        59.6
+      ],
+      "svg_xy": [
+        1404.0,
+        2094.0
+      ]
+    },
+    {
+      "id": 31,
+      "name": "1900s Cluny Road Rickshaw & Brass Horn",
+      "shortName": "Cluny Road Trishaw",
+      "coreId": "central_core",
+      "zoneId": "meadow",
+      "zoneName": "Central Core",
+      "category": "heritage",
+      "icon": "\ud83d\udefa",
+      "x": 102.0,
+      "z": 22.0,
+      "isLandmarkRelic": false,
+      "glbModel": "Relic_31",
+      "sbgGlbModel": "SBG_Relic_31",
+      "world_xz": [
+        20.4,
+        4.4
+      ],
+      "svg_xy": [
+        1506.0,
+        1266.0
+      ]
+    },
+    {
+      "id": 32,
+      "name": "1967 \"Orchid Series\" Currency Coin & Note Bank",
+      "shortName": "1967 Orchid Series Bank",
+      "coreId": "bukit_timah_core",
+      "zoneId": "wetlands",
+      "zoneName": "Bukit Timah Core",
+      "category": "heritage",
+      "icon": "\ud83e\ude99",
+      "x": -68.0,
+      "z": -252.0,
+      "isLandmarkRelic": false,
+      "glbModel": "Relic_32",
+      "sbgGlbModel": "SBG_Relic_32",
+      "world_xz": [
+        -13.6,
+        -50.4
+      ],
+      "svg_xy": [
+        996.0,
+        444.0
+      ]
+    },
+    {
+      "id": 33,
+      "name": "Red Saga Seeds (Adenanthera pavonina) Glass Jar",
+      "shortName": "Lucky Red Saga Seeds",
+      "coreId": "bukit_timah_core",
+      "zoneId": "wetlands",
+      "zoneName": "Bukit Timah Core",
+      "category": "heritage",
+      "icon": "\ud83d\udd34",
+      "x": 25.0,
+      "z": -142.0,
+      "isLandmarkRelic": false,
+      "glbModel": "Relic_33",
+      "sbgGlbModel": "SBG_Relic_33",
+      "world_xz": [
+        5.0,
+        -28.4
+      ],
+      "svg_xy": [
+        1275.0,
+        774.0
+      ]
+    },
+    {
+      "id": 34,
+      "name": "Cast-Iron Binomial Plant Taxonomy Signpost",
+      "shortName": "Latin Plant Signpost",
+      "coreId": "tyersall_gallop_core",
+      "zoneId": "dragonfly",
+      "zoneName": "Tyersall\u2013Gallop",
+      "category": "heritage",
+      "icon": "\ud83e\udea7",
+      "x": -195.0,
+      "z": 205.0,
+      "isLandmarkRelic": false,
+      "glbModel": "Relic_34",
+      "sbgGlbModel": "SBG_Relic_34",
+      "world_xz": [
+        -39.0,
+        41.0
+      ],
+      "svg_xy": [
+        615.0,
+        1815.0
+      ]
+    },
+    {
+      "id": 35,
+      "name": "Shaw Foundation Symphony Stage Acoustic Shell",
+      "shortName": "Shaw Symphony Stage",
+      "coreId": "central_core",
+      "zoneId": "meadow",
+      "zoneName": "Central Core",
+      "category": "sculpture",
+      "icon": "\ud83c\udfbc",
+      "x": 18.0,
+      "z": 56.0,
+      "isLandmarkRelic": true,
+      "glbModel": "Relic_35",
+      "sbgGlbModel": "SBG_Relic_35",
+      "world_xz": [
+        3.6,
+        11.2
+      ],
+      "svg_xy": [
+        1254.0,
+        1368.0
+      ]
+    },
+    {
+      "id": 36,
+      "name": "Double Coconut (Lodoicea maldivica) Palm Crown",
+      "shortName": "Coco de Mer Giant Seed",
+      "coreId": "central_core",
+      "zoneId": "meadow",
+      "zoneName": "Central Core",
+      "category": "sculpture",
+      "icon": "\ud83e\udd65",
+      "x": 92.0,
+      "z": -28.0,
+      "isLandmarkRelic": false,
+      "glbModel": "Relic_36",
+      "sbgGlbModel": "SBG_Relic_36",
+      "world_xz": [
+        18.4,
+        -5.6
+      ],
+      "svg_xy": [
+        1476.0,
+        1116.0
+      ]
+    },
+    {
+      "id": 37,
+      "name": "Frederic Chopin 2008 Bronze Monument Music Box",
+      "shortName": "Chopin Bronze Piano",
+      "coreId": "central_core",
+      "zoneId": "meadow",
+      "zoneName": "Central Core",
+      "category": "sculpture",
+      "icon": "\ud83c\udfb9",
+      "x": -12.0,
+      "z": 54.0,
+      "isLandmarkRelic": false,
+      "glbModel": "Relic_37",
+      "sbgGlbModel": "SBG_Relic_37",
+      "world_xz": [
+        -2.4,
+        10.8
+      ],
+      "svg_xy": [
+        1164.0,
+        1362.0
+      ]
+    },
+    {
+      "id": 38,
+      "name": "Japanese Bonsai & Penjing Ancient Wrightia Tree",
+      "shortName": "Japanese Bonsai Masterpiece",
+      "coreId": "tyersall_gallop_core",
+      "zoneId": "dragonfly",
+      "zoneName": "Tyersall\u2013Gallop",
+      "category": "sculpture",
+      "icon": "\ud83e\udeb4",
+      "x": -165.0,
+      "z": 232.0,
+      "isLandmarkRelic": false,
+      "glbModel": "Relic_38",
+      "sbgGlbModel": "SBG_Relic_38",
+      "world_xz": [
+        -33.0,
+        46.4
+      ],
+      "svg_xy": [
+        705.0,
+        1896.0
+      ]
+    },
+    {
+      "id": 39,
+      "name": "Jacob Ballas Children\u2019s Garden Treehouse Totem",
+      "shortName": "Jacob Ballas Treehouse",
+      "coreId": "bukit_timah_core",
+      "zoneId": "wetlands",
+      "zoneName": "Bukit Timah Core",
+      "category": "sculpture",
+      "icon": "\ud83d\uded6",
+      "x": 68.0,
+      "z": -282.0,
+      "isLandmarkRelic": false,
+      "glbModel": "Relic_39",
+      "sbgGlbModel": "SBG_Relic_39",
+      "world_xz": [
+        13.6,
+        -56.4
+      ],
+      "svg_xy": [
+        1404.0,
+        354.0
+      ]
+    },
+    {
+      "id": 40,
+      "name": "Eco-Lake Black Swan & Oriental Pied Hornbill Duo",
+      "shortName": "Black Swan & Hornbill",
+      "coreId": "bukit_timah_core",
+      "zoneId": "wetlands",
+      "zoneName": "Bukit Timah Core",
+      "category": "sculpture",
+      "icon": "\ud83e\udda2",
+      "x": 18.0,
+      "z": -292.0,
+      "isLandmarkRelic": false,
+      "glbModel": "Relic_40",
+      "sbgGlbModel": "SBG_Relic_40",
+      "world_xz": [
+        3.6,
+        -58.4
+      ],
+      "svg_xy": [
+        1254.0,
+        324.0
+      ]
+    },
+    {
+      "id": 41,
+      "name": "Ginger Waterfall Cave & Halia Stone Arch",
+      "shortName": "Ginger Waterfall Cave",
+      "coreId": "central_core",
+      "zoneId": "conservatories",
+      "zoneName": "Central Core",
+      "category": "sculpture",
+      "icon": "\ud83c\udf0a",
+      "x": -102.0,
+      "z": 92.0,
+      "isLandmarkRelic": false,
+      "glbModel": "Relic_41",
+      "sbgGlbModel": "SBG_Relic_41",
+      "world_xz": [
+        -20.4,
+        18.4
+      ],
+      "svg_xy": [
+        894.0,
+        1476.0
+      ]
+    },
+    {
+      "id": 42,
+      "name": "UNESCO World Heritage 2015 Golden Inscription Key",
+      "shortName": "UNESCO 2015 Golden Key",
+      "coreId": "tyersall_gallop_core",
+      "zoneId": "dragonfly",
+      "zoneName": "Tyersall\u2013Gallop",
+      "category": "sculpture",
+      "icon": "\ud83c\udfc6",
+      "x": -182.0,
+      "z": 284.0,
+      "isLandmarkRelic": true,
+      "glbModel": "Relic_42",
+      "sbgGlbModel": "SBG_Relic_42",
+      "world_xz": [
+        -36.4,
+        56.8
+      ],
+      "svg_xy": [
+        654.0,
+        2052.0
+      ]
+    }
+  ]
+}

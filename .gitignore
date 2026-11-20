@@ -1,8 +1,10 @@
 # Dependencies & Build Output
 node_modules/
 dist/
+4_Archive/dist_v2_build/
+4_Archive/milestone_progress_captures/
 Showcase Progress/
-GBB_3D_AI_Technical_Sharing.pptx
+**/GBB_3D_AI_Technical_Sharing.pptx
 
 # Python Bytecode
 __pycache__/

@@ -1,0 +1,353 @@
+/* ============================================================================
+ * Screen 00: Singapore Island Map Stage, Ambience Switcher & Particle Styles
+ * (src/styles/screen-welcome-sgmap.css)
+ * ============================================================================ */
+
+.welcome-sgmap-overlay {
+  --welcome-mood: sunset;
+  --welcome-dest-accent: #10B981;
+  --welcome-dest-secondary: #E879F9;
+  --welcome-dest-gold: #FEF08A;
+  --welcome-shell-glow: rgba(34, 211, 238, 0.46);
+  padding: clamp(10px, 1.8vh, 22px) clamp(12px, 2.2vw, 32px);
+  background: var(
+    --welcome-aura-bg,
+    radial-gradient(circle at 35% 30%, rgba(4, 47, 46, 0.42) 0%, rgba(2, 19, 34, 0.72) 100%)
+  );
+  backdrop-filter: blur(8px) saturate(135%);
+  -webkit-backdrop-filter: blur(8px) saturate(135%);
+  transition: background 0.48s ease;
+}
+
+.sg-welcome-shell {
+  --shell-surface-bg: linear-gradient(155deg, rgba(242, 253, 255, 0.94) 0%, rgba(220, 247, 253, 0.9) 55%, rgba(204, 244, 248, 0.88) 100%);
+  --shell-text-main: #06393A;
+  --shell-text-sub: #0F766E;
+  width: min(1220px, 96vw);
+  max-height: calc(100vh - var(--hud-top-offset, 76px) - 24px);
+  max-height: calc(100dvh - var(--hud-top-offset, 76px) - 24px);
+  padding: clamp(14px, 2vw, 22px);
+  border-radius: 28px;
+  background: var(--shell-surface-bg);
+  border: 2.5px solid rgba(255, 255, 255, 0.96);
+  box-shadow:
+    0 28px 64px rgba(2, 24, 38, 0.52),
+    0 0 44px var(--welcome-shell-glow, rgba(56, 189, 248, 0.34)),
+    inset 0 2px 6px rgba(255, 255, 255, 0.85);
+  color: var(--shell-text-main);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow-y: auto;
+  transition: background 0.38s ease, box-shadow 0.42s ease, border-color 0.38s ease, color 0.32s ease;
+}
+
+/* Time-of-Day Reactive Shell Tokens (:where fallback + @container style() progressive enhancement) */
+:where(.welcome-sgmap-overlay[data-welcome-mood="sunset"]) .sg-welcome-shell {
+  --shell-surface-bg: linear-gradient(155deg, rgba(255, 251, 235, 0.95) 0%, rgba(236, 253, 245, 0.91) 54%, rgba(204, 251, 241, 0.89) 100%);
+  --shell-text-main: #064E3B;
+  --shell-text-sub: #0D9488;
+}
+
+:where(.welcome-sgmap-overlay[data-welcome-mood="night"]) .sg-welcome-shell {
+  --shell-surface-bg: linear-gradient(155deg, rgba(8, 36, 48, 0.94) 0%, rgba(6, 46, 44, 0.92) 55%, rgba(15, 23, 42, 0.92) 100%);
+  --shell-text-main: #ECFDF5;
+  --shell-text-sub: #6EE7B7;
+  border-color: rgba(110, 231, 183, 0.55);
+}
+
+@container style(--welcome-mood: sunset) {
+  .sg-welcome-shell {
+    --shell-surface-bg: linear-gradient(155deg, rgba(255, 251, 235, 0.95) 0%, rgba(236, 253, 245, 0.91) 54%, rgba(204, 251, 241, 0.89) 100%);
+    --shell-text-main: #064E3B;
+    --shell-text-sub: #0D9488;
+  }
+}
+
+@container style(--welcome-mood: night) {
+  .sg-welcome-shell {
+    --shell-surface-bg: linear-gradient(155deg, rgba(8, 36, 48, 0.94) 0%, rgba(6, 46, 44, 0.92) 55%, rgba(15, 23, 42, 0.92) 100%);
+    --shell-text-main: #ECFDF5;
+    --shell-text-sub: #6EE7B7;
+    border-color: rgba(110, 231, 183, 0.55);
+  }
+}
+
+.sg-welcome-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.sg-welcome-title-wrap { display: flex; flex-direction: column; gap: 3px; }
+
+.sg-welcome-eyebrow {
+  align-self: flex-start;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #FEF08A 0%, #FACC15 58%, #F59E0B 100%);
+  border: 1.5px solid #FFFFFF;
+  color: #042F2E;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.sg-welcome-heading {
+  margin: 0;
+  font-size: clamp(20px, 2.3vw, 28px);
+  font-weight: 900;
+  color: var(--shell-text-main);
+  letter-spacing: -0.01em;
+}
+
+.sg-welcome-sub {
+  margin: 0;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--shell-text-sub);
+}
+
+.sg-skip-link {
+  border: 1.5px solid rgba(13, 148, 136, 0.35);
+  background: rgba(255, 255, 255, 0.88);
+  color: #065F46;
+  font-size: 12px;
+  font-weight: 800;
+  padding: 9px 15px;
+  border-radius: 999px;
+  cursor: pointer;
+  white-space: nowrap;
+  box-shadow: 0 6px 14px rgba(6, 57, 58, 0.1);
+  transition: transform 0.16s ease, background-color 0.16s ease;
+}
+
+.sg-skip-link:hover { transform: translateY(-1px); background: #FFFFFF; }
+
+.sg-welcome-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1.18fr) minmax(0, 1fr);
+  gap: 16px;
+  align-items: center;
+  min-height: 0;
+}
+
+.sg-map-canvas-box {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 900 / 560;
+  border-radius: 22px;
+  overflow: hidden;
+  border: 2.5px solid rgba(255, 255, 255, 0.92);
+  box-shadow:
+    0 18px 38px rgba(4, 47, 46, 0.32),
+    0 0 28px var(--welcome-dest-glow, rgba(56, 189, 248, 0.28)),
+    inset 0 0 24px rgba(56, 189, 248, 0.25);
+  transition: box-shadow 0.38s ease, border-color 0.38s ease;
+}
+
+.sg-island-svg { width: 100%; height: 100%; display: block; }
+
+#sgMapActiveHalo,
+#sgMapActiveRing,
+#sgHorizonAura,
+#sgNightBeacons,
+#sgWaterReflections {
+  transition:
+    cx 0.38s cubic-bezier(0.22, 1, 0.36, 1),
+    cy 0.38s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.38s ease;
+}
+
+/* Interactive 3-Pill Time-of-Day Ambience Switcher (Top-Right of Map Stage) */
+.sg-ambience-switcher {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 6;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px;
+  border-radius: 999px;
+  background: rgba(4, 34, 44, 0.84);
+  border: 1.5px solid rgba(254, 240, 138, 0.55);
+  box-shadow: 0 8px 20px rgba(2, 14, 24, 0.45);
+  backdrop-filter: blur(8px);
+}
+
+.sg-ambience-pill {
+  border: 1px solid transparent;
+  background: transparent;
+  color: #E2E8F0;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 5px 10px;
+  border-radius: 999px;
+  cursor: pointer;
+  white-space: nowrap;
+  touch-action: manipulation;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.sg-ambience-pill:hover { color: #FEF08A; background: rgba(255, 255, 255, 0.1); }
+
+.sg-ambience-pill.active {
+  background: linear-gradient(135deg, #FEF08A 0%, #FACC15 65%, #F59E0B 100%);
+  color: #042F2E;
+  border-color: #FFFFFF;
+  box-shadow: 0 3px 10px rgba(250, 204, 21, 0.45);
+}
+
+/* Live Destination Atmosphere Mood Pill (Bottom-Left of Map Stage) */
+.sg-map-atmosphere-pill {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  padding: 6px 12px;
+  border-radius: 14px;
+  background: rgba(4, 34, 44, 0.86);
+  border: 1.5px solid var(--welcome-dest-accent, #10B981);
+  color: #F8FAFC;
+  box-shadow: 0 8px 18px rgba(2, 14, 24, 0.45);
+  pointer-events: none;
+  max-width: 68%;
+}
+
+.sg-atmo-title { font-size: 10.5px; font-weight: 800; color: #FEF08A; line-height: 1.25; }
+.sg-atmo-sub { font-size: 9px; font-weight: 600; color: #BAE6FD; }
+
+/* Floating Ambient Particles (Fireflies, Orchid Petals & Bioluminescent Motes) */
+.sg-map-particles-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+  overflow: hidden;
+}
+
+.sg-ambient-particle {
+  position: absolute;
+  width: var(--p-size, 7px);
+  height: var(--p-size, 7px);
+  border-radius: 50%;
+  background: var(--p-color, #FEF08A);
+  box-shadow: 0 0 10px var(--p-color, #FEF08A), 0 0 18px var(--p-color, #FEF08A);
+  animation: sgFloatParticle var(--p-dur, 4.4s) ease-in-out var(--p-delay, 0s) infinite alternate;
+}
+
+.sg-ambient-particle[data-particle-type="petals"] { border-radius: 75% 15% 75% 15%; }
+.sg-ambient-particle[data-particle-type="lanterns"] { border-radius: 35% 35% 45% 45%; }
+
+@keyframes sgFloatParticle {
+  0% { transform: translate3d(0, 0, 0) scale(0.75); }
+  50% { transform: translate3d(9px, -11px, 0) scale(1.18); }
+  100% { transform: translate3d(-7px, -20px, 0) scale(0.85); }
+}
+
+.sg-map-pins-layer { position: absolute; inset: 0; pointer-events: none; z-index: 4; }
+
+.sg-map-pin {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  pointer-events: auto;
+  background: transparent;
+  border: none;
+  padding: 6px;
+  min-width: 32px;
+  min-height: 32px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  touch-action: manipulation;
+  z-index: 2;
+}
+
+.sg-pin-dot {
+  position: relative;
+  z-index: 2;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  border: 2.5px solid var(--pin-accent, #10B981);
+  box-shadow: 0 6px 16px rgba(2, 24, 38, 0.48);
+  display: grid;
+  place-items: center;
+  font-size: 16px;
+  transition: transform 0.22s ease, border-color 0.22s ease, background-color 0.22s ease;
+}
+
+.sg-map-pin.is-active { z-index: 5; }
+
+.sg-map-pin.is-active .sg-pin-dot {
+  transform: scale(1.22);
+  background: linear-gradient(135deg, #FEF08A, #FACC15);
+  border-color: #FFFFFF;
+  outline: 3px solid var(--pin-accent, #10B981);
+}
+
+.sg-pin-pulse {
+  position: absolute;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--pin-accent, #10B981);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.sg-map-pin.is-active .sg-pin-pulse { opacity: 0.45; animation: sgPinPulse 1.8s ease-out infinite; }
+
+@keyframes sgPinPulse {
+  0% { transform: scale(0.75); opacity: 0.55; }
+  100% { transform: scale(1.65); opacity: 0; }
+}
+
+.sg-pin-tag {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: rgba(6, 40, 52, 0.9);
+  border: 1.5px solid rgba(255, 255, 255, 0.78);
+  color: #F8FAFC;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 10px;
+  box-shadow: 0 5px 12px rgba(2, 18, 28, 0.45);
+  pointer-events: none;
+}
+
+.sg-map-pin.is-active .sg-pin-tag { background: #042F2E; border-color: #FEF08A; }
+.sg-pin-tag strong { font-weight: 800; }
+
+.sg-pin-tag small {
+  font-size: 8.5px;
+  font-weight: 800;
+  padding: 1px 5px;
+  border-radius: 999px;
+  background: rgba(16, 185, 129, 0.25);
+  color: #6EE7B7;
+}
+
+.sg-map-pin.is-soon .sg-pin-tag small {
+  background: rgba(245, 158, 11, 0.28);
+  color: #FDE68A;
+}
+
+.pin-pos-top .sg-pin-tag { bottom: calc(100% - 2px); }
+.pin-pos-bottom .sg-pin-tag { top: calc(100% - 2px); }
+.pin-pos-right .sg-pin-tag { left: calc(100% - 2px); top: 50%; transform: translateY(-50%); }
+.pin-pos-left .sg-pin-tag { right: calc(100% - 2px); left: auto; top: 50%; transform: translateY(-50%); }
