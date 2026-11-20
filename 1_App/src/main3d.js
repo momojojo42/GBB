@@ -37,19 +37,37 @@ import { createFrameLoopRunner } from './core/FrameLoopRunner.js';
 // Expose readiness flag for automated screenshot capture
 window.gbbReady = false;
 
+// Detect software WebGL rasterizers (SwiftShader/llvmpipe/WARP) to adapt quality safely
+function detectSoftwareWebGL() {
+  try {
+    const probe = document.createElement('canvas');
+    const gl = probe.getContext('webgl2') || probe.getContext('webgl');
+    if (!gl) return false;
+    const dbg = gl.getExtension('WEBGL_debug_renderer_info');
+    const rendererStr = dbg ? String(gl.getParameter(dbg.UNMASKED_RENDERER_WEBGL) || '') : '';
+    gl.getExtension('WEBGL_lose_context')?.loseContext();
+    return /swiftshader|llvmpipe|software|warp|mesa offscreen/i.test(rendererStr);
+  } catch {
+    return false;
+  }
+}
+
+const isSoftwareGl = detectSoftwareWebGL();
+const isDemoShot = new URLSearchParams(window.location.search).has('demoShot');
+
 // ----------------------------------------------------------------------------
 // Initialize Three.js Renderer, Scene, Camera, IBL & PostFX
 // ----------------------------------------------------------------------------
 const canvas = document.getElementById('gameCanvas');
 const renderer = new THREE.WebGLRenderer({
   canvas,
-  antialias: true,
+  antialias: !isSoftwareGl,
   powerPreference: 'high-performance',
-  preserveDrawingBuffer: true
+  preserveDrawingBuffer: isDemoShot
 });
-renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+renderer.setPixelRatio(isSoftwareGl ? 1 : Math.min(window.devicePixelRatio || 1, 2));
 renderer.setSize(window.innerWidth, window.innerHeight);
-renderer.shadowMap.enabled = true;
+renderer.shadowMap.enabled = !isSoftwareGl;
 renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
 renderer.toneMappingExposure = DEFAULT_LOOKDEV_SETTINGS.lighting?.exposure ?? 1.08;
@@ -67,7 +85,7 @@ const camera = new THREE.PerspectiveCamera(
 );
 
 // Initialize PBR IBL Environment & Post-Processing (UnrealBloomPass + OutputPass)
-const postFX = createEnvironmentAndPostFX(renderer, scene, camera);
+const postFX = createEnvironmentAndPostFX(renderer, scene, camera, { isSoftwareGl });
 const matLib = createMaterialAndTextureLibrary(THREE);
 
 // Sky & Lighting Setup
@@ -81,13 +99,13 @@ const hemiLight = new THREE.HemisphereLight('#BAE6FD', '#065F46', 0.38);
 hemiLight.position.set(0, 120, 0);
 scene.add(hemiLight);
 
+const shadowMapSize = isSoftwareGl ? 1024 : 2048;
 const sunLight = new THREE.DirectionalLight(
   DEFAULT_LOOKDEV_SETTINGS.lighting?.sunColor || '#FFF4DC',
   DEFAULT_LOOKDEV_SETTINGS.lighting?.sunIntensity ?? 1.55
 );
-sunLight.castShadow = true;
-sunLight.shadow.mapSize.width = 2048;
-sunLight.shadow.mapSize.height = 2048;
+sunLight.castShadow = !isSoftwareGl;
+sunLight.shadow.mapSize.set(shadowMapSize, shadowMapSize);
 sunLight.shadow.camera.near = 10;
 sunLight.shadow.camera.far = 320;
 const shadowBounds = 115;
@@ -151,15 +169,7 @@ const {
 const worldLabelsSys = createWorldLabelsManager({
   camera,
   appState,
-  getTerrainSys: () => terrainSys,
-  getExplorersSys: () => explorersSys,
-  onCollectTreasure: (id, collectorId, incScore) =>
-    gameplayRules.handleTreasureCollected(id, collectorId, incScore),
-  onClickMoveTo: (targetVec) => {
-    clickMoveTarget = targetVec;
-    activateFollowCameraFromCurrentView();
-  },
-  showToast
+  getExplorersSys: () => explorersSys
 });
 const {
   spawnFloatingCollectPopup,
@@ -209,7 +219,7 @@ const encycSys = createEncyclopediaModal({
   appState,
   getTerrainSys: () => terrainSys,
   getExplorersSys: () => explorersSys,
-  onCloseModal: () => coordinator.setScreenState('gameplay'),
+  onCloseModal: () => coordinator.setScreenState('back'),
   onInspectRelic3D: (relicId) => {
     appState.selectedRelicId = relicId;
     coordinator.setScreenState('relic3d');
@@ -305,6 +315,9 @@ const inputController = createInputAndTouchController({
   activateFollowCameraFromCurrentView,
   setCameraPreset,
   setScreenState: (screenName) => coordinator.setScreenState(screenName),
+  openPauseMenu: () => coordinator.openPauseMenu(),
+  closePauseMenu: () => coordinator.closePauseMenu(),
+  exitActiveMatch: (target) => coordinator.exitActiveMatch(target),
   setGameMode,
   setBotDifficulty,
   activateFieldGadgetForPlayer,

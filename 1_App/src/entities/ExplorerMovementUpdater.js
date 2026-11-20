@@ -150,12 +150,12 @@ export function updateExplorerMovement({
     const pickupRadius = 2.25 + pickupBonus;
 
     if (exp.id === 'you') {
-      const isMoving = Math.hypot(effMoveX, effMoveZ) > 0.01;
+      const moveLen = Math.hypot(effMoveX, effMoveZ);
+      const isMoving = moveLen > 0.01;
       exp.isMoving = isMoving;
       if (isMoving) {
-        const len = Math.hypot(effMoveX, effMoveZ);
-        const nx = effMoveX / len;
-        const nz = effMoveZ / len;
+        const nx = effMoveX / moveLen;
+        const nz = effMoveZ / moveLen;
         const stepSpeed = exp.baseSpeed * speedMult;
         exp.velocityX = nx * stepSpeed;
         exp.velocityZ = nz * stepSpeed;
@@ -178,7 +178,7 @@ export function updateExplorerMovement({
         }
 
         const targetYaw = Math.atan2(nx, nz);
-        exp.facingYaw = lerpAngleShortest(exp.facingYaw, targetYaw, Math.min(1, dt * 14));
+        exp.facingYaw = lerpAngleShortest(exp.facingYaw, targetYaw, 1 - Math.exp(-14 * dt));
         exp.rig.bodyPivot.rotation.y = exp.facingYaw;
       } else {
         exp.velocityX = 0;
@@ -194,49 +194,44 @@ export function updateExplorerMovement({
 
       animateChibiWalk(THREE, exp, dt, isMoving, elapsedSeconds);
 
-      // Rotate Player's Golden Compass Arrow toward nearest uncollected treasure
+      // Rotate Player's Golden Compass Arrow toward nearest uncollected treasure (squared-distance scan)
       let nearest = null;
-      let minDist = Infinity;
+      let minDistSq = Infinity;
+      const px = exp.position.x;
+      const pz = exp.position.z;
       for (const t of treasuresList) {
         if (t.collected) continue;
-        const d = Math.hypot(t.position.x - exp.position.x, t.position.z - exp.position.z);
-        if (d < minDist) {
-          minDist = d;
+        const dx = t.position.x - px;
+        const dz = t.position.z - pz;
+        const dSq = dx * dx + dz * dz;
+        if (dSq < minDistSq) {
+          minDistSq = dSq;
           nearest = t;
         }
       }
       if (nearest) {
-        const angle = Math.atan2(
-          nearest.position.x - exp.position.x,
-          nearest.position.z - exp.position.z
-        );
-        exp.rig.compassPivot.rotation.y = angle;
+        const minDist = Math.sqrt(minDistSq);
+        exp.rig.compassPivot.rotation.y = Math.atan2(nearest.position.x - px, nearest.position.z - pz);
         exp.rig.compassPivot.visible = true;
 
         // If Relic Magnet is active, gently pull nearby uncollected relic toward the player
         if (exp.activeGadget?.id === 'relic_magnet' && minDist <= pickupRadius * 1.45 && minDist > 1.2) {
           const pullStep = Math.min(minDist - 1.0, dt * 8.5);
-          const dirX = (exp.position.x - nearest.position.x) / minDist;
-          const dirZ = (exp.position.z - nearest.position.z) / minDist;
-          nearest.position.x += dirX * pullStep;
-          nearest.position.z += dirZ * pullStep;
+          nearest.position.x += ((px - nearest.position.x) / minDist) * pullStep;
+          nearest.position.z += ((pz - nearest.position.z) / minDist) * pullStep;
           nearest.position.y = getTerrainElevationAt(nearest.position.x, nearest.position.z);
-          if (nearest.meshGroup) {
-            nearest.meshGroup.position.set(nearest.position.x, nearest.position.y, nearest.position.z);
-          }
+          nearest.meshGroup?.position.set(nearest.position.x, nearest.position.y, nearest.position.z);
         }
 
         if (minDist <= pickupRadius) {
-          // 😂 "🤚 CHOPE!" Bot Snatch Comedy: check if any AI bot was within 9.5m of nearest
+          // "🤚 CHOPE!" Bot Snatch Comedy: check if any AI bot was within 9.5m (90.25m^2)
           const botReactions = ['😱 Alamak!', '😭 My relic lah!', '😤 Walao eh!'];
           for (let bIdx = 0; bIdx < explorers.length; bIdx++) {
             const bot = explorers[bIdx];
             if (bot.id === 'you') continue;
-            const botDist = Math.hypot(
-              nearest.position.x - bot.position.x,
-              nearest.position.z - bot.position.z
-            );
-            if (botDist <= 9.5) {
+            const bdx = nearest.position.x - bot.position.x;
+            const bdz = nearest.position.z - bot.position.z;
+            if (bdx * bdx + bdz * bdz <= 90.25) {
               nearest.chopedFromBot = bot.id;
               bot.dizzyTimer = 0.9;
               bot.botStatus = 'choped';

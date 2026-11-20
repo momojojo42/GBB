@@ -52,7 +52,7 @@
     (function enforceDesktopOnlyGate() {
       function checkViewport() {
         var isCoarse = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
-        var isMobileOrTablet = window.innerWidth <= 1024 || window.innerHeight <= 680 || isCoarse;
+        var isMobileOrTablet = isCoarse && window.innerWidth <= 768;
         document.body.classList.toggle('mobile-tablet-blocked', isMobileOrTablet);
         var gate = document.getElementById('desktopOnlyGateOverlay');
         if (gate) gate.setAttribute('aria-hidden', String(!isMobileOrTablet));
@@ -187,16 +187,22 @@
       </div>
     </div>
 
-    <!-- Unified 3-Page Global Navigation (Game Page | Admin View | Plan View) -->
+    <!-- Unified Global Navigation (Back to App | Admin | Progress | Roadmap | Tech Deck) -->
     <nav class="primary-page-nav" aria-label="Primary Application Views">
-      <a href="index.html" class="page-nav-pill" title="Public Live 3D Game Page">
-        🎮 Game Page
+      <a href="index.html" class="page-nav-pill" title="Return to Live 3D App">
+        ← Back to App
       </a>
       <a href="admin.html" class="page-nav-pill active" aria-current="page">
-        🛠️ Admin View
+        Admin View
       </a>
-      <a href="progress.html" class="page-nav-pill" title="Plan View: MVP Progress &amp; Post-MVP Roadmap">
-        📋 Plan View
+      <a href="progress.html" class="page-nav-pill" title="Build Progress (Steps 1–13)">
+        Project Progress
+      </a>
+      <a href="roadmap.html" class="page-nav-pill" title="Post-MVP Roadmap">
+        Roadmap
+      </a>
+      <a href="presentation.html" class="page-nav-pill" title="10-Slide Tech Sharing Deck">
+        Tech Deck
       </a>
     </nav>
 

@@ -50,3 +50,6 @@
 /* 5. LookDev Studio Controls */
 @import './admin/lookdev.css';
 @import './admin/lookdev-sliders.css';
+
+/* 6. Botanical Editorial Glass Gestalt Redesign (Game Mode Only) */
+@import './theme/botanical-editorial-glass.css';

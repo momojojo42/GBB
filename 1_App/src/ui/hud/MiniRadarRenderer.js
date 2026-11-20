@@ -44,8 +44,14 @@ export function createMiniRadarRenderer({
     const scaleX = isLocal ? 82 / 46 : (isSBG ? 58 / 68 : 64 / 86);
     const scaleZ = isLocal ? 82 / 46 : (isSBG ? 64 / 70 : 48 / 58);
 
+    const isNightHud =
+      document.body.classList.contains('is-night-hud') ||
+      document.body.dataset.pageMode === 'admin';
+
     // Radar range rings
-    miniRadarCtx.strokeStyle = 'rgba(52, 211, 153, 0.2)';
+    miniRadarCtx.strokeStyle = isNightHud
+      ? 'rgba(52, 211, 153, 0.22)'
+      : 'rgba(13, 59, 52, 0.14)';
     miniRadarCtx.lineWidth = 1;
     [28, 56, 80].forEach((r) => {
       miniRadarCtx.beginPath();
@@ -54,9 +60,13 @@ export function createMiniRadarRenderer({
     });
 
     // Boomerang Peninsula land silhouette (Official Visitor Map Geometry)
-    miniRadarCtx.fillStyle = 'rgba(16, 185, 129, 0.24)';
-    miniRadarCtx.strokeStyle = 'rgba(52, 211, 153, 0.45)';
-    miniRadarCtx.lineWidth = 1.2;
+    miniRadarCtx.fillStyle = isNightHud
+      ? 'rgba(16, 185, 129, 0.24)'
+      : 'rgba(182, 212, 195, 0.85)';
+    miniRadarCtx.strokeStyle = isNightHud
+      ? 'rgba(52, 211, 153, 0.48)'
+      : 'rgba(13, 59, 52, 0.34)';
+    miniRadarCtx.lineWidth = 1.25;
     miniRadarCtx.beginPath();
     BOOMERANG_ISLAND_POLYGON.forEach((pt, idx) => {
       const px = cx + (pt.x - originX) * scaleX;
@@ -70,7 +80,9 @@ export function createMiniRadarRenderer({
 
     // Draw '/' Diagonal Dragonfly Lake channel (GBB) & 5 Ponds / Lakes
     if (!isSBG && LAKE_CHANNEL_POINTS.length > 1) {
-      miniRadarCtx.strokeStyle = 'rgba(14, 165, 233, 0.62)';
+      miniRadarCtx.strokeStyle = isNightHud
+        ? 'rgba(14, 165, 233, 0.62)'
+        : 'rgba(105, 168, 186, 0.72)';
       miniRadarCtx.lineWidth = Math.max(3, 6 * scaleX);
       miniRadarCtx.lineCap = 'round';
       miniRadarCtx.beginPath();
@@ -83,7 +95,9 @@ export function createMiniRadarRenderer({
       miniRadarCtx.stroke();
     }
 
-    miniRadarCtx.fillStyle = 'rgba(14, 165, 233, 0.5)';
+    miniRadarCtx.fillStyle = isNightHud
+      ? 'rgba(14, 165, 233, 0.5)'
+      : 'rgba(105, 168, 186, 0.62)';
     for (const pond of WATER_PONDS) {
       const px = pond.x ?? pond.cx ?? 0;
       const pz = pond.z ?? pond.cz ?? 0;
@@ -100,10 +114,12 @@ export function createMiniRadarRenderer({
       miniRadarCtx.fill();
     }
 
-    // Main Entrance Red 'Drop Off' Loop
+    // Main Entrance 'Drop Off' Loop
     const dropX = isSBG ? 11.5 : 28.5;
     const dropZ = isSBG ? 58.0 : 5.5;
-    miniRadarCtx.strokeStyle = 'rgba(239, 68, 68, 0.78)';
+    miniRadarCtx.strokeStyle = isNightHud
+      ? 'rgba(239, 68, 68, 0.78)'
+      : 'rgba(185, 28, 28, 0.65)';
     miniRadarCtx.lineWidth = Math.max(1.5, 2.2 * scaleX);
     miniRadarCtx.beginPath();
     miniRadarCtx.arc(
@@ -116,7 +132,7 @@ export function createMiniRadarRenderer({
     miniRadarCtx.stroke();
 
     // Bridges
-    miniRadarCtx.strokeStyle = '#FB923C';
+    miniRadarCtx.strokeStyle = isNightHud ? '#FB923C' : '#C27803';
     miniRadarCtx.lineWidth = Math.max(2.5, 3.5 * scaleX);
     for (const br of WORLD_BRIDGES) {
       miniRadarCtx.beginPath();
@@ -129,7 +145,9 @@ export function createMiniRadarRenderer({
     const pxYou = cx + (you.position.x - originX) * scaleX;
     const pzYou = cy + (you.position.z - originZ) * scaleZ;
     const viewYaw = cameraControl.mode === 'follow' ? cameraControl.followYaw + Math.PI : (you.facingYaw || 0);
-    miniRadarCtx.fillStyle = 'rgba(45, 127, 249, 0.18)';
+    miniRadarCtx.fillStyle = isNightHud
+      ? 'rgba(45, 127, 249, 0.18)'
+      : 'rgba(11, 79, 67, 0.15)';
     miniRadarCtx.beginPath();
     miniRadarCtx.moveTo(pxYou, pzYou);
     miniRadarCtx.arc(pxYou, pzYou, 34, viewYaw - Math.PI * 0.5 - 0.45, viewYaw - Math.PI * 0.5 + 0.45);
@@ -152,7 +170,9 @@ export function createMiniRadarRenderer({
     if (nearestRelic) {
       const ntx = cx + (nearestRelic.position.x - originX) * scaleX;
       const ntz = cy + (nearestRelic.position.z - originZ) * scaleZ;
-      miniRadarCtx.strokeStyle = 'rgba(250, 204, 21, 0.75)';
+      miniRadarCtx.strokeStyle = isNightHud
+        ? 'rgba(250, 204, 21, 0.78)'
+        : 'rgba(11, 79, 67, 0.65)';
       miniRadarCtx.lineWidth = 1.5;
       miniRadarCtx.setLineDash([3, 3]);
       miniRadarCtx.beginPath();
@@ -177,20 +197,22 @@ export function createMiniRadarRenderer({
         tz = cy + Math.sin(ang) * 82;
       }
 
-      const catColor = RELIC_CATEGORY_COLORS[t.category] || '#FACC15';
-      miniRadarCtx.fillStyle = t.collected ? 'rgba(148, 163, 184, 0.28)' : catColor;
+      const catColor = RELIC_CATEGORY_COLORS[t.category] || '#D97706';
+      miniRadarCtx.fillStyle = t.collected
+        ? (isNightHud ? 'rgba(148, 163, 184, 0.28)' : 'rgba(13, 59, 52, 0.18)')
+        : catColor;
       miniRadarCtx.beginPath();
-      miniRadarCtx.arc(tx, tz, t.collected ? 1.8 : 3.4, 0, Math.PI * 2);
+      miniRadarCtx.arc(tx, tz, t.collected ? 1.8 : 3.3, 0, Math.PI * 2);
       miniRadarCtx.fill();
 
       if (!t.collected) {
-        miniRadarCtx.strokeStyle = '#FEF9C3';
-        miniRadarCtx.lineWidth = 0.9;
+        miniRadarCtx.strokeStyle = isNightHud ? '#FEF9C3' : '#FFFFFF';
+        miniRadarCtx.lineWidth = 1;
         miniRadarCtx.stroke();
       }
 
       if (nearestRelic && t.id === nearestRelic.id) {
-        miniRadarCtx.strokeStyle = '#FACC15';
+        miniRadarCtx.strokeStyle = isNightHud ? '#FACC15' : '#0B4F43';
         miniRadarCtx.lineWidth = 2;
         miniRadarCtx.beginPath();
         miniRadarCtx.arc(tx, tz, pulseRadius, 0, Math.PI * 2);
@@ -206,7 +228,7 @@ export function createMiniRadarRenderer({
       if (Math.hypot(px - cx, pz - cy) > 85) continue;
       miniRadarCtx.fillStyle = comp.colorHex;
       miniRadarCtx.strokeStyle = '#FFFFFF';
-      miniRadarCtx.lineWidth = 1.5;
+      miniRadarCtx.lineWidth = 1.6;
       miniRadarCtx.beginPath();
       miniRadarCtx.arc(px, pz, comp.id === 'you' ? 5.2 : 4.2, 0, Math.PI * 2);
       miniRadarCtx.fill();

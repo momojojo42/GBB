@@ -42,10 +42,10 @@
   <link rel="manifest" href="./site.webmanifest" />
   <link rel="preload" as="image" href="./assets/avatars/avatar_you.png" />
 
-  <!-- Typography & Styles -->
+  <!-- Typography & Styles (2+1 Editorial System: Playfair Display, Plus Jakarta Sans, JetBrains Mono) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600;700&family=Playfair+Display:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./src/styles/main.css" />
 
   <!-- Structured Data (VideoGame Schema) -->
@@ -211,74 +211,65 @@
     </div>
   </div>
 
-  <!-- TOP GLOBAL BAR: Brand & Essential Quick Actions -->
+  <!-- TOP GLOBAL BAR: Context-Aware Botanical Editorial Glass Perimeter Anchor -->
   <header class="top-nav-bar" id="topNavBar">
-    <div class="brand-cluster">
+    <div class="brand-cluster" id="topBrandCluster" role="button" tabindex="0" aria-label="Gardens by the Bay">
       <div class="brand-emblem" aria-hidden="true">🌿</div>
       <div class="brand-text">
-        <span class="brand-eyebrow">🇸🇬 SINGAPORE</span>
-        <h1 class="brand-heading">Gardens by the Bay 3D</h1>
+        <span class="brand-eyebrow">Singapore</span>
+        <h1 class="brand-heading">Gardens by the Bay</h1>
       </div>
     </div>
 
-    <!-- Right Action Buttons -->
+    <!-- Right Action Controls (Context-Aware Utility Group) -->
     <div class="top-right-actions">
-      <button type="button" class="btn-collection-top" id="btnOpenSingaporeMapTop" title="Open Singapore Island Map Selector (Gardens by the Bay, Botanic Gardens, Sentosa, Haw Par Villa)">
-        🇸🇬 SG Map
+      <button type="button" class="btn-collection-top btn-guide-top" id="btnOpenOnboardingTop" title="How to Play Guide">
+        <svg class="top-action-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 0 1 5 .8c0 1.7-2.5 2-2.5 3.7"/><line x1="12" y1="17.2" x2="12.01" y2="17.2"/></svg>
+        <span class="btn-label">Guide</span>
       </button>
 
-      <button type="button" class="btn-collection-top btn-fullscreen-top" id="btnToggleFullscreen" title="Toggle Fullscreen">
-        ⛶ Full
+      <button type="button" class="btn-sound-toggle" id="btnToggleSound" title="Toggle Sound Effects" aria-pressed="true">
+        <svg class="top-action-svg icon-sound-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+        <svg class="top-action-svg icon-sound-off hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+        <span class="btn-label">Sound</span>
       </button>
 
-      <button type="button" class="btn-collection-top" id="btnOpenStartScreenTop" title="Open Start Screen">
-        🏠 Home
+      <button type="button" class="btn-collection-top btn-fullscreen-top" id="btnToggleFullscreen" title="Toggle Fullscreen" aria-pressed="false">
+        <svg class="top-action-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M21 8V5a2 2 0 0 0-2-2h-3"/><path d="M3 16v3a2 2 0 0 0 2 2h3"/><path d="M16 21h3a2 2 0 0 0 2-2v-3"/></svg>
+        <span class="btn-label">Full</span>
       </button>
 
-      <button type="button" class="btn-collection-top btn-guide-top" id="btnOpenOnboardingTop" title="How to Play Quick Guide">
-        ❔ Guide
+      <button type="button" class="btn-collection-top btn-exit-game-top" id="btnExitGameTop" title="Pause or Exit Game (Esc)">
+        <svg class="top-action-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        <span class="btn-label">Exit</span>
       </button>
-
-      <button type="button" class="btn-sound-toggle" id="btnToggleSound" title="Toggle Sound Effects">
-        🔊 SFX
-      </button>
-
-      <details class="top-dev-menu" id="topDevMenu">
-        <summary class="btn-collection-top btn-dev-summary" title="Developer Tools">🛠️ Dev ▾</summary>
-        <div class="top-dev-dropdown">
-          <button type="button" class="dev-dropdown-item" id="btnTriggerFinaleTop">🏆 Finale</button>
-          <a href="admin.html" class="dev-dropdown-item">🛠️ Admin</a>
-          <a href="progress.html" class="dev-dropdown-item">📋 Plan</a>
-        </div>
-      </details>
     </div>
   </header>
 
-  <!-- LIVE GAMEPLAY HUD OVERLAY (Screens 03 - 09) -->
+  <!-- LIVE GAMEPLAY HUD OVERLAY (Screens 03 - 09: Balanced Corner Anchors) -->
   <section class="gameplay-hud" id="gameplayHud" aria-label="Live Gameplay Heads-Up Display">
-    <!-- Top-Center Race Clock & Total Relics Banner -->
+    <!-- Top-Center Race Clock & Telemetry Bar -->
     <div class="hud-card center-clock-card" id="centerClockCard">
       <div class="clock-top-bar">
-        <div class="clock-mode-tag" id="hudClockModeTag">☀️ Morning • 🏆 3-Min Race</div>
+        <div class="clock-mode-tag" id="hudClockModeTag">Morning · 3-Min Race</div>
       </div>
       <div class="clock-main-row">
         <div class="clock-time-block">
-          <span class="clock-icon" aria-hidden="true">⏱️</span>
           <span class="clock-digits" id="hudClockDigits">03:00</span>
         </div>
-        <div class="clock-divider"></div>
+        <div class="clock-divider" aria-hidden="true"></div>
         <div class="relic-total-block" id="hudPlayerScoreBlock">
-          <span class="relic-total-label">SCORE 🏆</span>
-          <strong class="relic-total-val" id="hudPlayerScore">0 <small>PTS</small></strong>
+          <span class="relic-total-label">Score</span>
+          <strong class="relic-total-val" id="hudPlayerScore">0 <small class="score-unit">pts</small></strong>
         </div>
-        <div class="clock-divider"></div>
+        <div class="clock-divider" aria-hidden="true"></div>
         <div class="relic-total-block">
-          <span class="relic-total-label">LEFT 💎</span>
-          <strong class="relic-total-val" id="hudRemainingRelics">42</strong>
+          <span class="relic-total-label">Left</span>
+          <strong class="relic-total-val" id="hudRemainingRelics">42 <small class="rem-denom">/ 42</small></strong>
         </div>
       </div>
       <div class="hud-toast-banner" id="hudToastBanner" aria-live="polite">
-        🧭 Move: WASD or Click Ground
+        Move with WASD, arrows, or click the ground to explore
       </div>
     </div>
 
@@ -371,13 +362,18 @@
           🚶 Keep Exploring
         </button>
       </div>
+      <div class="eg-secondary-exit-row">
+        <button type="button" class="eg-text-exit-btn" id="btnEndGameExitToSetup">Back to Start Setup</button>
+        <span class="eg-text-exit-sep" aria-hidden="true">·</span>
+        <button type="button" class="eg-text-exit-btn" id="btnEndGameExitToWelcome">Switch Park</button>
+      </div>
     </div>
 
-    <!-- Top-Right 4-Player Live Standings Card -->
+    <!-- Upper-Left 4-Player Live Standings Card -->
     <div class="hud-card standings-card" id="standingsCard">
       <div class="standings-header">
-        <span class="standings-eyebrow" id="hudStandingsEyebrow">🏆 SCOREBOARD</span>
-        <span class="standings-total-pill" id="hudStandingsTotalPill">42 💎</span>
+        <span class="standings-eyebrow" id="hudStandingsEyebrow">Live Standings</span>
+        <span class="standings-total-pill" id="hudStandingsTotalPill">42 keepsakes</span>
       </div>
       <div class="standings-list" id="hudStandingsList">
         <!-- Populated dynamically by src/main3d.js -->
@@ -441,9 +437,9 @@
     <!-- Bottom-Left Circular Mini-Radar & Compass -->
     <div class="hud-card mini-radar-card" id="miniRadarCard">
       <div class="radar-header-row">
-        <span class="radar-title-tag">🧭 RADAR</span>
+        <span class="radar-title-tag">Radar</span>
         <button type="button" class="btn-radar-zoom" id="btnToggleRadarZoom" title="Toggle Radar Zoom">
-          🔍 45m
+          45m
         </button>
       </div>
       <div class="radar-canvas-wrap">
@@ -452,7 +448,7 @@
       </div>
       <div class="radar-footer">
         <button type="button" class="btn-radar-action" id="btnOpenFullMapHud" title="Open Full Map (M)">
-          🗺️ Map <span class="radar-key-hint">(M)</span>
+          Map <span class="radar-key-hint">(M)</span>
         </button>
       </div>
     </div>
@@ -461,12 +457,12 @@
     <div class="hud-card collection-hud-card" id="hudCollectionCard" aria-label="My Collected Relics">
       <div class="collection-hud-header">
         <div class="collection-hud-title-wrap">
-          <span class="collection-hud-title">🎒 KEEPSAKES</span>
+          <span class="collection-hud-title">Keepsakes</span>
           <span class="collection-hud-count-pill" id="hudCollectionCountPill">0 / 42</span>
         </div>
         <div class="collection-hud-actions">
           <button type="button" class="btn-collection-hud-open" id="btnOpenCollectionHud" title="Open Keepsakes Vault (C)">
-            All (0) ↗
+            All (0)
           </button>
           <button type="button" class="btn-collection-hud-toggle" id="btnToggleCollectionTray" title="Collapse or expand tray" aria-expanded="true">
             ▾
@@ -518,29 +514,29 @@
     </div>
   </section>
 
-  <!-- SCREEN 00 OVERLAY: SINGAPORE ISLAND WELCOME MAP & SCROLL DESTINATION SELECTOR -->
+  <!-- SCREEN 00 OVERLAY: SINGAPORE ISLAND WELCOME MAP (Botanical Editorial Glass) -->
   <section class="screen-overlay welcome-sgmap-overlay" id="screenWelcomeMapOverlay" aria-label="Singapore Island Map Welcome Selector">
     <div class="sg-welcome-shell" role="region" aria-label="Choose a Singapore 3D Map">
       <header class="sg-welcome-header">
         <div class="sg-welcome-title-wrap">
-          <span class="sg-welcome-eyebrow">🇸🇬 SINGAPORE 3D EXPEDITION • SELECT DESTINATION</span>
-          <h2 class="sg-welcome-heading">Explore Singapore’s Iconic Landmarks</h2>
-          <p class="sg-welcome-sub">Scroll or swipe across 4 destinations — or tap any pin on the Singapore map to preview &amp; enter!</p>
+          <span class="sg-welcome-eyebrow">Singapore · Interactive 3D Atlas</span>
+          <h2 class="sg-welcome-heading">Explore Singapore Landmarks</h2>
+          <p class="sg-welcome-sub">Select a pin on the island map or browse four miniature botanical worlds.</p>
         </div>
         <button type="button" class="sg-skip-link" id="btnSgSkipToDefaultGbb" title="Enter Gardens by the Bay 3D directly">
-          🌿 Enter Gardens by the Bay →
+          Skip to Gardens by the Bay →
         </button>
       </header>
 
       <div class="sg-welcome-body">
-        <!-- Left: Interactive Singapore Island Map with Synchronized Radar Pins -->
+        <!-- Left (58%): Interactive Singapore Island Map with Synchronized Pins & Ambience Switcher -->
         <div id="sgWelcomeMapStage" class="sg-welcome-map-col"></div>
 
-        <!-- Right: Scroll-Effect Destination Carousel (Gardens by the Bay, Botanic Gardens, Sentosa, Haw Par Villa) -->
+        <!-- Right (42%): Editorial Destination Spotlight Carousel + Single Focal CTA -->
         <section class="sg-carousel-column" aria-roledescription="carousel" aria-label="Singapore Map Destinations">
           <div class="sg-scroll-hint-bar">
-            <span>⇄ SCROLL OR DRAG TO BROWSE 4 MAPS</span>
-            <span>4 DESTINATIONS</span>
+            <span>Browse Destinations</span>
+            <span>4 Locations</span>
           </div>
 
           <div class="sg-carousel-controls">
@@ -551,138 +547,154 @@
           <div class="sg-scroll-track" id="sgScrollTrack" tabindex="0" role="group" aria-label="Destination cards"></div>
 
           <p class="sg-visually-hidden" id="sgScrollStatus" role="status" aria-live="polite"></p>
-          <nav class="sg-scroll-markers" id="sgScrollMarkers" aria-label="Choose a Singapore destination"></nav>
+
+          <div class="sg-spotlight-footer">
+            <nav class="sg-scroll-markers" id="sgScrollMarkers" aria-label="Choose a Singapore destination"></nav>
+            <p class="sg-coming-soon-note hidden" id="sgComingSoonPreviewNote" role="status"></p>
+            <button type="button" class="btn-start-expedition btn-sg-enter-footer" id="btnSgEnterSelectedMap">
+              Enter Gardens by the Bay
+            </button>
+          </div>
         </section>
       </div>
 
-      <footer class="sg-welcome-footer">
-        <p class="sg-coming-soon-note hidden" id="sgComingSoonPreviewNote" role="status"></p>
-        <button type="button" class="btn-start-expedition btn-sg-enter-footer" id="btnSgEnterSelectedMap">
-          🚀 Enter Gardens by the Bay →
-        </button>
+      <!-- Compact Landing-Page Hairline Footer: Admin & Project Companion Links -->
+      <footer class="sg-welcome-footer" aria-label="Studio and Project Links">
+        <nav class="sg-footer-links" aria-label="Companion Views">
+          <a href="admin.html" class="sg-footer-link">Admin View</a>
+          <span class="sg-footer-sep" aria-hidden="true">·</span>
+          <a href="progress.html" class="sg-footer-link">Project Progress</a>
+          <span class="sg-footer-sep" aria-hidden="true">·</span>
+          <a href="roadmap.html" class="sg-footer-link">Roadmap</a>
+          <span class="sg-footer-sep" aria-hidden="true">·</span>
+          <a href="presentation.html" class="sg-footer-link">Tech Deck</a>
+        </nav>
+        <span class="sg-footer-note">Singapore Parks Collection</span>
       </footer>
     </div>
   </section>
 
-  <!-- SCREEN 01 OVERLAY: RIGHT-DOCKED LUMINOUS FROSTED-PEARL START SCREEN (v3 9.43/10) -->
+  <!-- SCREEN 01 OVERLAY: RIGHT-DOCKED BOTANICAL EDITORIAL GLASS START SETUP -->
   <section class="screen-overlay title-screen-overlay hidden" id="screenTitleOverlay" aria-label="Start Screen Expedition Setup">
-    <!-- Left-Vista Live 10s Day-to-Night & Neon Fireworks Showcase Indicator -->
+    <!-- Bottom-Left Slim Frosted Day-to-Night Showcase Timeline -->
     <div class="title-show-preview-pill" id="titleShowPreviewPill" aria-live="polite">
       <div class="title-show-preview-top">
-        <span class="title-show-phase-badge" id="titleShowPhaseBadge">☀️ Tropical Day</span>
-        <span class="title-show-phase-sub" id="titleShowPhaseSub">Fast Sunset &amp; Neon Show in 3s</span>
+        <span class="title-show-phase-badge" id="titleShowPhaseBadge">Tropical Day</span>
+        <span class="title-show-phase-sub" id="titleShowPhaseSub">Night Show in 3s</span>
       </div>
       <div class="title-show-progress-track" aria-hidden="true">
-        <div class="title-show-night-zone" title="Garden Rhapsody Neon &amp; Fireworks Window"></div>
+        <div class="title-show-night-zone" title="Garden Rhapsody Night &amp; Fireworks Window"></div>
         <div class="title-show-progress-fill" id="titleShowProgressFill"></div>
       </div>
       <div class="title-show-legend" aria-hidden="true">
-        <span>☀️ Day</span>
-        <span>🌇 Sunset</span>
-        <span class="legend-neon-highlight">🎆 Neon &amp; Fireworks Show (1.5×Pts)</span>
+        <span>Day</span>
+        <span>Sunset</span>
+        <span class="legend-neon-highlight">Night Show · 1.5× pts</span>
       </div>
     </div>
 
     <!-- Mobile Landscape Step 1: Compact 3D Vista Overview Dock (Hidden on Desktop) -->
     <div class="mobile-title-vista-dock" id="mobileTitleVistaDock" role="region" aria-label="Gardens by the Bay 3D Overview">
       <div class="mobile-vista-brand-chip">
-        <span class="mobile-vista-title">🌸 GARDENS BY THE BAY 3D</span>
-        <span class="mobile-vista-phase" id="mobileVistaPhaseText">☀️ Day → 🎆 Neon Show</span>
+        <span class="mobile-vista-title">Gardens by the Bay</span>
+        <span class="mobile-vista-phase" id="mobileVistaPhaseText">Day · Night Show</span>
       </div>
       <div class="mobile-vista-cta-cluster">
         <button type="button" class="btn-mobile-vista-start" id="btnOpenChoicesMobile">
-          🚀 Start Game
+          Start Game
         </button>
         <button type="button" class="btn-mobile-vista-vault" id="btnOpenVaultVistaMobile" title="Open 42 Keepsakes Vault">
-          📖 42
+          Keepsakes (42)
         </button>
       </div>
     </div>
 
     <div class="start-pearl-card" data-selected-mode="race" role="region" aria-label="Gardens by the Bay 3D Treasure Hunt Start Panel">
       <div class="start-mobile-top-row">
-        <div class="start-eyebrow-pill" id="titleCardEyebrowPill">
-          🇸🇬 SINGAPORE 3D ADVENTURE
+        <div class="start-top-nav-cluster">
+          <button type="button" class="btn-start-back-parks" id="btnBackToWelcomeFromTitle" title="Back to Singapore Parks Map">
+            ← All Parks
+          </button>
+          <span class="start-top-sep" aria-hidden="true">·</span>
+          <div class="start-eyebrow-pill" id="titleCardEyebrowPill">
+            Singapore · Bay South
+          </div>
         </div>
         <button type="button" class="btn-mobile-vista-toggle" id="btnMinimizeChoicesMobile" title="Minimize Card to View 3D Gardens Overview">
-          👁️ 3D Vista
+          3D Vista
         </button>
       </div>
 
       <h2 class="start-main-heading">
-        <span class="start-heading-gold">GARDENS BY THE BAY</span>
-        <span class="start-heading-teal">✨ 3D Treasure Hunt • 42 Iconic Keepsakes</span>
+        <span class="start-heading-gold">Gardens by the Bay</span>
+        <span class="start-heading-teal">3D Treasure Hunt · 42 Keepsakes</span>
       </h2>
 
-      <!-- 3 Side-by-Side Mode Selector Cards (Step 1: Solo Race | Party Room | Chill Stroll) -->
+      <!-- Segmented 3-Mode Selector (Solo Race | Party Room | Chill Stroll) -->
       <div class="start-mode-grid is-three-cols" role="group" aria-label="Select Game Mode">
         <button type="button" class="start-mode-card active" data-select-mode="race" id="startCardRace">
-          <span class="start-mode-icon" aria-hidden="true">🏆</span>
           <strong class="start-mode-title">Solo Race</strong>
-          <span class="start-mode-sub">3m vs. 3 Bots</span>
+          <span class="start-mode-sub">3 min · 3 Bots</span>
         </button>
 
         <button type="button" class="start-mode-card" data-select-mode="party" id="startCardParty">
-          <span class="start-mode-icon" aria-hidden="true">🌐</span>
           <strong class="start-mode-title">Party Room</strong>
-          <span class="start-mode-sub">2–4P Co-Op</span>
+          <span class="start-mode-sub">2–4 Players</span>
         </button>
 
         <button type="button" class="start-mode-card" data-select-mode="relaxed" id="startCardRelaxed">
-          <span class="start-mode-icon" aria-hidden="true">🌿</span>
           <strong class="start-mode-title">Chill Stroll</strong>
           <span class="start-mode-sub">No Timer</span>
         </button>
       </div>
 
-      <!-- Context-Aware Match Setup Pod (Adapts cleanly to Solo Race | Party Room | Chill Stroll) -->
+      <!-- Flat Hairline-Separated Match Setup Area (Zero Nested Cards) -->
       <div class="start-setup-pod" id="startContextSetupPod">
-        <!-- Mode 1: Solo Race Setup (Bot Speed + Rivals) -->
+        <!-- Mode 1: Solo Race Setup (Inline Bot Speed + 4-Explorer Lineup) -->
         <div class="start-race-setup-pane" id="startRaceSetupPane">
-          <div class="start-section-block" id="startDiffSection">
+          <div class="start-section-block start-inline-row" id="startDiffSection">
             <div class="start-section-label">Bot Speed</div>
             <div class="start-diff-bar" role="group" aria-label="Select AI Bot Difficulty">
-              <button type="button" class="start-diff-pill" data-bot-diff="chill" data-diff-label="🌱 Chill">
-                🌱 Chill
+              <button type="button" class="start-diff-pill" data-bot-diff="chill" data-diff-label="Chill">
+                Chill
               </button>
-              <button type="button" class="start-diff-pill active" data-bot-diff="normal" data-diff-label="⚖️ Normal">
-                ⚖️ Normal
+              <button type="button" class="start-diff-pill active" data-bot-diff="normal" data-diff-label="Normal">
+                Normal
               </button>
-              <button type="button" class="start-diff-pill" data-bot-diff="pro" data-diff-label="🔥 Pro">
-                🔥 Pro
+              <button type="button" class="start-diff-pill" data-bot-diff="pro" data-diff-label="Pro">
+                Pro
               </button>
             </div>
           </div>
 
           <div class="start-section-block start-rivals-block" id="startSquadSection">
-            <div class="start-section-label">Starting Lineup (You vs. 3 AI Bots)</div>
             <div class="start-squad-row" id="startSquadRow" role="list" aria-label="Chibi Explorer Squad">
               <div class="start-squad-member start-squad-item" role="listitem" title="You">
-                <div class="start-squad-avatar-ring" style="--squad-ring: #60A5FA; --ring-color: #60A5FA;">
+                <div class="start-squad-avatar-ring" style="--squad-ring: #0B4F43; --ring-color: #0B4F43;">
                   <img src="./assets/avatars/avatar_you.png" alt="Explorer You" class="start-squad-avatar-img" />
                 </div>
                 <span class="start-squad-name start-squad-pill you-pill">You</span>
               </div>
 
-              <div class="start-squad-member start-squad-item" role="listitem" title="⚡ Kai">
-                <div class="start-squad-avatar-ring" style="--squad-ring: #FB7185; --ring-color: #FB7185;">
+              <div class="start-squad-member start-squad-item" role="listitem" title="Bot Kai — Speedster">
+                <div class="start-squad-avatar-ring" style="--squad-ring: #6495B8; --ring-color: #6495B8;">
                   <img src="./assets/avatars/avatar_kai.png" alt="Bot Kai" class="start-squad-avatar-img" />
                 </div>
-                <span class="start-squad-name start-squad-pill kai-pill">⚡ Kai</span>
+                <span class="start-squad-name start-squad-pill kai-pill">Kai</span>
               </div>
 
-              <div class="start-squad-member start-squad-item" role="listitem" title="📡 Mei">
-                <div class="start-squad-avatar-ring" style="--squad-ring: #34D399; --ring-color: #34D399;">
+              <div class="start-squad-member start-squad-item" role="listitem" title="Bot Mei — Radar Tracker">
+                <div class="start-squad-avatar-ring" style="--squad-ring: #D98B7C; --ring-color: #D98B7C;">
                   <img src="./assets/avatars/avatar_mei.png" alt="Bot Mei" class="start-squad-avatar-img" />
                 </div>
-                <span class="start-squad-name start-squad-pill mei-pill">📡 Mei</span>
+                <span class="start-squad-name start-squad-pill mei-pill">Mei</span>
               </div>
 
-              <div class="start-squad-member start-squad-item" role="listitem" title="🧭 Raj">
-                <div class="start-squad-avatar-ring" style="--squad-ring: #FBBF24; --ring-color: #FBBF24;">
+              <div class="start-squad-member start-squad-item" role="listitem" title="Bot Raj — Pathfinder">
+                <div class="start-squad-avatar-ring" style="--squad-ring: #9B85B8; --ring-color: #9B85B8;">
                   <img src="./assets/avatars/avatar_raj.png" alt="Bot Raj" class="start-squad-avatar-img" />
                 </div>
-                <span class="start-squad-name start-squad-pill raj-pill">🧭 Raj</span>
+                <span class="start-squad-name start-squad-pill raj-pill">Raj</span>
               </div>
             </div>
           </div>
@@ -692,14 +704,14 @@
         <div class="start-party-room-panel hidden" id="startPartyRoomPanel" aria-label="Multiplayer Room Code Setup">
           <div class="mp-room-top-row">
             <span class="mp-room-code-pill">
-              🔑 ROOM: <strong id="mpTitleRoomCodeText">GBB-88A</strong>
+              Room <strong id="mpTitleRoomCodeText">GBB-88A</strong>
             </span>
             <div class="mp-room-actions-cluster">
               <button type="button" class="btn-mp-mini" id="btnMpRegenCode" title="Generate New Room Code">
-                🎲 New
+                New Code
               </button>
               <button type="button" class="btn-mp-mini" id="btnMpCopyInvite" title="Copy Invite Link (?room=GBB-XXX)">
-                📋 Copy Link
+                Copy Link
               </button>
             </div>
           </div>
@@ -709,7 +721,7 @@
               class="mp-join-code-input"
               id="mpJoinRoomInput"
               maxlength="8"
-              placeholder="Enter Code (e.g. GBB-88A)"
+              placeholder="Enter room code (e.g. GBB-88A)"
               aria-label="Join Friend Room Code"
             />
             <button type="button" class="btn-mp-join-go" id="btnMpJoinRoom">
@@ -724,37 +736,34 @@
             <img src="./assets/avatars/avatar_you.png" alt="Solo Explorer" />
           </div>
           <div class="start-relaxed-copy">
-            <strong>🌿 Peaceful Solo Stroll • No Timer, No Bots</strong>
-            <span>Roam the Supertrees, Flower Dome &amp; Cloud Forest at your own pace to collect all 42 3D toys!</span>
+            <strong>Peaceful Solo Stroll · No Timer, No Bots</strong>
+            <span>Roam the Supertrees, Flower Dome, and Cloud Forest at your own pace to collect all 42 keepsakes.</span>
           </div>
         </div>
       </div>
 
-      <!-- 1-Glance 3-Step Visual "How to Play" Strip -->
+      <!-- Quiet One-Line 3-Step Flow (Gestalt Continuity) -->
       <div class="start-howto-strip" id="startHowToStrip" role="list" aria-label="How to Play in 3 Steps">
         <div class="start-howto-pill" role="listitem">
-          <span class="howto-num">1</span>
-          <span class="howto-text" id="startHowToMoveText">🕹️ Walk or Tap Ground</span>
+          <span class="howto-text" id="startHowToMoveText">1. Walk or click</span>
         </div>
-        <span class="start-howto-arrow" aria-hidden="true">›</span>
+        <span class="start-howto-arrow" aria-hidden="true">·</span>
         <div class="start-howto-pill" role="listitem">
-          <span class="howto-num">2</span>
-          <span class="howto-text">💎 Snatch 42 Toys</span>
+          <span class="howto-text">2. Collect 42 keepsakes</span>
         </div>
-        <span class="start-howto-arrow" aria-hidden="true">›</span>
+        <span class="start-howto-arrow" aria-hidden="true">·</span>
         <div class="start-howto-pill" role="listitem">
-          <span class="howto-num">3</span>
-          <span class="howto-text">🎆 1.5× Night Show</span>
+          <span class="howto-text">3. 1.5× night bonus</span>
         </div>
       </div>
 
-      <!-- Bottom CTA Row -->
+      <!-- Bottom CTA Row (Single Dominant Primary + Refined Secondary) -->
       <div class="start-cta-row">
         <button type="button" class="btn-start-expedition" id="btnStartRaceFromTitle">
-          🚀 START 3-MIN RACE
+          Start 3-Min Race
         </button>
         <button type="button" class="btn-start-passport" id="btnOpenPassportFromTitle">
-          📖 Keepsakes (42)
+          Keepsakes (42)
         </button>
       </div>
     </div>
@@ -774,7 +783,7 @@
         </div>
 
         <div class="pearl-header-right">
-          <button type="button" class="btn-pearl-close" data-close-screen="gameplay" aria-label="Back to Garden">
+          <button type="button" class="btn-pearl-close" data-close-screen="back" aria-label="Close Keepsakes Vault">
             ✕ Close
           </button>
         </div>
@@ -825,7 +834,7 @@
           <span class="pearl-badge-id" id="relic3DItemCounter">1 / 42</span>
         </div>
 
-        <button type="button" class="btn-pearl-close" id="btnClose3DInspector" data-close-screen="gameplay" title="Return to 3D Garden (Esc)" aria-label="Close 3D Inspector">
+        <button type="button" class="btn-pearl-close" id="btnClose3DInspector" data-close-screen="back" title="Close 3D Inspector (Esc)" aria-label="Close 3D Inspector">
           ✕ Close
         </button>
       </div>
@@ -889,7 +898,7 @@
             ⚡ Click: Teleport
           </button>
           <span class="fullmap-hint">💡 Click any pin to jump!</span>
-          <button type="button" class="btn-modal-close" data-close-screen="gameplay" aria-label="Close Tactical Map">✕</button>
+          <button type="button" class="btn-modal-close" data-close-screen="back" aria-label="Close Tactical Map">✕</button>
         </div>
       </div>
 
@@ -919,6 +928,25 @@
           </div>
         </aside>
       </div>
+    </div>
+  </section>
+
+  <!-- GAME PAUSED / EXIT GAME OVERLAY (Accessible Frosted Sheet) -->
+  <section class="screen-overlay pause-exit-overlay hidden" id="pauseExitModalOverlay" role="dialog" aria-modal="true" aria-labelledby="pauseModalTitle" aria-describedby="pauseModalSubtitle">
+    <div class="pause-exit-card" id="pauseExitCard">
+      <div class="pause-exit-header">
+        <h2 class="pause-exit-title" id="pauseModalTitle">Game Paused</h2>
+        <p class="pause-exit-sub" id="pauseModalSubtitle">Gardens by the Bay · Solo Race (Paused)</p>
+      </div>
+
+      <div class="pause-exit-actions">
+        <button type="button" class="btn-pause-primary" id="btnPauseResume">Resume Game</button>
+        <button type="button" class="btn-pause-secondary" id="btnPauseRestart">Restart Match</button>
+        <button type="button" class="btn-pause-secondary" id="btnPauseToSetup">Back to Start Setup</button>
+        <button type="button" class="btn-pause-quiet" id="btnPauseToWelcome">Exit to Singapore Map</button>
+      </div>
+
+      <p class="pause-exit-hint" id="pauseModalHint">Press Esc to resume</p>
     </div>
   </section>
 

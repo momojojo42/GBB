@@ -61,39 +61,39 @@ export function mountSingaporeInteractiveMap(
   svg.innerHTML = `
     <defs>
       <radialGradient id="sgSeaGlow" cx="52%" cy="54%" r="64%">
-        <stop id="sgSeaStop0" offset="0%" stop-color="#0E7490" stop-opacity="0.95" />
-        <stop id="sgSeaStop1" offset="58%" stop-color="#074B63" stop-opacity="0.98" />
-        <stop id="sgSeaStop2" offset="100%" stop-color="#032638" stop-opacity="1" />
+        <stop id="sgSeaStop0" offset="0%" stop-color="#CDE3E2" stop-opacity="1" />
+        <stop id="sgSeaStop1" offset="58%" stop-color="#B7D4D3" stop-opacity="1" />
+        <stop id="sgSeaStop2" offset="100%" stop-color="#9EC2C2" stop-opacity="1" />
       </radialGradient>
       <linearGradient id="sgLandGrad" x1="15%" y1="10%" x2="85%" y2="90%">
-        <stop id="sgLandStop0" offset="0%" stop-color="#4ADE80" />
-        <stop id="sgLandStop1" offset="48%" stop-color="#22C55E" />
-        <stop id="sgLandStop2" offset="100%" stop-color="#0D9488" />
+        <stop id="sgLandStop0" offset="0%" stop-color="#F3F8F4" />
+        <stop id="sgLandStop1" offset="52%" stop-color="#E1ECE4" />
+        <stop id="sgLandStop2" offset="100%" stop-color="#C6DBCE" />
       </linearGradient>
       <linearGradient id="sgSentosaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stop-color="#5EEAD4" />
-        <stop offset="100%" stop-color="#10B981" />
+        <stop offset="0%" stop-color="#E7F1EA" />
+        <stop offset="100%" stop-color="#C6DBCE" />
       </linearGradient>
       <radialGradient id="sgFocusSpotlight" cx="50%" cy="50%" r="50%">
-        <stop id="sgSpotlightStop0" offset="0%" stop-color="#FDE047" stop-opacity="0.58" />
-        <stop id="sgSpotlightStop1" offset="55%" stop-color="#34D399" stop-opacity="0.24" />
-        <stop offset="100%" stop-color="#34D399" stop-opacity="0" />
+        <stop id="sgSpotlightStop0" offset="0%" stop-color="#0B4F43" stop-opacity="0.22" />
+        <stop id="sgSpotlightStop1" offset="55%" stop-color="#10B981" stop-opacity="0.10" />
+        <stop offset="100%" stop-color="#10B981" stop-opacity="0" />
       </radialGradient>
       <radialGradient id="sgHorizonGlowGrad" cx="50%" cy="18%" r="58%">
-        <stop id="sgHorizonStop0" offset="0%" stop-color="#FDE047" stop-opacity="0.45" />
-        <stop id="sgHorizonStop1" offset="55%" stop-color="#E879F9" stop-opacity="0.16" />
+        <stop id="sgHorizonStop0" offset="0%" stop-color="#FDE68A" stop-opacity="0.32" />
+        <stop id="sgHorizonStop1" offset="55%" stop-color="#99F6E4" stop-opacity="0.12" />
         <stop offset="100%" stop-color="#0EA5E9" stop-opacity="0" />
       </radialGradient>
       <filter id="sgSoftShadow" x="-12%" y="-12%" width="124%" height="128%">
-        <feDropShadow dx="0" dy="8" stdDeviation="6" flood-color="#021D29" flood-opacity="0.52" />
+        <feDropShadow dx="0" dy="5" stdDeviation="5" flood-color="#0D3B34" flood-opacity="0.16" />
       </filter>
     </defs>
 
-    <!-- Strait Ocean Backdrop & Horizon Sky Aura -->
-    <rect width="900" height="560" rx="22" fill="url(#sgSeaGlow)" />
-    <ellipse id="sgHorizonAura" cx="460" cy="110" rx="410" ry="185" fill="url(#sgHorizonGlowGrad)" opacity="0.55" />
+    <!-- Strait Ocean Backdrop & Subtle Cartographic Grid -->
+    <rect width="900" height="560" rx="18" fill="url(#sgSeaGlow)" />
+    <ellipse id="sgHorizonAura" cx="460" cy="110" rx="410" ry="185" fill="url(#sgHorizonGlowGrad)" opacity="0.14" />
 
-    <g stroke="rgba(186, 230, 253, 0.1)" stroke-width="1">
+    <g stroke="rgba(13, 59, 52, 0.06)" stroke-width="1">
       <line x1="0" y1="112" x2="900" y2="112" />
       <line x1="0" y1="224" x2="900" y2="224" />
       <line x1="0" y1="336" x2="900" y2="336" />
@@ -104,74 +104,67 @@ export function mountSingaporeInteractiveMap(
       <line x1="720" y1="0" x2="720" y2="560" />
     </g>
 
-    <!-- Water Reflection Shimmer Waves -->
-    <g id="sgWaterReflections" class="sg-water-reflections" stroke="rgba(254, 240, 138, 0.28)" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.65">
+    <!-- Subtle Water Shimmer Lines -->
+    <g id="sgWaterReflections" class="sg-water-reflections" stroke="rgba(255, 255, 255, 0.35)" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.32">
       <path d="M 280 468 Q 330 462 380 468" />
       <path d="M 548 446 Q 598 438 648 446" />
       <path d="M 520 508 Q 576 500 632 508" />
       <path d="M 180 482 Q 225 475 270 482" />
     </g>
 
-    <!-- Soft Nautical Ripple Rings -->
-    <ellipse cx="470" cy="300" rx="370" ry="205" fill="none" stroke="rgba(125, 211, 252, 0.14)" stroke-dasharray="8 8" stroke-width="1.5" />
-
     <!-- Outer Islands -->
-    <path d="${PULAU_UBIN_PATH}" fill="#16A34A" stroke="#DCFCE7" stroke-width="2" opacity="0.88" />
-    <path d="${PULAU_TEKONG_PATH}" fill="#15803D" stroke="#DCFCE7" stroke-width="2" opacity="0.82" />
-    <path d="${JURONG_ISLAND_PATH}" fill="#0F766E" stroke="#99F6E4" stroke-width="2" opacity="0.82" />
+    <path d="${PULAU_UBIN_PATH}" fill="#DCEAE0" stroke="#9EB9AC" stroke-width="1.4" opacity="0.92" />
+    <path d="${PULAU_TEKONG_PATH}" fill="#D6E6DC" stroke="#9EB9AC" stroke-width="1.4" opacity="0.88" />
+    <path d="${JURONG_ISLAND_PATH}" fill="#D3E4DC" stroke="#9EB9AC" stroke-width="1.4" opacity="0.86" />
 
-    <!-- Singapore Main Island Extruded Base + Lush Botanical Landmass -->
-    <path d="${SG_MAIN_ISLAND_PATH}" transform="translate(0, 8)" fill="#064E3B" opacity="0.72" />
-    <path d="${SG_MAIN_ISLAND_PATH}" fill="url(#sgLandGrad)" stroke="#ECFDF5" stroke-width="3.2" stroke-linejoin="round" filter="url(#sgSoftShadow)" />
+    <!-- Singapore Main Island Botanical Silhouette -->
+    <path d="${SG_MAIN_ISLAND_PATH}" fill="url(#sgLandGrad)" stroke="#88ADA0" stroke-width="2" stroke-linejoin="round" filter="url(#sgSoftShadow)" />
 
-    <!-- Central Catchment Nature Reserve & MacRitchie Pockets -->
-    <ellipse cx="440" cy="236" rx="78" ry="44" fill="#15803D" opacity="0.46" />
-    <path d="M 414 232 Q 442 216 468 238 Q 442 252 414 232 Z" fill="#0EA5E9" opacity="0.72" />
+    <!-- Central Catchment Nature Reserve & MacRitchie -->
+    <ellipse cx="440" cy="236" rx="78" ry="44" fill="#BDD6C4" opacity="0.65" />
+    <path d="M 414 232 Q 442 216 468 238 Q 442 252 414 232 Z" fill="#9BC3C8" opacity="0.85" />
 
-    <!-- East Coast Parkway & Marina Bay Reservoir -->
-    <path d="M 526 392 Q 554 374 584 388 Q 560 412 526 392 Z" fill="#0EA5E9" stroke="#BAE6FD" stroke-width="1.4" opacity="0.85" />
-    <path d="M 164 304 Q 340 278 486 300 T 764 252" fill="none" stroke="rgba(255, 251, 235, 0.34)" stroke-width="3" stroke-dasharray="7 6" />
+    <!-- Marina Bay Reservoir & Island Arteries -->
+    <path d="M 526 392 Q 554 374 584 388 Q 560 412 526 392 Z" fill="#9AC4C9" stroke="#78A7AE" stroke-width="1.2" opacity="0.9" />
+    <path d="M 164 304 Q 340 278 486 300 T 764 252" fill="none" stroke="rgba(13, 59, 52, 0.14)" stroke-width="1.8" stroke-dasharray="5 5" />
 
     <!-- Sentosa Island across Keppel Harbour -->
-    <path d="${SENTOSA_ISLAND_PATH}" transform="translate(0, 6)" fill="#065F46" opacity="0.7" />
-    <path d="${SENTOSA_ISLAND_PATH}" fill="url(#sgSentosaGrad)" stroke="#FEF9C3" stroke-width="2.8" stroke-linejoin="round" filter="url(#sgSoftShadow)" />
-    <line x1="458" y1="422" x2="458" y2="458" stroke="#FDE68A" stroke-width="3" stroke-dasharray="4 3" />
+    <path d="${SENTOSA_ISLAND_PATH}" fill="url(#sgSentosaGrad)" stroke="#88ADA0" stroke-width="1.8" stroke-linejoin="round" filter="url(#sgSoftShadow)" />
+    <line x1="458" y1="422" x2="458" y2="458" stroke="rgba(13, 59, 52, 0.25)" stroke-width="1.8" stroke-dasharray="3 3" />
 
-    <!-- Stylized Island Expedition Route -->
-    <path d="${ROUTE_ARC_PATH}" fill="none" stroke="#FEF08A" stroke-width="3" stroke-linecap="round" stroke-dasharray="6 8" opacity="0.85" />
+    <!-- Subtle Botanical Trail Arc -->
+    <path d="${ROUTE_ARC_PATH}" fill="none" stroke="rgba(11, 79, 67, 0.32)" stroke-width="2" stroke-linecap="round" stroke-dasharray="4 6" />
 
-    <!-- Enchanted Night & Sunset Park Beacons / Starlight Layer -->
-    <g id="sgNightBeacons" class="sg-night-beacons" opacity="0.6">
-      <circle cx="542" cy="404" r="14" fill="rgba(34, 211, 238, 0.35)" />
-      <circle cx="444" cy="318" r="13" fill="rgba(52, 211, 153, 0.35)" />
-      <circle cx="462" cy="472" r="12" fill="rgba(251, 146, 60, 0.32)" />
-      <circle cx="356" cy="392" r="12" fill="rgba(245, 158, 11, 0.35)" />
-      <circle cx="515" cy="378" r="2.4" fill="#FEF08A" />
-      <circle cx="566" cy="368" r="2.2" fill="#22D3EE" />
+    <!-- Night Park Beacons (Visible on Sunset & Night modes) -->
+    <g id="sgNightBeacons" class="sg-night-beacons" opacity="0.0">
+      <circle cx="542" cy="404" r="14" fill="rgba(52, 211, 153, 0.32)" />
+      <circle cx="444" cy="318" r="13" fill="rgba(52, 211, 153, 0.28)" />
+      <circle cx="462" cy="472" r="12" fill="rgba(251, 191, 36, 0.26)" />
+      <circle cx="356" cy="392" r="12" fill="rgba(245, 158, 11, 0.26)" />
+      <circle cx="515" cy="378" r="2.2" fill="#FEF08A" />
+      <circle cx="566" cy="368" r="2.0" fill="#6EE7B7" />
       <circle cx="486" cy="348" r="2.0" fill="#FDE047" />
-      <circle cx="395" cy="356" r="2.2" fill="#FBBF24" />
-      <circle cx="622" cy="314" r="2.0" fill="#FEF08A" />
-      <circle cx="290" cy="318" r="2.2" fill="#6EE7B7" />
+      <circle cx="395" cy="356" r="2.0" fill="#FBBF24" />
     </g>
 
-    <!-- Geographic District Labels -->
-    <g fill="rgba(236, 253, 245, 0.72)" font-family="Poppins, sans-serif" font-size="11" font-weight="700" letter-spacing="1.8">
-      <text x="200" y="255">JURONG LAKE</text>
-      <text x="415" y="178">CENTRAL CATCHMENT</text>
-      <text x="646" y="268">CHANGI COAST</text>
-      <text x="580" y="458" fill="rgba(186, 230, 253, 0.72)">SINGAPORE STRAIT</text>
+    <!-- Quiet Geographic Labels -->
+    <g class="sg-map-geo-labels" fill="rgba(13, 59, 52, 0.42)" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" font-weight="600" letter-spacing="1.4">
+      <text x="196" y="254">JURONG LAKE</text>
+      <text x="406" y="176">CENTRAL CATCHMENT</text>
+      <text x="640" y="266">CHANGI COAST</text>
+      <text x="580" y="458">SINGAPORE STRAIT</text>
     </g>
 
-    <!-- Animated Spotlight Aura Following the Active Scrolled Destination -->
-    <circle id="sgMapActiveHalo" cx="542" cy="404" r="74" fill="url(#sgFocusSpotlight)" />
-    <circle id="sgMapActiveRing" cx="542" cy="404" r="30" fill="none" stroke="#FEF08A" stroke-width="2.5" stroke-dasharray="5 5" opacity="0.92" />
+    <!-- Active Destination Focus Halo -->
+    <circle id="sgMapActiveHalo" cx="542" cy="404" r="54" fill="url(#sgFocusSpotlight)" />
+    <circle id="sgMapActiveRing" cx="542" cy="404" r="22" fill="none" stroke="#0B4F43" stroke-width="2" opacity="0.65" />
 
-    <!-- Compass Rose (Top-Left) -->
-    <g transform="translate(56, 56)">
-      <circle cx="0" cy="0" r="22" fill="rgba(6, 57, 58, 0.76)" stroke="rgba(254, 240, 138, 0.75)" stroke-width="1.5" />
-      <polygon points="0,-14 3.5,-2 0,-4.5 -3.5,-2" fill="#FACC15" />
-      <polygon points="0,14 3.5,2 0,4.5 -3.5,2" fill="#E2E8F0" opacity="0.65" />
-      <text x="0" y="-25" text-anchor="middle" fill="#FEF08A" font-family="Poppins, sans-serif" font-size="9.5" font-weight="800">N</text>
+    <!-- Minimal Cartographic Compass (Top-Left) -->
+    <g transform="translate(48, 48)">
+      <circle cx="0" cy="0" r="18" fill="rgba(250, 253, 251, 0.84)" stroke="rgba(13, 59, 52, 0.2)" stroke-width="1.2" />
+      <polygon points="0,-11 3,-1.5 0,-3.5 -3,-1.5" fill="#0B4F43" />
+      <polygon points="0,11 3,1.5 0,3.5 -3,1.5" fill="#8AA69E" />
+      <text x="0" y="-22" text-anchor="middle" fill="#0D3B34" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="700">N</text>
     </g>
   `;
 
@@ -249,10 +242,11 @@ export function mountSingaporeInteractiveMap(
 
     btn.innerHTML = `
       <span class="sg-pin-pulse" aria-hidden="true"></span>
-      <span class="sg-pin-dot">${dest.icon}</span>
+      <span class="sg-pin-dot" aria-hidden="true">
+        <svg viewBox="0 0 20 20" width="14" height="14" fill="currentColor"><path d="M10 2a5.5 5.5 0 0 0-5.5 5.5c0 4.1 5.5 10.5 5.5 10.5s5.5-6.4 5.5-10.5A5.5 5.5 0 0 0 10 2Zm0 7.5a2 2 0 1 1 0-4 2 2 0 0 1 0 4Z"/></svg>
+      </span>
       <span class="sg-pin-tag">
         <strong>${dest.shortName}</strong>
-        <small>${dest.status === 'live' ? 'LIVE 3D' : 'SOON'}</small>
       </span>
     `;
     btn.addEventListener('click', () => onSelectDestination?.(dest.id));
@@ -332,6 +326,6 @@ export function mountSingaporeInteractiveMap(
   }
 
   setActivePin(SINGAPORE_DESTINATIONS[0].id);
-  setAtmosphereState(SINGAPORE_DESTINATIONS[0], 'sunset');
+  setAtmosphereState(SINGAPORE_DESTINATIONS[0], 'morning');
   return { setActivePin, setAtmosphereState };
 }

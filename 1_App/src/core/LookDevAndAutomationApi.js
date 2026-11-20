@@ -82,24 +82,25 @@ export function createLookDevAndScreenCoordinator({
 
     const badge = document.getElementById('hudAtmosphereBadge');
     const mapProf = getActiveMapProfile();
+    document.body.classList.toggle('is-night-hud', L.preset === 'night');
     if (L.preset === 'night') {
       scene.background.set('#081426');
       scene.fog.color.set('#0B192E');
       hemiLight.color.set('#38BDF8');
       hemiLight.groundColor.set('#042F2E');
-      if (badge) badge.textContent = mapProf.nightShowLabel || '🌙 Garden Rhapsody Night';
+      if (badge) badge.textContent = mapProf.nightShowLabel || 'Garden Rhapsody Night';
     } else if (L.preset === 'sunset') {
       scene.background.set('#FCA5A5');
       scene.fog.color.set('#FDBA74');
       hemiLight.color.set('#FDE047');
       hemiLight.groundColor.set('#064E3B');
-      if (badge) badge.textContent = '🌇 Golden Hour Sunset';
+      if (badge) badge.textContent = 'Golden Hour Sunset';
     } else {
       scene.background.set('#7DD3FC');
       scene.fog.color.set('#BAE6FD');
       hemiLight.color.set('#E0F2FE');
       hemiLight.groundColor.set('#065F46');
-      if (badge) badge.textContent = '☀️ Morning Tropical Sun';
+      if (badge) badge.textContent = 'Morning Tropical Sun';
     }
 
     const mergedMatSettings = { ...T, ...L };
@@ -140,6 +141,7 @@ export function createLookDevAndScreenCoordinator({
       cycleState.isNightShow ? 0.55 : 0.35,
       cycleState.isNightShow ? 0.85 : 1.25
     );
+    document.body.classList.toggle('is-night-hud', Boolean(appState.isNightRhapsody));
     const badge = document.getElementById('hudAtmosphereBadge');
     if (badge) badge.textContent = cycleState.phaseLabel;
   }
@@ -151,22 +153,26 @@ export function createLookDevAndScreenCoordinator({
     const titleOverlay = document.getElementById('screenTitleOverlay');
     titleOverlay?.classList.toggle('is-night-show-active', isNightHighlight);
 
+    const cleanStageLabel = (cycleState.titleStageLabel || 'Tropical Day')
+      .replace(/^[^\p{L}\p{N}]+/u, '')
+      .trim();
     const phaseBadge = document.getElementById('titleShowPhaseBadge');
-    if (phaseBadge && cycleState.titleStageLabel) {
-      phaseBadge.textContent = cycleState.titleStageLabel;
+    if (phaseBadge && cleanStageLabel) {
+      phaseBadge.textContent = cleanStageLabel;
     }
     const mobileVistaPhase = document.getElementById('mobileVistaPhaseText');
-    if (mobileVistaPhase && cycleState.titleStageLabel) {
+    if (mobileVistaPhase && cleanStageLabel) {
       const nextVistaText = isNightHighlight
-        ? '🎆 Neon & Fireworks (1.5×Pts!)'
-        : `${cycleState.titleStageLabel} → 🎆 Show`;
+        ? 'Night Show · 1.5× pts'
+        : `${cleanStageLabel} · Night Show`;
       if (mobileVistaPhase.textContent !== nextVistaText) {
         mobileVistaPhase.textContent = nextVistaText;
       }
     }
     const phaseSub = document.getElementById('titleShowPhaseSub');
     if (phaseSub && cycleState.titleStageSub) {
-      phaseSub.textContent = cycleState.titleStageSub;
+      const cleanSub = cycleState.titleStageSub.replace(/^[^\p{L}\p{N}]+/u, '').trim();
+      phaseSub.textContent = cleanSub || cycleState.titleStageSub;
     }
     const fillEl = document.getElementById('titleShowProgressFill');
     if (fillEl && cycleState.titleLoopProgress0to1 !== undefined) {
@@ -176,8 +182,8 @@ export function createLookDevAndScreenCoordinator({
     if (eyebrowEl) {
       const mapProf = getActiveMapProfile();
       eyebrowEl.textContent = isNightHighlight
-        ? mapProf.eyebrowNight || '🎆 LIVE: GARDEN RHAPSODY NEON & FIREWORKS (1.5× PTS!)'
-        : mapProf.eyebrowDay || '🇸🇬 SINGAPORE • 10S DAY → NIGHT NEON SHOWCASE';
+        ? mapProf.eyebrowNight || 'Garden Rhapsody · 1.5× Night Bonus'
+        : mapProf.eyebrowDay || 'Singapore · Bay South';
     }
 
     const loopTime = cycleState.titleLoopTime ?? 0;
@@ -226,12 +232,101 @@ export function createLookDevAndScreenCoordinator({
     updateWorldLabels();
   }
 
+  function closePauseMenu() {
+    appState.isPaused = false;
+    const pauseEl = document.getElementById('pauseExitModalOverlay');
+    pauseEl?.classList.add('hidden');
+    syncOverlayBodyClasses();
+  }
+
+  function openPauseMenu() {
+    if (appState.screen !== 'gameplay') return;
+    const endGameEl = document.getElementById('endGameBannerOverlay');
+    if (endGameEl && !endGameEl.classList.contains('hidden')) return;
+
+    appState.isPaused = true;
+    const mapProf = getActiveMapProfile();
+    const parkName = mapProf?.cardTitleGold || 'Gardens by the Bay';
+    const subtitleEl = document.getElementById('pauseModalSubtitle');
+    if (subtitleEl) {
+      if (appState.isMultiplayerRoom) {
+        subtitleEl.textContent = `${parkName} · Live Party Room (Clock stays active)`;
+      } else if (appState.mode === 'relaxed') {
+        subtitleEl.textContent = `${parkName} · Chill Stroll`;
+      } else {
+        subtitleEl.textContent = `${parkName} · Solo Race (Paused)`;
+      }
+    }
+    const restartBtn = document.getElementById('btnPauseRestart');
+    if (restartBtn) {
+      restartBtn.classList.toggle('hidden', Boolean(appState.isMultiplayerRoom));
+    }
+
+    const pauseEl = document.getElementById('pauseExitModalOverlay');
+    pauseEl?.classList.remove('hidden');
+    syncOverlayBodyClasses();
+    requestAnimationFrame(() => {
+      document.getElementById('btnPauseResume')?.focus();
+    });
+  }
+
+  function exitActiveMatch(targetScreen = 'title') {
+    window.__gbbCancelCountdown?.();
+    closePauseMenu();
+
+    appState.isGameOver = false;
+    appState.endGameReason = null;
+    appState.activeGadgetId = null;
+    appState.lastCountdownSecond = -1;
+    appState.comboCount = 0;
+    appState.comboTimer = 0;
+
+    document.getElementById('endGameBannerOverlay')?.classList.add('hidden');
+    document.getElementById('gameplayHud')?.classList.remove('endgame-modal-open');
+    document.getElementById('multiplayerPartyLobbyCard')?.classList.add('hidden');
+    document.getElementById('multiplayerCountdownBanner')?.classList.add('hidden');
+
+    if (appState.isMultiplayerRoom || appState.multiplayerPhase !== 'idle') {
+      appState.multiplayerClient?.leaveRoom?.();
+      appState.isMultiplayerRoom = false;
+      appState.multiplayerPhase = 'idle';
+      setGameMode?.('race');
+    }
+
+    appState.returnScreen = null;
+    setScreenState(targetScreen === 'welcome' ? 'welcome' : 'title');
+  }
+
   function setScreenState(screenName) {
+    const prevScreen = appState.screen;
+    if (screenName === 'back') {
+      const target = appState.returnScreen || 'gameplay';
+      appState.returnScreen = null;
+      screenName = target;
+    }
+
     const setupEl = document.getElementById('screenSetupOverlay');
     if (screenName === 'setup' && !setupEl) {
       screenName = 'title';
     }
-    const prevScreen = appState.screen;
+
+    // Track exact caller screen when opening modal overlays so ✕ / Esc returns cleanly
+    const isModalTarget =
+      screenName === 'encyclopedia' || screenName === 'relic3d' || screenName === 'fullmap';
+    const isPrimaryOrigin =
+      prevScreen === 'welcome' || prevScreen === 'title' || prevScreen === 'gameplay';
+    if (isModalTarget && isPrimaryOrigin) {
+      appState.returnScreen = prevScreen;
+    } else if (!isModalTarget) {
+      appState.returnScreen = null;
+    }
+
+    // Close Pause overlay whenever transitioning screens
+    if (appState.isPaused) {
+      appState.isPaused = false;
+      document.getElementById('pauseExitModalOverlay')?.classList.add('hidden');
+    }
+
     appState.screen = screenName;
 
     document.querySelectorAll('.screen-nav-pills .nav-pill').forEach((btn) => {
@@ -342,6 +437,9 @@ export function createLookDevAndScreenCoordinator({
     syncTitleShowcaseFrame,
     setMilestoneStage,
     setScreenState,
+    openPauseMenu,
+    closePauseMenu,
+    exitActiveMatch,
     ensureLookDevPanel,
     registerWindowGbbApp
   };

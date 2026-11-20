@@ -62,11 +62,11 @@ export function createGameplayRulesController({
     const startBtn = document.getElementById('btnStartRaceFromTitle');
     if (startBtn) {
       if (isParty) {
-        startBtn.textContent = '🚀 OPEN PARTY LOBBY';
+        startBtn.textContent = 'Open Party Lobby';
       } else if (isRelaxed) {
-        startBtn.textContent = '🌿 START CHILL STROLL';
+        startBtn.textContent = 'Start Chill Stroll';
       } else {
-        startBtn.textContent = '🚀 START 3-MIN RACE';
+        startBtn.textContent = 'Start 3-Min Race';
       }
     }
     window.__gbbRenderMultiplayerRoomDom?.();
@@ -92,23 +92,24 @@ export function createGameplayRulesController({
     explorersSys?.setBotDifficulty(diffId);
 
     const pillLabels = {
-      chill: { base: '🌱 Chill', active: '🌱 Chill ✓' },
-      normal: { base: '⚖️ Normal', active: '⚖️ Normal ✓' },
-      pro: { base: '🔥 Pro', active: '🔥 Pro ✓' }
+      chill: 'Chill',
+      normal: 'Normal',
+      pro: 'Pro'
     };
 
     document.querySelectorAll('[data-bot-diff]').forEach((btn) => {
       const d = btn.dataset.botDiff;
       const isAct = d === diffId;
       btn.classList.toggle('active', isAct);
+      btn.setAttribute('aria-pressed', isAct ? 'true' : 'false');
       if (btn.classList.contains('start-diff-pill') && pillLabels[d]) {
-        btn.textContent = isAct ? pillLabels[d].active : pillLabels[d].base;
+        btn.textContent = pillLabels[d];
       }
     });
 
     const preset = BOT_DIFFICULTY_PRESETS[diffId];
     updateClockDigits();
-    showToast(`🤖 Bots: ${preset.label}`);
+    showToast(`Bot speed set to ${preset.label}`);
   }
 
   function activateFieldGadgetForPlayer(gadgetId, durationSec = 10) {
@@ -241,7 +242,7 @@ export function createGameplayRulesController({
     syncOverlayBodyClasses();
     appState.elapsedSeconds = 0;
     appState.remainingSeconds = appState.raceDurationSeconds || 180;
-    appState.dayNightPhaseLabel = '☀️ Morning';
+    appState.dayNightPhaseLabel = 'Morning';
     appState.isNightRhapsody = false;
     appState.hasTriggeredGoldenVandaDrop = false;
     appState.hasTriggeredRhapsodyDrop = false;

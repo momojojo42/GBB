@@ -121,13 +121,13 @@ export function createWelcomeSingaporeMapController({
 
     if (btnEnterSelected) {
       btnEnterSelected.textContent =
-        dest.status === 'live' ? `${dest.ctaLabel} →` : `🚧 ${dest.shortName} Coming Soon`;
+        dest.status === 'live' ? dest.ctaLabel : `${dest.shortName} — Coming Soon`;
       btnEnterSelected.classList.toggle('is-soon-cta', dest.status !== 'live');
     }
 
     if (comingSoonNoteEl) {
       if (dest.status === 'soon') {
-        comingSoonNoteEl.textContent = `🚧 ${dest.name} (${dest.district}) is scheduled in our next expansion! Scroll back left to enter Gardens by the Bay or Botanic Gardens in 3D now.`;
+        comingSoonNoteEl.textContent = `${dest.name} (${dest.district}) is planned for a future update. Choose Gardens by the Bay or Botanic Gardens to play now.`;
         comingSoonNoteEl.classList.remove('hidden');
       } else {
         comingSoonNoteEl.classList.add('hidden');

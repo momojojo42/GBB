@@ -244,15 +244,15 @@ export function animateTreasuresAndWindRings(
     const pulse = 1 + Math.sin(elapsedSeconds * 3.2 + t.id) * 0.12;
     t.haloMesh.scale.set(pulse, pulse, 1);
     if (t.beamMesh) {
-      const baseOp = t.baseBeamOpacity ?? (t.isLandmarkRelic ? 0.24 : 0.10);
-      t.beamMesh.material.opacity = baseOp + Math.sin(elapsedSeconds * 2.8 + t.id) * 0.04;
+      const beamScale = 1 + Math.sin(elapsedSeconds * 2.8 + t.id) * 0.14;
+      t.beamMesh.scale.set(beamScale, 1, beamScale);
     }
     if (t.beaconDiamond) {
       const baseBY = t.baseBeaconY ?? 0.96;
       t.beaconDiamond.rotation.y = -elapsedSeconds * 2.2 + t.id;
       t.beaconDiamond.position.y = baseBY + Math.sin(elapsedSeconds * 3.0 + t.id) * 0.06;
     }
-    if (t.floatingRings && t.floatingRings.length > 0) {
+    if (t.floatingRings?.length) {
       t.floatingRings[0].rotation.z = elapsedSeconds * 1.4 + t.id;
       if (t.floatingRings[1]) {
         t.floatingRings[1].rotation.z = -elapsedSeconds * 1.9 + t.id;

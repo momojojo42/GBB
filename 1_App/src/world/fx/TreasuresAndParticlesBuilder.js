@@ -99,9 +99,35 @@ export function buildTreasuresAndParticles(THREE, terrainGroup, treasuresGroup, 
     classic: new THREE.MeshBasicMaterial({ color: 0x6EE7B7, transparent: true, opacity: 0.78 })
   };
 
+  const haloMats = {
+    crown: new THREE.MeshBasicMaterial({ color: RARITY_VISUAL_SPECS.crown.haloColor, side: THREE.DoubleSide, transparent: true, opacity: 0.88 }),
+    heritage: new THREE.MeshBasicMaterial({ color: RARITY_VISUAL_SPECS.heritage.haloColor, side: THREE.DoubleSide, transparent: true, opacity: 0.80 }),
+    classic: new THREE.MeshBasicMaterial({ color: RARITY_VISUAL_SPECS.classic.haloColor, side: THREE.DoubleSide, transparent: true, opacity: 0.72 })
+  };
+  const sharedCrownOuterHaloMat = new THREE.MeshBasicMaterial({
+    color: 0xFEF08A,
+    side: THREE.DoubleSide,
+    transparent: true,
+    opacity: 0.48
+  });
+  const beamMats = {
+    crown: new THREE.MeshBasicMaterial({ color: RARITY_VISUAL_SPECS.crown.haloColor, transparent: true, opacity: RARITY_VISUAL_SPECS.crown.beamOpacity, side: THREE.DoubleSide, depthWrite: false, blending: THREE.AdditiveBlending }),
+    heritage: new THREE.MeshBasicMaterial({ color: RARITY_VISUAL_SPECS.heritage.haloColor, transparent: true, opacity: RARITY_VISUAL_SPECS.heritage.beamOpacity, side: THREE.DoubleSide, depthWrite: false, blending: THREE.AdditiveBlending }),
+    classic: new THREE.MeshBasicMaterial({ color: RARITY_VISUAL_SPECS.classic.haloColor, transparent: true, opacity: RARITY_VISUAL_SPECS.classic.beamOpacity, side: THREE.DoubleSide, depthWrite: false, blending: THREE.AdditiveBlending })
+  };
+  const fallbackCoreMats = {
+    crown: new THREE.MeshStandardMaterial({ color: RARITY_VISUAL_SPECS.crown.haloColor, emissive: RARITY_VISUAL_SPECS.crown.haloColor, emissiveIntensity: 0.45, roughness: 0.2, metalness: 0.65 }),
+    heritage: new THREE.MeshStandardMaterial({ color: RARITY_VISUAL_SPECS.heritage.haloColor, emissive: RARITY_VISUAL_SPECS.heritage.haloColor, emissiveIntensity: 0.45, roughness: 0.2, metalness: 0.65 }),
+    classic: new THREE.MeshStandardMaterial({ color: RARITY_VISUAL_SPECS.classic.haloColor, emissive: RARITY_VISUAL_SPECS.classic.haloColor, emissiveIntensity: 0.45, roughness: 0.2, metalness: 0.65 })
+  };
+
   const sharedFallbackPedGeo = new THREE.CylinderGeometry(0.22, 0.28, 0.25, 8);
   const sharedFallbackPedMat = new THREE.MeshStandardMaterial({ color: 0xF1F5F9, roughness: 0.4 });
   const sharedFallbackCoreGeo = new THREE.OctahedronGeometry(0.22, 1);
+
+  const scratchBox = new THREE.Box3();
+  const scratchCenter = new THREE.Vector3();
+  const scratchSize = new THREE.Vector3();
 
   for (const item of TREASURES_CATALOG) {
     const tGroup = new THREE.Group();
@@ -112,42 +138,21 @@ export function buildTreasuresAndParticles(THREE, terrainGroup, treasuresGroup, 
     const rSpec = RARITY_VISUAL_SPECS[rarityKey];
     const accentColor = rSpec.haloColor;
 
-    // Compact Ground Contact Shadow + Rarity Halo Ring
-    const shadow = matLib.createContactShadowDisc(0.52, 0.52, 0.05);
-    tGroup.add(shadow);
+    // Compact Ground Contact Shadow + Shared Rarity Halo Ring
+    tGroup.add(matLib.createContactShadowDisc(0.52, 0.52, 0.05));
 
-    const haloMat = new THREE.MeshBasicMaterial({
-      color: accentColor,
-      side: THREE.DoubleSide,
-      transparent: true,
-      opacity: rarityKey === 'crown' ? 0.88 : rarityKey === 'heritage' ? 0.80 : 0.72
-    });
-    const haloMesh = new THREE.Mesh(goldHaloGeo, haloMat);
+    const haloMesh = new THREE.Mesh(goldHaloGeo, haloMats[rarityKey]);
     haloMesh.position.y = 0.08;
     tGroup.add(haloMesh);
 
     if (rarityKey === 'crown') {
-      const outerHaloMat = new THREE.MeshBasicMaterial({
-        color: 0xFEF08A,
-        side: THREE.DoubleSide,
-        transparent: true,
-        opacity: 0.48
-      });
-      const outerHalo = new THREE.Mesh(crownHaloOuterGeo, outerHaloMat);
+      const outerHalo = new THREE.Mesh(crownHaloOuterGeo, sharedCrownOuterHaloMat);
       outerHalo.position.y = 0.085;
       tGroup.add(outerHalo);
     }
 
-    // Rarity-differentiated sky beam
-    const beamMat = new THREE.MeshBasicMaterial({
-      color: accentColor,
-      transparent: true,
-      opacity: rSpec.beamOpacity,
-      side: THREE.DoubleSide,
-      depthWrite: false,
-      blending: THREE.AdditiveBlending
-    });
-    const beamMesh = new THREE.Mesh(beamGeometries[rarityKey], beamMat);
+    // Shared rarity-differentiated sky beam & beacon
+    const beamMesh = new THREE.Mesh(beamGeometries[rarityKey], beamMats[rarityKey]);
     beamMesh.position.y = rSpec.beamHeight * 0.5 + 0.05;
     tGroup.add(beamMesh);
 
@@ -176,26 +181,16 @@ export function buildTreasuresAndParticles(THREE, terrainGroup, treasuresGroup, 
 
     if (glbRelic) {
       glbRelic.updateMatrixWorld(true);
-      const box = new THREE.Box3().setFromObject(glbRelic);
-      const center = new THREE.Vector3();
-      const size = new THREE.Vector3();
-      box.getCenter(center);
-      box.getSize(size);
-      const maxDim = Math.max(size.x, size.y, size.z, 0.5);
+      scratchBox.setFromObject(glbRelic);
+      scratchBox.getCenter(scratchCenter);
+      scratchBox.getSize(scratchSize);
+      const maxDim = Math.max(scratchSize.x, scratchSize.y, scratchSize.z, 0.5);
       const targetScale = 0.44 / maxDim;
-      glbRelic.position.sub(center).multiplyScalar(targetScale);
+      glbRelic.position.sub(scratchCenter).multiplyScalar(targetScale);
       glbRelic.scale.setScalar(targetScale);
       relicHolder.add(glbRelic);
     } else {
-      const fallbackMat = new THREE.MeshStandardMaterial({
-        color: accentColor,
-        emissive: accentColor,
-        emissiveIntensity: 0.45,
-        roughness: 0.2,
-        metalness: 0.65
-      });
-      const coreMesh = new THREE.Mesh(sharedFallbackCoreGeo, fallbackMat);
-      relicHolder.add(coreMesh);
+      relicHolder.add(new THREE.Mesh(sharedFallbackCoreGeo, fallbackCoreMats[rarityKey]));
     }
 
     // Floating Rarity Torus Rings

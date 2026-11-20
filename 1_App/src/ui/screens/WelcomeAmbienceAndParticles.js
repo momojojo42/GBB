@@ -26,7 +26,7 @@ function loadInitialAmbienceMood() {
       // Ignore storage access errors
     }
   }
-  return 'sunset';
+  return 'morning';
 }
 
 let activeAmbienceMood = loadInitialAmbienceMood();
@@ -155,42 +155,33 @@ export function buildWelcomeDestinationSlides({
 
     card.innerHTML = `
       <div class="sg-card-hero" style="background: ${dest.bannerGradient};">
-        <div class="sg-card-top-badges">
-          <span class="sg-card-num">MAP ${dest.orderLabel}</span>
-          <span class="sg-card-status ${dest.status === 'live' ? 'badge-live' : 'badge-soon'}">${dest.statusBadge}</span>
-        </div>
         <div class="sg-card-visual-center">
           ${buildDestinationArtBanner(dest)}
-        </div>
-        <div class="sg-card-hero-bottom">
-          <span class="sg-card-atmo-chip">${dest.atmosphere?.moodTitle || dest.district}</span>
-          <span class="sg-card-coords">${dest.coordsLabel}</span>
         </div>
       </div>
 
       <div class="sg-card-body">
         <div class="sg-card-title-row">
-          <span class="sg-card-icon" aria-hidden="true">${dest.icon}</span>
-          <div>
-            <h3 class="sg-card-title">${dest.name}</h3>
-            <span class="sg-card-district">${dest.district} • ${dest.relicCountLabel}</span>
+          <h3 class="sg-card-title">${dest.name}</h3>
+          <div class="sg-card-meta-line">
+            <span>${dest.district}</span>
+            <span aria-hidden="true">·</span>
+            <span>${dest.relicCountLabel}</span>
+            <span aria-hidden="true">·</span>
+            <span class="sg-card-meta-status ${dest.status === 'live' ? 'is-live' : 'is-soon'}">${dest.statusBadge}</span>
           </div>
         </div>
 
         <p class="sg-card-tagline">${dest.tagline}</p>
 
         <div class="sg-card-highlights">
-          ${dest.highlights.map((h) => `<span class="sg-highlight-chip">${h}</span>`).join('')}
+          ${dest.highlights.join(' · ')}
         </div>
-
-        <button type="button" class="btn-sg-card-enter ${dest.status === 'live' ? 'is-playable' : 'is-preview'}" data-enter-dest="${dest.id}">
-          ${dest.ctaLabel} →
-        </button>
       </div>
     `;
 
-    card.addEventListener('click', (e) => {
-      if (e.target.closest('[data-enter-dest]')) {
+    card.addEventListener('click', () => {
+      if (card.classList.contains('is-centered') && dest.status === 'live') {
         onEnterDest(dest.id);
         return;
       }
@@ -199,7 +190,6 @@ export function buildWelcomeDestinationSlides({
 
     card.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') {
-        if (document.activeElement?.closest('[data-enter-dest]')) return;
         e.preventDefault();
         onEnterDest(dest.id);
       }
@@ -213,8 +203,9 @@ export function buildWelcomeDestinationSlides({
       dot.type = 'button';
       dot.className = 'sg-marker-dot';
       dot.dataset.destIdx = String(idx);
+      dot.title = dest.name;
       dot.setAttribute('aria-label', `Go to ${dest.name}`);
-      dot.innerHTML = `<span class="sg-marker-pill">${dest.icon} ${dest.shortName}</span>`;
+      dot.innerHTML = `<span class="sg-visually-hidden">${dest.shortName}</span>`;
       dot.addEventListener('click', () => onSelectIdx(idx));
       markersEl.appendChild(dot);
       markerBtns.push(dot);

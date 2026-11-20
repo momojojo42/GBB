@@ -29,6 +29,9 @@ export function createInputAndTouchController({
   activateFollowCameraFromCurrentView,
   setCameraPreset,
   setScreenState,
+  openPauseMenu,
+  closePauseMenu,
+  exitActiveMatch,
   setGameMode,
   setBotDifficulty,
   activateFieldGadgetForPlayer,
@@ -65,28 +68,91 @@ export function createInputAndTouchController({
   function bindKeyboardAndDomEvents() {
     window.addEventListener('keydown', (e) => {
       if (['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement?.tagName)) return;
-      const k = e.key.toLowerCase();
-      if (k === 'w' || e.key === 'ArrowUp') keysPressed.w = true;
-      if (k === 's' || e.key === 'ArrowDown') keysPressed.s = true;
-      if (k === 'a' || e.key === 'ArrowLeft') keysPressed.a = true;
-      if (k === 'd' || e.key === 'ArrowRight') keysPressed.d = true;
-      if (e.key === 'Shift') keysPressed.shift = true;
-      if (k === 'm') {
-        setScreenState(appState.screen === 'fullmap' ? 'gameplay' : 'fullmap');
-      } else if (k === 'c') {
-        setScreenState(appState.screen === 'encyclopedia' ? 'gameplay' : 'encyclopedia');
-      } else if (e.key === 'Escape') {
-        if (appState.screen !== 'gameplay') {
-          setScreenState('gameplay');
+      // Focus trap when Game Paused modal is open
+      if (appState.isPaused && e.key === 'Tab') {
+        const pauseCard = document.getElementById('pauseExitCard');
+        const focusables = pauseCard
+          ? Array.from(pauseCard.querySelectorAll('button:not(.hidden):not([disabled])'))
+          : [];
+        if (focusables.length > 0) {
+          const first = focusables[0];
+          const last = focusables[focusables.length - 1];
+          if (e.shiftKey && document.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+          } else if (!e.shiftKey && document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
+          }
         }
-      } else if (k === 'j') {
+        return;
+      }
+
+      if (e.key === 'Escape') {
+        if (appState.isPaused) {
+          e.preventDefault();
+          closePauseMenu?.();
+          return;
+        }
+        if (
+          appState.screen === 'encyclopedia' ||
+          appState.screen === 'relic3d' ||
+          appState.screen === 'fullmap'
+        ) {
+          e.preventDefault();
+          setScreenState('back');
+          return;
+        }
+        if (appState.screen === 'title') {
+          e.preventDefault();
+          setScreenState('welcome');
+          return;
+        }
+        if (appState.screen === 'welcome') {
+          return;
+        }
+        if (appState.screen === 'gameplay') {
+          e.preventDefault();
+          const endGameEl = document.getElementById('endGameBannerOverlay');
+          if (endGameEl && !endGameEl.classList.contains('hidden')) {
+            exitActiveMatch?.('title');
+          } else {
+            openPauseMenu?.();
+          }
+          return;
+        }
+      }
+
+      // Block gameplay movement and hotkeys while paused or on landing/title overlays
+      if (appState.isPaused || appState.screen === 'welcome') return;
+
+      const k = e.key.toLowerCase();
+      if (appState.screen === 'gameplay') {
+        if (k === 'w' || e.key === 'ArrowUp') keysPressed.w = true;
+        if (k === 's' || e.key === 'ArrowDown') keysPressed.s = true;
+        if (k === 'a' || e.key === 'ArrowLeft') keysPressed.a = true;
+        if (k === 'd' || e.key === 'ArrowRight') keysPressed.d = true;
+        if (e.key === 'Shift') keysPressed.shift = true;
+      }
+      if (k === 'm' && (appState.screen === 'gameplay' || appState.screen === 'fullmap')) {
+        setScreenState(appState.screen === 'fullmap' ? 'back' : 'fullmap');
+      } else if (
+        k === 'c' &&
+        (appState.screen === 'gameplay' || appState.screen === 'title' || appState.screen === 'encyclopedia')
+      ) {
+        setScreenState(appState.screen === 'encyclopedia' ? 'back' : 'encyclopedia');
+      } else if (k === 'j' && appState.screen === 'gameplay') {
         triggerPlayerJump(appState.isGameOver);
-      } else if (k === 'f') {
+      } else if (k === 'f' && appState.screen === 'gameplay' && isAdminEnvironment()) {
         triggerEndGame('manual_finale');
-      } else if (e.code === 'Space') {
+      } else if (e.code === 'Space' && appState.screen === 'gameplay') {
         e.preventDefault();
         collectNearestRelicForPlayer();
-      } else if (appState.isMultiplayerRoom && (k === '1' || k === '2' || k === '3' || k === '4')) {
+      } else if (
+        appState.screen === 'gameplay' &&
+        appState.isMultiplayerRoom &&
+        (k === '1' || k === '2' || k === '3' || k === '4')
+      ) {
         const emotes = { '1': '👋 Hello!', '2': '🤚 Chope!', '3': '🎉 Shiok!', '4': '🔥 Let\'s Go!' };
         window.__gbbTriggerMultiplayerEmote?.(emotes[k]);
       }
@@ -117,7 +183,17 @@ export function createInputAndTouchController({
       SoundFX.muted = !SoundFX.muted;
       const btn = e.currentTarget;
       btn.classList.toggle('muted', SoundFX.muted);
-      btn.textContent = SoundFX.muted ? '🔇 Muted' : '🔊 SFX';
+      btn.setAttribute('aria-pressed', String(!SoundFX.muted));
+      const labelEl = btn.querySelector('.btn-label');
+      const iconOn = btn.querySelector('.icon-sound-on');
+      const iconOff = btn.querySelector('.icon-sound-off');
+      if (labelEl) {
+        labelEl.textContent = SoundFX.muted ? 'Muted' : 'Sound';
+        iconOn?.classList.toggle('hidden', SoundFX.muted);
+        iconOff?.classList.toggle('hidden', !SoundFX.muted);
+      } else {
+        btn.textContent = SoundFX.muted ? '🔇 Muted' : '🔊 SFX';
+      }
       if (!SoundFX.muted) SoundFX.playGadgetActivate();
     });
     document.getElementById('btnToggleRadarZoom')?.addEventListener('click', (e) => {
@@ -171,6 +247,51 @@ export function createInputAndTouchController({
     });
     document.getElementById('btnOpenSetupFromTitle')?.addEventListener('click', () => setScreenState('setup'));
     document.getElementById('btnLaunchFromSetup')?.addEventListener('click', () => setScreenState('gameplay'));
+    document.getElementById('btnBackToWelcomeFromTitle')?.addEventListener('click', () => {
+      setScreenState('welcome');
+    });
+    const topBrandCluster = document.getElementById('topBrandCluster');
+    const handleBrandClusterNav = () => {
+      // Per UX review: Brand Title returns to Landing only on Start Setup (passive during gameplay to prevent accidental exit)
+      if (appState.screen === 'title') {
+        setScreenState('welcome');
+      }
+    };
+    topBrandCluster?.addEventListener('click', handleBrandClusterNav);
+    topBrandCluster?.addEventListener('keydown', (e) => {
+      if ((e.key === 'Enter' || e.key === ' ') && appState.screen === 'title') {
+        e.preventDefault();
+        handleBrandClusterNav();
+      }
+    });
+    document.getElementById('btnExitGameTop')?.addEventListener('click', () => {
+      openPauseMenu?.();
+    });
+    document.getElementById('btnPauseResume')?.addEventListener('click', () => {
+      closePauseMenu?.();
+    });
+    document.getElementById('btnPauseRestart')?.addEventListener('click', () => {
+      closePauseMenu?.();
+      resetFullMatch();
+      if (
+        appState.mode === 'race' &&
+        !appState.isMultiplayerRoom &&
+        typeof window.__gbbStartSoloRaceCountdown === 'function'
+      ) {
+        window.__gbbStartSoloRaceCountdown();
+      }
+    });
+    document.getElementById('btnPauseToSetup')?.addEventListener('click', () => {
+      exitActiveMatch?.('title');
+    });
+    document.getElementById('btnPauseToWelcome')?.addEventListener('click', () => {
+      exitActiveMatch?.('welcome');
+    });
+    document.getElementById('pauseExitModalOverlay')?.addEventListener('click', (e) => {
+      if (e.target.id === 'pauseExitModalOverlay') {
+        closePauseMenu?.();
+      }
+    });
     document.getElementById('btnOpenStartScreenTop')?.addEventListener('click', () => {
       setScreenState(appState.screen === 'title' ? 'gameplay' : 'title');
     });
@@ -210,9 +331,11 @@ export function createInputAndTouchController({
     });
     document.getElementById('btnEndGameFreeRoam')?.addEventListener('click', () => dismissEndGameToFreeRoam());
     document.getElementById('btnEndGameFreeRoamClose')?.addEventListener('click', () => dismissEndGameToFreeRoam());
+    document.getElementById('btnEndGameExitToSetup')?.addEventListener('click', () => exitActiveMatch?.('title'));
+    document.getElementById('btnEndGameExitToWelcome')?.addEventListener('click', () => exitActiveMatch?.('welcome'));
     document.getElementById('btnOpenFullMapHud')?.addEventListener('click', () => setScreenState('fullmap'));
     function toggleCollectionScreen() {
-      setScreenState(appState.screen === 'encyclopedia' ? 'gameplay' : 'encyclopedia');
+      setScreenState(appState.screen === 'encyclopedia' ? 'back' : 'encyclopedia');
     }
     document.getElementById('btnOpenCollectionTop')?.addEventListener('click', () => toggleCollectionScreen());
     document.getElementById('btnOpenCollectionHud')?.addEventListener('click', () => setScreenState('encyclopedia'));

@@ -164,6 +164,34 @@ export function createGardenRhapsodyShow({
   let currentNightGlow = 0.22;
   let currentVibrant = 1.25;
   let currentIsNightShow = false;
+  let lastDayGlowKey = '';
+
+  function applyWaveToMaterials(mats, fallbackHex, elapsedSeconds, speedScale, idxStep, phaseOffset, colorBlend, glowScale, nightGlow, vibrant, rhapsodyBlend, waveRateBoost, scratch) {
+    for (let idx = 0; idx < mats.length; idx++) {
+      const mat = mats[idx];
+      ensureBaseMaterialState(mat, fallbackHex);
+      const pulse = 1.0 + 0.42 * Math.sin(elapsedSeconds * 4.8 * waveRateBoost + idx * 0.65);
+      const waveColor = sampleRhapsodyPalette(elapsedSeconds * speedScale * waveRateBoost + idx * idxStep + phaseOffset, scratch);
+      if (mat.emissive && mat.userData.baseEmissive) {
+        mat.emissive.copy(mat.userData.baseEmissive).lerp(waveColor, rhapsodyBlend);
+      }
+      if (mat.color && mat.userData.baseColor) {
+        mat.color.copy(mat.userData.baseColor).lerp(waveColor, rhapsodyBlend * colorBlend);
+      }
+      if ('emissiveIntensity' in mat) {
+        mat.emissiveIntensity = nightGlow * glowScale * vibrant * pulse;
+      }
+    }
+  }
+
+  function resetMaterialsToDaytime(mats, fallbackHex, emissiveIntensity) {
+    for (const mat of mats) {
+      ensureBaseMaterialState(mat, fallbackHex);
+      if (mat.color && mat.userData.baseColor) mat.color.copy(mat.userData.baseColor);
+      if (mat.emissive && mat.userData.baseEmissive) mat.emissive.copy(mat.userData.baseEmissive);
+      if ('emissiveIntensity' in mat) mat.emissiveIntensity = emissiveIntensity;
+    }
+  }
 
   function applySupertreeAndFireflyGlow(elapsedSeconds = 0) {
     const nightGlow = currentNightGlow;
@@ -171,90 +199,47 @@ export function createGardenRhapsodyShow({
     const isRhapsodyActive = nightGlow > 0.5 || currentIsNightShow;
 
     if (isRhapsodyActive) {
+      lastDayGlowKey = '';
       const rhapsodyBlend = Math.max(0, Math.min(1, (nightGlow - 0.5) / 0.75));
       const waveRateBoost = nightGlow > 1.8 ? 1.45 : 1.0;
 
-      supertreeCanopyMaterials.forEach((cMat, idx) => {
-        ensureBaseMaterialState(cMat, 0xD97706);
-        const pulse = 1.0 + 0.42 * Math.sin(elapsedSeconds * 4.8 * waveRateBoost + idx * 0.65);
-        const waveColor = sampleRhapsodyPalette(
-          elapsedSeconds * 0.25 * waveRateBoost + idx * 0.09 + 0.15,
-          scratchColorA
-        );
-        if (cMat.emissive && cMat.userData.baseEmissive) {
-          cMat.emissive.copy(cMat.userData.baseEmissive).lerp(waveColor, rhapsodyBlend);
-        }
-        if (cMat.color && cMat.userData.baseColor) {
-          cMat.color.copy(cMat.userData.baseColor).lerp(waveColor, rhapsodyBlend * 0.62);
-        }
-        if ('emissiveIntensity' in cMat) {
-          cMat.emissiveIntensity = nightGlow * 0.52 * vibrant * pulse;
-        }
-      });
+      applyWaveToMaterials(supertreeCanopyMaterials, 0xD97706, elapsedSeconds, 0.25, 0.09, 0.15, 0.62, 0.52, nightGlow, vibrant, rhapsodyBlend, waveRateBoost, scratchColorA);
+      applyWaveToMaterials(supertreeEmissiveMaterials, 0xF59E0B, elapsedSeconds, 0.30, 0.11, 0.0, 0.72, 1.05, nightGlow, vibrant, rhapsodyBlend, waveRateBoost, scratchColorB);
 
-      supertreeEmissiveMaterials.forEach((eMat, idx) => {
-        ensureBaseMaterialState(eMat, 0xF59E0B);
-        const pulse = 1.0 + 0.42 * Math.sin(elapsedSeconds * 4.8 * waveRateBoost + idx * 0.65);
-        const waveColor = sampleRhapsodyPalette(
-          elapsedSeconds * 0.30 * waveRateBoost + idx * 0.11,
-          scratchColorB
-        );
-        if (eMat.emissive && eMat.userData.baseEmissive) {
-          eMat.emissive.copy(eMat.userData.baseEmissive).lerp(waveColor, rhapsodyBlend);
+      const glassEmissive = rhapsodyBlend * 0.45 * Math.min(1.6, nightGlow * 0.7);
+      for (let idx = 0; idx < conservatoryGlassMaterials.length; idx++) {
+        const gMat = conservatoryGlassMaterials[idx];
+        if (gMat?.emissive) {
+          gMat.emissive.copy(sampleRhapsodyPalette(elapsedSeconds * 0.16 + idx * 0.25 + 0.35, scratchColorGlass));
+          gMat.emissiveIntensity = glassEmissive;
         }
-        if (eMat.color && eMat.userData.baseColor) {
-          eMat.color.copy(eMat.userData.baseColor).lerp(waveColor, rhapsodyBlend * 0.72);
-        }
-        if ('emissiveIntensity' in eMat) {
-          eMat.emissiveIntensity = nightGlow * 1.05 * vibrant * pulse;
-        }
-      });
-
-      conservatoryGlassMaterials.forEach((gMat, idx) => {
-        if (gMat && gMat.emissive) {
-          const glassWave = sampleRhapsodyPalette(elapsedSeconds * 0.16 + idx * 0.25 + 0.35, scratchColorGlass);
-          gMat.emissive.copy(glassWave);
-          gMat.emissiveIntensity = rhapsodyBlend * 0.45 * Math.min(1.6, nightGlow * 0.7);
-        }
-      });
+      }
     } else {
-      for (const cMat of supertreeCanopyMaterials) {
-        ensureBaseMaterialState(cMat, 0xD97706);
-        if (cMat.color && cMat.userData.baseColor) {
-          cMat.color.copy(cMat.userData.baseColor);
-        }
-        if (cMat.emissive && cMat.userData.baseEmissive) {
-          cMat.emissive.copy(cMat.userData.baseEmissive);
-        }
-        if ('emissiveIntensity' in cMat) {
-          cMat.emissiveIntensity = nightGlow * 0.42 * vibrant;
-        }
-      }
-      for (const eMat of supertreeEmissiveMaterials) {
-        ensureBaseMaterialState(eMat, 0xF59E0B);
-        if (eMat.color && eMat.userData.baseColor) {
-          eMat.color.copy(eMat.userData.baseColor);
-        }
-        if (eMat.emissive && eMat.userData.baseEmissive) {
-          eMat.emissive.copy(eMat.userData.baseEmissive);
-        }
-        if ('emissiveIntensity' in eMat) {
-          eMat.emissiveIntensity = nightGlow * 0.95 * vibrant;
-        }
-      }
-      for (const gMat of conservatoryGlassMaterials) {
-        if (gMat && gMat.emissive) {
-          gMat.emissive.setHex(0x000000);
-          gMat.emissiveIntensity = 0.0;
+      // Skip redundant daytime material resets when glow & vibrancy haven't changed
+      const dayKey = `${nightGlow.toFixed(3)}_${vibrant.toFixed(2)}`;
+      if (lastDayGlowKey !== dayKey) {
+        lastDayGlowKey = dayKey;
+        resetMaterialsToDaytime(supertreeCanopyMaterials, 0xD97706, nightGlow * 0.42 * vibrant);
+        resetMaterialsToDaytime(supertreeEmissiveMaterials, 0xF59E0B, nightGlow * 0.95 * vibrant);
+        for (const gMat of conservatoryGlassMaterials) {
+          if (gMat?.emissive) {
+            gMat.emissive.setHex(0x000000);
+            gMat.emissiveIntensity = 0.0;
+          }
         }
       }
     }
 
     const targetFireflyOpacity =
       nightGlow <= 0.42 ? 0.0 : Math.max(0, Math.min(0.96, (nightGlow - 0.42) / 1.05));
-    fireflyMat.size = 0.75 + Math.max(0, Math.min(1.5, nightGlow - 0.5)) * 0.28;
-    fireflyMat.opacity = targetFireflyOpacity * (0.88 + 0.12 * Math.sin(elapsedSeconds * 3.2));
-    rhapsodyFireflies.visible = fireflyMat.opacity > 0.01;
+    if (targetFireflyOpacity > 0.01) {
+      fireflyMat.size = 0.75 + Math.max(0, Math.min(1.5, nightGlow - 0.5)) * 0.28;
+      fireflyMat.opacity = targetFireflyOpacity * (0.88 + 0.12 * Math.sin(elapsedSeconds * 3.2));
+      rhapsodyFireflies.visible = true;
+    } else if (rhapsodyFireflies.visible) {
+      fireflyMat.opacity = 0;
+      rhapsodyFireflies.visible = false;
+    }
   }
 
   function applyMaterialSettings(settings) {
@@ -270,14 +255,10 @@ export function createGardenRhapsodyShow({
     }
 
     const isNightPreset = settings.preset === 'night' || Boolean(settings.isNightShow);
-    currentNightGlow =
-      settings.nightBioluminescenceGlow !== undefined
-        ? settings.nightBioluminescenceGlow
-        : isNightPreset
-          ? 1.8
-          : 0.22;
+    currentNightGlow = settings.nightBioluminescenceGlow ?? (isNightPreset ? 1.8 : 0.22);
     currentVibrant = settings.supertreeCanopyVibrant ?? 1.25;
     currentIsNightShow = isNightPreset || currentNightGlow > 0.6;
+    lastDayGlowKey = '';
 
     applySupertreeAndFireflyGlow(settings.elapsedSeconds || 0);
   }

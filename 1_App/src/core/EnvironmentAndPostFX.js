@@ -22,7 +22,14 @@ export {
   TITLE_SHOWCASE_LOOP_SECONDS
 };
 
-export function createEnvironmentAndPostFX(renderer, scene, camera) {
+const PRESET_PROGRESS_MAP = {
+  morning: 0.20,
+  afternoon: 0.54,
+  sunset: 0.75,
+  night: 0.92
+};
+
+export function createEnvironmentAndPostFX(renderer, scene, camera, { isSoftwareGl = false } = {}) {
   // 1. Studio HDRI Environment Reflections via PMREMGenerator + RoomEnvironment
   const pmremGenerator = new THREE.PMREMGenerator(renderer);
   pmremGenerator.compileEquirectangularShader();
@@ -35,53 +42,50 @@ export function createEnvironmentAndPostFX(renderer, scene, camera) {
   roomEnv.dispose();
   pmremGenerator.dispose();
 
-  // 2. Post-Processing Pipeline: RenderPass -> UnrealBloomPass -> OutputPass
-  const composer = new EffectComposer(renderer);
-  const renderPass = new RenderPass(scene, camera);
-  composer.addPass(renderPass);
+  // 2. Post-Processing Pipeline (bypassed on software WebGL for smooth frame rates)
+  let composer = null;
+  let bloomPass = { strength: 0.12, radius: 0.35, threshold: 1.35, resolution: new THREE.Vector2() };
 
-  const bloomPass = new UnrealBloomPass(
-    new THREE.Vector2(window.innerWidth, window.innerHeight),
-    0.12, // strength (crisp daytime emissive-only bloom, boosted at night)
-    0.35, // radius
-    1.35  // HDR threshold so normal sunlit surfaces never wash out
-  );
-  composer.addPass(bloomPass);
-
-  const outputPass = new OutputPass();
-  composer.addPass(outputPass);
+  if (!isSoftwareGl) {
+    composer = new EffectComposer(renderer);
+    composer.addPass(new RenderPass(scene, camera));
+    bloomPass = new UnrealBloomPass(
+      new THREE.Vector2(window.innerWidth, window.innerHeight),
+      0.12, // strength (crisp daytime emissive-only bloom, boosted at night)
+      0.35, // radius
+      1.35  // HDR threshold so normal sunlit surfaces never wash out
+    );
+    composer.addPass(bloomPass);
+    composer.addPass(new OutputPass());
+  }
 
   // 3. Living 3D Sky Dome & Atmosphere Group
   const livingSky = createLivingSkyDome(THREE, scene, computeDayNightCycleState);
+
+  function applyCycleState(cycleState, elapsedSeconds = 0) {
+    bloomPass.strength = cycleState.bloomStrength;
+    if ('environmentIntensity' in scene && cycleState.envMapIntensity !== undefined) {
+      scene.environmentIntensity = cycleState.envMapIntensity;
+    }
+    livingSky.updateLivingSkyDome(cycleState, elapsedSeconds);
+    return cycleState;
+  }
 
   function applySettings(settings = {}) {
     const L = settings.lighting || settings;
     const isNight = L.preset === 'night';
 
-    if (L.bloomStrength !== undefined) {
-      bloomPass.strength = L.bloomStrength;
-    } else {
-      bloomPass.strength = isNight ? 0.68 : 0.24;
-    }
-
-    if (L.bloomRadius !== undefined) {
-      bloomPass.radius = L.bloomRadius;
-    }
-    if (L.bloomThreshold !== undefined) {
-      bloomPass.threshold = L.bloomThreshold;
-    }
+    bloomPass.strength = L.bloomStrength ?? (isNight ? 0.68 : 0.24);
+    if (L.bloomRadius !== undefined) bloomPass.radius = L.bloomRadius;
+    if (L.bloomThreshold !== undefined) bloomPass.threshold = L.bloomThreshold;
     if (L.envMapIntensity !== undefined && 'environmentIntensity' in scene) {
       scene.environmentIntensity = L.envMapIntensity;
     }
 
     const preset = L.preset || settings.preset;
     if (preset) {
-      let p = 0.20;
-      if (preset === 'afternoon') p = 0.54;
-      else if (preset === 'sunset') p = 0.75;
-      else if (preset === 'night') p = 0.92;
-      const cycleState = computeDayNightCycleState(p, 0);
-      livingSky.updateLivingSkyDome(cycleState, 0);
+      const p = PRESET_PROGRESS_MAP[preset] ?? 0.20;
+      livingSky.updateLivingSkyDome(computeDayNightCycleState(p, 0), 0);
     }
   }
 
@@ -93,38 +97,28 @@ export function createEnvironmentAndPostFX(renderer, scene, camera) {
 
   function setEnvMapIntensity(targetScene, intensity = 0.85) {
     const s = targetScene || scene;
-    if (s && 'environmentIntensity' in s) {
-      s.environmentIntensity = intensity;
-    }
+    if (s && 'environmentIntensity' in s) s.environmentIntensity = intensity;
   }
 
   function setSize(width, height) {
-    composer.setSize(width, height);
+    composer?.setSize(width, height);
     bloomPass.resolution.set(width, height);
   }
 
-  function updateDayNightCycle(progress0to1, elapsedSeconds = 0) {
-    const cycleState = computeDayNightCycleState(progress0to1, elapsedSeconds);
-    bloomPass.strength = cycleState.bloomStrength;
-    if ('environmentIntensity' in scene && cycleState.envMapIntensity !== undefined) {
-      scene.environmentIntensity = cycleState.envMapIntensity;
-    }
-    livingSky.updateLivingSkyDome(cycleState, elapsedSeconds);
-    return cycleState;
-  }
+  const updateDayNightCycle = (progress0to1, elapsedSeconds = 0) =>
+    applyCycleState(computeDayNightCycleState(progress0to1, elapsedSeconds), elapsedSeconds);
 
-  function updateTitleShowcaseCycle(titleElapsedSeconds = 0, loopDuration = TITLE_SHOWCASE_LOOP_SECONDS) {
-    const cycleState = computeTitleShowcaseCycleState(titleElapsedSeconds, loopDuration);
-    bloomPass.strength = cycleState.bloomStrength;
-    if ('environmentIntensity' in scene && cycleState.envMapIntensity !== undefined) {
-      scene.environmentIntensity = cycleState.envMapIntensity;
-    }
-    livingSky.updateLivingSkyDome(cycleState, titleElapsedSeconds);
-    return cycleState;
-  }
+  const updateTitleShowcaseCycle = (titleElapsedSeconds = 0, loopDuration = TITLE_SHOWCASE_LOOP_SECONDS) =>
+    applyCycleState(computeTitleShowcaseCycleState(titleElapsedSeconds, loopDuration), titleElapsedSeconds);
 
   function render() {
-    composer.render();
+    if (composer) composer.render();
+    else renderer.render(scene, camera);
+  }
+
+  function dispose() {
+    envRenderTarget.dispose();
+    composer?.dispose();
   }
 
   return {
@@ -144,6 +138,7 @@ export function createEnvironmentAndPostFX(renderer, scene, camera) {
     computeTitleShowcaseCycleState,
     setSize,
     resize: setSize,
-    render
+    render,
+    dispose
   };
 }

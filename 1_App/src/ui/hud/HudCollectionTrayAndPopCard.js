@@ -46,7 +46,7 @@ export function createHudCollectionTrayAndPopCard({
 
     const openBtn = document.getElementById('btnOpenCollectionHud');
     if (openBtn) {
-      openBtn.textContent = isMobLand ? `↗` : `View All (${count}) ↗`;
+      openBtn.textContent = isMobLand ? '↗' : `All (${count})`;
     }
 
     const gridEl = document.getElementById('hudCollectionTrayGrid');
@@ -95,9 +95,11 @@ export function createHudCollectionTrayAndPopCard({
             title="Walk over glowing pedestals in the 3D garden to collect Singapore keepsakes!"
           >
             <div class="hud-col-slot-thumb-wrap empty-thumb">
-              <span class="hud-col-empty-plus" aria-hidden="true">🌸</span>
+              <span class="hud-col-empty-plus" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
+              </span>
             </div>
-            <span class="hud-col-slot-name empty-label">${count === 0 && slotIdx === 0 ? 'Explore & Collect' : 'Empty Slot'}</span>
+            <span class="hud-col-slot-name empty-label">${count === 0 && slotIdx === 0 ? 'Explore' : 'Empty'}</span>
           </button>
         `);
       }

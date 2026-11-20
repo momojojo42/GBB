@@ -54,6 +54,8 @@ export const appState = {
   bestComboCount: 0,
   comboTimer: 0,
   isGameOver: false,
+  isPaused: false,
+  returnScreen: null,
   endGameReason: null, // 'times_up' | 'all_found' | 'manual_finale'
   fireworkAccumulator: 0,
   lastCountdownSecond: -1,
@@ -70,6 +72,9 @@ export function syncOverlayBodyClasses() {
   const relic3DEl = document.getElementById('screenRelic3DInspectorOverlay');
   const fullMapEl = document.getElementById('screenFullMapOverlay');
 
+  const pauseEl = document.getElementById('pauseExitModalOverlay');
+  const isPauseVisible = Boolean(pauseEl && !pauseEl.classList.contains('hidden')) || Boolean(appState.isPaused);
+
   const isWelcomeVisible = Boolean(welcomeEl && !welcomeEl.classList.contains('hidden')) || appState.screen === 'welcome';
   const isTitleVisible = Boolean(titleEl && !titleEl.classList.contains('hidden')) || appState.screen === 'title';
   const isMobileChoicesOpen = Boolean(titleEl && titleEl.classList.contains('mobile-choices-open'));
@@ -81,10 +86,12 @@ export function syncOverlayBodyClasses() {
   const isBlockingTitleCardOpen =
     isWelcomeVisible || (isTitleVisible && (!appState.isMobileLandscape || isMobileChoicesOpen));
 
+  document.body.dataset.screen = appState.screen || 'welcome';
+  document.body.classList.toggle('is-game-paused', isPauseVisible);
   document.body.classList.toggle('title-or-endgame-open', isBlockingTitleCardOpen || isEndGameVisible);
   document.body.classList.toggle(
     'modal-or-title-open',
-    isBlockingTitleCardOpen || isEndGameVisible || isEncycVisible || isRelic3DVisible || isFullMapVisible
+    isBlockingTitleCardOpen || isEndGameVisible || isPauseVisible || isEncycVisible || isRelic3DVisible || isFullMapVisible
   );
   document.body.classList.toggle('mobile-vista-overview-open', isTitleVisible && appState.isMobileLandscape && !isMobileChoicesOpen);
 }
@@ -113,7 +120,12 @@ export function syncFullscreenButtonState() {
   const btn = document.getElementById('btnToggleFullscreen');
   if (btn) {
     btn.classList.toggle('active', isFs);
-    btn.textContent = isFs ? '🗗 Exit Full' : '⛶ Full View';
+    const labelEl = btn.querySelector('.btn-label');
+    if (labelEl) {
+      labelEl.textContent = isFs ? 'Exit Full' : 'Full';
+    } else {
+      btn.textContent = isFs ? '🗗 Exit Full' : '⛶ Full View';
+    }
     btn.setAttribute('aria-pressed', String(isFs));
   }
 }

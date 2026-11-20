@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Post-MVP Roadmap (Milestones #1–#5) — Gardens by the Bay 3D Treasure Hunt</title>
+  <meta name="description" content="Post-MVP product and engineering roadmap for the Gardens by the Bay 3D Treasure Hunt: Real-Time Multiplayer, Mobile Touch &amp; Gyro Controls, AR On-Site Companion, Dynamic Weather, and Seasonal Events." />
+  <meta name="theme-color" content="#06393A" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Gardens by the Bay 3D Treasure Hunt" />
+  <meta property="og:title" content="🚀 Post-MVP Product &amp; Technical Roadmap — Gardens by the Bay 3D" />
+  <meta property="og:description" content="Explore the upcoming 5 post-MVP milestones for the Gardens by the Bay 3D Treasure Hunt." />
+  <meta property="og:image" content="./og-preview.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="🚀 Post-MVP Product &amp; Technical Roadmap — Gardens by the Bay 3D" />
+  <meta name="twitter:description" content="Explore the upcoming 5 post-MVP milestones for the Gardens by the Bay 3D Treasure Hunt." />
+  <meta name="twitter:image" content="./og-preview.png" />
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+  <link rel="icon" type="image/png" sizes="192x192" href="./assets/avatars/avatar_you.png" />
+  <link rel="apple-touch-icon" href="./assets/avatars/avatar_you.png" />
+  <link rel="manifest" href="./site.webmanifest" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./src/styles/roadmap.css" />
+</head>
+<body>
+  <!-- STRICT DESKTOP-ONLY GATE OVERLAY (Admin & Plan Views Disabled on Mobile & Tablet) -->
+  <div id="desktopOnlyGateOverlay" class="desktop-only-gate-overlay" role="dialog" aria-modal="true" aria-labelledby="desktopOnlyGateTitle">
+    <div class="desktop-only-gate-card">
+      <div class="desktop-only-gate-eyebrow">🌿 GARDENS BY THE BAY • DESKTOP STUDIO</div>
+      <div class="desktop-only-gate-icon" aria-hidden="true">🖥️</div>
+      <h2 class="desktop-only-gate-title" id="desktopOnlyGateTitle">Desktop Access Only</h2>
+      <p class="desktop-only-gate-sub">
+        Admin LookDev Studio and Engineering Plan Views are designed exclusively for Desktop screens (&gt; 1024px). They are disabled on mobile phones and tablets.
+      </p>
+      <a href="index.html" class="btn-desktop-gate-back">🎮 Return to 3D Treasure Hunt Game</a>
+    </div>
+  </div>
+  <script>
+    (function enforceDesktopOnlyGate() {
+      function checkViewport() {
+        var isCoarse = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
+        var isMobileOrTablet = isCoarse && window.innerWidth <= 768;
+        document.body.classList.toggle('mobile-tablet-blocked', isMobileOrTablet);
+        var gate = document.getElementById('desktopOnlyGateOverlay');
+        if (gate) gate.setAttribute('aria-hidden', String(!isMobileOrTablet));
+      }
+      window.addEventListener('resize', checkViewport);
+      window.addEventListener('orientationchange', checkViewport);
+      checkViewport();
+    })();
+  </script>
+
+  <header class="top-header">
+    <div class="brand-block">
+      <span class="brand-eyebrow">Gardens by the Bay • Plan View (Part 2 of 2)</span>
+      <div class="brand-title">🚀 Post-MVP Product &amp; Technical Roadmap</div>
+    </div>
+
+    <nav class="primary-page-nav" aria-label="Primary Application Views">
+      <a href="index.html" class="page-nav-pill">← Back to App</a>
+      <a href="admin.html" class="page-nav-pill">Admin View</a>
+      <a href="progress.html" class="page-nav-pill">Project Progress</a>
+      <a href="roadmap.html" class="page-nav-pill active" aria-current="page">Roadmap</a>
+      <a href="presentation.html" class="page-nav-pill">Tech Deck</a>
+    </nav>
+
+    <div class="header-actions">
+      <a href="progress.html" class="btn-link btn-secondary">📸 Build Progress (Steps 1–13)</a>
+      <a href="index.html" class="btn-link btn-primary">🎮 Play Live 3D Game</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Plan View Sub-Navigation Bar (Progress Page + Roadmap Page) -->
+    <nav class="plan-subnav-bar" aria-label="Plan View Pages">
+      <span class="plan-subnav-label">📋 PLAN VIEW SECTIONS:</span>
+      <div class="plan-subnav-tabs">
+        <a href="progress.html" class="plan-tab-link">
+          📸 Progress Page (Build Steps 1–13)
+        </a>
+        <a href="roadmap.html" class="plan-tab-link active" aria-current="page">
+          🚀 Roadmap Page (Post-MVP Milestones #1–#5)
+        </a>
+      </div>
+    </nav>
+
+    <!-- Hero Summary Banner -->
+    <section class="roadmap-hero">
+      <span class="roadmap-eyebrow">POST-MVP ROADMAP • TEXT SPECIFICATION ONLY</span>
+      <h1>Next 5 Milestones After MVP Go-Live</h1>
+      <p>
+        With the Gardens by the Bay 3D Treasure Hunt MVP live on the Game Page and debug tools isolated in the Admin View, the following five post-MVP milestones define the upcoming expansion roadmap. Per project scope, this page documents the product and engineering specifications in text form only.
+      </p>
+    </section>
+
+    <!-- 5 Post-MVP Milestones List (Strictly Text-Only) -->
+    <div class="milestone-list">
+
+      <!-- MILESTONE #1: MULTI-PLAYER MODE -->
+      <article class="roadmap-card" id="milestone-1-multiplayer">
+        <div class="roadmap-card-header">
+          <div class="roadmap-title-group">
+            <span class="milestone-num-badge">MILESTONE #1</span>
+            <h2>Multi-Player Mode — Same-Room Real-Time Competition</h2>
+          </div>
+          <span class="status-pill" style="background: rgba(16, 185, 129, 0.2); color: #34D399; border-color: rgba(52, 211, 153, 0.5);">✅ Shipped • v3.2 Live</span>
+        </div>
+        <p class="roadmap-lead">
+          Allow multiple human players to join the same shared room and compete head-to-head in real time across the 3D garden peninsula (shipped in v3.2 with 3-step Party Room creation, 3D Supertree Grove Waiting Lobby, and synchronized <code>3 • 2 • 1 • GO!</code> starting-line countdown).
+        </p>
+        <div class="spec-columns">
+          <div class="spec-box">
+            <h3>Player Experience &amp; Room Flow (Shipped v3.2)</h3>
+            <ul>
+              <li><strong>Shared Room Lobbies (Step 1):</strong> Players create a private Party Room with a 6-character invite code (<code>GBB-XXX</code>), copy a shareable invite link (<code>?room=GBB-XXX</code>), or join a friend's room code directly from the Frosted-Pearl Start Card.</li>
+              <li><strong>3D Supertree Grove Waiting Lobby &amp; Hybrid AI Backfill (Step 2):</strong> All 4 Chibi Explorers line up on glowing color-coded platform rings in Supertree Grove Plaza with a live 4-slot roster, <code>🤖 Hybrid AI Bot Backfill</code> toggle switch, and 3D lobby quick-emotes (<code>👋 Wave</code>, <code>🤚 Chope!</code>, <code>🎉 Hype!</code>).</li>
+              <li><strong>Synchronized 3-2-1-GO Countdown &amp; Live 3D Presence (Step 3):</strong> Authoritative <code>3 • 2 • 1 • GO!</code> starting-line countdown releases all racers simultaneously at <code>03:00</code> with live floating nameplates and atomic relic snatching.</li>
+            </ul>
+          </div>
+          <div class="spec-box">
+            <h3>Technical &amp; Sync Specification (Shipped v3.2)</h3>
+            <ul>
+              <li><strong>Authoritative Room Server &amp; Dual Transport:</strong> Zero-dependency RFC 6455 WebSocket upgrade server (<code>/ws-multiplayer</code>) paired with automatic <code>BroadcastChannel('gbb-multiplayer-v32')</code> fallback, maintaining authoritative match state and atomic 42-relic pickup locks (<code>CLAIM_RELIC → RELIC_LOCKED / RELIC_CHOPED</code>).</li>
+              <li><strong>20 Hz Transform Interpolation:</strong> 20 Hz client position/yaw/velocity snapshots smoothed via zero-GC 60 FPS Hermite dead-reckoning interpolation (<code>RemoteTransformInterpolator.js</code>).</li>
+              <li><strong>Strict Modular Codebase (&lt; 400 Lines Gate):</strong> All <code>.js</code> and <code>.css</code> modules refactored and audited to remain strictly under 400 lines per file.</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <!-- MILESTONE #2: MOBILE VIEW OPTIMIZATION -->
+      <article class="roadmap-card" id="milestone-2-mobile">
+        <div class="roadmap-card-header">
+          <div class="roadmap-title-group">
+            <span class="milestone-num-badge">MILESTONE #2</span>
+            <h2>Mobile View — Touch Controls &amp; Mobile Viewport Optimization</h2>
+          </div>
+          <span class="status-pill">Planned • Post-MVP Phase 2</span>
+        </div>
+        <p class="roadmap-lead">
+          Optimize the 3D gameplay experience, camera ergonomics, and HUD layout specifically for mobile phones and tablets in both landscape and portrait orientations.
+        </p>
+        <div class="spec-columns">
+          <div class="spec-box">
+            <h3>Touch Ergonomics &amp; Responsive HUD</h3>
+            <ul>
+              <li><strong>Dual-Thumb Touch Controls:</strong> Left-thumb virtual analog joystick for 360° movement + right-thumb swipe-to-orbit camera and dedicated thumb-arc action buttons (Collect, Jump, Sonar, Field Gadgets).</li>
+              <li><strong>Compact Collapsible HUD:</strong> Condense top/bottom HUD cards into sleek mobile drawers and safe-area-aware status pills so over 80% of the mobile viewport remains unobstructed 3D world space.</li>
+              <li><strong>Touch Target Sizing:</strong> Enforce a minimum 48×48 CSS pixel tap target across all interactive mobile controls.</li>
+            </ul>
+          </div>
+          <div class="spec-box">
+            <h3>Mobile WebGL Performance Budget</h3>
+            <ul>
+              <li><strong>Adaptive Resolution Scaling:</strong> Dynamic devicePixelRatio clamping (1.0–1.5x on mobile GPUs) to sustain 60 FPS without thermal throttling.</li>
+              <li><strong>Mobile Shader &amp; Post-FX Tier:</strong> Automatic mobile graphics profile with half-resolution UnrealBloom pass, 1024px shadow maps, and aggressive frustum/distance culling.</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <!-- MILESTONE #3: NEW MAPS (BOTANIC GARDENS, MBS & SENTOSA) -->
+      <article class="roadmap-card" id="milestone-3-new-maps">
+        <div class="roadmap-card-header">
+          <div class="roadmap-title-group">
+            <span class="milestone-num-badge">MILESTONE #3</span>
+            <h2>New Maps — Singapore Botanic Gardens (UNESCO) Map, MBS &amp; Sentosa</h2>
+          </div>
+          <span class="status-pill" style="background: rgba(16, 185, 129, 0.2); color: #34D399; border-color: rgba(52, 211, 153, 0.5);">✅ Map 02 Shipped • v3.3 Live</span>
+        </div>
+        <p class="roadmap-lead">
+          Expand beyond Gardens by the Bay with new playable 3D Singapore landmark maps, starting with Singapore Botanic Gardens (1859 UNESCO World Heritage Site — shipped in v3.3!), followed by Marina Bay Sands (MBS) and Sentosa Island.
+        </p>
+        <div class="spec-columns">
+          <div class="spec-box">
+            <h3>New Playable 3D Map Worlds</h3>
+            <ul>
+              <li><strong>Map 02 — Singapore Botanic Gardens (UNESCO World Heritage — Shipped v3.3):</strong> Features The Bandstand (1930) octagonal gazebo, 18 Giant Heritage Tembusu &amp; Rain Trees (including the iconic $5-Note Tembusu Tree &amp; SPH Walk of Giants canopy boardwalk), National Orchid Garden (Burkill Hall, Sembcorp Cool House &amp; Tan Hoon Siang Mist House), Swan Lake &amp; Ginger Waterfall cavern, Shaw Foundation Symphony Stage, and Jacob Ballas Children's Garden with 42 UNESCO &amp; botanical relics.</li>
+              <li><strong>Map 03 — Marina Bay Sands (MBS) &amp; Sentosa Island:</strong> Upcoming expansions featuring the triple hotel towers, ArtScience Museum, Helix Bridge, and Sentosa Siloso/Palawan coastal trails.</li>
+            </ul>
+          </div>
+          <div class="spec-box">
+            <h3>Modular World Loader Architecture (Shipped v3.3)</h3>
+            <ul>
+              <li><strong>Multi-Map World Registry (`MapRegistry.js` &amp; `MapWorldSwitcherController.js`):</strong> Dynamic in-place world switching between Map 01 (`?map=gbb`) and Map 02 (`?map=sbg`) via the Start Screen pill bar and Top Global Bar switcher.</li>
+              <li><strong>Calibrated Cartography &amp; Physics Parity:</strong> Full 5-zone layout, 42 relics, 6 enterable landmark footprints, 5 bridges, and 2D metric SVG floorplan (`public/maps/sbg_floorplan_2d_meters.svg`).</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <!-- MILESTONE #4: AUTHENTICATION & SCORE RECORDING -->
+      <article class="roadmap-card" id="milestone-4-authentication">
+        <div class="roadmap-card-header">
+          <div class="roadmap-title-group">
+            <span class="milestone-num-badge">MILESTONE #4</span>
+            <h2>Authentication — Player Accounts, Persistent Scores &amp; Admin Lock</h2>
+          </div>
+          <span class="status-pill">Planned • Post-MVP Phase 4</span>
+        </div>
+        <p class="roadmap-lead">
+          Add user authentication so players can sign in, persistently record their match scores and 42-relic collection progress, compete on global leaderboards, and lock down the Admin View.
+        </p>
+        <div class="spec-columns">
+          <div class="spec-box">
+            <h3>Player Identity &amp; Persistent Leaderboards</h3>
+            <ul>
+              <li><strong>Frictionless Sign-In:</strong> Support OAuth social login (Google / Apple) and passwordless magic-link email sign-in, plus instant guest-to-account upgrade after finishing a match.</li>
+              <li><strong>Cloud Score &amp; Passport Sync:</strong> Record fastest 42/42 Relaxed completion times, highest 4-Player Timed Race scores, combo streaks, and lifetime Botanical Passport discoveries per map.</li>
+              <li><strong>Global &amp; Friends Leaderboards:</strong> Filterable daily, weekly, and all-time leaderboards across Gardens by the Bay, MBS, and Sentosa maps.</li>
+            </ul>
+          </div>
+          <div class="spec-box">
+            <h3>Security &amp; Admin View Access Control</h3>
+            <ul>
+              <li><strong>Role-Based Admin Lock (<code>/admin.html</code>):</strong> Wire the existing Admin Auth Guard to verify server-issued JWT claims (<code>role: "admin"</code>), locking the Screen Switcher and LookDev Studio strictly to authorized developers.</li>
+              <li><strong>Server-Verified Score Submissions:</strong> Validate match duration and relic pickup timestamps server-side before recording leaderboard entries.</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <!-- MILESTONE #5: IMPROVED AVATARS WITH SPECIAL POWERS -->
+      <article class="roadmap-card" id="milestone-5-avatars">
+        <div class="roadmap-card-header">
+          <div class="roadmap-title-group">
+            <span class="milestone-num-badge">MILESTONE #5</span>
+            <h2>Improved Avatars — Distinct Explorer Classes &amp; Unique Special Powers</h2>
+          </div>
+          <span class="status-pill">Planned • Post-MVP Phase 5</span>
+        </div>
+        <p class="roadmap-lead">
+          Upgrade the Chibi Explorer roster so players can choose from distinct 3D avatars, each equipped with a unique passive trait and an active signature special power.
+        </p>
+        <div class="spec-columns">
+          <div class="spec-box">
+            <h3>Explorer Classes &amp; Signature Powers</h3>
+            <ul>
+              <li><strong>Aero-Sprinter Avatar (Velocity Specialist):</strong> Equipped with solar-jet boots that grant a higher base dash speed and a <em> Canopy Wind-Glide</em> power to leap across water channels.</li>
+              <li><strong>Botanical Naturalist Avatar (Resonance Specialist):</strong> Carries a bioluminescent orchid staff whose <em>Flora Bloom Pulse</em> reveals and magnetizes all relics within an expanded 18m radius.</li>
+              <li><strong>Chrono-Pathfinder Avatar (Tactical Specialist):</strong> Wears holographic visor goggles with a <em>Waypoint Phase Blink</em> ability and longer combo-streak decay timers.</li>
+              <li><strong>Mirage Trickster Avatar (Disruption Specialist):</strong> Deploys twin <em>Holo-Clone Decoys</em> that distract rival bots/players while granting brief stealth sprint speed.</li>
+            </ul>
+          </div>
+          <div class="spec-box">
+            <h3>Balance &amp; Customization Design</h3>
+            <ul>
+              <li><strong>Cooldown &amp; Energy Balance:</strong> Signature powers charge via relic pickups and combo streaks, ensuring fair competitive balance in both solo AI races and Milestone #1 multiplayer rooms.</li>
+              <li><strong>Visual Distinction in 3D:</strong> Unique Blender `.glb` headgear, backpack silhouettes, and color-coded particle trails so every avatar's active power is immediately readable in 3D.</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </main>
+
+</body>
+</html>

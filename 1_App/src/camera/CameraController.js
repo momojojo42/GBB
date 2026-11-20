@@ -68,37 +68,66 @@ export function createCameraController({
   }
   syncSphericalFromVectors();
 
+  const expDamp = (rate, dt) => 1 - Math.exp(-rate * dt);
+
+  function syncActiveCameraChip(presetId) {
+    document.querySelectorAll('#quickbarAngleButtons .angle-chip').forEach((btn) => {
+      const p = btn.dataset.preset;
+      const isMatch =
+        p === presetId ||
+        PRESET_ALIAS_MAP[p] === presetId ||
+        (presetId === 'player_follow' && p === 'live_player_chase');
+      btn.classList.toggle('active', isMatch);
+    });
+  }
+
+  function applyZoomDelta(delta, followScale, orbitScale) {
+    if (cameraControl.mode === 'follow') {
+      cameraControl.followDistance = THREE.MathUtils.clamp(
+        cameraControl.followDistance + delta * followScale,
+        5.5,
+        36
+      );
+      if (appState.lookDev?.camera) {
+        appState.lookDev.camera.chaseCamDistance = cameraControl.followDistance;
+      }
+    } else {
+      cameraControl.spherical.radius = THREE.MathUtils.clamp(
+        cameraControl.spherical.radius + delta * orbitScale,
+        18,
+        210
+      );
+      tempOffset.setFromSpherical(cameraControl.spherical);
+      cameraControl.desiredPos.copy(cameraControl.desiredTarget).add(tempOffset);
+    }
+  }
+
   function activateFollowCameraFromCurrentView() {
     if (cameraControl.mode === 'follow') return;
-    const explorersSys = getExplorersSys();
-    const you = explorersSys?.getStandings?.().find((s) => s.id === 'you');
+    const you = getExplorersSys()?.getStandings?.().find((s) => s.id === 'you');
     if (you) {
       const dx = camera.position.x - you.position.x;
       const dz = camera.position.z - you.position.z;
-      if (Math.hypot(dx, dz) > 0.5) {
+      if (dx * dx + dz * dz > 0.25) {
         cameraControl.followYaw = Math.atan2(dx, dz);
       }
     }
     cameraControl.mode = 'follow';
     appState.cameraPresetId = 'player_follow';
-    document.querySelectorAll('#quickbarAngleButtons .angle-chip').forEach((btn) => {
-      const isFollow =
-        btn.dataset.preset === 'player_follow' ||
-        btn.dataset.preset === 'live_player_chase';
-      btn.classList.toggle('active', isFollow);
-    });
+    syncActiveCameraChip('player_follow');
+  }
+
+  function snapCameraToDesired() {
+    cameraControl.currentPos.copy(cameraControl.desiredPos);
+    cameraControl.currentTarget.copy(cameraControl.desiredTarget);
+    camera.position.copy(cameraControl.currentPos);
+    camera.lookAt(cameraControl.currentTarget);
   }
 
   function setCameraPreset(presetId, immediate = false) {
     appState.cameraPresetId = presetId;
     const explorersSys = getExplorersSys();
-
-    document.querySelectorAll('#quickbarAngleButtons .angle-chip').forEach((btn) => {
-      const isMatch =
-        btn.dataset.preset === presetId ||
-        PRESET_ALIAS_MAP[btn.dataset.preset] === presetId;
-      btn.classList.toggle('active', isMatch);
-    });
+    syncActiveCameraChip(presetId);
 
     if (presetId === 'player_follow' || presetId === 'live_player_chase') {
       cameraControl.mode = 'follow';
@@ -115,10 +144,7 @@ export function createCameraController({
             (you.position.y || 0) + Math.max(1.8, vertHeight),
             you.position.z + Math.cos(cameraControl.followYaw) * horizDist
           );
-          cameraControl.currentPos.copy(cameraControl.desiredPos);
-          cameraControl.currentTarget.copy(cameraControl.desiredTarget);
-          camera.position.copy(cameraControl.currentPos);
-          camera.lookAt(cameraControl.currentTarget);
+          snapCameraToDesired();
         }
       }
       return;
@@ -135,15 +161,10 @@ export function createCameraController({
       cameraControl.desiredPos.set(preset.pos[0], preset.pos[1], preset.pos[2]);
       cameraControl.desiredTarget.set(preset.target[0], preset.target[1], preset.target[2]);
       syncSphericalFromVectors();
-      if (immediate) {
-        cameraControl.currentPos.copy(cameraControl.desiredPos);
-        cameraControl.currentTarget.copy(cameraControl.desiredTarget);
-        camera.position.copy(cameraControl.currentPos);
-        camera.lookAt(cameraControl.currentTarget);
-      }
+      if (immediate) snapCameraToDesired();
     }
 
-    // If Night Rhapsody camera angle is chosen, switch lighting preset to night automatically
+    // Automatically align lighting when entering or leaving the Night Rhapsody camera angle
     const isNightPreset = presetId === 'angle_07_night_rhapsody' || preset.id === 'night_rhapsody';
     const currentLightPreset = appState.lookDev.lighting?.preset || appState.lookDev.preset || 'morning';
     const lookDevPanel = getLookDevPanel?.();
@@ -161,12 +182,10 @@ export function createCameraController({
           bloomStrength: 0.62
         }
       });
-      if (lookDevPanel) lookDevPanel.setSettings(appState.lookDev);
+      lookDevPanel?.setSettings(appState.lookDev);
     } else if (!isNightPreset && currentLightPreset === 'night') {
-      onApplyLookDevSettings?.({
-        lighting: { ...DEFAULT_LOOKDEV_SETTINGS.lighting }
-      });
-      if (lookDevPanel) lookDevPanel.setSettings(appState.lookDev);
+      onApplyLookDevSettings?.({ lighting: { ...DEFAULT_LOOKDEV_SETTINGS.lighting } });
+      lookDevPanel?.setSettings(appState.lookDev);
     }
   }
 
@@ -181,34 +200,24 @@ export function createCameraController({
       const baseHeight = camCfg.chaseCamHeight ?? 4.2;
       const lookAheadMag = camCfg.chaseCamLookAhead ?? 2.4;
 
-      // Smoothly look slightly ahead in the direction the avatar is moving
+      const aheadAlpha = expDamp(5.5, dt);
       const desiredAheadX = you.isMoving ? Math.sin(you.facingYaw || 0) * lookAheadMag * 0.65 : 0;
       const desiredAheadZ = you.isMoving ? Math.cos(you.facingYaw || 0) * lookAheadMag * 0.65 : 0;
-      cameraControl.followLookAheadOffset.x = THREE.MathUtils.lerp(
-        cameraControl.followLookAheadOffset.x,
-        desiredAheadX,
-        Math.min(1, dt * 5.5)
-      );
-      cameraControl.followLookAheadOffset.z = THREE.MathUtils.lerp(
-        cameraControl.followLookAheadOffset.z,
-        desiredAheadZ,
-        Math.min(1, dt * 5.5)
-      );
+      cameraControl.followLookAheadOffset.x = THREE.MathUtils.lerp(cameraControl.followLookAheadOffset.x, desiredAheadX, aheadAlpha);
+      cameraControl.followLookAheadOffset.z = THREE.MathUtils.lerp(cameraControl.followLookAheadOffset.z, desiredAheadZ, aheadAlpha);
 
-      // Gently align camera behind avatar when moving via click-to-move (unless user is dragging)
       if (clickMoveTarget && you.isMoving && !cameraControl.isDragging && cameraControl.userOrbitingFollowTimer <= 0) {
         const targetCamYaw = (you.facingYaw || 0) + Math.PI;
         let diff = ((targetCamYaw - cameraControl.followYaw + Math.PI) % (Math.PI * 2)) - Math.PI;
         if (diff < -Math.PI) diff += Math.PI * 2;
-        cameraControl.followYaw += diff * Math.min(1, dt * 2.2);
+        cameraControl.followYaw += diff * expDamp(2.2, dt);
       }
 
       const horizDist = baseDist * Math.cos(cameraControl.followPitch);
       const pitchFactor = Math.sin(cameraControl.followPitch) / Math.max(0.15, Math.sin(0.42));
       const vertHeight = Math.max(1.8, baseHeight * pitchFactor);
 
-      // When End-Game celebration modal is open on the right, shift camera target slightly right
-      // so the 4 celebrating explorers sit cleanly in the left ~58% of the viewport
+      // Shift target slightly right when End-Game modal occupies the right panel
       const rightShiftMag = appState.isGameOver ? 1.85 : 0;
       const rightX = Math.cos(cameraControl.followYaw) * rightShiftMag;
       const rightZ = -Math.sin(cameraControl.followYaw) * rightShiftMag;
@@ -226,8 +235,8 @@ export function createCameraController({
     }
 
     const dampRate = cameraControl.mode === 'follow' ? 8.5 : 6.0;
-    cameraControl.currentPos.lerp(cameraControl.desiredPos, Math.min(1, dt * dampRate));
-    cameraControl.currentTarget.lerp(cameraControl.desiredTarget, Math.min(1, dt * (dampRate + 2.0)));
+    cameraControl.currentPos.lerp(cameraControl.desiredPos, expDamp(dampRate, dt));
+    cameraControl.currentTarget.lerp(cameraControl.desiredTarget, expDamp(dampRate + 2.0, dt));
     camera.position.copy(cameraControl.currentPos);
     camera.lookAt(cameraControl.currentTarget);
   }
@@ -304,8 +313,7 @@ export function createCameraController({
       e.preventDefault();
       isPinching = true;
       cameraControl.isDragging = false;
-      const t0 = e.touches[0];
-      const t1 = e.touches[1];
+      const [t0, t1] = e.touches;
       lastPinchDist = Math.hypot(t0.clientX - t1.clientX, t0.clientY - t1.clientY);
     }
   }, { passive: false });
@@ -315,30 +323,9 @@ export function createCameraController({
       e.preventDefault();
       isPinching = true;
       cameraControl.isDragging = false;
-      const t0 = e.touches[0];
-      const t1 = e.touches[1];
+      const [t0, t1] = e.touches;
       const dist = Math.hypot(t0.clientX - t1.clientX, t0.clientY - t1.clientY);
-      if (lastPinchDist > 0) {
-        const delta = lastPinchDist - dist;
-        if (cameraControl.mode === 'follow') {
-          cameraControl.followDistance = THREE.MathUtils.clamp(
-            cameraControl.followDistance + delta * 0.04,
-            5.5,
-            36
-          );
-          if (appState.lookDev?.camera) {
-            appState.lookDev.camera.chaseCamDistance = cameraControl.followDistance;
-          }
-        } else {
-          cameraControl.spherical.radius = THREE.MathUtils.clamp(
-            cameraControl.spherical.radius + delta * 0.12,
-            18,
-            210
-          );
-          tempOffset.setFromSpherical(cameraControl.spherical);
-          cameraControl.desiredPos.copy(cameraControl.desiredTarget).add(tempOffset);
-        }
-      }
+      if (lastPinchDist > 0) applyZoomDelta(lastPinchDist - dist, 0.04, 0.12);
       lastPinchDist = dist;
     }
   }, { passive: false });
@@ -346,32 +333,13 @@ export function createCameraController({
   canvas.addEventListener('touchend', (e) => {
     if (e.touches.length < 2) {
       lastPinchDist = 0;
-      if (e.touches.length === 0) {
-        isPinching = false;
-      }
+      if (e.touches.length === 0) isPinching = false;
     }
   }, { passive: false });
 
   canvas.addEventListener('wheel', (e) => {
     e.preventDefault();
-    if (cameraControl.mode === 'follow') {
-      cameraControl.followDistance = THREE.MathUtils.clamp(
-        cameraControl.followDistance + e.deltaY * 0.025,
-        5.5,
-        36
-      );
-      if (appState.lookDev.camera) {
-        appState.lookDev.camera.chaseCamDistance = cameraControl.followDistance;
-      }
-    } else {
-      cameraControl.spherical.radius = THREE.MathUtils.clamp(
-        cameraControl.spherical.radius + e.deltaY * 0.06,
-        18,
-        210
-      );
-      tempOffset.setFromSpherical(cameraControl.spherical);
-      cameraControl.desiredPos.copy(cameraControl.desiredTarget).add(tempOffset);
-    }
+    applyZoomDelta(e.deltaY, 0.025, 0.06);
   }, { passive: false });
 
   return {

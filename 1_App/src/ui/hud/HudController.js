@@ -13,22 +13,39 @@ import {
 } from '../screens/EndGameModalController.js';
 import { createHudCollectionTrayAndPopCard } from './HudCollectionTrayAndPopCard.js';
 
+function stripLeadingSymbol(label) {
+  return String(label || '').replace(/^[^\p{L}\p{N}]+/u, '').trim();
+}
+
 function getFallbackDayNightPhase(appState) {
-  if (appState?.dayNightPhaseLabel) return appState.dayNightPhaseLabel;
+  if (appState?.dayNightPhaseLabel) {
+    const cleaned = stripLeadingSymbol(appState.dayNightPhaseLabel);
+    if (cleaned) return cleaned;
+  }
   const elapsed = Number(appState?.elapsedSeconds || 0);
   const total = Number(appState?.raceDurationSeconds || 180) || 180;
   const ratio = Math.min(1, Math.max(0, elapsed / total));
-  if (ratio < 0.28) return '☀️ Morning';
-  if (ratio < 0.56) return '🌤️ Afternoon';
-  if (ratio < 0.78) return '🌇 Sunset';
-  return '🌙 Night Show';
+  if (ratio < 0.28) return 'Morning';
+  if (ratio < 0.56) return 'Afternoon';
+  if (ratio < 0.78) return 'Sunset';
+  return 'Night Show';
 }
+
+let toastFadeTimer = null;
 
 export function showToast(msg) {
   const banner = document.getElementById('hudToastBanner');
-  if (banner && banner.textContent !== msg) {
+  if (!banner) return;
+  if (banner.textContent !== msg) {
     banner.textContent = msg;
   }
+  banner.classList.add('is-toast-visible');
+  banner.classList.remove('is-toast-idle');
+  if (toastFadeTimer) clearTimeout(toastFadeTimer);
+  toastFadeTimer = setTimeout(() => {
+    banner.classList.remove('is-toast-visible');
+    banner.classList.add('is-toast-idle');
+  }, 4500);
 }
 
 export function showDiscoveryPopCard(relic, earnedPoints = null, bonusTag = '') {
@@ -89,8 +106,8 @@ export function createHudController({
     const eyebrowEl = document.getElementById('hudStandingsEyebrow');
     if (eyebrowEl) {
       const nextEyebrow = appState.isMultiplayerRoom
-        ? `🌐 ${appState.multiplayerRoomCode || 'GBB-88A'}`
-        : '🏆 SCOREBOARD';
+        ? `Room ${appState.multiplayerRoomCode || 'GBB-88A'}`
+        : 'Live Standings';
       if (eyebrowEl.textContent !== nextEyebrow) eyebrowEl.textContent = nextEyebrow;
     }
 
@@ -99,21 +116,22 @@ export function createHudController({
         ? Math.min(100, Math.max(8, Math.round((comp.score / topPts) * 100)))
         : 0;
       const portraitSrc = AVATAR_PORTRAIT_MAP[comp.id] || AVATAR_PORTRAIT_MAP.you;
-      const shortLabel = appState.isMultiplayerRoom
-        ? (comp.id === 'you' ? '🧑 You' : (comp.name || COMP_SHORT_LABELS[comp.id]))
+      const rawLabel = appState.isMultiplayerRoom
+        ? (comp.id === 'you' ? 'You' : (comp.name || COMP_SHORT_LABELS[comp.id]))
         : (COMP_SHORT_LABELS[comp.id] || comp.name);
+      const shortLabel = stripLeadingSymbol(rawLabel).replace(/^Bot\s+/i, '') || rawLabel;
       return `
         <div class="standing-row ${comp.id === 'you' ? 'is-you-row' : ''}">
-          <span class="standing-rank">#${idx + 1}</span>
-          <div class="standing-avatar" style="background:${comp.colorHex}">
+          <span class="standing-rank">${idx + 1}</span>
+          <div class="standing-avatar" style="--comp-ring:${comp.colorHex}; background:${comp.colorHex}">
             <img src="${portraitSrc}" alt="${shortLabel}" class="standing-avatar-img" />
           </div>
           <div class="standing-info">
             <div class="standing-name-line">
               <span class="standing-comp-name">${shortLabel}</span>
               <span class="standing-comp-score-cluster">
-                <strong class="standing-comp-pts">${comp.score.toLocaleString()} <small class="pts-unit">PTS</small></strong>
-                <span class="standing-comp-relic-pill">${comp.relicCount} 💎</span>
+                <strong class="standing-comp-pts">${comp.score.toLocaleString()} <small class="pts-unit">pts</small></strong>
+                <span class="standing-comp-relic-pill" title="Keepsakes collected">${comp.relicCount}</span>
               </span>
             </div>
             <div class="standing-bar-bg">
@@ -127,7 +145,7 @@ export function createHudController({
     const you = enrichedStandings.find((s) => s.id === 'you');
     const scoreEl = document.getElementById('hudPlayerScore');
     if (you && scoreEl) {
-      scoreEl.innerHTML = `${you.score.toLocaleString()} <small class="score-unit">PTS • ${you.relicCount}/42</small>`;
+      scoreEl.innerHTML = `${you.score.toLocaleString()} <small class="score-unit">pts</small>`;
     }
 
     const remaining = terrainSys.treasuresList.filter((t) => !t.collected).length;
@@ -180,20 +198,23 @@ export function createHudController({
       const phaseLabel = getFallbackDayNightPhase(appState);
       let nextModeTag = '';
       if (appState.mode === 'race') {
-        const isNightShow = phaseLabel.includes('Night') || Boolean(appState.isNightShow);
+        const isNightShow = phaseLabel.includes('Night') || Boolean(appState.isNightRhapsody || appState.isNightShow);
         const roomSuffix = appState.isMultiplayerRoom
-          ? ` • 🌐 ${appState.multiplayerRoomCode}`
+          ? ` · Room ${appState.multiplayerRoomCode}`
           : '';
         nextModeTag = isNightShow
-          ? `${phaseLabel} • 🔥 1.5x PTS!${roomSuffix}`
-          : `${phaseLabel} • 🏆 Race${roomSuffix}`;
+          ? `${phaseLabel} · 1.5× Night Bonus${roomSuffix}`
+          : `${phaseLabel} · 3-Min Race${roomSuffix}`;
         modeTagEl.classList.toggle('is-night-fever', isNightShow);
+        if (appState.screen === 'gameplay') {
+          document.body.classList.toggle('is-night-hud', isNightShow);
+        }
       } else {
         const terrainSys = getTerrainSys();
         const myCount = terrainSys?.treasuresList
           ? terrainSys.treasuresList.filter((t) => t.collectedBy === 'you').length
           : 0;
-        nextModeTag = `${phaseLabel} • 🌿 Chill (${myCount}/42)`;
+        nextModeTag = `${phaseLabel} · Chill Stroll (${myCount}/42)`;
         modeTagEl.classList.remove('is-night-fever');
       }
       if (modeTagEl.textContent !== nextModeTag) {
